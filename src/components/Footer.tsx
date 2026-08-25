@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({
               </span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed max-w-md">
-              AllNewYonoApps.com is India's leading information and download portal for all verified Yono gaming APKs, free sign-up bonuses, daily promo codes, and fast UPI withdrawal guides.
+              YonoJi (yonoji.netlify.app) is India's leading information and download portal for all verified Yono gaming APKs, free sign-up bonuses, daily promo codes, and fast UPI withdrawal guides.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
@@ -139,17 +139,12 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <button onClick={() => onScrollTo('all-apps-section')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
-                  All 45+ Yono Apps List
+                  All Working Yono Apps List
                 </button>
               </li>
               <li>
                 <button onClick={onOpenPromo} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
                   Promo Codes & Vouchers
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onScrollTo('calculator-section')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
-                  Refer & Earn Calculator
                 </button>
               </li>
               <li>

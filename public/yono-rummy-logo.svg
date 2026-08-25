@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rummyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a"/>
+      <stop offset="50%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#14532d"/>
+    </linearGradient>
+    <linearGradient id="innerGreenG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+    <filter id="rummyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- App Rounded Background with subtle 3D border -->
+  <rect width="512" height="512" rx="115" fill="url(#rummyBg)" />
+  <rect x="8" y="8" width="496" height="496" rx="107" fill="none" stroke="#22c55e" stroke-width="4" opacity="0.4" />
+
+  <!-- Outer Chat Bubble / Badge -->
+  <g filter="url(#rummyShadow)">
+    <!-- Speech bubble shape with tail on bottom left -->
+    <path 
+      d="M 256 90 
+         C 350 90 426 166 426 260 
+         C 426 354 350 430 256 430 
+         C 220 430 186 418 158 398 
+         L 98 424 
+         L 124 366 
+         C 100 336 86 299 86 260 
+         C 86 166 162 90 256 90 Z" 
+      fill="none" 
+      stroke="#ffffff" 
+      stroke-width="36" 
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+
+    <!-- Spade & Clover Center Insignia -->
+    <path 
+      d="M 256 160 
+         C 285 205 320 235 320 268 
+         C 320 295 298 316 270 316 
+         C 256 316 244 310 236 300 
+         C 228 310 216 316 202 316 
+         C 174 316 152 295 152 268 
+         C 152 235 187 205 216 160 
+         Z" 
+      fill="#ffffff" 
+    />
+
+    <!-- Center Spade Core (Green cut) -->
+    <path 
+      d="M 256 185 
+         C 275 220 300 244 300 268 
+         C 300 286 286 300 268 300 
+         C 258 300 248 294 242 284 
+         L 256 268 
+         L 270 284 
+         C 264 294 254 300 244 300 
+         C 226 300 212 286 212 268 
+         C 212 244 237 220 256 185 
+         Z" 
+      fill="url(#innerGreenG)" 
+    />
+
+    <!-- Diamond underneath -->
+    <polygon points="256,310 278,336 256,362 234,336" fill="#ffffff" />
+  </g>
+</svg>

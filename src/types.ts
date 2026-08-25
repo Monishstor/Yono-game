@@ -14,6 +14,7 @@ export interface YonoApp {
   tagline: string;
   imageUrl?: string; // Custom uploaded image (data URL or web URL)
   downloadUrl?: string; // Custom direct APK download link
+  backupDownloadUrl?: string; // Secondary CloudFront direct APK link
   category: AppCategory[];
   signupBonus: number;
   maxSignupBonus?: number;

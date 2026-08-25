@@ -2,11 +2,20 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'MPXEDCSW6MG',
+    title: 'Yono Rummy 3-in-1 Rewards Code',
+    reward: '₹13+ Instant Bonus + ₹90 7-Day Login + 30% Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Yono Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'RRTN8BM3',
     title: 'Official Yono Games Welcome Pack',
     reward: '₹50 Free Welcome + ₹100 7-Day Login + 100% Deposit Match',
     expiry: 'Official Active Code',
-    appTarget: 'Yono Games & Yono Bonus',
+    appTarget: 'Yono Games',
     usesLeft: 9999,
     status: 'Hot'
   },

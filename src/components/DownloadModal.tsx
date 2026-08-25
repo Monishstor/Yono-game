@@ -207,7 +207,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ app, isOpen, onClo
           {/* Backup CloudFront Direct APK Mirror */}
           <div className="text-center">
             <a
-              href="https://d3aeng3pmq21ul.cloudfront.net/Agent.apk"
+              href={app.backupDownloadUrl || "https://d3aeng3pmq21ul.cloudfront.net/Agent.apk"}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-[11px] text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors font-medium"

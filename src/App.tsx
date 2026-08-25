@@ -81,13 +81,8 @@ export default function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          // Filter out duplicate temporary bonus clone if present
-          const cleaned = parsed.filter((a: YonoApp) => a.id !== 'yono-bonus-official');
-          const hasOfficial = cleaned.some((a: YonoApp) => a.id === 'yono-games-official');
-          if (!hasOfficial) {
-            return [...YONO_APPS, ...cleaned];
-          }
-          return cleaned;
+          const customApps = parsed.filter((a: YonoApp) => a.isCustom === true);
+          return [...YONO_APPS, ...customApps];
         }
       }
     } catch (e) {
