@@ -4,7 +4,6 @@ import { PROMO_CODES, LIVE_WITHDRAWALS } from './data/promoCodes';
 import { YonoApp, AppCategory, PromoCode, SiteSettings, WithdrawalRecord } from './types';
 import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
 import { AppGrid } from './components/AppGrid';
 import { DownloadModal } from './components/DownloadModal';
 import { AppDetailModal } from './components/AppDetailModal';
@@ -247,11 +246,6 @@ export default function App() {
     window.location.hash = '#admin';
   };
 
-  // Top spotlight apps
-  const topFeaturedApps = useMemo(() => {
-    return apps.slice(0, 3);
-  }, [apps]);
-
   // Filtered and sorted apps
   const filteredApps = useMemo(() => {
     return apps.filter((app) => {
@@ -483,13 +477,6 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1">
-        {/* Hero Section with Top Spotlight Cards */}
-        <HeroSection
-          topApps={topFeaturedApps}
-          onDownloadClick={handleDownloadClick}
-          onViewDetails={handleViewDetails}
-        />
-
         {/* All Yono Apps Catalog Section */}
         <section id="all-apps-section" className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {isAdminLoggedIn && (
