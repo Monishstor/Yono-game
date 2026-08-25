@@ -37,7 +37,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   metaKeywords: 'all yono games, yono app list 2026, yono games partner, yono apk download, yono rummy bonus, new yono games 2026, yono referral code RRTN8BM3, all yono vip',
   canonicalUrl: 'https://yonoji.netlify.app',
   siteAuthor: 'Yono VIP Official Network',
-  googleSiteVerification: '',
+  googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',
   telegramLink: 'https://t.me/yonojiunauxcom',
   telegramSubscribers: '88K',
   whatsappSupport: '+91 98765 43210',
