@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Rich emerald green gradient matching user uploaded logo -->
+    <linearGradient id="greenBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#009944"/>
+      <stop offset="50%" stop-color="#00883a"/>
+      <stop offset="100%" stop-color="#006629"/>
+    </linearGradient>
+
+    <!-- Outer soft ambient drop shadow -->
+    <filter id="softGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- App Rounded Green Icon Background with smooth modern app corners -->
+  <rect width="512" height="512" rx="112" fill="url(#greenBg)" />
+
+  <!-- Chat Speech Bubble / Badge Shape (White stroke) with bottom-left pointer -->
+  <g filter="url(#softGlow)">
+    <!-- Speech Bubble Ring -->
+    <path 
+      d="M 256 82 
+         C 352 82 430 160 430 256 
+         C 430 352 352 430 256 430 
+         C 220 430 186 418 158 398 
+         L 96 424 
+         L 122 364 
+         C 98 334 82 296 82 256 
+         C 82 160 160 82 256 82 Z" 
+      fill="none" 
+      stroke="#ffffff" 
+      stroke-width="36" 
+      stroke-linejoin="round" 
+      stroke-linecap="round"
+    />
+
+    <!-- Spade & Clover Center Emblem in Pure White -->
+    <!-- Top Pointy Spade Arc -->
+    <path 
+      d="M 256 150 
+         C 288 200 328 234 328 270 
+         C 328 300 302 322 272 322 
+         C 258 322 245 315 237 304 
+         C 229 315 216 322 202 322 
+         C 172 322 146 300 146 270 
+         C 146 234 186 200 218 150 
+         Z" 
+      fill="#ffffff" 
+    />
+
+    <!-- Cutout Spade Core (3 clover lobes) -->
+    <circle cx="256" cy="242" r="26" fill="url(#greenBg)" />
+    <circle cx="230" cy="276" r="24" fill="url(#greenBg)" />
+    <circle cx="282" cy="276" r="24" fill="url(#greenBg)" />
+
+    <!-- Diamond underneath base -->
+    <polygon points="256,312 280,340 256,368 232,340" fill="#ffffff" />
+  </g>
+</svg>

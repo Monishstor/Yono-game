@@ -80,13 +80,20 @@ export default function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const customApps = parsed.filter((a: YonoApp) => a.isCustom === true);
-          return [...YONO_APPS, ...customApps];
+          const customApps = parsed.filter((a: YonoApp) => a.isCustom === true && !YONO_APPS.some(d => d.id === a.id));
+          const updatedDefaults = YONO_APPS.map(defaultApp => {
+            const found = parsed.find((p: YonoApp) => p.id === defaultApp.id);
+            return found ? { ...defaultApp, ...found, isCustom: false } : defaultApp;
+          });
+          const merged = [...updatedDefaults, ...customApps];
+          localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(merged));
+          return merged;
         }
       }
     } catch (e) {
       console.error('Failed to load apps from localStorage', e);
     }
+    localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(YONO_APPS));
     return YONO_APPS;
   });
 
@@ -96,11 +103,21 @@ export default function App() {
       const saved = localStorage.getItem(PROMOS_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const updatedPromos = PROMO_CODES.map(defaultPromo => {
+            const found = parsed.find((p: PromoCode) => p.code === defaultPromo.code);
+            return found || defaultPromo;
+          });
+          const customPromos = parsed.filter((p: PromoCode) => !PROMO_CODES.some(d => d.code === p.code));
+          const merged = [...updatedPromos, ...customPromos];
+          localStorage.setItem(PROMOS_STORAGE_KEY, JSON.stringify(merged));
+          return merged;
+        }
       }
     } catch (e) {
       console.error('Failed to load promos', e);
     }
+    localStorage.setItem(PROMOS_STORAGE_KEY, JSON.stringify(PROMO_CODES));
     return PROMO_CODES;
   });
 

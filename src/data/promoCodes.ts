@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'PJB8B835KV5',
+    title: 'Yono Slots Malamaal Welcome Code',
+    reward: '₹11-₹50 Free Mobile Bind + 150% First Deposit Cashback + VIP Daily Codes',
+    expiry: 'Official Active Code',
+    appTarget: 'Yono Slots',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'MPXEDCSW6MG',
     title: 'Yono Rummy 3-in-1 Rewards Code',
     reward: '₹13+ Instant Bonus + ₹90 7-Day Login + 30% Deposit Cashback',
