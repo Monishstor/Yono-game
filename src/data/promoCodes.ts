@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'SDN3PUEWV9P',
+    title: 'Spin Winner ₹18+ Instant & ₹3000-₹10K Daily Pack',
+    reward: '₹18+ Instant Free Bonus + ₹3000-10000 7-28 Day Login + 50%-150% Extra Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Spin Winner',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'RS3QBNF7XBT',
     title: 'Rumble Rummy ₹49+ Welcome Pack',
     reward: '₹6 Joining Free + ₹43 7-Day Login + 100% First Deposit Cashback',
