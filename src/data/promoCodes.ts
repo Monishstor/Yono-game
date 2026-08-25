@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'AZDM946F8Q3',
+    title: 'Jaiho Arcade ₹61+ Welcome & Daily Pack',
+    reward: '₹10 Joining Free + ₹51 7-Day Login + 100% First Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Jaiho Arcade',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'SDN3PUEWV9P',
     title: 'Spin Winner ₹18+ Instant & ₹3000-₹10K Daily Pack',
     reward: '₹18+ Instant Free Bonus + ₹3000-10000 7-28 Day Login + 50%-150% Extra Cashback',

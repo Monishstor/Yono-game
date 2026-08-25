@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Gradient -->
+    <radialGradient id="jaihoBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0e4f32"/>
+      <stop offset="60%" stop-color="#063521"/>
+      <stop offset="100%" stop-color="#021d12"/>
+    </radialGradient>
+
+    <!-- Diamond Badge Inner Gradient -->
+    <linearGradient id="jaihoDiamond" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#147046"/>
+      <stop offset="50%" stop-color="#0c4f30"/>
+      <stop offset="100%" stop-color="#042e1a"/>
+    </linearGradient>
+
+    <!-- Golden 3D Text Gradient for JAIHO -->
+    <linearGradient id="jaihoGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff899"/>
+      <stop offset="35%" stop-color="#ffd700"/>
+      <stop offset="65%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </linearGradient>
+
+    <!-- Slot Machine Reel Metallic Gradient -->
+    <linearGradient id="jaihoReel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9aa5ad"/>
+      <stop offset="15%" stop-color="#f2f6f9"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="85%" stop-color="#e2e8ed"/>
+      <stop offset="100%" stop-color="#8a96a0"/>
+    </linearGradient>
+
+    <!-- Chrome Border -->
+    <linearGradient id="jaihoBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38ef7d"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#11998e"/>
+    </linearGradient>
+
+    <!-- Heavy Drop Shadow -->
+    <filter id="jaihoShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <!-- App Rounded Green Icon Background -->
+  <rect width="512" height="512" rx="112" fill="url(#jaihoBg)" />
+
+  <!-- Quilted Diamond Pattern subtle overlay -->
+  <g opacity="0.18" stroke="#38ef7d" stroke-width="1.5" fill="none">
+    <path d="M 0 128 L 512 128 M 0 256 L 512 256 M 0 384 L 512 384" />
+    <path d="M 128 0 L 128 512 M 256 0 L 256 512 M 384 0 L 384 512" />
+    <path d="M 0 0 L 512 512 M 512 0 L 0 512" />
+    <path d="M -256 256 L 256 768 M 256 -256 L 768 256" />
+    <path d="M 256 -256 L -256 256 M 768 256 L 256 768" />
+  </g>
+
+  <!-- Center Dark Green Diamond Badge -->
+  <g filter="url(#jaihoShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="36" transform="rotate(45 256 256)" fill="url(#jaihoDiamond)" stroke="#2ce075" stroke-width="6" />
+    <rect x="92" y="92" width="328" height="328" rx="28" transform="rotate(45 256 256)" fill="none" stroke="#0e502c" stroke-width="3" />
+  </g>
+
+  <!-- Golden 3D "JAIHO" Text -->
+  <g filter="url(#jaihoShadow)">
+    <!-- 3D Extrusions in Deep Crimson/Orange -->
+    <text x="256" y="246" font-family="'Arial Black', 'Impact', sans-serif" font-size="116" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="#b33600">JAIHO</text>
+    <text x="256" y="243" font-family="'Arial Black', 'Impact', sans-serif" font-size="116" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="#d94b00">JAIHO</text>
+    <text x="256" y="240" font-family="'Arial Black', 'Impact', sans-serif" font-size="116" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="#ff6600">JAIHO</text>
+    <!-- Top Highlighted Gold Text -->
+    <text x="256" y="236" font-family="'Arial Black', 'Impact', sans-serif" font-size="116" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="url(#jaihoGold)" stroke="#ffffff" stroke-width="4">JAIHO</text>
+
+    <!-- Sparkle on JAIHO 'H/O' -->
+    <polygon points="338,198 344,214 360,220 344,226 338,242 332,226 316,220 332,214" fill="#ffffff" />
+    <circle cx="338" cy="220" r="3" fill="#ffd700" />
+    
+    <polygon points="98,230 102,238 110,242 102,246 98,254 94,246 86,242 94,238" fill="#ffffff" />
+  </g>
+
+  <!-- Slot Reel Container for "ARCADE" (6 letters) -->
+  <g filter="url(#jaihoShadow)">
+    <!-- Outer Glow Capsule -->
+    <rect x="18" y="260" width="476" height="126" rx="63" fill="#042e1a" stroke="url(#jaihoBorder)" stroke-width="8" />
+    <!-- Metallic Reel Cylinders Body -->
+    <rect x="26" y="268" width="460" height="110" rx="55" fill="url(#jaihoReel)" stroke="#b8c4ce" stroke-width="2" />
+
+    <!-- Slot Divider Lines for 6 letters (A - R - C - A - D - E) -->
+    <!-- A (26 to 102) -->
+    <line x1="102" y1="268" x2="102" y2="378" stroke="#8a96a0" stroke-width="3" />
+    <line x1="104" y1="268" x2="104" y2="378" stroke="#ffffff" stroke-width="1.5" />
+
+    <!-- R (102 to 178) -->
+    <line x1="178" y1="268" x2="178" y2="378" stroke="#8a96a0" stroke-width="3" />
+    <line x1="180" y1="268" x2="180" y2="378" stroke="#ffffff" stroke-width="1.5" />
+
+    <!-- C (178 to 256) -->
+    <line x1="256" y1="268" x2="256" y2="378" stroke="#8a96a0" stroke-width="3" />
+    <line x1="258" y1="268" x2="258" y2="378" stroke="#ffffff" stroke-width="1.5" />
+
+    <!-- A (256 to 334) -->
+    <line x1="334" y1="268" x2="334" y2="378" stroke="#8a96a0" stroke-width="3" />
+    <line x1="336" y1="268" x2="336" y2="378" stroke="#ffffff" stroke-width="1.5" />
+
+    <!-- D (334 to 410) -->
+    <line x1="410" y1="268" x2="410" y2="378" stroke="#8a96a0" stroke-width="3" />
+    <line x1="412" y1="268" x2="412" y2="378" stroke="#ffffff" stroke-width="1.5" />
+    <!-- E (410 to 486) -->
+
+    <!-- Top & Bottom Reel Cylinder Curved Shadows -->
+    <path d="M 26 268 Q 256 288 486 268 L 486 284 Q 256 304 26 284 Z" fill="#000000" opacity="0.25" />
+    <path d="M 26 378 Q 256 358 486 378 L 486 362 Q 256 342 26 362 Z" fill="#000000" opacity="0.25" />
+
+    <!-- "ARCADE" Bold Green Letters -->
+    <!-- A -->
+    <text x="64" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">A</text>
+    <text x="64" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#0b7a42">A</text>
+
+    <!-- R -->
+    <text x="140" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">R</text>
+    <text x="140" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#0b7a42">R</text>
+
+    <!-- C -->
+    <text x="217" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">C</text>
+    <text x="217" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#0b7a42">C</text>
+
+    <!-- A -->
+    <text x="295" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">A</text>
+    <text x="295" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#0b7a42">A</text>
+
+    <!-- D -->
+    <text x="372" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">D</text>
+    <text x="372" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#0b7a42">D</text>
+
+    <!-- E -->
+    <text x="448" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="5" stroke-linejoin="round">E</text>
+    <text x="448" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="68" font-weight="900" text-anchor="middle" fill="#0b7a42">E</text>
+  </g>
+</svg>
