@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'RS3QBNF7XBT',
+    title: 'Rumble Rummy ₹49+ Welcome Pack',
+    reward: '₹6 Joining Free + ₹43 7-Day Login + 100% First Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Rumble Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'ADEWQ4W5AFF',
     title: 'Spin Crush ₹50 Instant Welcome Pack',
     reward: '₹50 Immediate Welcome Bonus + VIP Free Daily Spins + 30% Lifetime Share',
