@@ -5,9 +5,7 @@ import { YonoApp, AppCategory, PromoCode, SiteSettings, WithdrawalRecord } from 
 import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { FilterBar, SortOption } from './components/FilterBar';
 import { AppGrid } from './components/AppGrid';
-import { ComparisonTable } from './components/ComparisonTable';
 import { DownloadModal } from './components/DownloadModal';
 import { AppDetailModal } from './components/AppDetailModal';
 import { PromoCodeVault } from './components/PromoCodeVault';
@@ -24,6 +22,8 @@ import { DailyCheckinModal } from './components/DailyCheckinModal';
 import { SeoSchema } from './components/SeoSchema';
 import { FloatingTelegramBar } from './components/FloatingTelegramBar';
 
+type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
+
 // Storage keys for persistent state
 const APPS_STORAGE_KEY = 'yono_user_custom_apps_v3';
 const PROMOS_STORAGE_KEY = 'yono_custom_promos_v3';
@@ -35,7 +35,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   siteTitle: 'ALL NEW YONO APPS (2026) - APK Downloads & ₹5000 Bonus',
   metaDescription: 'Official portal for All New Yono Games & APK Downloads with ₹50 Welcome Bonus, ₹100 7-Day Login, ₹100 instant UPI withdrawals, and verified virus-free Android APK packages.',
   metaKeywords: 'all yono games, yono app list 2026, yono games partner, yono apk download, yono rummy bonus, new yono games 2026, yono referral code RRTN8BM3, all yono vip',
-  canonicalUrl: 'https://allnewyonoapps.com',
+  canonicalUrl: 'https://yonoji.netlify.app',
   siteAuthor: 'Yono VIP Official Network',
   googleSiteVerification: '',
   telegramLink: 'https://t.me/yonojiunauxcom',
@@ -496,66 +496,27 @@ export default function App() {
         />
 
         {/* All Yono Apps Catalog Section */}
-        <section id="all-apps-section" className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-xl sm:text-2xl font-black text-white font-['Outfit',sans-serif]">
-                  All New Yono Games & APK List (2026)
-                </h2>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                  {apps.length} APPS
-                </span>
-              </div>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Browse, compare sign-up bonus, and download 100% verified working APK files.
-              </p>
+        <section id="all-apps-section" className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {isAdminLoggedIn && (
+            <div className="flex items-center justify-end mb-4">
+              <button
+                id="catalog-admin-add-btn"
+                onClick={handleAddNewApp}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-xs shadow-md transition-all cursor-pointer"
+              >
+                <span>+ Add New Game (नया ऐप जोड़ें)</span>
+              </button>
             </div>
-
-            {/* If Admin is logged in, show quick Add App button in catalog */}
-            {isAdminLoggedIn && (
-              <div className="flex items-center gap-2">
-                <button
-                  id="catalog-admin-add-btn"
-                  onClick={handleAddNewApp}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-xs shadow-md transition-all cursor-pointer"
-                >
-                  <span>+ Add App (नया ऐप जोड़ें)</span>
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Filter & Sort Controls */}
-          <FilterBar
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            viewMode={viewMode}
-            onViewModeChange={setViewMode}
-            totalCount={filteredApps.length}
-          />
-
-          {/* Card Grid View OR Comparison Table View */}
-          {viewMode === 'grid' ? (
-            <AppGrid
-              apps={filteredApps}
-              onDownload={handleDownloadClick}
-              onViewDetails={handleViewDetails}
-              onResetFilters={handleResetFilters}
-              onEdit={isAdminLoggedIn && isAdminMode ? handleOpenEditApp : undefined}
-            />
-          ) : (
-            <ComparisonTable
-              apps={filteredApps}
-              onDownload={handleDownloadClick}
-              onViewDetails={handleViewDetails}
-            />
           )}
+
+          {/* Clean App Grid */}
+          <AppGrid
+            apps={filteredApps}
+            onDownload={handleDownloadClick}
+            onViewDetails={handleViewDetails}
+            onResetFilters={handleResetFilters}
+            onEdit={isAdminLoggedIn && isAdminMode ? handleOpenEditApp : undefined}
+          />
         </section>
 
         {/* 4-Step Installation & Troubleshooting Guide */}
