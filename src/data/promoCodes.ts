@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'ADEWQ4W5AFF',
+    title: 'Spin Crush ₹50 Instant Welcome Pack',
+    reward: '₹50 Immediate Welcome Bonus + VIP Free Daily Spins + 30% Lifetime Share',
+    expiry: 'Official Active Code',
+    appTarget: 'Spin Crush',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'PJB8B835KV5',
     title: 'Yono Slots Malamaal Welcome Code',
     reward: '₹11-₹50 Free Mobile Bind + 150% First Deposit Cashback + VIP Daily Codes',
