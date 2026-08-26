@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'S3MU7GYH349',
+    title: '789Jackpots VIP Mega Bonus Pack',
+    reward: 'Free Time Welcome Bonus + Daily Slot Spins + Up to 100% Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: '789Jackpots',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '8FWXGR3JYAP',
     title: 'Gogo Rummy ₹11-₹38 Free & VIP Daily Codes',
     reward: '₹11-₹38 Free Mobile Bind + VIP 0-20 Daily ₹50 Promo Codes + 150% First Deposit',

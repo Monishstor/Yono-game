@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Gradient -->
+    <radialGradient id="jpBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0e4f32"/>
+      <stop offset="60%" stop-color="#063521"/>
+      <stop offset="100%" stop-color="#021d12"/>
+    </radialGradient>
+
+    <!-- Diamond Badge Inner Gradient -->
+    <linearGradient id="jpDiamond" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#147046"/>
+      <stop offset="50%" stop-color="#0c4f30"/>
+      <stop offset="100%" stop-color="#042e1a"/>
+    </linearGradient>
+
+    <!-- Golden 3D Text Gradient for 789 -->
+    <linearGradient id="jpGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff899"/>
+      <stop offset="35%" stop-color="#ffd700"/>
+      <stop offset="65%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </linearGradient>
+
+    <!-- Slot Machine Reel Metallic Gradient -->
+    <linearGradient id="jpReel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9aa5ad"/>
+      <stop offset="15%" stop-color="#f2f6f9"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="85%" stop-color="#e2e8ed"/>
+      <stop offset="100%" stop-color="#8a96a0"/>
+    </linearGradient>
+
+    <!-- Chrome Border -->
+    <linearGradient id="jpBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38ef7d"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#11998e"/>
+    </linearGradient>
+
+    <!-- Heavy Drop Shadow -->
+    <filter id="jpShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <!-- App Rounded Green Icon Background -->
+  <rect width="512" height="512" rx="112" fill="url(#jpBg)" />
+
+  <!-- Quilted Diamond Pattern subtle overlay -->
+  <g opacity="0.18" stroke="#38ef7d" stroke-width="1.5" fill="none">
+    <path d="M 0 128 L 512 128 M 0 256 L 512 256 M 0 384 L 512 384" />
+    <path d="M 128 0 L 128 512 M 256 0 L 256 512 M 384 0 L 384 512" />
+    <path d="M 0 0 L 512 512 M 512 0 L 0 512" />
+    <path d="M -256 256 L 256 768 M 256 -256 L 768 256" />
+    <path d="M 256 -256 L -256 256 M 768 256 L 256 768" />
+  </g>
+
+  <!-- Center Dark Green Diamond Badge -->
+  <g filter="url(#jpShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="36" transform="rotate(45 256 256)" fill="url(#jpDiamond)" stroke="#2ce075" stroke-width="6" />
+    <rect x="92" y="92" width="328" height="328" rx="28" transform="rotate(45 256 256)" fill="none" stroke="#0e502c" stroke-width="3" />
+  </g>
+
+  <!-- Golden 3D "789" Text -->
+  <g filter="url(#jpShadow)">
+    <!-- 3D Extrusions in Deep Crimson/Orange -->
+    <text x="256" y="248" font-family="'Arial Black', 'Impact', sans-serif" font-size="144" font-weight="900" text-anchor="middle" letter-spacing="-3" fill="#b33600">789</text>
+    <text x="256" y="245" font-family="'Arial Black', 'Impact', sans-serif" font-size="144" font-weight="900" text-anchor="middle" letter-spacing="-3" fill="#d94b00">789</text>
+    <text x="256" y="242" font-family="'Arial Black', 'Impact', sans-serif" font-size="144" font-weight="900" text-anchor="middle" letter-spacing="-3" fill="#ff6600">789</text>
+    <!-- Top Highlighted Gold Text -->
+    <text x="256" y="238" font-family="'Arial Black', 'Impact', sans-serif" font-size="144" font-weight="900" text-anchor="middle" letter-spacing="-3" fill="url(#jpGold)" stroke="#ffffff" stroke-width="4">789</text>
+
+    <!-- Sparkle on 789 Top Right -->
+    <polygon points="334,116 340,132 356,138 340,144 334,160 328,144 312,138 328,132" fill="#ffffff" />
+    <circle cx="334" cy="138" r="3" fill="#ffd700" />
+    
+    <polygon points="154,236 158,244 166,248 158,252 154,260 150,252 142,248 150,244" fill="#ffffff" />
+  </g>
+
+  <!-- Slot Reel Container for "JACKPOTS" (8 letters) -->
+  <g filter="url(#jpShadow)">
+    <!-- Outer Glow Capsule -->
+    <rect x="12" y="260" width="488" height="126" rx="63" fill="#042e1a" stroke="url(#jpBorder)" stroke-width="8" />
+    <!-- Metallic Reel Cylinders Body -->
+    <rect x="20" y="268" width="472" height="110" rx="55" fill="url(#jpReel)" stroke="#b8c4ce" stroke-width="2" />
+
+    <!-- Slot Divider Lines for 8 letters (J - A - C - K - P - O - T - S) -->
+    <!-- J (20 to 79) -->
+    <line x1="79" y1="268" x2="79" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="80" y1="268" x2="80" y2="378" stroke="#ffffff" stroke-width="1" />
+
+    <!-- A (79 to 138) -->
+    <line x1="138" y1="268" x2="138" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="139" y1="268" x2="139" y2="378" stroke="#ffffff" stroke-width="1" />
+
+    <!-- C (138 to 197) -->
+    <line x1="197" y1="268" x2="197" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="198" y1="268" x2="198" y2="378" stroke="#ffffff" stroke-width="1" />
+
+    <!-- K (197 to 256) -->
+    <line x1="256" y1="268" x2="256" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="257" y1="268" x2="257" y2="378" stroke="#ffffff" stroke-width="1" />
+
+    <!-- P (256 to 315) -->
+    <line x1="315" y1="268" x2="315" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="316" y1="268" x2="316" y2="378" stroke="#ffffff" stroke-width="1" />
+
+    <!-- O (315 to 374) -->
+    <line x1="374" y1="268" x2="374" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="375" y1="268" x2="375" y2="378" stroke="#ffffff" stroke-width="1" />
+
+    <!-- T (374 to 433) -->
+    <line x1="433" y1="268" x2="433" y2="378" stroke="#8a96a0" stroke-width="2.5" />
+    <line x1="434" y1="268" x2="434" y2="378" stroke="#ffffff" stroke-width="1" />
+    <!-- S (433 to 492) -->
+
+    <!-- Top & Bottom Reel Curved Shadows -->
+    <path d="M 20 268 Q 256 288 492 268 L 492 284 Q 256 304 20 284 Z" fill="#000000" opacity="0.25" />
+    <path d="M 20 378 Q 256 358 492 378 L 492 362 Q 256 342 20 362 Z" fill="#000000" opacity="0.25" />
+
+    <!-- "JACKPOTS" Bold Green Letters -->
+    <!-- J -->
+    <text x="50" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">J</text>
+    <text x="50" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">J</text>
+
+    <!-- A -->
+    <text x="108" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">A</text>
+    <text x="108" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">A</text>
+
+    <!-- C -->
+    <text x="167" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">C</text>
+    <text x="167" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">C</text>
+
+    <!-- K -->
+    <text x="226" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">K</text>
+    <text x="226" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">K</text>
+
+    <!-- P -->
+    <text x="285" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">P</text>
+    <text x="285" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">P</text>
+
+    <!-- O -->
+    <text x="344" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">O</text>
+    <text x="344" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">O</text>
+
+    <!-- T -->
+    <text x="403" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">T</text>
+    <text x="403" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">T</text>
+
+    <!-- S -->
+    <text x="462" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round">S</text>
+    <text x="462" y="352" font-family="'Arial Black', 'Impact', sans-serif" font-size="52" font-weight="900" text-anchor="middle" fill="#0b7a42">S</text>
+  </g>
+</svg>
