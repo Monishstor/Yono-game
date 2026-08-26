@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '8FWXGR3JYAP',
+    title: 'Gogo Rummy ₹11-₹38 Free & VIP Daily Codes',
+    reward: '₹11-₹38 Free Mobile Bind + VIP 0-20 Daily ₹50 Promo Codes + 150% First Deposit',
+    expiry: 'Official Active Code',
+    appTarget: 'Gogo Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'AZDM946F8Q3',
     title: 'Jaiho Arcade ₹61+ Welcome & Daily Pack',
     reward: '₹10 Joining Free + ₹51 7-Day Login + 100% First Deposit Cashback',

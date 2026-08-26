@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Gradient -->
+    <radialGradient id="gogoBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0e4f32"/>
+      <stop offset="60%" stop-color="#063521"/>
+      <stop offset="100%" stop-color="#021d12"/>
+    </radialGradient>
+
+    <!-- Diamond Badge Inner Gradient -->
+    <linearGradient id="gogoDiamond" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#147046"/>
+      <stop offset="50%" stop-color="#0c4f30"/>
+      <stop offset="100%" stop-color="#042e1a"/>
+    </linearGradient>
+
+    <!-- Golden 3D Text Gradient for GOGO -->
+    <linearGradient id="gogoGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff899"/>
+      <stop offset="35%" stop-color="#ffd700"/>
+      <stop offset="65%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </linearGradient>
+
+    <!-- Slot Machine Reel Metallic Gradient -->
+    <linearGradient id="gogoReel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9aa5ad"/>
+      <stop offset="15%" stop-color="#f2f6f9"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="85%" stop-color="#e2e8ed"/>
+      <stop offset="100%" stop-color="#8a96a0"/>
+    </linearGradient>
+
+    <!-- Chrome Border -->
+    <linearGradient id="gogoBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38ef7d"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#11998e"/>
+    </linearGradient>
+
+    <!-- Heavy Drop Shadow -->
+    <filter id="gogoShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <!-- App Rounded Green Icon Background -->
+  <rect width="512" height="512" rx="112" fill="url(#gogoBg)" />
+
+  <!-- Quilted Diamond Pattern subtle overlay -->
+  <g opacity="0.18" stroke="#38ef7d" stroke-width="1.5" fill="none">
+    <path d="M 0 128 L 512 128 M 0 256 L 512 256 M 0 384 L 512 384" />
+    <path d="M 128 0 L 128 512 M 256 0 L 256 512 M 384 0 L 384 512" />
+    <path d="M 0 0 L 512 512 M 512 0 L 0 512" />
+    <path d="M -256 256 L 256 768 M 256 -256 L 768 256" />
+    <path d="M 256 -256 L -256 256 M 768 256 L 256 768" />
+  </g>
+
+  <!-- Center Dark Green Diamond Badge -->
+  <g filter="url(#gogoShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="36" transform="rotate(45 256 256)" fill="url(#gogoDiamond)" stroke="#2ce075" stroke-width="6" />
+    <rect x="92" y="92" width="328" height="328" rx="28" transform="rotate(45 256 256)" fill="none" stroke="#0e502c" stroke-width="3" />
+  </g>
+
+  <!-- Golden 3D "GOGO" Text -->
+  <g filter="url(#gogoShadow)">
+    <!-- 3D Extrusions in Deep Crimson/Orange -->
+    <text x="256" y="246" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="#b33600">GOGO</text>
+    <text x="256" y="243" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="#d94b00">GOGO</text>
+    <text x="256" y="240" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="#ff6600">GOGO</text>
+    <!-- Top Highlighted Gold Text -->
+    <text x="256" y="236" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" letter-spacing="-2" fill="url(#gogoGold)" stroke="#ffffff" stroke-width="4">GOGO</text>
+
+    <!-- Sparkle on GOGO -->
+    <polygon points="340,118 346,134 362,140 346,146 340,162 334,146 318,140 334,134" fill="#ffffff" />
+    <circle cx="340" cy="140" r="3" fill="#ffd700" />
+    
+    <polygon points="98,230 102,238 110,242 102,246 98,254 94,246 86,242 94,238" fill="#ffffff" />
+  </g>
+
+  <!-- Slot Reel Container for "RUMMY" (5 letters) -->
+  <g filter="url(#gogoShadow)">
+    <!-- Outer Glow Capsule -->
+    <rect x="20" y="260" width="472" height="126" rx="63" fill="#042e1a" stroke="url(#gogoBorder)" stroke-width="8" />
+    <!-- Metallic Reel Cylinders Body -->
+    <rect x="28" y="268" width="456" height="110" rx="55" fill="url(#gogoReel)" stroke="#b8c4ce" stroke-width="2" />
+
+    <!-- Slot Divider Lines for 5 letters (R - U - M - M - Y) -->
+    <!-- R (28 to 118) -->
+    <line x1="118" y1="268" x2="118" y2="378" stroke="#8a96a0" stroke-width="4" />
+    <line x1="120" y1="268" x2="120" y2="378" stroke="#ffffff" stroke-width="2" />
+
+    <!-- U (118 to 208) -->
+    <line x1="208" y1="268" x2="208" y2="378" stroke="#8a96a0" stroke-width="4" />
+    <line x1="210" y1="268" x2="210" y2="378" stroke="#ffffff" stroke-width="2" />
+
+    <!-- M (208 to 300) -->
+    <line x1="300" y1="268" x2="300" y2="378" stroke="#8a96a0" stroke-width="4" />
+    <line x1="302" y1="268" x2="302" y2="378" stroke="#ffffff" stroke-width="2" />
+
+    <!-- M (300 to 392) -->
+    <line x1="392" y1="268" x2="392" y2="378" stroke="#8a96a0" stroke-width="4" />
+    <line x1="394" y1="268" x2="394" y2="378" stroke="#ffffff" stroke-width="2" />
+    <!-- Y (392 to 484) -->
+
+    <!-- Top & Bottom Reel Curved Shadows -->
+    <path d="M 28 268 Q 256 288 484 268 L 484 284 Q 256 304 28 284 Z" fill="#000000" opacity="0.25" />
+    <path d="M 28 378 Q 256 358 484 378 L 484 362 Q 256 342 28 362 Z" fill="#000000" opacity="0.25" />
+
+    <!-- "RUMMY" Bold Green Letters -->
+    <!-- R -->
+    <text x="73" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">R</text>
+    <text x="73" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#0b7a42">R</text>
+
+    <!-- U -->
+    <text x="163" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">U</text>
+    <text x="163" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#0b7a42">U</text>
+
+    <!-- M -->
+    <text x="254" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">M</text>
+    <text x="254" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#0b7a42">M</text>
+
+    <!-- M -->
+    <text x="346" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">M</text>
+    <text x="346" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#0b7a42">M</text>
+
+    <!-- Y -->
+    <text x="438" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#04562c" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Y</text>
+    <text x="438" y="356" font-family="'Arial Black', 'Impact', sans-serif" font-size="78" font-weight="900" text-anchor="middle" fill="#0b7a42">Y</text>
+  </g>
+</svg>
