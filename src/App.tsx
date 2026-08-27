@@ -24,16 +24,16 @@ import { FloatingTelegramBar } from './components/FloatingTelegramBar';
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
 // Storage keys for persistent state
-const APPS_STORAGE_KEY = 'yono_user_custom_apps_v6';
-const PROMOS_STORAGE_KEY = 'yono_custom_promos_v6';
-const SETTINGS_STORAGE_KEY = 'yono_site_settings_v6';
-const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v6';
-const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v6';
+const APPS_STORAGE_KEY = 'yono_user_custom_apps_v9';
+const PROMOS_STORAGE_KEY = 'yono_custom_promos_v9';
+const SETTINGS_STORAGE_KEY = 'yono_site_settings_v9';
+const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v9';
+const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v9';
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: 'ALL NEW YONO APPS, DHAN GAME & SAGA SLOTS (2026) - APK Downloads & ₹5000 Bonus',
-  metaDescription: 'Official portal for All New Yono Games, Dhan Game, Saga Slots & 789jackpots APK Downloads with ₹7-₹777 Welcome Bonus, 886% 7-Day Login, ₹100 instant UPI withdrawals, and verified virus-free Android APK packages.',
-  metaKeywords: 'dhan game, dhan game apk download, saga slots, saga slots apk download, all yono games, yono app list 2026, yono games partner, yono apk download, yono rummy bonus, new yono games 2026, dhan game referral code 47TQCRTKJR7, all yono vip',
+  siteTitle: 'ALL NEW YONO APPS, ABC RUMMY, DHAN GAME & SAGA SLOTS (2026) - APK Downloads',
+  metaDescription: 'Official portal for ABC Rummy, Dhan Game, Saga Slots & 789jackpots APK Downloads with ₹7-₹777 Welcome Bonus, 200% Deposit Boost & ₹100 instant UPI withdrawals.',
+  metaKeywords: 'abc rummy, abc rummy apk download, dhan game, dhan game apk download, saga slots, saga slots apk download, all yono games, yono app list 2026, abc rummy code 75C7N8X46K5, all yono vip',
   canonicalUrl: 'https://yonoj.netlify.app',
   siteAuthor: 'Yono VIP Official Network',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',
@@ -43,13 +43,14 @@ const DEFAULT_SETTINGS: SiteSettings = {
   showTicker: true,
   showAgeDisclaimer: true,
   showPlayProtectBadge: true,
-  whatsappShareText: '🔥 Download Dhan Game & Saga Slots with Free ₹777 Welcome Bonus + 886% 7-Day Login & Instant ₹100 UPI Cashout! Code: 47TQCRTKJR7',
+  whatsappShareText: '💎 Download ABC Rummy, Dhan Game & Saga Slots with Free ₹100-₹777 Welcome Bonus + 200% Deposit Boost & Instant ₹100 UPI Cashout! Code: 75C7N8X46K5',
   adminPin: 'admin123',
   notices: [
-    { id: '1', type: 'sparkles', text: '👑 OFFICIAL DHAN GAME LAUNCH! Get up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus!' },
-    { id: '2', type: 'flame', text: '🎰 SAGA SLOTS LIVE: ₹7 Instant Joining + ₹259 7-Days Login Bonus + 100% First Deposit Cashback!' },
-    { id: '3', type: 'gift', text: '🎁 Dhan Game Code: 47TQCRTKJR7 & Saga Slots Code: 0QH9RU9PRNL (Auto-applied on download).' },
-    { id: '4', type: 'shield', text: '🛡️ Safe & Tested: Direct APK download verified 100% virus-free on Android 13, 14 & 15.' }
+    { id: '1', type: 'sparkles', text: '💎 ABC RUMMY VIP INVITATION: Up to ₹100 Welcome Cash + 200% 1st Deposit Boost + ₹10,000 Lucky Spin!' },
+    { id: '2', type: 'sparkles', text: '👑 DHAN GAME OFFICIAL: Up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus!' },
+    { id: '3', type: 'flame', text: '🎰 SAGA SLOTS LIVE: ₹7 Instant Joining + ₹259 7-Days Login Bonus + 100% Deposit Cashback!' },
+    { id: '4', type: 'gift', text: '🎁 ABC Rummy Code: 75C7N8X46K5 | Dhan Game Code: 47TQCRTKJR7 | Saga Slots Code: 0QH9RU9PRNL' },
+    { id: '5', type: 'shield', text: '🛡️ Safe & Tested: Direct APK download verified 100% virus-free on Android 13, 14 & 15.' }
   ]
 };
 
@@ -83,7 +84,7 @@ export default function App() {
           const customApps = parsed.filter((a: YonoApp) => a.isCustom === true && !YONO_APPS.some(d => d.id === a.id));
           const updatedDefaults = YONO_APPS.map(defaultApp => {
             const found = parsed.find((p: YonoApp) => p.id === defaultApp.id);
-            return found ? { ...defaultApp, ...found, isCustom: false } : defaultApp;
+            return found ? { ...found, ...defaultApp, isCustom: false } : defaultApp;
           });
           const merged = [...updatedDefaults, ...customApps];
           localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(merged));
