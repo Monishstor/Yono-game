@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Rich Golden Amber Shield Gradient -->
+    <linearGradient id="mainBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="35%" stop-color="#f59e0b"/>
+      <stop offset="70%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <!-- Dark Center Badge Gradient -->
+    <linearGradient id="centerBadgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Crown Gold Gradient -->
+    <linearGradient id="crownGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#facc15"/>
+      <stop offset="80%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+
+    <!-- Emerald Gem Gradient -->
+    <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Ruby Gem Gradient -->
+    <linearGradient id="rubyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+
+    <!-- Deep Drop Shadow -->
+    <filter id="badgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="crownGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#f59e0b" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- App Rounded Squircle Container -->
+  <rect width="512" height="512" rx="120" fill="url(#mainBgGrad)"/>
+
+  <!-- Golden Outer Ring Pattern -->
+  <rect x="14" y="14" width="484" height="484" rx="108" fill="none" stroke="#fef3c7" stroke-width="6" stroke-opacity="0.4"/>
+
+  <!-- Center Dark Slate Shield -->
+  <g filter="url(#badgeShadow)">
+    <rect x="52" y="52" width="408" height="408" rx="88" fill="url(#centerBadgeGrad)" stroke="#f59e0b" stroke-width="8"/>
+  </g>
+
+  <!-- Inner Subtle Accent Glow -->
+  <circle cx="256" cy="230" r="140" fill="#f59e0b" opacity="0.12" />
+
+  <!-- Royal VIP Crown SVG -->
+  <g filter="url(#crownGlow)">
+    <!-- Crown Base Arch -->
+    <path d="M 120 300 
+             L 140 180 
+             L 200 240 
+             L 256 140 
+             L 312 240 
+             L 372 180 
+             L 392 300 
+             Z" 
+          fill="url(#crownGold)" 
+          stroke="#fef08a" 
+          stroke-width="6"
+          stroke-linejoin="round"
+    />
+
+    <!-- Crown Base Band -->
+    <rect x="114" y="296" width="284" height="42" rx="10" fill="url(#crownGold)" stroke="#fef08a" stroke-width="4"/>
+
+    <!-- Crown Jewels / Jewels on Band -->
+    <circle cx="156" cy="317" r="9" fill="url(#rubyGrad)" stroke="#fff" stroke-width="2"/>
+    <circle cx="206" cy="317" r="11" fill="url(#gemGrad)" stroke="#fff" stroke-width="2"/>
+    <circle cx="256" cy="317" r="13" fill="url(#rubyGrad)" stroke="#fff" stroke-width="2.5"/>
+    <circle cx="306" cy="317" r="11" fill="url(#gemGrad)" stroke="#fff" stroke-width="2"/>
+    <circle cx="356" cy="317" r="9" fill="url(#rubyGrad)" stroke="#fff" stroke-width="2"/>
+
+    <!-- Crown Peak Pearl Jewels -->
+    <circle cx="140" cy="176" r="12" fill="#fff" stroke="#f59e0b" stroke-width="3"/>
+    <circle cx="256" cy="134" r="16" fill="#fff" stroke="#f59e0b" stroke-width="4"/>
+    <circle cx="372" cy="176" r="12" fill="#fff" stroke="#f59e0b" stroke-width="3"/>
+  </g>
+
+  <!-- Big Bold Gold "YONO" Text on Bottom -->
+  <g filter="url(#badgeShadow)">
+    <text x="256" y="416" font-family="'Impact', 'Arial Black', sans-serif" font-size="64" font-weight="900" text-anchor="middle" fill="#fef08a" letter-spacing="8">YONO</text>
+  </g>
+</svg>

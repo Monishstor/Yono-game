@@ -64,8 +64,16 @@ export const Header: React.FC<HeaderProps> = ({
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-2 ring-amber-400/40 transform group-hover:scale-105 transition-all">
-                <Crown className="w-6 h-6 sm:w-7 sm:h-7 text-slate-950 stroke-[2.5]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-2 ring-amber-400/50 transform group-hover:scale-105 transition-all overflow-hidden p-0.5">
+                <img 
+                  src="/main-site-logo.svg" 
+                  alt="All New Yono Apps Official Logo" 
+                  className="w-full h-full object-cover rounded-lg"
+                  width="48"
+                  height="48"
+                  loading="eager"
+                  decoding="async"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">

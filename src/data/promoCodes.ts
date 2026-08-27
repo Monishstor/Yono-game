@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '0QH9RU9PRNL',
+    title: 'Saga Slots India #1 Welcome & 7-Day Pack',
+    reward: '₹7 Joining Free + ₹259 7-Day Login Free + 100% First Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Saga Slots',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'S3MU7GYH349',
     title: '789Jackpots VIP Mega Bonus Pack',
     reward: 'Free Time Welcome Bonus + Daily Slot Spins + Up to 100% Deposit Cashback',

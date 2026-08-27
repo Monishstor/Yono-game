@@ -103,8 +103,15 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand Info */}
           <div className="space-y-3 md:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-lg">
-                <Crown className="w-6 h-6 stroke-[2.5]" />
+              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-slate-950 font-black shadow-lg ring-2 ring-amber-500/40 overflow-hidden p-0.5">
+                <img 
+                  src="/main-site-logo.svg" 
+                  alt="All New Yono Apps Official" 
+                  className="w-full h-full object-cover rounded-lg"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                />
               </div>
               <span className="font-black text-lg text-white font-['Outfit',sans-serif]">
                 ALL NEW <span className="text-amber-400">YONO APPS</span>
