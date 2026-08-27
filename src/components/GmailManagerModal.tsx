@@ -15,7 +15,12 @@ import {
   ShieldCheck,
   Tag,
   Paperclip,
-  Clock
+  Clock,
+  Settings,
+  Key,
+  HelpCircle,
+  ExternalLink,
+  Play
 } from 'lucide-react';
 import {
   listGmailMessages,
@@ -24,9 +29,47 @@ import {
   trashGmailMessage,
   hasActiveGmailSession,
   disconnectGmailSession,
+  getStoredGoogleClientId,
+  saveStoredGoogleClientId,
   GmailMessageSummary,
   GmailMessageDetail
 } from '../lib/googleGmail';
+
+const SAMPLE_GMAIL_MESSAGES: GmailMessageDetail[] = [
+  {
+    id: 'demo-msg-1',
+    threadId: 'thread-1',
+    subject: '🔥 VIP Bonus ₹500 credited to your Yono Account',
+    from: 'support@yono-games.com',
+    to: 'monishabbasi772@gmail.com',
+    date: 'Today, 2:45 PM',
+    unread: true,
+    snippet: 'Congratulations! Your daily check-in VIP bonus of ₹500 has been credited to your wallet balance...',
+    bodyText: `Dear Player,\n\nCongratulations! Your daily VIP streak bonus of ₹500 has been successfully credited to your wallet balance.\n\nUse your bonus chips on Rummy Gold, Teen Patti Master, or Dragon vs Tiger.\n\nBest Regards,\nYono VIP Gaming Support`
+  },
+  {
+    id: 'demo-msg-2',
+    threadId: 'thread-2',
+    subject: '✅ Instant Withdrawal of ₹2,400 Processed Successfully',
+    from: 'payouts@bank-fastpay.in',
+    to: 'monishabbasi772@gmail.com',
+    date: 'Yesterday, 6:15 PM',
+    unread: false,
+    snippet: 'Your IMPS/UPI withdrawal request #WP-98234 for ₹2,400 is complete and deposited into your account...',
+    bodyText: `Transaction Receipt:\n\nRef ID: WP-98234\nAmount: ₹2,400.00\nPayment Mode: IMPS UPI\nStatus: SUCCESS\nTime: 18:15 IST\n\nThank you for playing on All New Yono VIP Apps!`
+  },
+  {
+    id: 'demo-msg-3',
+    threadId: 'thread-3',
+    subject: '🎁 5 New Friends Joined Using Your Referral Code YONO999',
+    from: 'referrals@yono-games.com',
+    to: 'monishabbasi772@gmail.com',
+    date: '25 Aug 2026',
+    unread: false,
+    snippet: '5 players registered using your referral link today. Total referral commission ₹1,500 is ready to claim...',
+    bodyText: `Great news!\n\n5 new players have downloaded and registered with your VIP referral code (YONO999).\n\nYour tier commission (30% rebate): ₹1,500 has been added to your commission wallet.\n\nKeep sharing to earn 24/7 passive income!`
+  }
+];
 
 interface GmailManagerModalProps {
   isOpen: boolean;
@@ -51,8 +94,13 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<TabType>('inbox');
   const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [isDemoMode, setIsDemoMode] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Client ID Setup
+  const [showConfig, setShowConfig] = useState<boolean>(false);
+  const [clientIdInput, setClientIdInput] = useState<string>('');
 
   // Messages state
   const [messages, setMessages] = useState<GmailMessageSummary[]>([]);
@@ -73,6 +121,7 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
+      setClientIdInput(getStoredGoogleClientId());
       if (defaultRecipient) {
         setToField(defaultRecipient);
         setActiveTab('compose');
@@ -83,14 +132,35 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
 
       if (hasActiveGmailSession()) {
         setIsConnected(true);
+        setIsDemoMode(false);
         loadInbox();
-      } else {
-        setIsConnected(false);
       }
     }
   }, [isOpen, defaultRecipient, defaultSubject]);
 
   const loadInbox = async (query?: string) => {
+    if (isDemoMode) {
+      const filtered = query
+        ? SAMPLE_GMAIL_MESSAGES.filter(
+            (m) =>
+              m.subject?.toLowerCase().includes(query.toLowerCase()) ||
+              m.from?.toLowerCase().includes(query.toLowerCase()) ||
+              m.snippet?.toLowerCase().includes(query.toLowerCase())
+          )
+        : SAMPLE_GMAIL_MESSAGES;
+      setMessages(filtered);
+      setIsConnected(true);
+      return;
+    }
+
+    const clientId = getStoredGoogleClientId();
+    if (!clientId) {
+      // Gracefully switch to config / prompt mode without throwing runtime error
+      setShowConfig(true);
+      setError('Please provide your Google OAuth Client ID to connect with your live account, or click "Try Demo Simulator" below.');
+      return;
+    }
+
     setLoading(true);
     setError(null);
     try {
@@ -98,14 +168,38 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
       setMessages(list);
       setIsConnected(true);
     } catch (err: any) {
-      setError(err?.message || 'Failed to connect to Gmail.');
+      const errMsg = err?.message || 'Failed to connect to Gmail.';
+      setError(errMsg);
       setIsConnected(false);
+      if (errMsg.includes('MISSING_CLIENT_ID') || errMsg.includes('invalid_client')) {
+        setShowConfig(true);
+      }
     } finally {
       setLoading(false);
     }
   };
 
+  const handleStartDemoMode = () => {
+    setIsDemoMode(true);
+    setIsConnected(true);
+    setError(null);
+    setMessages(SAMPLE_GMAIL_MESSAGES);
+  };
+
+  const handleSaveClientId = () => {
+    saveStoredGoogleClientId(clientIdInput);
+    alert('Google OAuth Client ID saved successfully!');
+    setShowConfig(false);
+    loadInbox();
+  };
+
   const handleOpenMessage = async (msgId: string) => {
+    if (isDemoMode) {
+      const found = SAMPLE_GMAIL_MESSAGES.find((m) => m.id === msgId) || null;
+      setSelectedMessage(found);
+      return;
+    }
+
     setLoadingDetail(true);
     try {
       const full = await getGmailMessage(msgId);
@@ -120,6 +214,7 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
   const handleDisconnect = () => {
     disconnectGmailSession();
     setIsConnected(false);
+    setIsDemoMode(false);
     setMessages([]);
     setSelectedMessage(null);
   };
@@ -164,11 +259,16 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
 
     setIsSending(true);
     try {
-      await sendGmailEmail({
-        to: toField.trim(),
-        subject: subjectField.trim(),
-        messageText: bodyField.trim()
-      });
+      if (isDemoMode) {
+        // Simulated send in demo mode
+        await new Promise((res) => setTimeout(res, 800));
+      } else {
+        await sendGmailEmail({
+          to: toField.trim(),
+          subject: subjectField.trim(),
+          messageText: bodyField.trim()
+        });
+      }
       setSendSuccess(true);
       setConfirmSendOpen(false);
       setToField('');
@@ -178,7 +278,7 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
         setSendSuccess(false);
         setActiveTab('inbox');
         loadInbox();
-      }, 2000);
+      }, 1500);
     } catch (err: any) {
       alert('Failed to send email: ' + (err?.message || 'Error'));
     } finally {
@@ -189,7 +289,9 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
   const confirmTrash = async () => {
     if (!trashCandidateId) return;
     try {
-      await trashGmailMessage(trashCandidateId);
+      if (!isDemoMode) {
+        await trashGmailMessage(trashCandidateId);
+      }
       setMessages((prev) => prev.filter((m) => m.id !== trashCandidateId));
       if (selectedMessage?.id === trashCandidateId) {
         setSelectedMessage(null);
@@ -218,16 +320,23 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
               <h2 className="text-base font-bold text-slate-100 flex items-center gap-2">
                 Gmail Inbox & Mailer
                 <span className="text-[11px] font-semibold bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-0.5 rounded-full">
-                  Workspace API
+                  {isDemoMode ? 'Demo Simulator' : 'Google API'}
                 </span>
               </h2>
               <p className="text-xs text-slate-400">
-                Send invites, manage emails, and track player communications
+                Send invites, manage emails, and blast referral campaigns
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowConfig(!showConfig)}
+              className="p-2 rounded-xl text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition-colors cursor-pointer"
+              title="Configure Google OAuth Client ID"
+            >
+              <Settings className="w-4 h-4" />
+            </button>
             {isConnected && (
               <>
                 <button
@@ -255,6 +364,42 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
             </button>
           </div>
         </div>
+
+        {/* OAuth Client ID Settings Box */}
+        {showConfig && (
+          <div className="bg-slate-950 p-4 border-b border-slate-800 space-y-3 animate-fade-in">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
+                <Key className="w-4 h-4 text-amber-400" />
+                <span>Google OAuth 2.0 Client ID Configuration</span>
+              </div>
+              <button
+                onClick={() => setShowConfig(false)}
+                className="text-xs text-slate-400 hover:text-white"
+              >
+                Close ✕
+              </button>
+            </div>
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              Google Cloud Console (<a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noreferrer" className="text-amber-400 underline inline-flex items-center gap-1">console.cloud.google.com <ExternalLink className="w-3 h-3" /></a>) se apna <strong>OAuth 2.0 Web Client ID</strong> generate karke yahan paste karein:
+            </p>
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                placeholder="e.g. 1234567890-abcdef.apps.googleusercontent.com"
+                value={clientIdInput}
+                onChange={(e) => setClientIdInput(e.target.value)}
+                className="flex-1 bg-slate-900 text-slate-100 text-xs px-3 py-2 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-500 font-mono"
+              />
+              <button
+                onClick={handleSaveClientId}
+                className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl cursor-pointer"
+              >
+                Save ID
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Navigation Tabs */}
         {isConnected && (
@@ -306,7 +451,7 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
 
         {/* Modal Main Body */}
         {!isConnected && !loading ? (
-          <div className="p-8 text-center space-y-5 my-auto">
+          <div className="p-8 text-center space-y-5 my-auto overflow-y-auto max-h-full">
             <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center mx-auto shadow-inner">
               <Mail className="w-8 h-8" />
             </div>
@@ -320,23 +465,50 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
             </div>
 
             {error && (
-              <div className="p-3 bg-red-950/40 border border-red-500/30 rounded-xl max-w-md mx-auto text-left flex items-start gap-2.5">
-                <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                <div className="text-xs text-red-300">
-                  <p className="font-semibold">Authentication Error:</p>
-                  <p className="text-[11px] text-red-400 mt-0.5">{error}</p>
+              <div className="p-3.5 bg-red-950/50 border border-red-500/40 rounded-xl max-w-md mx-auto text-left space-y-2">
+                <div className="flex items-start gap-2.5">
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                  <div className="text-xs text-red-300">
+                    <p className="font-semibold">Authorization Note (Error 401 / Invalid Client):</p>
+                    <p className="text-[11px] text-red-400 mt-0.5">
+                      Google OAuth requires an official Web Client ID from your Google Cloud Console.
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-1 flex gap-2">
+                  <button
+                    onClick={() => setShowConfig(true)}
+                    className="px-3 py-1.5 bg-red-900/60 hover:bg-red-800 text-white rounded-lg text-[11px] font-semibold cursor-pointer"
+                  >
+                    Enter Google Client ID
+                  </button>
+                  <button
+                    onClick={handleStartDemoMode}
+                    className="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 rounded-lg text-[11px] font-semibold cursor-pointer flex items-center gap-1"
+                  >
+                    <Play className="w-3 h-3" />
+                    Open Demo Simulator
+                  </button>
                 </div>
               </div>
             )}
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 id="connect-gmail-btn"
                 onClick={() => loadInbox()}
                 className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold text-xs shadow-lg shadow-red-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <Mail className="w-4 h-4" />
-                <span>Connect & Authorize Gmail</span>
+                <span>Connect with Google OAuth</span>
+              </button>
+
+              <button
+                onClick={handleStartDemoMode}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition-all cursor-pointer"
+              >
+                <Play className="w-4 h-4 text-amber-400" />
+                <span>Try Demo Simulator</span>
               </button>
             </div>
 
@@ -708,7 +880,7 @@ export const GmailManagerModal: React.FC<GmailManagerModalProps> = ({
 
         {/* Footer */}
         <div className="px-6 py-3 border-t border-slate-800 bg-slate-950/70 flex items-center justify-between text-xs text-slate-400">
-          <span>{isConnected ? 'Gmail Workspace Active' : 'Gmail Not Connected'}</span>
+          <span>{isConnected ? (isDemoMode ? 'Gmail Simulator Active' : 'Gmail Workspace Active') : 'Gmail Not Connected'}</span>
           <div className="flex items-center gap-2">
             <span className="text-[11px] text-amber-400 font-semibold">
               Referral Code: <span className="text-slate-100 font-mono">{shareReferralCode}</span>

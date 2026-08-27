@@ -1,5 +1,7 @@
 // Google Contacts (People API) Integration Utility
 
+import firebaseConfig from '../../firebase-applet-config.json';
+
 export interface GoogleContact {
   resourceName: string;
   etag: string;
@@ -22,6 +24,35 @@ const CONTACT_SCOPES = [
 
 let cachedContactsToken: string | null = null;
 let tokenClient: any = null;
+
+export function isGoogleClientIdConfigured(): boolean {
+  return !!getStoredGoogleClientId();
+}
+
+export function getStoredGoogleClientId(): string {
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem('google_oauth_client_id');
+    if (custom && custom.trim().length > 5) {
+      return custom.trim();
+    }
+  }
+  if (firebaseConfig?.oAuthClientId && firebaseConfig.oAuthClientId.trim().length > 5) {
+    return firebaseConfig.oAuthClientId.trim();
+  }
+  return (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID || '';
+}
+
+export function saveStoredGoogleClientId(clientId: string): void {
+  if (typeof window !== 'undefined') {
+    if (!clientId || !clientId.trim()) {
+      localStorage.removeItem('google_oauth_client_id');
+    } else {
+      localStorage.setItem('google_oauth_client_id', clientId.trim());
+    }
+    cachedContactsToken = null;
+    tokenClient = null;
+  }
+}
 
 /**
  * Ensure Google Identity Services (GIS) script is loaded and ready
@@ -80,12 +111,15 @@ export async function requestContactsAccessToken(clientId?: string): Promise<str
 
   await ensureGsiLoaded();
 
+  const effectiveClientId = clientId || getStoredGoogleClientId();
+  if (!effectiveClientId) {
+    throw new Error('MISSING_CLIENT_ID: Please provide your Google OAuth Client ID in settings.');
+  }
+
   return new Promise((resolve, reject) => {
     if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
       return reject(new Error('Google Identity Services script is not available.'));
     }
-
-    const effectiveClientId = clientId || '876596116902-abcdef.apps.googleusercontent.com';
 
     tokenClient = window.google.accounts.oauth2.initTokenClient({
       client_id: effectiveClientId,

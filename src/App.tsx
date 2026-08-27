@@ -22,6 +22,8 @@ import { SeoSchema } from './components/SeoSchema';
 import { FloatingTelegramBar } from './components/FloatingTelegramBar';
 import { GoogleContactsModal } from './components/GoogleContactsModal';
 import { GmailManagerModal } from './components/GmailManagerModal';
+import { db, handleFirestoreError, OperationType, testConnection } from './lib/firebase';
+import { collection, doc, onSnapshot, setDoc, deleteDoc } from 'firebase/firestore';
 
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
@@ -217,6 +219,69 @@ export default function App() {
     }
   };
 
+  // Firebase Firestore Connectivity & Real-Time Sync
+  useEffect(() => {
+    testConnection();
+
+    // Listen for real-time app updates from Firestore
+    const unsubscribe = onSnapshot(
+      collection(db, 'apps'),
+      (snapshot) => {
+        if (!snapshot.empty) {
+          const firestoreApps: YonoApp[] = [];
+          snapshot.forEach((docSnap) => {
+            const data = docSnap.data() as YonoApp;
+            if (data && data.id && data.name) {
+              firestoreApps.push(data);
+            }
+          });
+
+          if (firestoreApps.length > 0) {
+            setApps((prevApps) => {
+              const merged = [...prevApps];
+              firestoreApps.forEach((fsApp) => {
+                const idx = merged.findIndex((a) => a.id === fsApp.id);
+                if (idx >= 0) {
+                  merged[idx] = { ...merged[idx], ...fsApp };
+                } else {
+                  merged.unshift(fsApp);
+                }
+              });
+              try {
+                localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(merged));
+              } catch (e) {}
+              return merged;
+            });
+          }
+        }
+      },
+      (error) => {
+        handleFirestoreError(error, OperationType.GET, 'apps');
+      }
+    );
+
+    // Listen for global settings
+    const unsubSettings = onSnapshot(
+      doc(db, 'settings', 'global'),
+      (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data() as Partial<SiteSettings>;
+          if (data && Object.keys(data).length > 0) {
+            setSiteSettings((prev) => ({ ...prev, ...data }));
+          }
+        }
+      },
+      (error) => {
+        handleFirestoreError(error, OperationType.GET, 'settings/global');
+      }
+    );
+
+    return () => {
+      unsubscribe();
+      unsubSettings();
+    };
+  }, []);
+
   // Asynchronously synchronize initial apps & settings with Cloud SQL backend
   useEffect(() => {
     fetch('/api/db/apps')
@@ -245,6 +310,9 @@ export default function App() {
     } catch (e) {
       console.error('Settings save error', e);
     }
+    // Save to Firestore
+    setDoc(doc(db, 'settings', 'global'), updatedSettings, { merge: true })
+      .catch((err) => handleFirestoreError(err, OperationType.WRITE, 'settings/global'));
   };
 
   const handleSaveWithdrawals = (updatedRecords: WithdrawalRecord[]) => {
@@ -384,6 +452,10 @@ export default function App() {
     }
     saveAppsToStorage(updated);
 
+    // Save to Firestore
+    setDoc(doc(db, 'apps', savedApp.id), savedApp, { merge: true })
+      .catch((err) => handleFirestoreError(err, OperationType.WRITE, `apps/${savedApp.id}`));
+
     if (selectedDetailApp && selectedDetailApp.id === savedApp.id) {
       setSelectedDetailApp(savedApp);
     }
@@ -392,6 +464,11 @@ export default function App() {
   const handleDeleteApp = (appId: string) => {
     const updated = apps.filter((a) => a.id !== appId);
     saveAppsToStorage(updated);
+
+    // Delete from Firestore
+    deleteDoc(doc(db, 'apps', appId))
+      .catch((err) => handleFirestoreError(err, OperationType.DELETE, `apps/${appId}`));
+
     if (selectedDetailApp?.id === appId) {
       setSelectedDetailApp(null);
     }

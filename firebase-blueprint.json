@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "AppItem": {
+      "title": "AppItem",
+      "description": "Information about a listed Yono gaming app or APK download.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique app slug identifier" },
+        "name": { "type": "string", "description": "App display name", "maxLength": 100 },
+        "tagline": { "type": "string", "description": "Short promo hook tagline", "maxLength": 255 },
+        "imageUrl": { "type": "string", "description": "App icon or logo URL" },
+        "downloadUrl": { "type": "string", "description": "Primary APK download link" },
+        "backupDownloadUrl": { "type": "string", "description": "Backup mirror APK download link" },
+        "signupBonus": { "type": "number", "description": "Signup cash bonus amount in INR" },
+        "minWithdrawal": { "type": "number", "description": "Minimum withdrawal threshold in INR" },
+        "referBonus": { "type": "number", "description": "Referral cash bonus amount in INR" },
+        "referCommission": { "type": "string", "description": "Referral commission percentage details" },
+        "referCode": { "type": "string", "description": "App referral or promo code" },
+        "rating": { "type": "number", "description": "User rating out of 5" },
+        "reviewsCount": { "type": "number", "description": "Total user review count" },
+        "downloads": { "type": "string", "description": "Total downloads count string" },
+        "apkSize": { "type": "string", "description": "APK file size" },
+        "version": { "type": "string", "description": "App version release string" },
+        "badge": { "type": "string", "description": "Visual promotional badge label" },
+        "description": { "type": "string", "description": "Detailed app description and promo review" },
+        "safetyScore": { "type": "number", "description": "Antivirus and safety score percentage" },
+        "isCustom": { "type": "boolean", "description": "Flag for custom user-added app" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["id", "name", "downloadUrl"]
+    },
+    "SiteConfig": {
+      "title": "SiteConfig",
+      "description": "Global website metadata, SEO configuration and contact settings.",
+      "type": "object",
+      "properties": {
+        "siteTitle": { "type": "string", "maxLength": 200 },
+        "metaDescription": { "type": "string", "maxLength": 500 },
+        "metaKeywords": { "type": "string", "maxLength": 500 },
+        "telegramLink": { "type": "string", "maxLength": 200 },
+        "telegramSubscribers": { "type": "string", "maxLength": 50 },
+        "whatsappSupport": { "type": "string", "maxLength": 50 },
+        "whatsappShareText": { "type": "string", "maxLength": 500 },
+        "showTicker": { "type": "boolean" },
+        "showAgeDisclaimer": { "type": "boolean" },
+        "showPlayProtectBadge": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "DailyClaim": {
+      "title": "DailyClaim",
+      "description": "Record of a daily login streak check-in reward claim.",
+      "type": "object",
+      "properties": {
+        "claimId": { "type": "string" },
+        "day": { "type": "number" },
+        "amount": { "type": "number" },
+        "claimedAt": { "type": "string" },
+        "deviceId": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["claimId", "day", "amount", "claimedAt"]
+    },
+    "PromoCodeItem": {
+      "title": "PromoCodeItem",
+      "description": "Redeemable VIP promo coupon or reward voucher.",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "maxLength": 50 },
+        "appName": { "type": "string", "maxLength": 100 },
+        "bonusAmount": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 300 },
+        "expiresAt": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["code", "appName", "bonusAmount"]
+    },
+    "TestDoc": {
+      "title": "TestDoc",
+      "description": "Connectivity test document.",
+      "type": "object",
+      "properties": {
+        "status": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/apps/{appId}": {
+      "schema": { "$ref": "#/entities/AppItem" },
+      "description": "Collection of available and custom Yono gaming apps"
+    },
+    "/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/SiteConfig" },
+      "description": "Global website settings and SEO parameters"
+    },
+    "/claims/{claimId}": {
+      "schema": { "$ref": "#/entities/DailyClaim" },
+      "description": "Daily check-in reward claims and streak records"
+    },
+    "/promocodes/{promoId}": {
+      "schema": { "$ref": "#/entities/PromoCodeItem" },
+      "description": "Active promo vouchers and gift codes"
+    },
+    "/test/{docId}": {
+      "schema": { "$ref": "#/entities/TestDoc" },
+      "description": "Connection test and health verification doc"
+    }
+  }
+}

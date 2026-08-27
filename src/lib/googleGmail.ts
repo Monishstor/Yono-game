@@ -1,6 +1,8 @@
 // Google Gmail API Integration Utility
 
-import { ensureGsiLoaded } from './googleContacts';
+import { ensureGsiLoaded, getStoredGoogleClientId, saveStoredGoogleClientId, isGoogleClientIdConfigured } from './googleContacts';
+
+export { getStoredGoogleClientId, saveStoredGoogleClientId, isGoogleClientIdConfigured };
 
 export interface GmailMessageSummary {
   id: string;
@@ -55,12 +57,15 @@ export async function requestGmailAccessToken(clientId?: string): Promise<string
 
   await ensureGsiLoaded();
 
+  const effectiveClientId = clientId || getStoredGoogleClientId();
+  if (!effectiveClientId) {
+    throw new Error('MISSING_CLIENT_ID: Please provide your Google OAuth Client ID in settings.');
+  }
+
   return new Promise((resolve, reject) => {
     if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
       return reject(new Error('Google Identity Services script is not available.'));
     }
-
-    const effectiveClientId = clientId || '876596116902-abcdef.apps.googleusercontent.com';
 
     gmailTokenClient = window.google.accounts.oauth2.initTokenClient({
       client_id: effectiveClientId,

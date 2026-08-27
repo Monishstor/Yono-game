@@ -11,6 +11,8 @@ import {
   Zap,
   ArrowRight
 } from 'lucide-react';
+import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 interface DailyCheckinModalProps {
   isOpen: boolean;
@@ -63,6 +65,17 @@ export const DailyCheckinModal: React.FC<DailyCheckinModalProps> = ({
       localStorage.setItem(STORAGE_STREAK_KEY, nextStreak.toString());
       localStorage.setItem(STORAGE_LAST_CHECKIN, new Date().toDateString());
     } catch (e) {}
+
+    // Save claim event to Firestore
+    const claimId = `claim_${Date.now()}`;
+    const claimReward = CHECKIN_DAYS[currentStreak - 1]?.coins || 50;
+    setDoc(doc(db, 'claims', claimId), {
+      claimId,
+      day: currentStreak,
+      amount: claimReward,
+      claimedAt: new Date().toISOString(),
+      deviceId: 'web_session'
+    }).catch((err) => handleFirestoreError(err, OperationType.CREATE, `claims/${claimId}`));
 
     setTimeout(() => {
       setClaimedNotice(null);

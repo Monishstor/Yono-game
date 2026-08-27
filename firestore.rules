@@ -1,0 +1,71 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global deny-by-default safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidApp(data) {
+      return data.id is string && data.id.size() > 0 && data.id.size() <= 128 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 120 &&
+             data.downloadUrl is string && data.downloadUrl.size() > 0 && data.downloadUrl.size() <= 1000;
+    }
+
+    function isValidClaim(data) {
+      return data.claimId is string && data.claimId.size() <= 128 &&
+             data.day is number && data.day >= 1 && data.day <= 30 &&
+             data.amount is number && data.amount >= 0 && data.amount <= 10000;
+    }
+
+    // Apps collection: Publicly readable for app exploration; write requires valid structure
+    match /apps/{appId} {
+      allow read: if true;
+      allow create, update: if isValidId(appId) && isValidApp(incoming());
+      allow delete: if isValidId(appId);
+    }
+
+    // Site Settings collection: Publicly readable; write requires valid ID
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isValidId(settingId);
+    }
+
+    // Daily Claims collection: Publicly readable and insertable
+    match /claims/{claimId} {
+      allow read: if true;
+      allow create: if isValidId(claimId) && isValidClaim(incoming());
+    }
+
+    // Promo codes: Publicly readable
+    match /promocodes/{promoId} {
+      allow read: if true;
+      allow write: if isValidId(promoId);
+    }
+
+    // Connectivity test collection
+    match /test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
