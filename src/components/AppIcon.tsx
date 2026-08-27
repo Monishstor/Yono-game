@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { YonoApp } from '../types';
+import { resolveAssetUrl } from '../lib/assetHelper';
 
 interface AppIconProps {
   app: YonoApp;
@@ -16,13 +17,15 @@ export const AppIcon: React.FC<AppIconProps> = ({
 }) => {
   const [imageError, setImageError] = useState(false);
 
-  if (app.imageUrl && !imageError) {
+  const resolvedUrl = app.imageUrl ? resolveAssetUrl(app.imageUrl) : '';
+
+  if (resolvedUrl && !imageError) {
     return (
       <div 
         className={`${sizeClassName} rounded-2xl overflow-hidden shadow-lg ring-2 ring-white/15 bg-slate-900 flex items-center justify-center shrink-0 ${className}`}
       >
         <img
-          src={app.imageUrl}
+          src={resolvedUrl}
           alt={`${app.name} icon`}
           referrerPolicy="no-referrer"
           onError={() => setImageError(true)}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { resolveAssetUrl } from '../lib/assetHelper';
 import { 
   Sparkles, 
   Search, 
@@ -72,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-2 ring-amber-400/50 transform group-hover:scale-105 transition-all overflow-hidden p-0.5">
                 <img 
-                  src="/main-site-logo.svg" 
+                  src={resolveAssetUrl('main-site-logo.svg')} 
                   alt="All New Yono Apps Official Logo" 
                   className="w-full h-full object-cover rounded-lg"
                   width="48"
