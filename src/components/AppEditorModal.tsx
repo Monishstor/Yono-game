@@ -18,6 +18,7 @@ import {
   Download
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
+import { openGoogleFilePicker } from '../lib/googlePicker';
 
 interface AppEditorModalProps {
   isOpen: boolean;
@@ -312,21 +313,49 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
                 {/* Upload File Mode */}
                 {imageMode === 'upload' && (
                   <div className="space-y-2">
-                    <label className="border-2 border-dashed border-slate-700 hover:border-amber-400/70 rounded-2xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer bg-slate-900/50 hover:bg-slate-900 transition-all">
-                      <Upload className="w-6 h-6 text-amber-400" />
-                      <span className="text-xs font-semibold text-slate-200">
-                        Click here to select an image from your device / phone
-                      </span>
-                      <span className="text-[11px] text-slate-400">
-                        Supports PNG, JPG, JPEG, WebP, SVG (Max 5MB)
-                      </span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileUpload}
-                        className="hidden"
-                      />
-                    </label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <label className="border-2 border-dashed border-slate-700 hover:border-amber-400/70 rounded-2xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer bg-slate-900/50 hover:bg-slate-900 transition-all text-center">
+                        <Upload className="w-6 h-6 text-amber-400" />
+                        <span className="text-xs font-semibold text-slate-200">
+                          Upload from Device
+                        </span>
+                        <span className="text-[11px] text-slate-400">
+                          PNG, JPG, SVG (Max 5MB)
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileUpload}
+                          className="hidden"
+                        />
+                      </label>
+
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          try {
+                            const picked = await openGoogleFilePicker({
+                              title: 'Select Game Logo Image from Google Drive'
+                            });
+                            if (picked) {
+                              setImageUrl(picked.url);
+                            }
+                          } catch (err: any) {
+                            alert('Google Drive Picker: ' + (err?.message || 'Unauthorized or failed to connect'));
+                          }
+                        }}
+                        className="border-2 border-dashed border-amber-500/40 hover:border-amber-400 rounded-2xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer bg-amber-500/5 hover:bg-amber-500/10 transition-all text-center"
+                      >
+                        <Sparkles className="w-6 h-6 text-amber-400" />
+                        <span className="text-xs font-semibold text-amber-300">
+                          Pick Logo from Google Drive
+                        </span>
+                        <span className="text-[11px] text-amber-400/70">
+                          Google Picker Integration
+                        </span>
+                      </button>
+                    </div>
+
                     {imageUrl && (
                       <div className="flex items-center gap-3 p-2 bg-slate-900 rounded-xl text-xs text-slate-300">
                         <span className="text-emerald-400 font-bold flex items-center gap-1">
@@ -504,14 +533,33 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold text-slate-300 block mb-1">Custom Download URL (Optional)</label>
+                  <label className="text-xs font-bold text-slate-300 block mb-1">Custom Download URL (APK)</label>
                   <input
                     type="text"
                     value={downloadUrl}
                     onChange={(e) => setDownloadUrl(e.target.value)}
-                    placeholder="https://... or direct link"
+                    placeholder="https://... or direct APK link"
                     className="w-full bg-slate-950 text-slate-100 text-xs px-3 py-2 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-400"
                   />
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      try {
+                        const picked = await openGoogleFilePicker({
+                          title: 'Select Game APK File from Google Drive'
+                        });
+                        if (picked) {
+                          setDownloadUrl(picked.url);
+                        }
+                      } catch (err: any) {
+                        alert('Google Drive Picker: ' + (err?.message || 'Unauthorized or failed to connect'));
+                      }
+                    }}
+                    className="mt-1.5 flex items-center gap-1.5 text-[11px] text-amber-400 hover:text-amber-300 font-bold bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
+                  >
+                    <Upload className="w-3 h-3" />
+                    <span>Pick APK from Google Drive</span>
+                  </button>
                 </div>
               </div>
 

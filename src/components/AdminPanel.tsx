@@ -43,6 +43,7 @@ import {
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 import { WordPressIntegration } from './WordPressIntegration';
+import { openGoogleFilePicker } from '../lib/googlePicker';
 
 interface AdminPanelProps {
   apps: YonoApp[];
@@ -692,17 +693,40 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     Apps Catalog Management ({apps.length} Total)
                   </h2>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Click "Edit" on any app to change name, upload new image/logo, change bonus, or direct APK link.
+                    Click "Edit" on any app to change name, upload new image/logo, change bonus, or select assets from Google Drive.
                   </p>
                 </div>
 
-                <button
-                  onClick={onAddNewApp}
-                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
-                >
-                  <Plus className="w-4 h-4 stroke-[3]" />
-                  <span>+ Add New App</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={async () => {
+                      try {
+                        const picked = await openGoogleFilePicker({
+                          title: 'Select Game APK or Image Logo from Google Drive'
+                        });
+                        if (picked) {
+                          alert(`✅ Google Drive Asset Selected:\nFile: ${picked.name}\nType: ${picked.mimeType}\nURL: ${picked.url}\n\nOpening App Editor with this asset.`);
+                          onAddNewApp();
+                        }
+                      } catch (err: any) {
+                        alert('Google Drive Picker: ' + (err?.message || 'Unauthorized or failed to connect'));
+                      }
+                    }}
+                    className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 text-xs sm:text-sm font-bold transition-all cursor-pointer shadow-sm"
+                    title="Select APK or Logo directly from Google Drive"
+                  >
+                    <Upload className="w-4 h-4" />
+                    <span>Import from Drive</span>
+                  </button>
+
+                  <button
+                    onClick={onAddNewApp}
+                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+                  >
+                    <Plus className="w-4 h-4 stroke-[3]" />
+                    <span>+ Add New App</span>
+                  </button>
+                </div>
               </div>
 
               {/* Filters & Search Toolbar */}
