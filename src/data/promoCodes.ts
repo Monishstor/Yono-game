@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '47TQCRTKJR7',
+    title: 'Dhan Game Official VIP Welcome & 886% Bonus Pack',
+    reward: 'Up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus',
+    expiry: 'Official Active Code',
+    appTarget: 'Dhan Game',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '0QH9RU9PRNL',
     title: 'Saga Slots India #1 Welcome & 7-Day Pack',
     reward: '₹7 Joining Free + ₹259 7-Day Login Free + 100% First Deposit Cashback',

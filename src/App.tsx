@@ -24,16 +24,16 @@ import { FloatingTelegramBar } from './components/FloatingTelegramBar';
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
 // Storage keys for persistent state
-const APPS_STORAGE_KEY = 'yono_user_custom_apps_v5';
-const PROMOS_STORAGE_KEY = 'yono_custom_promos_v5';
-const SETTINGS_STORAGE_KEY = 'yono_site_settings_v5';
-const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v5';
-const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v5';
+const APPS_STORAGE_KEY = 'yono_user_custom_apps_v6';
+const PROMOS_STORAGE_KEY = 'yono_custom_promos_v6';
+const SETTINGS_STORAGE_KEY = 'yono_site_settings_v6';
+const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v6';
+const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v6';
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: 'ALL NEW YONO APPS & SAGA SLOTS (2026) - APK Downloads & ₹5000 Bonus',
-  metaDescription: 'Official portal for All New Yono Games, Saga Slots & 789jackpots APK Downloads with ₹7-₹50 Welcome Bonus, ₹259 7-Day Login, ₹100 instant UPI withdrawals, and verified virus-free Android APK packages.',
-  metaKeywords: 'saga slots, saga slots apk download, all yono games, yono app list 2026, yono games partner, yono apk download, yono rummy bonus, new yono games 2026, yono referral code 0QH9RU9PRNL, all yono vip',
+  siteTitle: 'ALL NEW YONO APPS, DHAN GAME & SAGA SLOTS (2026) - APK Downloads & ₹5000 Bonus',
+  metaDescription: 'Official portal for All New Yono Games, Dhan Game, Saga Slots & 789jackpots APK Downloads with ₹7-₹777 Welcome Bonus, 886% 7-Day Login, ₹100 instant UPI withdrawals, and verified virus-free Android APK packages.',
+  metaKeywords: 'dhan game, dhan game apk download, saga slots, saga slots apk download, all yono games, yono app list 2026, yono games partner, yono apk download, yono rummy bonus, new yono games 2026, dhan game referral code 47TQCRTKJR7, all yono vip',
   canonicalUrl: 'https://yonoj.netlify.app',
   siteAuthor: 'Yono VIP Official Network',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',
@@ -43,12 +43,12 @@ const DEFAULT_SETTINGS: SiteSettings = {
   showTicker: true,
   showAgeDisclaimer: true,
   showPlayProtectBadge: true,
-  whatsappShareText: '🔥 Download Saga Slots & Real Yono Games with Free ₹7-₹50 Welcome Bonus + ₹259 7-Day Login & Instant ₹100 UPI Cashout! Code: 0QH9RU9PRNL',
+  whatsappShareText: '🔥 Download Dhan Game & Saga Slots with Free ₹777 Welcome Bonus + 886% 7-Day Login & Instant ₹100 UPI Cashout! Code: 47TQCRTKJR7',
   adminPin: 'admin123',
   notices: [
-    { id: '1', type: 'sparkles', text: '🎰 NEW LAUNCH: SAGA SLOTS LIVE! Get ₹7 Instant Joining + ₹259 7-Days Login Bonus + 100% First Deposit Cashback!' },
-    { id: '2', type: 'flame', text: '🔥 789Jackpots & Real Yono Games: Welcome Bonus up to ₹1500 FREE + ₹100 Instant UPI Cashout.' },
-    { id: '3', type: 'gift', text: '🎁 Saga Slots Referral Code: 0QH9RU9PRNL (Auto-applied on download for VIP activation).' },
+    { id: '1', type: 'sparkles', text: '👑 OFFICIAL DHAN GAME LAUNCH! Get up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus!' },
+    { id: '2', type: 'flame', text: '🎰 SAGA SLOTS LIVE: ₹7 Instant Joining + ₹259 7-Days Login Bonus + 100% First Deposit Cashback!' },
+    { id: '3', type: 'gift', text: '🎁 Dhan Game Code: 47TQCRTKJR7 & Saga Slots Code: 0QH9RU9PRNL (Auto-applied on download).' },
     { id: '4', type: 'shield', text: '🛡️ Safe & Tested: Direct APK download verified 100% virus-free on Android 13, 14 & 15.' }
   ]
 };
