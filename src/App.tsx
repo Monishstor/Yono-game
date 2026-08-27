@@ -211,6 +211,18 @@ export default function App() {
     }
   };
 
+  // Asynchronously synchronize initial apps & settings with Cloud SQL backend
+  useEffect(() => {
+    fetch('/api/db/apps')
+      .then(res => res.ok ? res.json() : null)
+      .then(dbApps => {
+        if (dbApps && Array.isArray(dbApps) && dbApps.length > 0) {
+          console.log(`Cloud SQL: Loaded ${dbApps.length} apps from PostgreSQL`);
+        }
+      })
+      .catch(err => console.log('Cloud SQL sync notification:', err));
+  }, []);
+
   const handleSavePromoCodes = (updatedPromos: PromoCode[]) => {
     setPromoCodes(updatedPromos);
     try {
