@@ -20,6 +20,8 @@ import { ResponsibleGamingBanner } from './components/ResponsibleGamingBanner';
 import { DailyCheckinModal } from './components/DailyCheckinModal';
 import { SeoSchema } from './components/SeoSchema';
 import { FloatingTelegramBar } from './components/FloatingTelegramBar';
+import { GoogleContactsModal } from './components/GoogleContactsModal';
+import { GmailManagerModal } from './components/GmailManagerModal';
 
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
@@ -184,6 +186,10 @@ export default function App() {
   const [selectedDetailApp, setSelectedDetailApp] = useState<YonoApp | null>(null);
   const [isPromoCodesOpen, setIsPromoCodesOpen] = useState(false);
   const [isDailyCheckinOpen, setIsDailyCheckinOpen] = useState(false);
+  const [isContactsModalOpen, setIsContactsModalOpen] = useState(false);
+  const [isGmailModalOpen, setIsGmailModalOpen] = useState(false);
+  const [gmailRecipient, setGmailRecipient] = useState('');
+  const [gmailSubject, setGmailSubject] = useState('');
 
   // App Editor Modal (Add/Edit App with photo upload)
   const [isAppEditorOpen, setIsAppEditorOpen] = useState(false);
@@ -454,6 +460,12 @@ export default function App() {
         onResetFactory={handleResetFactory}
         onCloseAdmin={handleGoToPublicSite}
         onLogout={handleAdminLogout}
+        onOpenContacts={() => setIsContactsModalOpen(true)}
+        onOpenGmail={() => {
+          setGmailRecipient('');
+          setGmailSubject('');
+          setIsGmailModalOpen(true);
+        }}
       />
     );
   }
@@ -495,6 +507,12 @@ export default function App() {
         onSearchChange={setSearchQuery}
         onOpenPromoCodes={() => setIsPromoCodesOpen(true)}
         onOpenDailyCheckin={() => setIsDailyCheckinOpen(true)}
+        onOpenContacts={() => setIsContactsModalOpen(true)}
+        onOpenGmail={() => {
+          setGmailRecipient('');
+          setGmailSubject('');
+          setIsGmailModalOpen(true);
+        }}
         onToggleTableView={() => setViewMode((prev) => (prev === 'grid' ? 'table' : 'grid'))}
         isTableView={viewMode === 'table'}
         onScrollToSection={handleScrollToSection}
@@ -617,6 +635,36 @@ export default function App() {
         appToEdit={appToEdit}
         onSaveApp={handleSaveApp}
         onDeleteApp={handleDeleteApp}
+      />
+
+      {/* Google Contacts & Friends Referral Modal */}
+      <GoogleContactsModal
+        isOpen={isContactsModalOpen}
+        onClose={() => setIsContactsModalOpen(false)}
+        shareReferralCode="YONO999"
+        shareAppName={siteSettings.siteTitle ? siteSettings.siteTitle.split('(')[0].trim() : 'All New Yono Apps'}
+        shareUrl={typeof window !== 'undefined' ? window.location.origin : 'https://yonoj.netlify.app'}
+        onOpenGmailCompose={(recipientEmail, subject) => {
+          setGmailRecipient(recipientEmail);
+          setGmailSubject(subject || '');
+          setIsContactsModalOpen(false);
+          setIsGmailModalOpen(true);
+        }}
+      />
+
+      {/* Gmail Inbox & Campaign Mailer Modal */}
+      <GmailManagerModal
+        isOpen={isGmailModalOpen}
+        onClose={() => {
+          setIsGmailModalOpen(false);
+          setGmailRecipient('');
+          setGmailSubject('');
+        }}
+        defaultRecipient={gmailRecipient}
+        defaultSubject={gmailSubject}
+        shareReferralCode="YONO999"
+        shareAppName={siteSettings.siteTitle ? siteSettings.siteTitle.split('(')[0].trim() : 'All New Yono Apps'}
+        shareUrl={typeof window !== 'undefined' ? window.location.origin : 'https://yonoj.netlify.app'}
       />
     </div>
   );

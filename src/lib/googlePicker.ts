@@ -26,9 +26,72 @@ export interface PickedGoogleFile {
 }
 
 /**
+ * Ensure Google GAPI script is loaded
+ */
+export function ensureGapiScriptLoaded(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (typeof window.gapi !== 'undefined') {
+      return resolve();
+    }
+
+    let script = document.querySelector('script[src="https://apis.google.com/js/api.js"]') as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.src = 'https://apis.google.com/js/api.js';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      if (typeof window.gapi !== 'undefined') {
+        clearInterval(interval);
+        resolve();
+      } else if (Date.now() - startTime > 10000) {
+        clearInterval(interval);
+        reject(new Error('Failed to load Google API script (gapi)'));
+      }
+    }, 150);
+  });
+}
+
+/**
+ * Ensure Google Identity Services script is loaded
+ */
+export function ensureGsiScriptLoaded(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (typeof window.google !== 'undefined' && window.google?.accounts?.oauth2) {
+      return resolve();
+    }
+
+    let script = document.querySelector('script[src="https://accounts.google.com/gsi/client"]') as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      if (typeof window.google !== 'undefined' && window.google?.accounts?.oauth2) {
+        clearInterval(interval);
+        resolve();
+      } else if (Date.now() - startTime > 10000) {
+        clearInterval(interval);
+        reject(new Error('Google Identity Services script failed to initialize.'));
+      }
+    }, 150);
+  });
+}
+
+/**
  * Load Google API Client script library for Picker
  */
-export function loadGooglePickerApi(): Promise<void> {
+export async function loadGooglePickerApi(): Promise<void> {
+  await ensureGapiScriptLoaded();
   return new Promise((resolve, reject) => {
     if (typeof window.gapi !== 'undefined' && window.gapi.load) {
       window.gapi.load('picker', {
@@ -36,20 +99,7 @@ export function loadGooglePickerApi(): Promise<void> {
         onerror: () => reject(new Error('Failed to load Google Picker API'))
       });
     } else {
-      // Retry loading after brief wait
-      const interval = setInterval(() => {
-        if (typeof window.gapi !== 'undefined' && window.gapi.load) {
-          clearInterval(interval);
-          window.gapi.load('picker', {
-            callback: () => resolve(),
-            onerror: () => reject(new Error('Failed to load Google Picker API'))
-          });
-        }
-      }, 300);
-      setTimeout(() => {
-        clearInterval(interval);
-        reject(new Error('Timeout loading gapi'));
-      }, 6000);
+      reject(new Error('Google API client (gapi) is not available.'));
     }
   });
 }
@@ -57,12 +107,14 @@ export function loadGooglePickerApi(): Promise<void> {
 /**
  * Obtain Google OAuth Access Token using Google Identity Services (GIS)
  */
-export function requestGoogleAccessToken(clientId?: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (accessToken) {
-      return resolve(accessToken);
-    }
+export async function requestGoogleAccessToken(clientId?: string): Promise<string> {
+  if (accessToken) {
+    return accessToken;
+  }
 
+  await ensureGsiScriptLoaded();
+
+  return new Promise((resolve, reject) => {
     if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
       return reject(new Error('Google Identity Services script not loaded.'));
     }
@@ -74,7 +126,7 @@ export function requestGoogleAccessToken(clientId?: string): Promise<string> {
       scope: SCOPES,
       callback: (response: any) => {
         if (response.error) {
-          reject(response);
+          reject(new Error(response.error_description || response.error || 'Failed to authenticate with Google'));
         } else {
           accessToken = response.access_token;
           resolve(response.access_token);
