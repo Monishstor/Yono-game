@@ -8,8 +8,10 @@ declare global {
 }
 
 const SCOPES = [
+  'https://www.googleapis.com/auth/drive',
   'https://www.googleapis.com/auth/drive.file',
-  'https://www.googleapis.com/auth/drive.metadata.readonly'
+  'https://www.googleapis.com/auth/drive.metadata.readonly',
+  'https://www.googleapis.com/auth/drive.readonly'
 ].join(' ');
 
 let tokenClient: any = null;
@@ -82,6 +84,31 @@ export function requestGoogleAccessToken(clientId?: string): Promise<string> {
 
     tokenClient.requestAccessToken({ prompt: 'consent' });
   });
+}
+
+/**
+ * List or search files directly from Google Drive REST API
+ */
+export async function listGoogleDriveFiles(query: string = "trashed = false", pageSize: number = 20): Promise<any[]> {
+  try {
+    const token = await requestGoogleAccessToken();
+    const response = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(query)}&pageSize=${pageSize}&fields=files(id,name,mimeType,webContentLink,webViewLink,thumbnailLink,size)`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    if (!response.ok) {
+      throw new Error(`Google Drive API responded with status ${response.status}`);
+    }
+    const data = await response.json();
+    return data.files || [];
+  } catch (err) {
+    console.error('Failed to list Google Drive files:', err);
+    throw err;
+  }
 }
 
 /**
