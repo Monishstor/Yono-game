@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'EBDEH5U8UL2',
+    title: 'IndRummy Official VIP Welcome Bonus Pack',
+    reward: 'Up to ₹50 Instant Welcome Bonus + Fast Cashout + 30% Lifetime Refer Cash',
+    expiry: 'Official Active Code',
+    appTarget: 'IndRummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '47TQCRTKJR7',
     title: 'Dhan Game Official VIP Welcome & 886% Bonus Pack',
     reward: 'Up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus',

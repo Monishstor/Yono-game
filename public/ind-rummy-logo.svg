@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Gradient -->
+    <radialGradient id="indBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0c4a2c"/>
+      <stop offset="45%" stop-color="#06331e"/>
+      <stop offset="100%" stop-color="#021c10"/>
+    </radialGradient>
+
+    <!-- Center Diamond Gradient -->
+    <linearGradient id="indDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15804e"/>
+      <stop offset="50%" stop-color="#0b5432"/>
+      <stop offset="100%" stop-color="#042a17"/>
+    </linearGradient>
+
+    <!-- Diamond Outer Bright Green Neon Stroke -->
+    <linearGradient id="neonGreenStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="50%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+
+    <!-- 3D Gold IND Text Front Face Gradient -->
+    <linearGradient id="indGoldFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff885"/>
+      <stop offset="30%" stop-color="#facc15"/>
+      <stop offset="70%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+
+    <!-- 3D Gold Extrusion / Bevel Gradient -->
+    <linearGradient id="indGoldBevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+
+    <!-- 3D Gold Border Stroke -->
+    <linearGradient id="indGoldStroke" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+
+    <!-- Metallic Cylinder / Reel Gradient -->
+    <linearGradient id="indReelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#788896"/>
+      <stop offset="12%" stop-color="#f1f5f9"/>
+      <stop offset="35%" stop-color="#ffffff"/>
+      <stop offset="65%" stop-color="#e2e8f0"/>
+      <stop offset="88%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Cylinder Capsule Rim Gradient -->
+    <linearGradient id="capsuleRim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="50%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <!-- Green RUMMY Text Gradient -->
+    <linearGradient id="rummyTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a"/>
+      <stop offset="50%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+
+    <!-- Glow & Shadow Filters -->
+    <filter id="indShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+    
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Quilted Grid Pattern -->
+    <pattern id="quiltPattern" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="48" height="48" fill="none" stroke="#0f5c38" stroke-width="1.5" stroke-opacity="0.35"/>
+      <circle cx="0" cy="0" r="1.5" fill="#22c55e" fill-opacity="0.4"/>
+      <circle cx="48" cy="0" r="1.5" fill="#22c55e" fill-opacity="0.4"/>
+      <circle cx="0" cy="48" r="1.5" fill="#22c55e" fill-opacity="0.4"/>
+      <circle cx="48" cy="48" r="1.5" fill="#22c55e" fill-opacity="0.4"/>
+      <circle cx="24" cy="24" r="1.5" fill="#22c55e" fill-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- App Rounded Base Frame -->
+  <rect width="512" height="512" rx="108" fill="url(#indBg)"/>
+  
+  <!-- Subtle Texture Pattern Overlay -->
+  <rect width="512" height="512" rx="108" fill="url(#quiltPattern)" opacity="0.8"/>
+
+  <!-- Outer Icon Border Highlight -->
+  <rect x="3" y="3" width="506" height="506" rx="105" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.3"/>
+  <rect x="6" y="6" width="500" height="500" rx="102" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.15"/>
+
+  <!-- Center Tilted Rhombus / Diamond Badge with Neon Border -->
+  <g transform="translate(256, 256) rotate(45)" filter="url(#indShadow)">
+    <rect x="-170" y="-170" width="340" height="340" rx="36" fill="url(#indDiamondGrad)" stroke="url(#neonGreenStroke)" stroke-width="6"/>
+    <rect x="-158" y="-158" width="316" height="316" rx="28" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+  </g>
+
+  <!-- 3D "IND" TEXT GROUP -->
+  <g filter="url(#indShadow)">
+    <!-- 3D Extrusion Layers for Depth (Bottom/Right offset) -->
+    <!-- Extrusion shadow block -->
+    <g fill="url(#indGoldBevel)">
+      <!-- Letter I 3D Bevel -->
+      <path d="M 86,108 L 166,108 L 166,134 L 140,134 L 140,210 L 166,210 L 166,236 L 86,236 L 86,210 L 112,210 L 112,134 L 86,134 Z" transform="translate(12, 14)"/>
+      <!-- Letter N 3D Bevel -->
+      <path d="M 178,108 L 214,108 L 268,190 L 268,108 L 302,108 L 302,236 L 268,236 L 212,152 L 212,236 L 178,236 Z" transform="translate(12, 14)"/>
+      <!-- Letter D 3D Bevel -->
+      <path d="M 314,108 L 382,108 C 424,108 450,134 450,172 C 450,210 424,236 382,236 L 314,236 Z M 352,140 L 352,204 L 380,204 C 404,204 416,192 416,172 C 416,152 404,140 380,140 Z" transform="translate(12, 14)"/>
+    </g>
+
+    <!-- Side Extrusion Facets Connecting Front to Back -->
+    <g fill="#9a3412">
+      <!-- I facets -->
+      <polygon points="166,108 178,122 178,148 166,134"/>
+      <polygon points="140,134 152,148 152,224 140,210"/>
+      <polygon points="166,210 178,224 178,250 166,236"/>
+      <polygon points="86,236 98,250 178,250 166,236"/>
+
+      <!-- N facets -->
+      <polygon points="214,108 226,122 280,204 268,190"/>
+      <polygon points="302,108 314,122 314,250 302,236"/>
+      <polygon points="268,236 280,250 314,250 302,236"/>
+      <polygon points="178,236 190,250 224,250 212,236"/>
+
+      <!-- D facets -->
+      <polygon points="382,108 394,122 462,186 450,172"/>
+      <polygon points="450,172 462,186 436,250 424,236"/>
+      <polygon points="314,236 326,250 394,250 382,236"/>
+    </g>
+
+    <!-- Front Face of "IND" with Gold/Yellow Gradient and Sharp Chamfer Border -->
+    <!-- I Front -->
+    <path d="M 86,108 L 166,108 L 166,134 L 140,134 L 140,210 L 166,210 L 166,236 L 86,236 L 86,210 L 112,210 L 112,134 L 86,134 Z" 
+          fill="url(#indGoldFront)" stroke="url(#indGoldStroke)" stroke-width="2.5"/>
+
+    <!-- N Front -->
+    <path d="M 178,108 L 214,108 L 268,190 L 268,108 L 302,108 L 302,236 L 268,236 L 212,152 L 212,236 L 178,236 Z" 
+          fill="url(#indGoldFront)" stroke="url(#indGoldStroke)" stroke-width="2.5"/>
+
+    <!-- D Front -->
+    <path d="M 314,108 L 382,108 C 424,108 450,134 450,172 C 450,210 424,236 382,236 L 314,236 Z M 352,140 L 352,204 L 380,204 C 404,204 416,192 416,172 C 416,152 404,140 380,140 Z" 
+          fill="url(#indGoldFront)" stroke="url(#indGoldStroke)" stroke-width="2.5"/>
+
+    <!-- Top Highlight Lines on IND Front -->
+    <path d="M 88,110 L 164,110 M 180,110 L 212,110 M 304,110 L 300,110 M 316,110 L 380,110" stroke="#ffffff" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
+
+    <!-- Sparkle Stars on Top of D and I -->
+    <!-- Sparkle 1 on D top curve -->
+    <g transform="translate(325, 96)">
+      <path d="M 0,-14 Q 0,0 14,0 Q 0,0 0,14 Q 0,0 -14,0 Q 0,0 0,-14 Z" fill="#ffffff" filter="url(#softGlow)"/>
+      <circle cx="0" cy="0" r="3" fill="#fef08a"/>
+    </g>
+    <!-- Sparkle 2 on I notch -->
+    <g transform="translate(148, 226)">
+      <path d="M 0,-8 Q 0,0 8,0 Q 0,0 0,8 Q 0,0 -8,0 Q 0,0 0,-8 Z" fill="#ffffff" filter="url(#softGlow)"/>
+      <circle cx="0" cy="0" r="2" fill="#fef08a"/>
+    </g>
+  </g>
+
+  <!-- METALLIC CYLINDER / REEL CAPSULE FOR "R U M M Y" -->
+  <g filter="url(#indShadow)">
+    <!-- Outer Capsule Rim / Dark Bevel Base -->
+    <rect x="26" y="260" width="460" height="126" rx="63" fill="url(#capsuleRim)" stroke="#0f172a" stroke-width="3"/>
+    
+    <!-- Metallic Reel Body -->
+    <rect x="32" y="265" width="448" height="116" rx="58" fill="url(#indReelGrad)" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- Slot Drum Segment Dividers (5 distinct reel columns) -->
+    <!-- Divider 1 -->
+    <line x1="120" y1="266" x2="120" y2="380" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="122" y1="266" x2="122" y2="380" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+    <line x1="118" y1="266" x2="118" y2="380" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Divider 2 -->
+    <line x1="210" y1="266" x2="210" y2="380" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="212" y1="266" x2="212" y2="380" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+    <line x1="208" y1="266" x2="208" y2="380" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Divider 3 -->
+    <line x1="300" y1="266" x2="300" y2="380" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="302" y1="266" x2="302" y2="380" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+    <line x1="298" y1="266" x2="298" y2="380" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Divider 4 -->
+    <line x1="390" y1="266" x2="390" y2="380" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="392" y1="266" x2="392" y2="380" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+    <line x1="388" y1="266" x2="388" y2="380" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Top & Bottom Light Reflections on Cylinder -->
+    <rect x="40" y="270" width="432" height="12" rx="6" fill="#ffffff" opacity="0.75"/>
+    <rect x="50" y="360" width="412" height="8" rx="4" fill="#64748b" opacity="0.4"/>
+
+    <!-- R U M M Y Chunky Green Lettering -->
+    <!-- R (x: 40..120, center ~ 76) -->
+    <g transform="translate(54, 282)">
+      <text x="22" y="70" font-family="'Arial Black', 'Impact', sans-serif" font-size="74" font-weight="900" 
+            text-anchor="middle" fill="url(#rummyTextGrad)" stroke="#14532d" stroke-width="3.5" letter-spacing="0">R</text>
+    </g>
+
+    <!-- U (x: 120..210, center ~ 165) -->
+    <g transform="translate(142, 282)">
+      <text x="23" y="70" font-family="'Arial Black', 'Impact', sans-serif" font-size="74" font-weight="900" 
+            text-anchor="middle" fill="url(#rummyTextGrad)" stroke="#14532d" stroke-width="3.5" letter-spacing="0">U</text>
+    </g>
+
+    <!-- M (x: 210..300, center ~ 255) -->
+    <g transform="translate(230, 282)">
+      <text x="25" y="70" font-family="'Arial Black', 'Impact', sans-serif" font-size="74" font-weight="900" 
+            text-anchor="middle" fill="url(#rummyTextGrad)" stroke="#14532d" stroke-width="3.5" letter-spacing="0">M</text>
+    </g>
+
+    <!-- M (x: 300..390, center ~ 345) -->
+    <g transform="translate(320, 282)">
+      <text x="25" y="70" font-family="'Arial Black', 'Impact', sans-serif" font-size="74" font-weight="900" 
+            text-anchor="middle" fill="url(#rummyTextGrad)" stroke="#14532d" stroke-width="3.5" letter-spacing="0">M</text>
+    </g>
+
+    <!-- Y (x: 390..480, center ~ 435) -->
+    <g transform="translate(412, 282)">
+      <text x="23" y="70" font-family="'Arial Black', 'Impact', sans-serif" font-size="74" font-weight="900" 
+            text-anchor="middle" fill="url(#rummyTextGrad)" stroke="#14532d" stroke-width="3.5" letter-spacing="0">Y</text>
+    </g>
+
+    <!-- Outer Capsule Highlights & Glass Reflection Sheen -->
+    <ellipse cx="256" cy="275" rx="190" ry="6" fill="#ffffff" opacity="0.6"/>
+  </g>
+
+  <!-- Bottom Corner Glows -->
+  <circle cx="70" cy="442" r="30" fill="#22c55e" opacity="0.15" filter="url(#softGlow)"/>
+  <circle cx="442" cy="442" r="30" fill="#22c55e" opacity="0.15" filter="url(#softGlow)"/>
+</svg>
