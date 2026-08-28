@@ -19,7 +19,7 @@ export function resolveAssetUrl(url?: string): string {
   const cleanPath = url.replace(/^\/+/, '');
 
   // Vite injects import.meta.env.BASE_URL based on vite.config.ts base
-  const base = import.meta.env.BASE_URL || './';
+  const base = ((import.meta as any).env?.BASE_URL as string) || './';
 
   if (base.endsWith('/')) {
     return `${base}${cleanPath}`;

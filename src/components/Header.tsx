@@ -15,9 +15,7 @@ import {
   ShieldCheck,
   Plus,
   SlidersHorizontal,
-  Edit3,
-  Users,
-  Mail
+  Edit3
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -25,8 +23,6 @@ interface HeaderProps {
   onSearchChange: (q: string) => void;
   onOpenPromoCodes: () => void;
   onOpenDailyCheckin: () => void;
-  onOpenContacts?: () => void;
-  onOpenGmail?: () => void;
   onToggleTableView: () => void;
   isTableView: boolean;
   onScrollToSection: (sectionId: string) => void;
@@ -42,8 +38,6 @@ export const Header: React.FC<HeaderProps> = ({
   onSearchChange,
   onOpenPromoCodes,
   onOpenDailyCheckin,
-  onOpenContacts,
-  onOpenGmail,
   onToggleTableView,
   isTableView,
   onScrollToSection,
@@ -179,32 +173,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span>Promo Codes</span>
             </button>
 
-            {/* Google Contacts & Refer */}
-            {onOpenContacts && (
-              <button
-                id="header-contacts-btn"
-                onClick={onOpenContacts}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-blue-950/40 hover:bg-blue-900/60 text-blue-300 border border-blue-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                title="Google Contacts & Referrals"
-              >
-                <Users className="w-3.5 h-3.5 text-blue-400" />
-                <span>Contacts</span>
-              </button>
-            )}
-
-            {/* Gmail Mailer & Inbox */}
-            {onOpenGmail && (
-              <button
-                id="header-gmail-btn"
-                onClick={onOpenGmail}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-red-950/40 hover:bg-red-900/60 text-red-300 border border-red-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                title="Gmail Inbox & Email Campaigns"
-              >
-                <Mail className="w-3.5 h-3.5 text-red-400" />
-                <span>Gmail</span>
-              </button>
-            )}
-
             {/* Daily Streak Check-in */}
             <button
               id="header-daily-checkin-btn"
@@ -319,32 +287,6 @@ export const Header: React.FC<HeaderProps> = ({
                 <Flame className="w-4 h-4 text-orange-400" />
                 <span>Daily Check-in</span>
               </button>
-
-              {onOpenContacts && (
-                <button
-                  onClick={() => {
-                    onOpenContacts();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="flex items-center gap-2 p-2.5 rounded-xl bg-blue-950/50 text-blue-300 text-xs font-semibold border border-blue-500/30"
-                >
-                  <Users className="w-4 h-4 text-blue-400" />
-                  <span>Google Contacts</span>
-                </button>
-              )}
-
-              {onOpenGmail && (
-                <button
-                  onClick={() => {
-                    onOpenGmail();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="flex items-center gap-2 p-2.5 rounded-xl bg-red-950/50 text-red-300 text-xs font-semibold border border-red-500/30"
-                >
-                  <Mail className="w-4 h-4 text-red-400" />
-                  <span>Gmail Inbox & Mailer</span>
-                </button>
-              )}
 
               <button
                 onClick={() => {

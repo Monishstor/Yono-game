@@ -63,8 +63,6 @@ interface AdminPanelProps {
   onResetFactory: () => void;
   onCloseAdmin: () => void;
   onLogout: () => void;
-  onOpenContacts?: () => void;
-  onOpenGmail?: () => void;
 }
 
 type AdminTab = 'dashboard' | 'apps' | 'promos' | 'ticker' | 'withdrawals' | 'seo' | 'settings' | 'wordpress';
@@ -84,9 +82,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   onImportAllData,
   onResetFactory,
   onCloseAdmin,
-  onLogout,
-  onOpenContacts,
-  onOpenGmail
+  onLogout
 }) => {
   const [activeTab, setActiveTab] = useState<AdminTab>('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
@@ -358,30 +354,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               <span>+ Add App</span>
             </button>
 
-            {onOpenContacts && (
-              <button
-                id="admin-google-contacts-btn"
-                onClick={onOpenContacts}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-blue-950/40 hover:bg-blue-900/60 text-blue-300 text-xs font-bold border border-blue-500/30 transition-colors cursor-pointer"
-                title="Manage Google Contacts & Referrals"
-              >
-                <Users className="w-4 h-4 text-blue-400" />
-                <span className="hidden sm:inline">Contacts</span>
-              </button>
-            )}
-
-            {onOpenGmail && (
-              <button
-                id="admin-gmail-btn"
-                onClick={onOpenGmail}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-950/40 hover:bg-red-900/60 text-red-300 text-xs font-bold border border-red-500/30 transition-colors cursor-pointer"
-                title="Open Gmail Inbox & Mailer"
-              >
-                <Mail className="w-4 h-4 text-red-400" />
-                <span className="hidden sm:inline">Gmail</span>
-              </button>
-            )}
-
             <button
               id="admin-view-live-site-btn"
               onClick={onCloseAdmin}
@@ -633,24 +605,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     <Gift className="w-5 h-5 text-emerald-400 mb-2" />
                     <div className="font-bold text-sm text-white">Create Promo Code</div>
                     <div className="text-xs text-slate-400 mt-0.5">Add bonus voucher codes for players</div>
-                  </button>
-
-                  <button
-                    onClick={onOpenContacts}
-                    className="p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/10 border border-blue-500/30 hover:border-blue-500 text-left transition-all hover:scale-[1.02] cursor-pointer"
-                  >
-                    <Users className="w-5 h-5 text-blue-400 mb-2" />
-                    <div className="font-bold text-sm text-white">Google Contacts</div>
-                    <div className="text-xs text-slate-400 mt-0.5">Sync & share game referrals via People API</div>
-                  </button>
-
-                  <button
-                    onClick={onOpenGmail}
-                    className="p-4 rounded-2xl bg-gradient-to-br from-red-500/20 to-rose-500/10 border border-red-500/30 hover:border-red-500 text-left transition-all hover:scale-[1.02] cursor-pointer"
-                  >
-                    <Mail className="w-5 h-5 text-red-400 mb-2" />
-                    <div className="font-bold text-sm text-white">Gmail Workspace</div>
-                    <div className="text-xs text-slate-400 mt-0.5">Manage inbox & blast bonus promo emails</div>
                   </button>
 
                   <button
