@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradient (Deep Emerald Green) -->
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0b5e39"/>
+      <stop offset="45%" stop-color="#053e24"/>
+      <stop offset="85%" stop-color="#022414"/>
+      <stop offset="100%" stop-color="#01140b"/>
+    </radialGradient>
+
+    <!-- Center Diamond Tile Gradient -->
+    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e683f"/>
+      <stop offset="50%" stop-color="#084d2d"/>
+      <stop offset="100%" stop-color="#032e1a"/>
+    </linearGradient>
+
+    <!-- 3D "BINGO" Gold Gradient -->
+    <linearGradient id="goldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffde0"/>
+      <stop offset="18%" stop-color="#ffe600"/>
+      <stop offset="60%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+
+    <linearGradient id="goldBevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#ffea75"/>
+      <stop offset="70%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#991b1b"/>
+    </linearGradient>
+
+    <!-- Slot Cylinder White/Silver Reel Gradient -->
+    <linearGradient id="reelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8c9da8"/>
+      <stop offset="10%" stop-color="#e8eef3"/>
+      <stop offset="40%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#d5dee6"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Cylinder Green Bevel Border -->
+    <linearGradient id="reelBorderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="65%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+
+    <!-- Green Ball / Sphere Gradient -->
+    <radialGradient id="greenSphere" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="40%" stop-color="#059669"/>
+      <stop offset="85%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </radialGradient>
+
+    <!-- Deep Drop Shadow -->
+    <filter id="mainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity="0.85"/>
+    </filter>
+
+    <filter id="starGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Base Icon Squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Diamond Quilted Background Grid Lines -->
+  <g opacity="0.25" stroke="#22c55e" stroke-width="1.5" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Green Neon Accent Line -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="6" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Green Border -->
+  <g filter="url(#mainShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#diamondGrad)" stroke="#22c55e" stroke-width="6" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- ================= TOP 3D GOLDEN "BINGO" TEXT ================= -->
+  <g filter="url(#mainShadow)">
+    <!-- 3D Extruded Layers (Warm Amber / Red Orange Depth) -->
+    <text x="256" y="246" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#3e1400" letter-spacing="1">BINGO</text>
+    <text x="256" y="242" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#5a1d00" letter-spacing="1">BINGO</text>
+    <text x="256" y="238" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#782700" letter-spacing="1">BINGO</text>
+    <text x="256" y="234" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#9a3400" letter-spacing="1">BINGO</text>
+    <text x="256" y="230" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#bc4000" letter-spacing="1">BINGO</text>
+    <text x="256" y="226" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#d95400" letter-spacing="1">BINGO</text>
+    <text x="256" y="222" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="#ea580c" letter-spacing="1">BINGO</text>
+    
+    <!-- Gold Border Outline -->
+    <text x="256" y="218" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="url(#goldFace)" stroke="url(#goldBevel)" stroke-width="8" stroke-linejoin="round" letter-spacing="1">BINGO</text>
+
+    <!-- Top Highlight Text Face -->
+    <text x="256" y="218" font-family="'Arial Black', 'Impact', sans-serif" font-size="124" font-weight="900" text-anchor="middle" fill="url(#goldFace)" letter-spacing="1">BINGO</text>
+  </g>
+
+  <!-- Sparkle Star at Top Right of 'O' in BINGO -->
+  <g transform="translate(366, 126)" filter="url(#starGlow)">
+    <polygon points="0,-18 4,-4 18,0 4,4 0,18 -4,4 -18,0 -4,-4" fill="#ffffff"/>
+    <polygon points="0,-10 2,-2 10,0 2,2 0,10 -2,2 -10,0 -2,-2" fill="#fff59d"/>
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+  </g>
+
+  <!-- ================= LOWER SLOT CYLINDER (101 REEL) ================= -->
+  <g filter="url(#mainShadow)" transform="translate(0, 4)">
+    <!-- Outer Cylinder Green Capsule Glow & Base Frame -->
+    <rect x="24" y="258" width="464" height="124" rx="62" fill="#042f1a" stroke="url(#reelBorderGrad)" stroke-width="7"/>
+
+    <!-- Inner Metallic White Reel -->
+    <rect x="30" y="264" width="452" height="112" rx="56" fill="url(#reelGrad)" stroke="#64748b" stroke-width="2"/>
+
+    <!-- 5 Reel Segment Vertical Dividers with 3D Depth -->
+    <!-- Divider 1 (after left Spade) -->
+    <line x1="112" y1="264" x2="112" y2="376" stroke="#475569" stroke-width="4"/>
+    <line x1="114" y1="264" x2="114" y2="376" stroke="#f8fafc" stroke-width="2"/>
+
+    <!-- Divider 2 (after 1) -->
+    <line x1="208" y1="264" x2="208" y2="376" stroke="#475569" stroke-width="4"/>
+    <line x1="210" y1="264" x2="210" y2="376" stroke="#f8fafc" stroke-width="2"/>
+
+    <!-- Divider 3 (after 0) -->
+    <line x1="304" y1="264" x2="304" y2="376" stroke="#475569" stroke-width="4"/>
+    <line x1="306" y1="264" x2="306" y2="376" stroke="#f8fafc" stroke-width="2"/>
+
+    <!-- Divider 4 (after 2nd 1) -->
+    <line x1="400" y1="264" x2="400" y2="376" stroke="#475569" stroke-width="4"/>
+    <line x1="402" y1="264" x2="402" y2="376" stroke="#f8fafc" stroke-width="2"/>
+
+    <!-- Top Metallic Gloss Curvature Line -->
+    <path d="M 50 274 Q 256 268 462 274" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <!-- Bottom Shadow Depth Line -->
+    <path d="M 50 366 Q 256 372 462 366" stroke="#334155" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+    <!-- LEFT SPADE (♠) ICON -->
+    <g transform="translate(71, 320) scale(1.35)">
+      <!-- Spade Symbol -->
+      <path d="M 0,-15 C -4,-7 -11,-1 -11,5 C -11,10 -7,13 -2,13 C 0,13 1,12 2,10 L 2,15 L -2,15 L -3,17 L 3,17 L 2,17 L -2,17 L -1,15 L 0,15 L -1,10 C 0,12 1,13 3,13 C 8,13 12,10 12,5 C 12,-1 5,-7 1,-15 Z" fill="#047857" stroke="#022c22" stroke-width="1.2"/>
+      <!-- Small Stem -->
+      <path d="M -3,8 L 3,8 L 4,14 L -4,14 Z" fill="#047857"/>
+    </g>
+
+    <!-- 1st NUMBER '1' IN GREEN CIRCLE BALL -->
+    <g transform="translate(160, 320)">
+      <!-- Green Sphere Background -->
+      <circle cx="0" cy="0" r="42" fill="url(#greenSphere)" stroke="#022c22" stroke-width="3"/>
+      <!-- Inner Ring Highlight -->
+      <circle cx="0" cy="0" r="39" fill="none" stroke="#6ee7b7" stroke-width="1.5" opacity="0.6"/>
+      <!-- Sphere Top Highlight -->
+      <ellipse cx="-10" cy="-14" rx="14" ry="7" fill="#ffffff" opacity="0.4" transform="rotate(-25 -10 -14)"/>
+      <!-- White Number 1 -->
+      <text x="0" y="16" font-family="'Arial Black', sans-serif" font-size="48" font-weight="900" text-anchor="middle" fill="#ffffff" stroke="#064e3b" stroke-width="2">1</text>
+    </g>
+
+    <!-- 2nd NUMBER '0' IN GREEN CIRCLE BALL -->
+    <g transform="translate(256, 320)">
+      <!-- Green Sphere Background -->
+      <circle cx="0" cy="0" r="42" fill="url(#greenSphere)" stroke="#022c22" stroke-width="3"/>
+      <!-- Inner Ring Highlight -->
+      <circle cx="0" cy="0" r="39" fill="none" stroke="#6ee7b7" stroke-width="1.5" opacity="0.6"/>
+      <!-- Sphere Top Highlight -->
+      <ellipse cx="-10" cy="-14" rx="14" ry="7" fill="#ffffff" opacity="0.4" transform="rotate(-25 -10 -14)"/>
+      <!-- White Number 0 -->
+      <text x="0" y="16" font-family="'Arial Black', sans-serif" font-size="48" font-weight="900" text-anchor="middle" fill="#ffffff" stroke="#064e3b" stroke-width="2">0</text>
+    </g>
+
+    <!-- 3rd NUMBER '1' IN GREEN CIRCLE BALL -->
+    <g transform="translate(352, 320)">
+      <!-- Green Sphere Background -->
+      <circle cx="0" cy="0" r="42" fill="url(#greenSphere)" stroke="#022c22" stroke-width="3"/>
+      <!-- Inner Ring Highlight -->
+      <circle cx="0" cy="0" r="39" fill="none" stroke="#6ee7b7" stroke-width="1.5" opacity="0.6"/>
+      <!-- Sphere Top Highlight -->
+      <ellipse cx="-10" cy="-14" rx="14" ry="7" fill="#ffffff" opacity="0.4" transform="rotate(-25 -10 -14)"/>
+      <!-- White Number 1 -->
+      <text x="0" y="16" font-family="'Arial Black', sans-serif" font-size="48" font-weight="900" text-anchor="middle" fill="#ffffff" stroke="#064e3b" stroke-width="2">1</text>
+    </g>
+
+    <!-- RIGHT SPADE (♠) ICON -->
+    <g transform="translate(441, 320) scale(1.35)">
+      <!-- Spade Symbol -->
+      <path d="M 0,-15 C -4,-7 -11,-1 -11,5 C -11,10 -7,13 -2,13 C 0,13 1,12 2,10 L 2,15 L -2,15 L -3,17 L 3,17 L 2,17 L -2,17 L -1,15 L 0,15 L -1,10 C 0,12 1,13 3,13 C 8,13 12,10 12,5 C 12,-1 5,-7 1,-15 Z" fill="#047857" stroke="#022c22" stroke-width="1.2"/>
+      <!-- Small Stem -->
+      <path d="M -3,8 L 3,8 L 4,14 L -4,14 Z" fill="#047857"/>
+    </g>
+  </g>
+
+  <!-- Bottom Corner Subtle Glow -->
+  <circle cx="256" cy="490" r="140" fill="#22c55e" opacity="0.12" filter="url(#mainShadow)"/>
+</svg>
