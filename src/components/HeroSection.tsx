@@ -36,60 +36,60 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Main Headline & Value Props */}
         <div className="text-center max-w-4xl mx-auto space-y-4 mb-8">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 via-orange-500/15 to-red-500/15 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-bold shadow-inner">
-            <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-            <span>ALL NEW YONO APPS STORE 2026</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-emerald-400 font-mono">UPDATED TODAY</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-black shadow-lg shadow-amber-500/10">
+            <Sparkles className="w-4 h-4 text-amber-400 animate-spin-slow" />
+            <span className="tracking-wide">ALL NEW YONO APPS STORE 2026</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="text-emerald-400 font-mono font-bold">UPDATED TODAY</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white font-['Outfit',sans-serif] tracking-tight leading-tight sm:leading-none">
-            Download All <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">New Yono Games</span> & Rummy APK
+            Download All <span className="gold-shimmer-text">New Yono Games</span> & Rummy APK
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Get instant <strong className="text-amber-400">₹51 to ₹1500 Sign-Up Bonus</strong> on OTP verification. Enjoy <strong className="text-emerald-400">₹100 Minimum UPI Withdrawals</strong> within 2 minutes and daily VIP free cash rewards.
+            Get instant <strong className="text-amber-400 font-bold bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/30">₹51 to ₹1500 Sign-Up Bonus</strong> on OTP verification. Enjoy <strong className="text-emerald-400 font-bold bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/30">₹100 Minimum UPI Withdrawals</strong> within 2 minutes and daily VIP free cash rewards.
           </p>
 
-          {/* Quick Value Badges */}
+          {/* Quick Psychological Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 pt-2">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-semibold text-slate-200">
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-xs font-bold text-emerald-300 shadow-sm">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>100% Virus-Free APKs</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-semibold text-slate-200">
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-950/40 border border-amber-500/40 text-xs font-bold text-amber-300 shadow-sm">
               <Zap className="w-4 h-4 text-amber-400" />
               <span>Instant 2-Min UPI Payout</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-semibold text-slate-200">
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-sky-950/40 border border-sky-500/40 text-xs font-bold text-sky-300 shadow-sm">
               <TrendingUp className="w-4 h-4 text-sky-400" />
               <span>30%-40% Lifetime Refer Comm</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs font-bold text-amber-300">
-              <Crown className="w-4 h-4 text-amber-400" />
-              <span>Direct Working APK Links</span>
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-purple-950/40 border border-purple-500/40 text-xs font-bold text-purple-300 shadow-sm">
+              <Crown className="w-4 h-4 text-purple-400" />
+              <span>Direct Official APK Links</span>
             </div>
           </div>
         </div>
 
-        {/* Global Live Statistics Strip */}
-        <div className="rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-slate-800 p-4 sm:p-5 shadow-lg">
+        {/* Global Live Statistics Strip with Color Psychology */}
+        <div className="rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900 border border-amber-500/20 p-4 sm:p-5 shadow-xl shadow-black/40">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
             <div className="pt-2 md:pt-0">
               <div className="text-xl sm:text-2xl font-black text-amber-400 font-['Outfit',sans-serif]">Official</div>
-              <div className="text-xs text-slate-400 font-medium">100% Virus-Free APKs</div>
+              <div className="text-xs text-slate-400 font-semibold mt-0.5">100% Virus-Free APKs</div>
             </div>
             <div className="pt-2 md:pt-0">
               <div className="text-xl sm:text-2xl font-black text-emerald-400 font-['Outfit',sans-serif]">₹50 + ₹100</div>
-              <div className="text-xs text-slate-400 font-medium">Free Welcome & Login</div>
+              <div className="text-xs text-slate-400 font-semibold mt-0.5">Free Welcome & Login</div>
             </div>
             <div className="pt-2 md:pt-0">
-              <div className="text-xl sm:text-2xl font-black text-sky-400 font-['Outfit',sans-serif]">₹100</div>
-              <div className="text-xs text-slate-400 font-medium">Instant UPI Withdrawal</div>
+              <div className="text-xl sm:text-2xl font-black text-sky-400 font-['Outfit',sans-serif]">₹100 Min</div>
+              <div className="text-xs text-slate-400 font-semibold mt-0.5">Instant UPI Withdrawal</div>
             </div>
             <div className="pt-2 md:pt-0">
               <div className="text-xl sm:text-2xl font-black text-purple-400 font-['Outfit',sans-serif]">RRTN8BM3</div>
-              <div className="text-xs text-slate-400 font-medium">VIP Code Auto-Applied</div>
+              <div className="text-xs text-slate-400 font-semibold mt-0.5">VIP Code Auto-Applied</div>
             </div>
           </div>
         </div>

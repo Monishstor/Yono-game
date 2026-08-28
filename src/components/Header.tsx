@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { resolveAssetUrl } from '../lib/assetHelper';
+import { useTheme } from '../lib/theme';
 import { 
   Sparkles, 
   Search, 
@@ -15,7 +16,12 @@ import {
   ShieldCheck,
   Plus,
   SlidersHorizontal,
-  Edit3
+  Edit3,
+  Sun,
+  Moon,
+  ArrowRightLeft,
+  ChevronDown,
+  ArrowRight
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -48,9 +54,10 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleAdminMode
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, isLight, toggleTheme } = useTheme();
 
   return (
-    <header id="main-header" className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 shadow-xl">
+    <header id="main-header" className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 shadow-xl transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
           
@@ -119,7 +126,6 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden md:flex items-center gap-2 lg:gap-3">
             
             {/* If Admin is Logged in, show Admin Dashboard & Edit Mode */}
-            {/* Admin Controls (Only visible if logged in as Admin) */}
             {isAdminLoggedIn && (
               <>
                 <button
@@ -147,6 +153,32 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </>
             )}
+
+            {/* Light / Dark Mode Toggle with Arrow */}
+            <button
+              id="header-theme-toggle-btn"
+              onClick={toggleTheme}
+              className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all border shadow-sm cursor-pointer hover:scale-105 active:scale-95 ${
+                isLight
+                  ? 'bg-amber-50 hover:bg-amber-100/80 text-amber-900 border-amber-300/80 shadow-amber-500/10'
+                  : 'bg-slate-900 hover:bg-slate-800 text-amber-300 border-amber-500/30 shadow-black/40'
+              }`}
+              title={isLight ? "Switch to Dark Mode (रात का डार्क मोड)" : "Switch to Light Mode (दिन का लाइट मोड)"}
+            >
+              {isLight ? (
+                <>
+                  <Sun className="w-4 h-4 text-amber-600 fill-amber-500 animate-spin-slow" />
+                  <span className="font-extrabold text-slate-900">Light Mode</span>
+                  <ArrowRightLeft className="w-3.5 h-3.5 text-amber-600 ml-0.5" />
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4 text-amber-400 fill-amber-400/40" />
+                  <span className="font-extrabold text-amber-300">Dark Mode</span>
+                  <ArrowRightLeft className="w-3.5 h-3.5 text-amber-400 ml-0.5" />
+                </>
+              )}
+            </button>
 
             {/* View Toggle */}
             <button
@@ -185,7 +217,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* Mobile Menu & Quick Actions */}
+          {/* Mobile Menu & Theme Arrow Quick Actions */}
           <div className="flex md:hidden items-center gap-1.5">
             {isAdminLoggedIn && (
               <button
@@ -199,13 +231,48 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
+            {/* Mobile Direct Light/Dark Mode Switcher with Arrow */}
+            <button
+              id="mobile-theme-toggle-btn"
+              onClick={toggleTheme}
+              className={`p-2 px-2.5 rounded-xl border flex items-center gap-1.5 font-bold text-xs shadow-sm transition-all active:scale-95 ${
+                isLight
+                  ? 'bg-amber-100 text-amber-900 border-amber-400'
+                  : 'bg-slate-900 text-amber-300 border-amber-500/40'
+              }`}
+              aria-label="Toggle Light and Dark Theme"
+              title={isLight ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            >
+              {isLight ? (
+                <>
+                  <Sun className="w-4 h-4 text-amber-600 fill-amber-500" />
+                  <span className="text-[11px] font-extrabold text-slate-900">Light</span>
+                  <ArrowRightLeft className="w-3 h-3 text-amber-600" />
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4 text-amber-400 fill-amber-400/40" />
+                  <span className="text-[11px] font-extrabold text-amber-300">Dark</span>
+                  <ArrowRightLeft className="w-3 h-3 text-amber-400" />
+                </>
+              )}
+            </button>
+
+            {/* Mobile Menu Toggle with Arrow indicator (replaces old plain 3-dots) */}
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200"
-              aria-label="Toggle menu"
+              className="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 flex items-center gap-1"
+              aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5 text-amber-400" />
+              ) : (
+                <div className="flex items-center gap-1">
+                  <ChevronDown className="w-4 h-4 text-amber-400" />
+                  <Menu className="w-4 h-4 text-slate-300" />
+                </div>
+              )}
             </button>
           </div>
         </div>
@@ -227,7 +294,34 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div id="mobile-nav-dropdown" className="md:hidden py-4 border-t border-slate-800 space-y-2 bg-slate-950/95 backdrop-blur-xl">
+          <div id="mobile-nav-dropdown" className="md:hidden py-4 border-t border-slate-800 space-y-3 bg-slate-950/95 backdrop-blur-xl">
+            
+            {/* Quick Mode Toggle Bar in Mobile Menu */}
+            <div className="p-3 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {isLight ? (
+                  <Sun className="w-5 h-5 text-amber-500 fill-amber-400" />
+                ) : (
+                  <Moon className="w-5 h-5 text-amber-400 fill-amber-400/40" />
+                )}
+                <div>
+                  <div className="text-xs font-bold text-white">
+                    {isLight ? '☀️ Light Mode Active' : '🌙 Dark Mode Active'}
+                  </div>
+                  <div className="text-[10px] text-slate-400">
+                    {isLight ? 'Tap Arrow to switch to Dark Mode' : 'Tap Arrow to switch to Light Mode'}
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-md cursor-pointer transition-all active:scale-95"
+              >
+                <span>{isLight ? 'Turn Dark' : 'Turn Light'}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
             <div className="grid grid-cols-2 gap-2">
               {isAdminLoggedIn && (
                 <>
@@ -315,3 +409,4 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
+

@@ -35,9 +35,9 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
   return (
     <div
       id={`app-card-${app.id}`}
-      className="group relative rounded-2xl bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-slate-950 border border-slate-800 hover:border-amber-500/50 p-4 sm:p-5 shadow-lg hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+      className="group relative rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-900/80 to-slate-950 border border-slate-800/90 hover:border-amber-500/60 p-4 sm:p-5 shadow-lg hover:shadow-2xl hover:shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
     >
-      {/* Top Badges */}
+      {/* Top Badges (Urgent & High Perceived Value) */}
       <div className="absolute -top-2.5 right-4 z-10 flex items-center gap-1.5">
         {onEdit && (
           <button
@@ -53,7 +53,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
           </button>
         )}
         {app.badge && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-black bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-black bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 text-slate-950 shadow-md ring-1 ring-amber-400/50">
             {app.badge}
           </span>
         )}
@@ -67,7 +67,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5">
-              <h3 className="text-base font-bold text-white truncate font-['Outfit',sans-serif] group-hover:text-amber-300 transition-colors">
+              <h3 className="text-base font-black text-white truncate font-['Outfit',sans-serif] group-hover:text-amber-300 transition-colors">
                 {app.name}
               </h3>
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -81,34 +81,34 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
 
             {/* Rating & Downloads */}
             <div className="flex items-center gap-2 mt-1">
-              <div className="flex items-center text-amber-400 text-xs font-bold bg-amber-400/10 px-1.5 py-0.2 rounded">
+              <div className="flex items-center text-amber-400 text-xs font-black bg-amber-400/15 border border-amber-400/30 px-1.5 py-0.5 rounded">
                 <Star className="w-3 h-3 fill-amber-400 mr-1" />
                 <span>{app.rating}</span>
               </div>
-              <span className="text-slate-400 text-[11px]">{app.downloads}</span>
+              <span className="text-slate-400 text-[11px] font-medium">{app.downloads}</span>
             </div>
           </div>
         </div>
 
-        {/* Bonus & Min Withdrawal Highlights Strip */}
-        <div className="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 mb-3 text-xs">
+        {/* Bonus & Min Withdrawal Highlights Strip (Color Psychology: Amber Wealth + Emerald Cash) */}
+        <div className="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 mb-3 text-xs">
           <div className="space-y-0.5">
-            <span className="text-slate-400 block text-[10px] uppercase font-semibold tracking-wider">Free Bonus</span>
-            <span className="font-extrabold text-amber-400 text-sm flex items-center gap-1">
+            <span className="text-amber-400/90 block text-[10px] uppercase font-bold tracking-wider">Free Bonus</span>
+            <span className="font-black text-amber-400 text-sm sm:text-base flex items-center gap-1">
               <span>₹{app.signupBonus}</span>
               {app.maxSignupBonus && (
-                <span className="text-[10px] text-amber-300/80 font-normal">
+                <span className="text-[11px] text-amber-300 font-semibold">
                   - ₹{app.maxSignupBonus}
                 </span>
               )}
             </span>
           </div>
 
-          <div className="space-y-0.5">
-            <span className="text-slate-400 block text-[10px] uppercase font-semibold tracking-wider">Min Cashout</span>
-            <span className="font-extrabold text-emerald-400 text-sm flex items-center gap-1">
+          <div className="space-y-0.5 border-l border-slate-800 pl-2">
+            <span className="text-emerald-400/90 block text-[10px] uppercase font-bold tracking-wider">Min Cashout</span>
+            <span className="font-black text-emerald-400 text-sm sm:text-base flex items-center gap-1">
               <span>₹{app.minWithdrawal}</span>
-              <span className="text-[10px] text-emerald-300/80 font-normal">UPI/Bank</span>
+              <span className="text-[10px] text-emerald-300 font-normal">UPI/Bank</span>
             </span>
           </div>
         </div>
@@ -116,7 +116,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
         {/* Included Game Tags */}
         <div className="flex flex-wrap gap-1.5 mb-3.5">
           {app.gamesList.slice(0, 3).map((game) => (
-            <span key={game} className="text-[11px] px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 font-medium">
+            <span key={game} className="text-[11px] px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 font-medium border border-slate-700/50">
               {game}
             </span>
           ))}
@@ -144,12 +144,12 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
         </div>
       </div>
 
-      {/* Action Footer */}
+      {/* Action Footer with High-Conversion Gold Button */}
       <div className="pt-2 border-t border-slate-800/80 flex items-center gap-2">
         <button
           id={`card-download-btn-${app.id}`}
           onClick={() => onDownload(app)}
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:to-yellow-400 text-slate-950 shadow-md shadow-amber-500/15 transition-all hover:scale-[1.02] active:scale-98 cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm btn-gold-action transition-all hover:scale-[1.02] active:scale-98 cursor-pointer"
         >
           <Download className="w-4 h-4 stroke-[2.5]" />
           <span>Download APK</span>
@@ -158,7 +158,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
         <button
           id={`card-details-btn-${app.id}`}
           onClick={() => onViewDetails(app)}
-          className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-xs font-semibold cursor-pointer"
+          className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-xs font-semibold cursor-pointer border border-slate-700/60"
           title="Full App Details & Proof"
         >
           <ArrowUpRight className="w-4 h-4" />

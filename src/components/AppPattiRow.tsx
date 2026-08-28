@@ -189,7 +189,7 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
               e.stopPropagation();
               onDownload(app);
             }}
-            className="flex-1 md:flex-none flex items-center justify-center gap-2 py-2.5 px-5 sm:px-6 rounded-xl font-black text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 hover:from-amber-400 hover:to-yellow-300 text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer uppercase tracking-wider"
+            className="flex-1 md:flex-none flex items-center justify-center gap-2 py-2.5 px-5 sm:px-6 rounded-xl font-black text-xs sm:text-sm btn-gold-action transition-all hover:scale-105 active:scale-95 cursor-pointer uppercase tracking-wider"
           >
             <Download className="w-4 h-4 stroke-[3]" />
             <span>DOWNLOAD</span>
