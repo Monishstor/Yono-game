@@ -20,6 +20,7 @@ import { ResponsibleGamingBanner } from './components/ResponsibleGamingBanner';
 import { DailyCheckinModal } from './components/DailyCheckinModal';
 import { SeoSchema } from './components/SeoSchema';
 import { FloatingTelegramBar } from './components/FloatingTelegramBar';
+import { GameLandingPage } from './components/GameLandingPage';
 import { useTheme } from './lib/theme';
 import { Sun, Moon, ArrowRightLeft } from 'lucide-react';
 import { db, handleFirestoreError, OperationType, testConnection } from './lib/firebase';
@@ -59,6 +60,19 @@ const DEFAULT_SETTINGS: SiteSettings = {
 };
 
 export default function App() {
+  // Helper to find an app by ID or slug
+  const findAppBySlugOrId = (slugOrId: string, list: YonoApp[]) => {
+    if (!slugOrId) return null;
+    const clean = slugOrId.toLowerCase().trim();
+    return list.find((a) => 
+      a.id.toLowerCase() === clean ||
+      a.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === clean ||
+      a.id.replace(/-vip-official|-official|-vip/g, '') === clean ||
+      clean.includes(a.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')) ||
+      a.name.toLowerCase().includes(clean.replace(/-/g, ' '))
+    ) || null;
+  };
+
   // 1. Current Route / View detection from URL (#admin, ?admin, ?wp_admin, etc.)
   const [currentHash, setCurrentHash] = useState<string>(() => {
     if (typeof window !== 'undefined') {
@@ -70,13 +84,21 @@ export default function App() {
     return '#/';
   });
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentHash(window.location.hash || '#/');
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  // Programmatic Game Landing Page State (e.g. ?app=spin-gold-vip-official or /#app-xyz)
+  const [activeLandingApp, setActiveLandingApp] = useState<YonoApp | null>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const appParam = params.get('app') || params.get('game');
+      if (appParam) {
+        return findAppBySlugOrId(appParam, YONO_APPS);
+      }
+      if (window.location.hash.startsWith('#/app/') || window.location.hash.startsWith('#app-')) {
+        const hashSlug = window.location.hash.replace('#/app/', '').replace('#app-', '');
+        return findAppBySlugOrId(hashSlug, YONO_APPS);
+      }
+    }
+    return null;
+  });
 
   // 2. Apps Dataset (Hydrated with real Yono Games apps)
   const [apps, setApps] = useState<YonoApp[]>(() => {
@@ -101,6 +123,41 @@ export default function App() {
     localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(YONO_APPS));
     return YONO_APPS;
   });
+
+  useEffect(() => {
+    const handleUrlChange = () => {
+      if (typeof window === 'undefined') return;
+      setCurrentHash(window.location.hash || '#/');
+
+      const params = new URLSearchParams(window.location.search);
+      const appParam = params.get('app') || params.get('game');
+      if (appParam) {
+        const found = findAppBySlugOrId(appParam, apps);
+        if (found) {
+          setActiveLandingApp(found);
+          return;
+        }
+      }
+      if (window.location.hash.startsWith('#/app/') || window.location.hash.startsWith('#app-')) {
+        const hashSlug = window.location.hash.replace('#/app/', '').replace('#app-', '');
+        const found = findAppBySlugOrId(hashSlug, apps);
+        if (found) {
+          setActiveLandingApp(found);
+          return;
+        }
+      }
+      if (!appParam && !window.location.hash.includes('app-') && !window.location.hash.startsWith('#/app/')) {
+        setActiveLandingApp(null);
+      }
+    };
+
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
+  }, [apps]);
 
   // 3. Promo Codes
   const [promoCodes, setPromoCodes] = useState<PromoCode[]>(() => {
@@ -410,8 +467,25 @@ export default function App() {
     window.open(targetUrl, '_blank');
   };
 
+  const handleOpenLandingPage = (app: YonoApp) => {
+    setActiveLandingApp(app);
+    if (typeof window !== 'undefined') {
+      const newUrl = `${window.location.pathname}?app=${app.id}`;
+      window.history.pushState({ appId: app.id }, '', newUrl);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleBackToHome = () => {
+    setActiveLandingApp(null);
+    if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', window.location.pathname);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleViewDetails = (app: YonoApp) => {
-    setSelectedDetailApp(app);
+    handleOpenLandingPage(app);
   };
 
   const handleResetFilters = () => {
@@ -556,8 +630,8 @@ export default function App() {
   // ========================================================
   return (
     <div className={`min-h-screen ${isLight ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'} flex flex-col selection:bg-amber-500 selection:text-slate-950 font-['Plus_Jakarta_Sans',sans-serif] transition-colors duration-300`}>
-      {/* Automated Programmatic Google SEO & Schema.org JSON-LD Injector */}
-      <SeoSchema apps={apps} siteTitle={siteSettings.siteTitle} />
+      {/* Automated Programmatic Google SEO & Schema.org JSON-LD Injector (Supports Single-App & Full-List) */}
+      <SeoSchema apps={apps} activeApp={activeLandingApp} siteSettings={siteSettings} siteTitle={siteSettings.siteTitle} />
 
       {/* 18+ Age & Responsible Gaming Legal Compliance Banner */}
       <ResponsibleGamingBanner showAgeDisclaimer={siteSettings.showAgeDisclaimer} />
@@ -587,35 +661,50 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1">
-        {/* All Yono Apps Catalog Section */}
-        <section id="all-apps-section" className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {isAdminLoggedIn && (
-            <div className="flex items-center justify-end mb-4">
-              <button
-                id="catalog-admin-add-btn"
-                onClick={handleAddNewApp}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-xs shadow-md transition-all cursor-pointer"
-              >
-                <span>+ Add New Game (नया ऐप जोड़ें)</span>
-              </button>
-            </div>
-          )}
-
-          {/* Clean App Grid */}
-          <AppGrid
-            apps={filteredApps}
+        {activeLandingApp ? (
+          /* PROGRAMMATIC GAME-SPECIFIC SEO LANDING PAGE (Google Rich Result Feed & High-Converting UX) */
+          <GameLandingPage
+            app={activeLandingApp}
+            allApps={apps}
+            siteSettings={siteSettings}
+            onBackToHome={handleBackToHome}
+            onSelectApp={handleOpenLandingPage}
             onDownload={handleDownloadClick}
-            onViewDetails={handleViewDetails}
-            onResetFilters={handleResetFilters}
-            onEdit={isAdminLoggedIn && isAdminMode ? handleOpenEditApp : undefined}
           />
-        </section>
+        ) : (
+          /* ALL YONO GAMES CATALOG VIEW */
+          <>
+            {/* All Yono Apps Catalog Section */}
+            <section id="all-apps-section" className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {isAdminLoggedIn && (
+                <div className="flex items-center justify-end mb-4">
+                  <button
+                    id="catalog-admin-add-btn"
+                    onClick={handleAddNewApp}
+                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-xs shadow-md transition-all cursor-pointer"
+                  >
+                    <span>+ Add New Game (नया ऐप जोड़ें)</span>
+                  </button>
+                </div>
+              )}
 
-        {/* 4-Step Installation & Troubleshooting Guide */}
-        <InstallGuide />
+              {/* Clean App Grid */}
+              <AppGrid
+                apps={filteredApps}
+                onDownload={handleDownloadClick}
+                onViewDetails={handleViewDetails}
+                onResetFilters={handleResetFilters}
+                onEdit={isAdminLoggedIn && isAdminMode ? handleOpenEditApp : undefined}
+              />
+            </section>
 
-        {/* FAQ Section */}
-        <FaqSection />
+            {/* 4-Step Installation & Troubleshooting Guide */}
+            <InstallGuide />
+
+            {/* FAQ Section */}
+            <FaqSection />
+          </>
+        )}
       </main>
 
       {/* Real-time Live Withdrawal Toasts */}
