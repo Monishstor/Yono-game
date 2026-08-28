@@ -600,6 +600,7 @@ export default function App() {
         onAddNewApp={handleAddNewApp}
         onEditApp={handleOpenEditApp}
         onDeleteApp={handleDeleteApp}
+        onUpdateApps={saveAppsToStorage}
         onSavePromoCodes={handleSavePromoCodes}
         onSaveSiteSettings={handleSaveSiteSettings}
         onSaveWithdrawals={handleSaveWithdrawals}

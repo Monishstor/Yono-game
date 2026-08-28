@@ -45,6 +45,7 @@ import {
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 import { WordPressIntegration } from './WordPressIntegration';
+import { AiHealthMonitor } from './AiHealthMonitor';
 import { openGoogleFilePicker } from '../lib/googlePicker';
 
 interface AdminPanelProps {
@@ -55,6 +56,7 @@ interface AdminPanelProps {
   onAddNewApp: () => void;
   onEditApp: (app: YonoApp) => void;
   onDeleteApp: (appId: string) => void;
+  onUpdateApps?: (apps: YonoApp[]) => void;
   onSavePromoCodes: (promos: PromoCode[]) => void;
   onSaveSiteSettings: (settings: SiteSettings) => void;
   onSaveWithdrawals: (records: WithdrawalRecord[]) => void;
@@ -65,7 +67,7 @@ interface AdminPanelProps {
   onLogout: () => void;
 }
 
-type AdminTab = 'dashboard' | 'apps' | 'promos' | 'ticker' | 'withdrawals' | 'seo' | 'settings' | 'wordpress';
+type AdminTab = 'dashboard' | 'apps' | 'health' | 'promos' | 'ticker' | 'withdrawals' | 'seo' | 'settings' | 'wordpress';
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({
   apps,
@@ -75,6 +77,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   onAddNewApp,
   onEditApp,
   onDeleteApp,
+  onUpdateApps,
   onSavePromoCodes,
   onSaveSiteSettings,
   onSaveWithdrawals,
@@ -418,6 +421,23 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 {customAppsCount} Custom
               </span>
             )}
+          </button>
+
+          <button
+            onClick={() => setActiveTab('health')}
+            className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold transition-all ${
+              activeTab === 'health'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                : 'bg-indigo-950/30 text-indigo-300 hover:bg-indigo-900/50 hover:text-white border border-indigo-500/30'
+            }`}
+          >
+            <div className="flex items-center gap-3">
+              <Sparkles className="w-4 h-4 text-indigo-400" />
+              <span className="font-extrabold">AI Health & Self-Healing</span>
+            </div>
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${activeTab === 'health' ? 'bg-slate-950/40 text-white font-bold' : 'bg-emerald-500/20 text-emerald-300 font-bold'}`}>
+              Auto-Fix
+            </span>
           </button>
 
           <button
@@ -1868,6 +1888,21 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
 
             </div>
+          )}
+
+          {/* ========================================================
+              TAB 3: AI AUTO-DIAGNOSTICS & SELF-HEALING ENGINE
+          ======================================================== */}
+          {activeTab === 'health' && (
+            <AiHealthMonitor
+              apps={apps}
+              siteSettings={siteSettings}
+              promoCodes={promoCodes}
+              onUpdateApps={(updatedApps) => {
+                if (onUpdateApps) onUpdateApps(updatedApps);
+              }}
+              onEditApp={onEditApp}
+            />
           )}
 
           {/* ========================================================

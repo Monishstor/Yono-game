@@ -74,10 +74,14 @@ export interface TickerNotice {
 export interface SiteSettings {
   siteTitle: string;
   metaDescription?: string;
+  siteDescription?: string;
   metaKeywords?: string;
   canonicalUrl?: string;
   siteAuthor?: string;
+  authorName?: string;
   googleSiteVerification?: string;
+  googleVerificationCode?: string;
+  ogImage?: string;
   robotsDirective?: string;
   telegramLink: string;
   telegramSubscribers: string;

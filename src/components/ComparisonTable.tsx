@@ -15,17 +15,17 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
   onViewDetails
 }) => {
   return (
-    <div id="yono-comparison-table-wrapper" className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/90 shadow-2xl">
-      <div className="p-4 sm:p-5 border-b border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-slate-950/60">
+    <div id="yono-comparison-table-wrapper" className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 shadow-xl dark:shadow-2xl">
+      <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-slate-50 dark:bg-slate-950/60">
         <div>
-          <h3 className="text-base sm:text-lg font-bold text-white font-['Outfit',sans-serif]">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-['Outfit',sans-serif]">
             All Yono Games Bonus & Withdrawal Comparison Table 2026
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Compare sign-up bonuses, minimum cashout limits, and APK sizes across {apps.length} verified apps.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+        <div className="flex items-center gap-2 text-xs text-emerald-800 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-500/20">
           <ShieldCheck className="w-3.5 h-3.5" />
           <span>100% Instant Payout Tested</span>
         </div>
@@ -34,7 +34,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-950 text-slate-400 font-bold uppercase tracking-wider text-[11px]">
+            <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-400 font-bold uppercase tracking-wider text-[11px]">
               <th className="py-3.5 px-4">App Name</th>
               <th className="py-3.5 px-4">Sign Up Bonus</th>
               <th className="py-3.5 px-4">Min Withdrawal</th>
@@ -44,12 +44,12 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
               <th className="py-3.5 px-4 text-right">Download Link</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/80">
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80">
             {apps.map((app, index) => (
               <tr 
                 key={app.id}
                 id={`table-row-${app.id}`}
-                className="hover:bg-slate-800/50 transition-colors group"
+                className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
               >
                 {/* App Name & Icon */}
                 <td className="py-3.5 px-4">
@@ -59,17 +59,17 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                       <div className="flex items-center gap-1.5">
                         <button
                           onClick={() => onViewDetails(app)}
-                          className="font-bold text-white group-hover:text-amber-400 transition-colors text-left cursor-pointer"
+                          className="font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors text-left cursor-pointer"
                         >
                           {app.name}
                         </button>
                         {app.badge && (
-                          <span className="hidden xl:inline-flex text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                          <span className="hidden xl:inline-flex text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/30">
                             {app.badge}
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-slate-400 font-mono block">
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono block">
                         {app.version}
                       </span>
                     </div>
@@ -77,39 +77,39 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                 </td>
 
                 {/* Sign up Bonus */}
-                <td className="py-3.5 px-4 font-mono font-bold text-amber-400">
+                <td className="py-3.5 px-4 font-mono font-bold text-amber-700 dark:text-amber-400">
                   <span>₹{app.signupBonus}</span>
                   {app.maxSignupBonus && (
-                    <span className="text-[11px] text-slate-400 font-normal block sm:inline sm:ml-1">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 font-normal block sm:inline sm:ml-1">
                       (Up to ₹{app.maxSignupBonus})
                     </span>
                   )}
                 </td>
 
                 {/* Min Withdrawal */}
-                <td className="py-3.5 px-4 font-mono font-bold text-emerald-400">
+                <td className="py-3.5 px-4 font-mono font-bold text-emerald-700 dark:text-emerald-400">
                   <span>₹{app.minWithdrawal}</span>
-                  <span className="text-[10px] text-slate-400 font-normal block">UPI / Bank</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal block">UPI / Bank</span>
                 </td>
 
                 {/* Refer Bonus */}
-                <td className="py-3.5 px-4 text-slate-300 hidden md:table-cell text-xs">
-                  <span className="font-bold text-amber-300">₹{app.referBonus}</span> + {app.referCommission}
+                <td className="py-3.5 px-4 text-slate-700 dark:text-slate-300 hidden md:table-cell text-xs">
+                  <span className="font-bold text-amber-800 dark:text-amber-300">₹{app.referBonus}</span> + {app.referCommission}
                 </td>
 
                 {/* Rating & Size */}
                 <td className="py-3.5 px-4 hidden lg:table-cell">
-                  <div className="flex items-center gap-1 text-amber-400 text-xs font-bold">
+                  <div className="flex items-center gap-1 text-amber-600 dark:text-amber-400 text-xs font-bold">
                     <Star className="w-3.5 h-3.5 fill-amber-400" />
                     <span>{app.rating}</span>
-                    <span className="text-slate-500 font-normal ml-1 font-mono text-[11px]">({app.apkSize})</span>
+                    <span className="text-slate-500 dark:text-slate-500 font-normal ml-1 font-mono text-[11px]">({app.apkSize})</span>
                   </div>
                 </td>
 
                 {/* Payout Speed */}
                 <td className="py-3.5 px-4 hidden sm:table-cell">
-                  <div className="flex items-center gap-1 text-slate-300 text-xs font-medium">
-                    <Zap className="w-3.5 h-3.5 text-amber-400" />
+                  <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300 text-xs font-medium">
+                    <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                     <span>{app.withdrawalSpeed}</span>
                   </div>
                 </td>
@@ -127,7 +127,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                     </button>
                     <button
                       onClick={() => onViewDetails(app)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white"
+                      className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white"
                       title="View Details"
                     >
                       <ArrowUpRight className="w-3.5 h-3.5" />

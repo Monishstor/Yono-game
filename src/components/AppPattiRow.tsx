@@ -56,14 +56,14 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
     <div
       id={`app-patti-${app.id}`}
       onClick={handleRowClick}
-      className={`group relative w-full rounded-2xl bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-950/95 border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl cursor-pointer p-3 sm:p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 ${
+      className={`group relative w-full rounded-2xl bg-white dark:bg-slate-900 shadow-sm border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl cursor-pointer p-3 sm:p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 ${
         isTop1
           ? 'border-amber-500/60 shadow-amber-500/10 ring-1 ring-amber-500/30'
           : isTop2
-          ? 'border-slate-400/50 shadow-slate-400/5'
+          ? 'border-slate-300 dark:border-slate-400/50'
           : isTop3
-          ? 'border-orange-500/40 shadow-orange-500/5'
-          : 'border-slate-800 hover:border-amber-500/40'
+          ? 'border-orange-300 dark:border-orange-500/40'
+          : 'border-slate-200 dark:border-slate-800 hover:border-amber-500/60'
       }`}
     >
       {/* Left Column: Rank + App Icon + Main Info */}
@@ -76,15 +76,15 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
               <Crown className="w-4 h-4" />
             </div>
           ) : isTop2 ? (
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-slate-300 to-slate-100 text-slate-950 flex items-center justify-center font-black text-xs shadow-md">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-slate-200 to-slate-100 dark:from-slate-400 dark:to-slate-200 text-slate-900 flex items-center justify-center font-black text-xs shadow-sm border border-slate-300 dark:border-slate-500">
               <Award className="w-4 h-4" />
             </div>
           ) : isTop3 ? (
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-600 text-white flex items-center justify-center font-black text-xs shadow-md">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-500 text-white flex items-center justify-center font-black text-xs shadow-md">
               <Flame className="w-4 h-4" />
             </div>
           ) : (
-            <div className="w-7 h-7 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-400 flex items-center justify-center font-black text-xs">
+            <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center font-black text-xs">
               #{rank}
             </div>
           )}
@@ -98,14 +98,14 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
         {/* App Title, Bonus & Tags */}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <h3 className="text-sm sm:text-base font-black text-white truncate font-['Outfit',sans-serif] group-hover:text-amber-300 transition-colors">
+            <h3 className="text-sm sm:text-base font-black text-slate-900 dark:text-white truncate font-['Outfit',sans-serif] group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
               {app.name}
             </h3>
 
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0" />
 
             {app.badge && (
-              <span className="shrink-0 text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              <span className="shrink-0 text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
                 {app.badge}
               </span>
             )}
@@ -115,24 +115,24 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2.5 mt-1 text-[11px] sm:text-xs">
             
             {/* Free Bonus Pill */}
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-300 font-extrabold">
-              <Coins className="w-3 h-3 text-amber-400 shrink-0" />
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 font-extrabold">
+              <Coins className="w-3 h-3 text-amber-500 dark:text-amber-400 shrink-0" />
               <span>₹{app.signupBonus} Bonus</span>
               {app.maxSignupBonus && (
-                <span className="text-[10px] text-amber-200/80 font-normal">
+                <span className="text-[10px] text-amber-700/80 dark:text-amber-200/80 font-normal">
                   - ₹{app.maxSignupBonus}
                 </span>
               )}
             </span>
 
             {/* Min Withdrawal */}
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-bold">
-              <Zap className="w-3 h-3 text-emerald-400 shrink-0" />
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 font-bold">
+              <Zap className="w-3 h-3 text-emerald-500 dark:text-emerald-400 shrink-0" />
               <span>Min ₹{app.minWithdrawal}</span>
             </span>
 
             {/* Rating / Downloads on bigger screens */}
-            <span className="hidden lg:inline-flex items-center gap-1 text-slate-400 text-[11px]">
+            <span className="hidden lg:inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 text-[11px]">
               <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
               <span>{app.rating}</span>
               <span>•</span>
@@ -143,14 +143,14 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
             {app.referCode && (
               <button
                 onClick={handleCopyRefer}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-mono text-[10px] sm:text-[11px] font-bold transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-[10px] sm:text-[11px] font-bold transition-colors cursor-pointer"
                 title="Copy Referral Code"
               >
                 <span>Code: {app.referCode}</span>
                 {copiedCode ? (
-                  <Check className="w-3 h-3 text-emerald-400" />
+                  <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 ) : (
-                  <Copy className="w-3 h-3 text-slate-400" />
+                  <Copy className="w-3 h-3 text-slate-500 dark:text-slate-400" />
                 )}
               </button>
             )}
