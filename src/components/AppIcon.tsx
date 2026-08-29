@@ -7,13 +7,15 @@ interface AppIconProps {
   className?: string;
   sizeClassName?: string;
   textClassName?: string;
+  priority?: boolean;
 }
 
 export const AppIcon: React.FC<AppIconProps> = ({
   app,
   className = '',
   sizeClassName = 'w-13 h-13 sm:w-14 sm:h-14',
-  textClassName = 'text-xl sm:text-2xl'
+  textClassName = 'text-xl sm:text-2xl',
+  priority = false
 }) => {
   const [imageError, setImageError] = useState(false);
 
@@ -27,6 +29,10 @@ export const AppIcon: React.FC<AppIconProps> = ({
         <img
           src={resolvedUrl}
           alt={`${app.name} icon`}
+          width="56"
+          height="56"
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
           referrerPolicy="no-referrer"
           onError={() => setImageError(true)}
           className="w-full h-full object-cover"

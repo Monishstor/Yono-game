@@ -92,7 +92,7 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
 
         {/* App Icon */}
         <div className="shrink-0">
-          <AppIcon app={app} sizeClassName="w-12 h-12 sm:w-14 sm:h-14" textClassName="text-sm sm:text-base font-black" />
+          <AppIcon app={app} sizeClassName="w-12 h-12 sm:w-14 sm:h-14" textClassName="text-sm sm:text-base font-black" priority={rank <= 2} />
         </div>
 
         {/* App Title, Bonus & Tags */}

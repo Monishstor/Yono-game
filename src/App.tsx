@@ -1,30 +1,32 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, Suspense, lazy } from 'react';
 import { YONO_APPS } from './data/appsData';
 import { PROMO_CODES, LIVE_WITHDRAWALS } from './data/promoCodes';
 import { YonoApp, AppCategory, PromoCode, SiteSettings, WithdrawalRecord } from './types';
 import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
 import { AppGrid } from './components/AppGrid';
-import { DownloadModal } from './components/DownloadModal';
-import { AppDetailModal } from './components/AppDetailModal';
-import { PromoCodeVault } from './components/PromoCodeVault';
 import { InstallGuide } from './components/InstallGuide';
 import { LiveWithdrawalFeed } from './components/LiveWithdrawalFeed';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
-import { AppEditorModal } from './components/AppEditorModal';
-import { AdminLoginModal } from './components/AdminLoginModal';
-import { AdminLoginPage } from './components/AdminLoginPage';
-import { AdminPanel } from './components/AdminPanel';
 import { ResponsibleGamingBanner } from './components/ResponsibleGamingBanner';
-import { DailyCheckinModal } from './components/DailyCheckinModal';
 import { SeoSchema } from './components/SeoSchema';
 import { FloatingTelegramBar } from './components/FloatingTelegramBar';
-import { GameLandingPage } from './components/GameLandingPage';
 import { useTheme } from './lib/theme';
-import { Sun, Moon, ArrowRightLeft } from 'lucide-react';
+import { Sun, Moon, ArrowRightLeft, Loader2 } from 'lucide-react';
 import { db, handleFirestoreError, OperationType, testConnection } from './lib/firebase';
 import { collection, doc, onSnapshot, setDoc, deleteDoc } from 'firebase/firestore';
+
+// Lazy-loaded components to minimize initial bundle size and maximize PageSpeed score
+const AdminPanel = lazy(() => import('./components/AdminPanel').then(m => ({ default: m.AdminPanel })));
+const AdminLoginPage = lazy(() => import('./components/AdminLoginPage').then(m => ({ default: m.AdminLoginPage })));
+const GameLandingPage = lazy(() => import('./components/GameLandingPage').then(m => ({ default: m.GameLandingPage })));
+const DownloadModal = lazy(() => import('./components/DownloadModal').then(m => ({ default: m.DownloadModal })));
+const AppDetailModal = lazy(() => import('./components/AppDetailModal').then(m => ({ default: m.AppDetailModal })));
+const PromoCodeVault = lazy(() => import('./components/PromoCodeVault').then(m => ({ default: m.PromoCodeVault })));
+const DailyCheckinModal = lazy(() => import('./components/DailyCheckinModal').then(m => ({ default: m.DailyCheckinModal })));
+const AdminLoginModal = lazy(() => import('./components/AdminLoginModal').then(m => ({ default: m.AdminLoginModal })));
+const AppEditorModal = lazy(() => import('./components/AppEditorModal').then(m => ({ default: m.AppEditorModal })));
 
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
@@ -598,24 +600,30 @@ export default function App() {
 
   if (isAdminRoute && isAdminLoggedIn) {
     return (
-      <AdminPanel
-        apps={apps}
-        promoCodes={promoCodes}
-        siteSettings={siteSettings}
-        withdrawalRecords={withdrawalRecords}
-        onAddNewApp={handleAddNewApp}
-        onEditApp={handleOpenEditApp}
-        onDeleteApp={handleDeleteApp}
-        onUpdateApps={saveAppsToStorage}
-        onSavePromoCodes={handleSavePromoCodes}
-        onSaveSiteSettings={handleSaveSiteSettings}
-        onSaveWithdrawals={handleSaveWithdrawals}
-        onExportAllData={handleExportAllData}
-        onImportAllData={handleImportAllData}
-        onResetFactory={handleResetFactory}
-        onCloseAdmin={handleGoToPublicSite}
-        onLogout={handleAdminLogout}
-      />
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-950 text-amber-400">
+          <Loader2 className="w-8 h-8 animate-spin" />
+        </div>
+      }>
+        <AdminPanel
+          apps={apps}
+          promoCodes={promoCodes}
+          siteSettings={siteSettings}
+          withdrawalRecords={withdrawalRecords}
+          onAddNewApp={handleAddNewApp}
+          onEditApp={handleOpenEditApp}
+          onDeleteApp={handleDeleteApp}
+          onUpdateApps={saveAppsToStorage}
+          onSavePromoCodes={handleSavePromoCodes}
+          onSaveSiteSettings={handleSaveSiteSettings}
+          onSaveWithdrawals={handleSaveWithdrawals}
+          onExportAllData={handleExportAllData}
+          onImportAllData={handleImportAllData}
+          onResetFactory={handleResetFactory}
+          onCloseAdmin={handleGoToPublicSite}
+          onLogout={handleAdminLogout}
+        />
+      </Suspense>
     );
   }
 
@@ -624,11 +632,17 @@ export default function App() {
   // ========================================================
   if (isAdminRoute && !isAdminLoggedIn) {
     return (
-      <AdminLoginPage
-        onLoginSuccess={handleAdminLoginSuccess}
-        onBackToSite={handleGoToPublicSite}
-        currentPin={siteSettings.adminPin}
-      />
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-950 text-amber-400">
+          <Loader2 className="w-8 h-8 animate-spin" />
+        </div>
+      }>
+        <AdminLoginPage
+          onLoginSuccess={handleAdminLoginSuccess}
+          onBackToSite={handleGoToPublicSite}
+          currentPin={siteSettings.adminPin}
+        />
+      </Suspense>
     );
   }
 
@@ -670,14 +684,21 @@ export default function App() {
       <main className="flex-1">
         {activeLandingApp ? (
           /* PROGRAMMATIC GAME-SPECIFIC SEO LANDING PAGE (Google Rich Result Feed & High-Converting UX) */
-          <GameLandingPage
-            app={activeLandingApp}
-            allApps={apps}
-            siteSettings={siteSettings}
-            onBackToHome={handleBackToHome}
-            onSelectApp={handleOpenLandingPage}
-            onDownload={handleDownloadClick}
-          />
+          <Suspense fallback={
+            <div className="py-20 text-center flex flex-col items-center justify-center gap-3">
+              <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
+              <span className="text-sm font-bold text-slate-400">Loading {activeLandingApp.name}...</span>
+            </div>
+          }>
+            <GameLandingPage
+              app={activeLandingApp}
+              allApps={apps}
+              siteSettings={siteSettings}
+              onBackToHome={handleBackToHome}
+              onSelectApp={handleOpenLandingPage}
+              onDownload={handleDownloadClick}
+            />
+          </Suspense>
         ) : (
           /* ALL YONO GAMES CATALOG VIEW */
           <>
@@ -780,48 +801,60 @@ export default function App() {
         </button>
       </div>
 
-      {/* Interactive Modals */}
-      <DownloadModal
-        app={selectedDownloadApp}
-        isOpen={!!selectedDownloadApp}
-        onClose={() => setSelectedDownloadApp(null)}
-      />
+      {/* Interactive Modals loaded on-demand */}
+      <Suspense fallback={null}>
+        {selectedDownloadApp && (
+          <DownloadModal
+            app={selectedDownloadApp}
+            isOpen={!!selectedDownloadApp}
+            onClose={() => setSelectedDownloadApp(null)}
+          />
+        )}
 
-      <AppDetailModal
-        app={selectedDetailApp}
-        isOpen={!!selectedDetailApp}
-        onClose={() => setSelectedDetailApp(null)}
-        onDownload={handleDownloadClick}
-        onEdit={isAdminLoggedIn ? handleOpenEditApp : undefined}
-      />
+        {selectedDetailApp && (
+          <AppDetailModal
+            app={selectedDetailApp}
+            isOpen={!!selectedDetailApp}
+            onClose={() => setSelectedDetailApp(null)}
+            onDownload={handleDownloadClick}
+            onEdit={isAdminLoggedIn ? handleOpenEditApp : undefined}
+          />
+        )}
 
-      <DailyCheckinModal
-        isOpen={isDailyCheckinOpen}
-        onClose={() => setIsDailyCheckinOpen(false)}
-      />
+        {isDailyCheckinOpen && (
+          <DailyCheckinModal
+            isOpen={isDailyCheckinOpen}
+            onClose={() => setIsDailyCheckinOpen(false)}
+          />
+        )}
 
-      <PromoCodeVault
-        isOpen={isPromoCodesOpen}
-        onClose={() => setIsPromoCodesOpen(false)}
-        promoCodes={promoCodes}
-      />
+        {isPromoCodesOpen && (
+          <PromoCodeVault
+            isOpen={isPromoCodesOpen}
+            onClose={() => setIsPromoCodesOpen(false)}
+            promoCodes={promoCodes}
+          />
+        )}
 
-      {/* Admin Login Modal (Quick popup from visitor site) */}
-      <AdminLoginModal
-        isOpen={isAdminLoginModalOpen}
-        onClose={() => setIsAdminLoginModalOpen(false)}
-        onLoginSuccess={handleAdminLoginSuccess}
-        currentPin={siteSettings.adminPin}
-      />
+        {isAdminLoginModalOpen && (
+          <AdminLoginModal
+            isOpen={isAdminLoginModalOpen}
+            onClose={() => setIsAdminLoginModalOpen(false)}
+            onLoginSuccess={handleAdminLoginSuccess}
+            currentPin={siteSettings.adminPin}
+          />
+        )}
 
-      {/* App Editor Modal (Add/Edit any app, upload photo, change bonus & APK download URL) */}
-      <AppEditorModal
-        isOpen={isAppEditorOpen}
-        onClose={() => setIsAppEditorOpen(false)}
-        appToEdit={appToEdit}
-        onSaveApp={handleSaveApp}
-        onDeleteApp={handleDeleteApp}
-      />
+        {isAppEditorOpen && (
+          <AppEditorModal
+            isOpen={isAppEditorOpen}
+            onClose={() => setIsAppEditorOpen(false)}
+            appToEdit={appToEdit}
+            onSaveApp={handleSaveApp}
+            onDeleteApp={handleDeleteApp}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

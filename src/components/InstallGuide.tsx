@@ -42,7 +42,7 @@ export const InstallGuide: React.FC = () => {
         <div className="flex items-center justify-between gap-2 mb-2.5 px-1">
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white">
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            <span>How to Install & Earn (4 Simple Steps):</span>
+            <h2 className="text-xs font-bold text-slate-900 dark:text-white">How to Install & Earn (4 Simple Steps):</h2>
           </div>
           <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium hidden sm:inline">
             ✓ 100% Virus-Free & Fast 2-Min UPI Payout
@@ -69,9 +69,9 @@ export const InstallGuide: React.FC = () => {
                     <span className="text-[10px] font-black text-amber-600 dark:text-amber-400/90 font-mono">
                       #{step.num}
                     </span>
-                    <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                       {step.title}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-[10.5px] text-slate-600 dark:text-slate-400 truncate leading-tight">
                     {step.desc}

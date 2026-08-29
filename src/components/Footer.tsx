@@ -48,10 +48,10 @@ export const Footer: React.FC<FooterProps> = ({
               <Share2 className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
-              <h4 className="text-sm font-black text-white font-['Outfit',sans-serif]">
+              <h3 className="text-sm font-black text-white font-['Outfit',sans-serif]">
                 Share With Friends & Earn (दोस्तों के साथ शेयर करें)
-              </h4>
-              <p className="text-[11px] text-slate-400">
+              </h3>
+              <p className="text-[11px] text-slate-300">
                 Share this website on WhatsApp or Telegram so your friends get ₹51–₹1500 free sign-up bonus!
               </p>
             </div>
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({
             {/* WhatsApp Share */}
             <button
               onClick={handleWhatsAppShare}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer min-h-[44px]"
             >
               <MessageCircle className="w-4 h-4 stroke-[2.5] fill-slate-950" />
               <span>Share on WhatsApp</span>
@@ -70,7 +70,7 @@ export const Footer: React.FC<FooterProps> = ({
             {/* Telegram Share */}
             <button
               onClick={handleTelegramShare}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-lg shadow-sky-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-lg shadow-sky-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer min-h-[44px]"
             >
               <Send className="w-4 h-4" />
               <span>Share on Telegram</span>
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
             {/* Copy Link */}
             <button
               onClick={handleCopyLink}
-              className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium text-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium text-xs transition-colors cursor-pointer min-h-[44px]"
               title="Copy Share Message"
             >
               {copied ? (
@@ -117,15 +117,15 @@ export const Footer: React.FC<FooterProps> = ({
                 ALL NEW <span className="text-amber-400">YONO APPS</span>
               </span>
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed max-w-md">
-              YonoJi (yonoji.netlify.app) is India's leading information and download portal for all verified Yono gaming APKs, free sign-up bonuses, daily promo codes, and fast UPI withdrawal guides.
+            <p className="text-slate-300 text-xs leading-relaxed max-w-md">
+              Yono Portal (yono-game.vercel.app) is India's leading information and download portal for all verified Yono gaming APKs, free sign-up bonuses, daily promo codes, and fast UPI withdrawal guides.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs shadow-md transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs shadow-md transition-colors min-h-[44px]"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Join Official Telegram Channel</span>
@@ -135,9 +135,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Quick Links */}
           <div className="space-y-2">
-            <h4 className="font-bold text-white uppercase text-[11px] tracking-wider">
+            <h3 className="font-bold text-white uppercase text-[11px] tracking-wider">
               Quick Navigation
-            </h4>
+            </h3>
             <ul className="space-y-1.5 text-xs">
               <li>
                 <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
@@ -164,9 +164,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Popular Categories */}
           <div className="space-y-2">
-            <h4 className="font-bold text-white uppercase text-[11px] tracking-wider">
+            <h3 className="font-bold text-white uppercase text-[11px] tracking-wider">
               Top Yono Games
-            </h4>
+            </h3>
             <ul className="space-y-1.5 text-xs text-slate-400">
               <li>Yono 777 APK Download</li>
               <li>Yono Arcade Official</li>
