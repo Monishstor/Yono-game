@@ -22,7 +22,7 @@ interface AppCardProps {
   onEdit?: (app: YonoApp) => void;
 }
 
-export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails, onEdit }) => {
+export const AppCard: React.FC<AppCardProps> = React.memo(({ app, onDownload, onViewDetails, onEdit }) => {
   const [copiedCode, setCopiedCode] = useState(false);
 
   const handleCopyRefer = (e: React.MouseEvent) => {
@@ -183,4 +183,4 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
       </div>
     </div>
   );
-};
+});

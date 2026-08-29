@@ -25,7 +25,7 @@ interface AppPattiRowProps {
   onEdit?: (app: YonoApp) => void;
 }
 
-export const AppPattiRow: React.FC<AppPattiRowProps> = ({
+export const AppPattiRow: React.FC<AppPattiRowProps> = React.memo(({
   app,
   rank,
   onDownload,
@@ -210,4 +210,4 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
       </div>
     </div>
   );
-};
+});

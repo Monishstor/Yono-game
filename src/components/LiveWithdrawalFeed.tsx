@@ -17,15 +17,21 @@ export const LiveWithdrawalFeed: React.FC<LiveWithdrawalFeedProps> = ({ records 
   useEffect(() => {
     if (isDismissed || activeRecords.length === 0) return;
 
-    const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % activeRecords.length);
-        setVisible(true);
-      }, 500);
-    }, 6000);
+    let interval: NodeJS.Timeout;
+    const initialDelay = setTimeout(() => {
+      interval = setInterval(() => {
+        setVisible(false);
+        setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % activeRecords.length);
+          setVisible(true);
+        }, 400);
+      }, 7000);
+    }, 4000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initialDelay);
+      if (interval) clearInterval(interval);
+    };
   }, [isDismissed, activeRecords.length]);
 
   if (isDismissed || activeRecords.length === 0) return null;

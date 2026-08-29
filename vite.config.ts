@@ -13,7 +13,7 @@ export default defineConfig(() => {
       },
     },
     build: {
-      target: 'esnext',
+      target: 'es2020',
       minify: 'esbuild' as const,
       cssMinify: true,
       sourcemap: false,
@@ -21,9 +21,7 @@ export default defineConfig(() => {
       rollupOptions: {
         output: {
           manualChunks: {
-            'vendor-react': ['react', 'react-dom'],
-            'vendor-icons': ['lucide-react'],
-            'vendor-firebase': ['firebase/app', 'firebase/firestore']
+            'vendor-react': ['react', 'react-dom']
           },
         },
       },
