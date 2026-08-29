@@ -35,7 +35,8 @@ export const AppCard: React.FC<AppCardProps> = React.memo(({ app, onDownload, on
   return (
     <div
       id={`app-card-${app.id}`}
-      className="group relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/90 hover:border-amber-500/60 p-4 sm:p-5 shadow-sm hover:shadow-xl hover:shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+      onClick={() => onViewDetails(app)}
+      className="group relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/90 hover:border-amber-500/60 p-4 sm:p-5 shadow-sm hover:shadow-xl hover:shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between cursor-pointer"
     >
       {/* Top Badges (Urgent & High Perceived Value) */}
       <div className="absolute -top-2.5 right-4 z-10 flex items-center gap-1.5">
@@ -156,10 +157,11 @@ export const AppCard: React.FC<AppCardProps> = React.memo(({ app, onDownload, on
       <div className="pt-2 border-t border-slate-200 dark:border-slate-800/80 flex items-center gap-2">
         <a
           id={`card-download-btn-${app.id}`}
-          href={app.downloadUrl || `/?app=${app.slug || app.id}`}
+          href={`/?app=${app.slug || app.id}`}
           onClick={(e) => {
             e.preventDefault();
-            onDownload(app);
+            e.stopPropagation();
+            onViewDetails(app);
           }}
           className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm btn-gold-action transition-all hover:scale-[1.02] active:scale-98 cursor-pointer"
         >
@@ -172,6 +174,7 @@ export const AppCard: React.FC<AppCardProps> = React.memo(({ app, onDownload, on
           href={`/?app=${app.slug || app.id}`}
           onClick={(e) => {
             e.preventDefault();
+            e.stopPropagation();
             onViewDetails(app);
           }}
           aria-label={`View details and payment proof for ${app.name}`}

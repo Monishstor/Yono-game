@@ -119,7 +119,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                   <div className="flex items-center justify-end gap-2">
                     <button
                       id={`table-download-btn-${app.id}`}
-                      onClick={() => onDownload(app)}
+                      onClick={() => onViewDetails(app)}
                       className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5 stroke-[2.5]" />

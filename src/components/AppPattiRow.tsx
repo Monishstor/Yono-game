@@ -44,7 +44,11 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = React.memo(({
   };
 
   const handleRowClick = () => {
-    onDownload(app);
+    if (onViewDetails) {
+      onViewDetails(app);
+    } else {
+      onDownload(app);
+    }
   };
 
   // Rank badge styling
@@ -196,10 +200,15 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = React.memo(({
           {/* Primary Download / Referral Button */}
           <a
             id={`patti-download-btn-${app.id}`}
-            href={app.downloadUrl || `/?app=${app.slug || app.id}`}
+            href={`/?app=${app.slug || app.id}`}
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
-              onDownload(app);
+              if (onViewDetails) {
+                onViewDetails(app);
+              } else {
+                onDownload(app);
+              }
             }}
             className="flex-1 md:flex-none flex items-center justify-center gap-2 py-2.5 px-5 sm:px-6 rounded-xl font-black text-xs sm:text-sm btn-gold-action transition-all hover:scale-105 active:scale-95 cursor-pointer uppercase tracking-wider"
           >
