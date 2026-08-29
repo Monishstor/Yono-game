@@ -9,6 +9,11 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Google Search Console HTML verification endpoint
+  app.get('/google335fb29481cc8d5a.html', (req, res) => {
+    res.type('text/html').send('google-site-verification: google335fb29481cc8d5a.html');
+  });
+
   // Health check endpoint
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
