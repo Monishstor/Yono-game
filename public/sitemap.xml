@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. Slots Winner APK (VIP King) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=slots-winner-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- 0. Top Rummy APK (India #1) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=top-rummy-apk-download</loc>

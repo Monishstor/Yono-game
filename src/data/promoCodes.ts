@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'K4EZ1TA1HEP',
+    title: 'Slots Winner VIP King Club & Welcome Blast',
+    reward: '₹18-₹100 Free Signup + 250% Deposit Bonus (Max ₹25,000) + Daily VIP Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Slots Winner',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '7K9QGK4RFQ6',
     title: 'Top Rummy India #1 Skilled Gaming Welcome Pack',
     reward: '₹5 Joining Free + ₹80 7-Days Login Free + 100% 1st Deposit Cashback',
