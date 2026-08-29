@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Official Sitemap
-Sitemap: https://yonoj.netlify.app/sitemap.xml
+Sitemap: https://yono-game.vercel.app/sitemap.xml
