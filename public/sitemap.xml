@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. JaiHo Rummy APK -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-rummy-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- 1. Spin Gold APK -->
   <url>
     <loc>https://yono-game.vercel.app/?app=spin-gold-apk-download</loc>

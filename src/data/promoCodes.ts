@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'E74UDCLFRCL',
+    title: 'JaiHo Rummy Har Haath Jeet & Sweet Start VIP Pack',
+    reward: '₹9-₹89 Free Muh Mitha Karo Cash + 150% 1st Deposit Bonus + 1 Free Spin Voucher',
+    expiry: 'Official Active Code',
+    appTarget: 'JaiHo Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'EBDEH5U8UL2',
     title: 'IndRummy Official VIP Welcome Bonus Pack',
     reward: 'Up to ₹50 Instant Welcome Bonus + Fast Cashout + 30% Lifetime Refer Cash',

@@ -52,10 +52,11 @@ const DEFAULT_SETTINGS: SiteSettings = {
   whatsappShareText: '💎 Download ABC Rummy, Dhan Game & Saga Slots with Free ₹100-₹777 Welcome Bonus + 200% Deposit Boost & Instant ₹100 UPI Cashout! Code: 75C7N8X46K5',
   adminPin: 'admin123',
   notices: [
+    { id: '0', type: 'sparkles', text: '🎯 JAIHO RUMMY LAUNCH: ₹9-₹89 Free Sweet Start (Bina Deposit) + 150% 1st Deposit Bonus + 1% Lifetime Win Commission! Code: E74UDCLFRCL' },
     { id: '1', type: 'sparkles', text: '💎 ABC RUMMY VIP INVITATION: Up to ₹100 Welcome Cash + 200% 1st Deposit Boost + ₹10,000 Lucky Spin!' },
     { id: '2', type: 'sparkles', text: '👑 DHAN GAME OFFICIAL: Up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus!' },
     { id: '3', type: 'flame', text: '🎰 SAGA SLOTS LIVE: ₹7 Instant Joining + ₹259 7-Days Login Bonus + 100% Deposit Cashback!' },
-    { id: '4', type: 'gift', text: '🎁 ABC Rummy Code: 75C7N8X46K5 | Dhan Game Code: 47TQCRTKJR7 | Saga Slots Code: 0QH9RU9PRNL' },
+    { id: '4', type: 'gift', text: '🎁 JaiHo Rummy: E74UDCLFRCL | ABC Rummy: 75C7N8X46K5 | Dhan Game: 47TQCRTKJR7 | Saga Slots: 0QH9RU9PRNL' },
     { id: '5', type: 'shield', text: '🛡️ Safe & Tested: Direct APK download verified 100% virus-free on Android 13, 14 & 15.' }
   ]
 };
