@@ -105,6 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
               <input
                 id="header-search-input"
                 type="text"
+                aria-label="Search Yono Apps"
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder="Search Yono 777, Arcade, Custom apps..."
@@ -283,6 +284,7 @@ export const Header: React.FC<HeaderProps> = ({
             <input
               id="mobile-search-input"
               type="text"
+              aria-label="Search Yono Apps Mobile"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search 45+ Yono Apps (777, Arcade, VIP...)"

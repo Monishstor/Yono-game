@@ -9,6 +9,8 @@
   .animate-marquee {
     display: inline-block;
     white-space: nowrap;
+    will-change: transform;
+    transform: translateZ(0);
     animation: marquee 25s linear infinite;
   }
 

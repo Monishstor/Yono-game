@@ -143,6 +143,7 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = ({
             {app.referCode && (
               <button
                 onClick={handleCopyRefer}
+                aria-label={`Copy referral code ${app.referCode} for ${app.name}`}
                 className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-[10px] sm:text-[11px] font-bold transition-colors cursor-pointer"
                 title="Copy Referral Code"
               >

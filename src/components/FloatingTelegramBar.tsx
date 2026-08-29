@@ -65,6 +65,7 @@ export const FloatingTelegramBar: React.FC<FloatingTelegramBarProps> = ({
 
           <button
             onClick={() => setIsVisible(false)}
+            aria-label="Dismiss Telegram announcement"
             className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/80 transition-colors"
             title="Dismiss"
           >

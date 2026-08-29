@@ -135,6 +135,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
           </div>
           <button
             onClick={handleCopyRefer}
+            aria-label={`Copy refer code ${app.referCode} for ${app.name}`}
             className="flex items-center gap-1 font-mono font-bold text-amber-800 dark:text-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-colors text-[11px] cursor-pointer"
             title="Click to copy refer code"
           >
@@ -158,6 +159,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onDownload, onViewDetails
         <button
           id={`card-details-btn-${app.id}`}
           onClick={() => onViewDetails(app)}
+          aria-label={`View details and payment proof for ${app.name}`}
           className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all text-xs font-semibold cursor-pointer border border-slate-200 dark:border-slate-700/60"
           title="Full App Details & Proof"
         >
