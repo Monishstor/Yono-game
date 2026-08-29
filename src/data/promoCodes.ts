@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '7TAQW92DSQE',
+    title: 'JaihoSpin Welcome Fortune & 200% Deposit Cashback Pack',
+    reward: '₹10-₹100 Free Signup + 60%-200% Deposit Cashback + Win ₹5,000 Free Spin Wheel',
+    expiry: 'Official Active Code',
+    appTarget: 'JaihoSpin',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'K4EZ1TA1HEP',
     title: 'Slots Winner VIP King Club & Welcome Blast',
     reward: '₹18-₹100 Free Signup + 250% Deposit Bonus (Max ₹25,000) + Daily VIP Cashback',
