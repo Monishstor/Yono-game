@@ -15,6 +15,7 @@ export const CATEGORY_TABS: { id: AppCategory; label: string; icon?: string; bad
 export const YONO_APPS: YonoApp[] = [
   {
     id: 'spin-gold-vip-official',
+    slug: 'spin-gold-apk-download',
     name: 'Spin Gold',
     tagline: '🎁 ₹13 Joining Bonus + ₹99 7-Day Login Cash • 100% First Deposit Cashback',
     imageUrl: '/spin-gold-vip-logo.svg',
@@ -58,6 +59,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'rummy-91-official',
+    slug: 'rummy-91-apk-download',
     name: 'RUMMY91',
     tagline: '🎁 ₹7 - ₹100 Free Cash on Mobile Bind • 150% Deposit Rebate + 7 Days Support',
     imageUrl: '/rummy-91-logo.svg',
@@ -101,6 +103,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'spin-101-official',
+    slug: 'spin-101-apk-download',
     name: 'Spin 101',
     tagline: '🎁 ₹50 FREE Signup + ₹100 7-Day Login Cash • 100% Instant Deposit Bonus',
     imageUrl: '/spin-101-logo.svg',
@@ -144,6 +147,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'bingo-101-official',
+    slug: 'bingo-101-apk-download',
     name: 'Bingo 101',
     tagline: '🎁 Up to ₹100 FREE Welcome Bonus • Real Cash Game & Instant UPI Cashout',
     imageUrl: '/bingo-101-logo.svg',
@@ -186,6 +190,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'ind-rummy-official',
+    slug: 'ind-rummy-apk-download',
     name: 'IndRummy',
     tagline: '🔥 Win Big Instantly • Get ₹50 Welcome Bonus + Fast Cashout',
     imageUrl: '/ind-rummy-logo.svg',
@@ -228,6 +233,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'abc-rummy-official',
+    slug: 'abc-rummy-apk-download',
     name: 'ABC Rummy',
     tagline: "💎 India's Top Skill Gaming • Up to ₹100 Welcome Cash + 200% Deposit Boost",
     imageUrl: '/abc-rummy-logo.svg',
@@ -270,6 +276,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'dhan-game-official',
+    slug: 'dhan-game-apk-download',
     name: 'Dhan Game',
     tagline: '👑 Official Dhan Game • Up to ₹777 Free Welcome + 886% 7-Day Bonus',
     imageUrl: '/dhan-game-logo.svg',
@@ -312,6 +319,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'saga-slots-official',
+    slug: 'saga-slots-apk-download',
     name: 'Saga Slots',
     tagline: "🎰 India's #1 Skilled Gaming App • Free ₹7 Joining + ₹259 7-Day Bonus",
     imageUrl: '/saga-slots-logo.svg',
@@ -354,6 +362,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: '789jackpots-official',
+    slug: '789jackpots-apk-download',
     name: '789Jackpots',
     tagline: '🎰 Multiple Mini-Games & Colorful Slot Themes + Free Time Real Cash Prizes',
     imageUrl: '/789-jackpots-logo.svg',
@@ -396,6 +405,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'gogo-rummy-official',
+    slug: 'gogo-rummy-apk-download',
     name: 'Gogo Rummy',
     tagline: '🃏 India’s Top Skill Gaming App: ₹11-38 Free Mobile Bind + VIP Daily Free Codes + 150% Cashback',
     imageUrl: '/gogo-rummy-logo.svg',
@@ -439,6 +449,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'jaiho-arcade-official',
+    slug: 'jaiho-arcade-apk-download',
     name: 'Jaiho Arcade',
     tagline: '🇮🇳 India’s #1 Skilled Gaming App: ₹10 Joining + ₹51 7-Day Login + 100% Cashback',
     imageUrl: '/jaiho-arcade-logo.svg',
@@ -482,6 +493,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'spin-winner-official',
+    slug: 'spin-winner-apk-download',
     name: 'Spin Winner',
     tagline: '🎯 3 Powerful Rewards: ₹18+ Instant Bonus + ₹3000-₹10000 Login Cash + 150% Deposit Bonus',
     imageUrl: '/spin-winner-logo.svg',
@@ -524,6 +536,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'yono-games-official',
+    slug: 'yono-games-apk-download',
     name: 'Yono Games',
     tagline: 'Get ₹50 Free Welcome Bonus + 7-Day ₹100 Login & 100% Extra Deposit Bonus',
     imageUrl: '/yono-games-logo.svg',
@@ -566,6 +579,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'yono-rummy-official',
+    slug: 'yono-rummy-apk-download',
     name: 'Yono Rummy',
     tagline: 'Instant ₹13+ Bonus + 7-Day ₹90 Login & 3% to 30% Deposit Cashback',
     imageUrl: '/yono-rummy-logo.svg',
@@ -608,6 +622,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'yono-slots-official',
+    slug: 'yono-slots-apk-download',
     name: 'Yono Slots',
     tagline: '₹11-₹50 Free Mobile Bind + 150% First Deposit Cashback + VIP Daily Codes',
     imageUrl: '/yono-slots-logo.svg',
@@ -650,6 +665,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'spin-crush-official',
+    slug: 'spin-crush-apk-download',
     name: 'Spin Crush',
     tagline: '🎰 Win Big Instantly! Up to ₹50 Welcome Bonus + Massive Slot Wins',
     imageUrl: '/spin-crush-logo.svg',
@@ -691,6 +707,7 @@ export const YONO_APPS: YonoApp[] = [
   },
   {
     id: 'rumble-rummy-official',
+    slug: 'rumble-rummy-apk-download',
     name: 'Rumble Rummy',
     tagline: '👑 India’s #1 Skilled Gaming App: ₹6 Joining + ₹43 7-Day Login + 100% Cashback',
     imageUrl: '/rumble-rummy-logo.svg',

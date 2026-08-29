@@ -63,14 +63,39 @@ export default function App() {
   // Helper to find an app by ID or slug
   const findAppBySlugOrId = (slugOrId: string, list: YonoApp[]) => {
     if (!slugOrId) return null;
-    const clean = slugOrId.toLowerCase().trim();
+    const clean = slugOrId.toLowerCase().trim().replace(/^\/+|\/+$/g, '');
     return list.find((a) => 
+      (a.slug && a.slug.toLowerCase() === clean) ||
       a.id.toLowerCase() === clean ||
+      (a.slug && a.slug.replace(/-apk-download|-apk|-download/g, '') === clean.replace(/-apk-download|-apk|-download/g, '')) ||
       a.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === clean ||
       a.id.replace(/-vip-official|-official|-vip/g, '') === clean ||
       clean.includes(a.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')) ||
       a.name.toLowerCase().includes(clean.replace(/-/g, ' '))
     ) || null;
+  };
+
+  // Helper to detect initial landing app from URL query, hash, or pathname
+  const detectLandingAppFromUrl = (list: YonoApp[]): YonoApp | null => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    const appParam = params.get('app') || params.get('game') || params.get('apk');
+    if (appParam) {
+      const found = findAppBySlugOrId(appParam, list);
+      if (found) return found;
+    }
+    const hash = window.location.hash;
+    if (hash.startsWith('#/app/') || hash.startsWith('#app-') || hash.startsWith('#/game/')) {
+      const hashSlug = hash.replace(/^#\/(app|game)\//, '').replace(/^#app-/, '');
+      const found = findAppBySlugOrId(hashSlug, list);
+      if (found) return found;
+    }
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    if (path && path !== '' && !path.includes('.') && path !== 'admin') {
+      const found = findAppBySlugOrId(path, list);
+      if (found) return found;
+    }
+    return null;
   };
 
   // 1. Current Route / View detection from URL (#admin, ?admin, ?wp_admin, etc.)
@@ -84,20 +109,9 @@ export default function App() {
     return '#/';
   });
 
-  // Programmatic Game Landing Page State (e.g. ?app=spin-gold-vip-official or /#app-xyz)
+  // Programmatic Game Landing Page State (e.g. ?app=spin-gold-apk-download or /#app-xyz)
   const [activeLandingApp, setActiveLandingApp] = useState<YonoApp | null>(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const appParam = params.get('app') || params.get('game');
-      if (appParam) {
-        return findAppBySlugOrId(appParam, YONO_APPS);
-      }
-      if (window.location.hash.startsWith('#/app/') || window.location.hash.startsWith('#app-')) {
-        const hashSlug = window.location.hash.replace('#/app/', '').replace('#app-', '');
-        return findAppBySlugOrId(hashSlug, YONO_APPS);
-      }
-    }
-    return null;
+    return detectLandingAppFromUrl(YONO_APPS);
   });
 
   // 2. Apps Dataset (Hydrated with real Yono Games apps)
@@ -129,25 +143,16 @@ export default function App() {
       if (typeof window === 'undefined') return;
       setCurrentHash(window.location.hash || '#/');
 
-      const params = new URLSearchParams(window.location.search);
-      const appParam = params.get('app') || params.get('game');
-      if (appParam) {
-        const found = findAppBySlugOrId(appParam, apps);
-        if (found) {
-          setActiveLandingApp(found);
-          return;
+      const matchedApp = detectLandingAppFromUrl(apps);
+      if (matchedApp) {
+        setActiveLandingApp(matchedApp);
+      } else {
+        const params = new URLSearchParams(window.location.search);
+        const hasAppParam = params.has('app') || params.has('game') || params.has('apk');
+        const hasAppHash = window.location.hash.startsWith('#/app/') || window.location.hash.startsWith('#app-') || window.location.hash.startsWith('#/game/');
+        if (!hasAppParam && !hasAppHash) {
+          setActiveLandingApp(null);
         }
-      }
-      if (window.location.hash.startsWith('#/app/') || window.location.hash.startsWith('#app-')) {
-        const hashSlug = window.location.hash.replace('#/app/', '').replace('#app-', '');
-        const found = findAppBySlugOrId(hashSlug, apps);
-        if (found) {
-          setActiveLandingApp(found);
-          return;
-        }
-      }
-      if (!appParam && !window.location.hash.includes('app-') && !window.location.hash.startsWith('#/app/')) {
-        setActiveLandingApp(null);
       }
     };
 
@@ -470,8 +475,9 @@ export default function App() {
   const handleOpenLandingPage = (app: YonoApp) => {
     setActiveLandingApp(app);
     if (typeof window !== 'undefined') {
-      const newUrl = `${window.location.pathname}?app=${app.id}`;
-      window.history.pushState({ appId: app.id }, '', newUrl);
+      const slug = app.slug || app.id;
+      const newUrl = `${window.location.pathname}?app=${slug}`;
+      window.history.pushState({ appSlug: slug, appId: app.id }, '', newUrl);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };

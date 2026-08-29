@@ -31,7 +31,7 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
 
   const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://allnewyonoapps.com';
   const currentCanonical = isSingleAppPage && activeApp
-    ? `${originUrl}/?app=${activeApp.id}`
+    ? `${originUrl}/?app=${activeApp.slug || activeApp.id}`
     : (siteSettings?.canonicalUrl || originUrl);
 
   const currentAuthor = siteSettings?.siteAuthor || 'YONO Official Community';

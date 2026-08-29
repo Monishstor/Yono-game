@@ -10,6 +10,7 @@ export type AppCategory =
 
 export interface YonoApp {
   id: string;
+  slug?: string;
   name: string;
   tagline: string;
   imageUrl?: string; // Custom uploaded image (data URL or web URL)
