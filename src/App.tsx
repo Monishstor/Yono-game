@@ -692,7 +692,7 @@ export default function App() {
               {/* Clean App Grid */}
               <AppGrid
                 apps={filteredApps}
-                onDownload={handleDownloadClick}
+                onDownload={handleOpenLandingPage}
                 onViewDetails={handleViewDetails}
                 onResetFilters={handleResetFilters}
                 onEdit={isAdminLoggedIn && isAdminMode ? handleOpenEditApp : undefined}
