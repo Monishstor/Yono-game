@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient (Deep Emerald Green) -->
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0b5e39"/>
+      <stop offset="45%" stop-color="#053e24"/>
+      <stop offset="85%" stop-color="#022414"/>
+      <stop offset="100%" stop-color="#01140b"/>
+    </radialGradient>
+
+    <!-- Center Diamond Tile Gradient -->
+    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e683f"/>
+      <stop offset="50%" stop-color="#084d2d"/>
+      <stop offset="100%" stop-color="#032e1a"/>
+    </linearGradient>
+
+    <!-- 3D "TOP" Gold Gradient -->
+    <linearGradient id="goldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffbb3"/>
+      <stop offset="20%" stop-color="#ffd700"/>
+      <stop offset="65%" stop-color="#ff9d00"/>
+      <stop offset="100%" stop-color="#f57c00"/>
+    </linearGradient>
+
+    <linearGradient id="goldBevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#ffec8b"/>
+      <stop offset="70%" stop-color="#ffa000"/>
+      <stop offset="100%" stop-color="#bf360c"/>
+    </linearGradient>
+
+    <!-- Golden Casino Chip Gradient -->
+    <radialGradient id="chipGrad" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff59d"/>
+      <stop offset="40%" stop-color="#fbc02d"/>
+      <stop offset="80%" stop-color="#f57f17"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </radialGradient>
+
+    <!-- Slot Cylinder White/Silver Reel Gradient -->
+    <linearGradient id="reelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8c9da8"/>
+      <stop offset="12%" stop-color="#e8eef3"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#dde5ec"/>
+      <stop offset="100%" stop-color="#73828d"/>
+    </linearGradient>
+
+    <!-- Cylinder Green Bevel Border -->
+    <linearGradient id="reelBorderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="30%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+
+    <!-- Letters "RUMMY" Green Gradient -->
+    <linearGradient id="rummyTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="60%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+
+    <!-- Deep Drop Shadow -->
+    <filter id="mainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.8"/>
+    </filter>
+
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="starGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Base Icon Squircle (Matching exact original app icon style) -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Diamond Quilted Background Grid Lines -->
+  <g opacity="0.22" stroke="#22c55e" stroke-width="1.5" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Green Neon Accent Line -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Green Border -->
+  <g filter="url(#mainShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#diamondGrad)" stroke="#22c55e" stroke-width="5" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- ================= TOP GRAPHICS: DICE, CARDS, CHIP ================= -->
+  <g filter="url(#cardShadow)">
+    <!-- 1. Left Playing Card (Ace of Hearts) -->
+    <g transform="translate(200, 110) rotate(-14)">
+      <rect x="-38" y="-55" width="76" height="110" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2.5"/>
+      <!-- Red A and Heart -->
+      <text x="-26" y="-30" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#dc2626">A</text>
+      <path d="M-26 -16 C-30 -22 -36 -18 -36 -12 C-36 -6 -26 0 -26 2 C-26 0 -16 -6 -16 -12 C-16 -18 -22 -22 -26 -16 Z" fill="#dc2626" transform="scale(0.8) translate(-6, 0)"/>
+      <path d="M0 0 C-10 -15 -24 -6 -24 6 C-24 18 0 30 0 34 C0 30 24 18 24 6 C24 -6 10 -15 0 0 Z" fill="#dc2626" transform="scale(0.85)"/>
+    </g>
+
+    <!-- 2. Right Playing Card (Ace of Spades) -->
+    <g transform="translate(265, 115) rotate(12)">
+      <rect x="-38" y="-55" width="76" height="110" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2.5"/>
+      <!-- Black A and Spade -->
+      <text x="-26" y="-30" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900" fill="#0f172a">A</text>
+      <path d="M0 5 C-12 18 -20 6 -20 -2 C-20 -12 -6 -20 0 -28 C6 -20 20 -12 20 -2 C20 6 12 18 0 5 Z" fill="#0f172a" transform="scale(0.85) translate(0, 10)"/>
+      <path d="M-4 22 L4 22 L2 32 L-2 32 Z" fill="#0f172a"/>
+    </g>
+
+    <!-- 3. Golden Casino Chip (Top Right) -->
+    <g transform="translate(345, 125)" filter="url(#mainShadow)">
+      <circle cx="0" cy="0" r="44" fill="url(#chipGrad)" stroke="#ffd700" stroke-width="3"/>
+      <!-- Inner Chip Ring & Pattern -->
+      <circle cx="0" cy="0" r="32" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="14 10" opacity="0.85"/>
+      <circle cx="0" cy="0" r="22" fill="#d97706" stroke="#fff9a6" stroke-width="2"/>
+      <text x="0" y="7" font-family="'Arial Black', sans-serif" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle">★</text>
+    </g>
+
+    <!-- 4. 3D Dice (Top Left) -->
+    <g transform="translate(155, 115) rotate(-10)" filter="url(#mainShadow)">
+      <!-- Top Face -->
+      <polygon points="0,-16 28,-30 0,-44 -28,-30" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+      <!-- Left Face -->
+      <polygon points="-28,-30 0,-16 0,22 -28,8" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+      <!-- Right Face -->
+      <polygon points="0,-16 28,-30 28,8 0,22" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+      <!-- Pips / Dots -->
+      <circle cx="-14" cy="-5" r="4.5" fill="#dc2626"/>
+      <circle cx="14" cy="-5" r="4" fill="#0f172a"/>
+      <circle cx="0" cy="-30" r="4.5" fill="#0f172a"/>
+      <circle cx="-14" cy="5" r="4" fill="#0f172a"/>
+      <circle cx="14" cy="5" r="4" fill="#dc2626"/>
+    </g>
+  </g>
+
+  <!-- ================= TOP 3D GOLDEN "TOP" TEXT ================= -->
+  <g filter="url(#mainShadow)">
+    <!-- 3D Extruded Layers (Warm Amber / Red Orange Depth) -->
+    <text x="256" y="246" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="#3e1400" letter-spacing="4">TOP</text>
+    <text x="256" y="242" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="#5a1d00" letter-spacing="4">TOP</text>
+    <text x="256" y="238" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="#782700" letter-spacing="4">TOP</text>
+    <text x="256" y="234" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="#993400" letter-spacing="4">TOP</text>
+    <text x="256" y="230" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="#bd4400" letter-spacing="4">TOP</text>
+    <text x="256" y="226" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="#df5900" letter-spacing="4">TOP</text>
+
+    <!-- Main Front Beveled Gold Face -->
+    <text x="256" y="222" font-family="'Arial Black', 'Impact', sans-serif" font-size="150" font-weight="900" text-anchor="middle" fill="url(#goldFace)" stroke="url(#goldBevel)" stroke-width="7" stroke-linejoin="round" letter-spacing="4">TOP</text>
+
+    <!-- Red Center Hole inside the 'O' (Icon Signature Detail) -->
+    <ellipse cx="256" cy="180" rx="14" ry="18" fill="#b91c1c" stroke="#7f1d1d" stroke-width="3"/>
+  </g>
+
+  <!-- Left Star Sparkle on 'T' -->
+  <g transform="translate(132, 140)" filter="url(#starGlow)">
+    <circle cx="0" cy="0" r="14" fill="#ffd700" opacity="0.6"/>
+    <path d="M0 -20 Q1.5 -4 20 0 Q1.5 4 0 20 Q-1.5 4 -20 0 Q-1.5 -4 0 -20 Z" fill="#ffffff" />
+    <path d="M0 -12 Q1 -3 12 0 Q1 3 0 12 Q-1 3 -12 0 Q-1 -3 0 -12 Z" fill="#fff9a6" />
+    <circle cx="0" cy="0" r="3" fill="#ffffff" />
+  </g>
+
+  <!-- Right Star Sparkle on 'P' -->
+  <g transform="translate(385, 175)" filter="url(#starGlow)">
+    <circle cx="0" cy="0" r="14" fill="#ffd700" opacity="0.6"/>
+    <path d="M0 -18 Q1.5 -4 18 0 Q1.5 4 0 18 Q-1.5 4 -18 0 Q-1.5 -4 0 -18 Z" fill="#ffffff" />
+    <path d="M0 -11 Q1 -3 11 0 Q1 3 0 11 Q-1 3 -11 0 Q-1 -3 0 -11 Z" fill="#fff9a6" />
+    <circle cx="0" cy="0" r="2.5" fill="#ffffff" />
+  </g>
+
+  <!-- ================= HORIZONTAL CYLINDER SLOT REEL "RUMMY" ================= -->
+  <g filter="url(#mainShadow)">
+    <!-- Outer Metallic Cylinder Pill Frame with Green/Chrome Trim -->
+    <rect x="20" y="260" width="472" height="126" rx="63" fill="url(#reelGrad)" stroke="url(#reelBorderGrad)" stroke-width="10"/>
+
+    <!-- Cylinder Glass Highlight (Top Specular Reflection) -->
+    <rect x="34" y="266" width="444" height="16" rx="8" fill="#ffffff" opacity="0.9"/>
+    <!-- Cylinder Glass Shadow (Bottom Curve Reflection) -->
+    <rect x="34" y="362" width="444" height="16" rx="8" fill="#475569" opacity="0.35"/>
+
+    <!-- 5 Slot Segment Vertical Dividers [ R | U | M | M | Y ] -->
+    <line x1="114" y1="262" x2="114" y2="384" stroke="#8a99a4" stroke-width="4" stroke-linecap="round"/>
+    <line x1="206" y1="262" x2="206" y2="384" stroke="#8a99a4" stroke-width="4" stroke-linecap="round"/>
+    <line x1="306" y1="262" x2="306" y2="384" stroke="#8a99a4" stroke-width="4" stroke-linecap="round"/>
+    <line x1="398" y1="262" x2="398" y2="384" stroke="#8a99a4" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Highlights next to divider lines for 3D curved barrel look -->
+    <line x1="117" y1="263" x2="117" y2="383" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+    <line x1="209" y1="263" x2="209" y2="383" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+    <line x1="309" y1="263" x2="309" y2="383" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+    <line x1="401" y1="263" x2="401" y2="383" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+
+    <!-- ================= 3D GREEN "R U M M Y" LETTERS ================= -->
+    <!-- R -->
+    <text x="68" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="82" font-weight="900" text-anchor="middle" fill="#011e11">R</text>
+    <text x="68" y="350" font-family="'Arial Black', 'Impact', sans-serif" font-size="82" font-weight="900" text-anchor="middle" fill="url(#rummyTextGrad)">R</text>
+
+    <!-- U -->
+    <text x="160" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="82" font-weight="900" text-anchor="middle" fill="#011e11">U</text>
+    <text x="160" y="350" font-family="'Arial Black', 'Impact', sans-serif" font-size="82" font-weight="900" text-anchor="middle" fill="url(#rummyTextGrad)">U</text>
+
+    <!-- M -->
+    <text x="256" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="80" font-weight="900" text-anchor="middle" fill="#011e11">M</text>
+    <text x="256" y="350" font-family="'Arial Black', 'Impact', sans-serif" font-size="80" font-weight="900" text-anchor="middle" fill="url(#rummyTextGrad)">M</text>
+
+    <!-- M -->
+    <text x="352" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="80" font-weight="900" text-anchor="middle" fill="#011e11">M</text>
+    <text x="352" y="350" font-family="'Arial Black', 'Impact', sans-serif" font-size="80" font-weight="900" text-anchor="middle" fill="url(#rummyTextGrad)">M</text>
+
+    <!-- Y -->
+    <text x="444" y="354" font-family="'Arial Black', 'Impact', sans-serif" font-size="82" font-weight="900" text-anchor="middle" fill="#011e11">Y</text>
+    <text x="444" y="350" font-family="'Arial Black', 'Impact', sans-serif" font-size="82" font-weight="900" text-anchor="middle" fill="url(#rummyTextGrad)">Y</text>
+  </g>
+
+  <!-- ================= BOTTOM SLOGAN: "YOU ONLY NEED ONE GAMES APP" ================= -->
+  <g filter="url(#mainShadow)">
+    <text x="256" y="430" font-family="'Arial Black', 'Impact', sans-serif" font-size="24" font-weight="900" text-anchor="middle" fill="#01140b" letter-spacing="1">YOU ONLY NEED ONE GAMES APP</text>
+    <text x="256" y="428" font-family="'Arial Black', 'Impact', sans-serif" font-size="24" font-weight="900" text-anchor="middle" fill="#ffffff" letter-spacing="1">YOU ONLY NEED ONE GAMES APP</text>
+  </g>
+</svg>

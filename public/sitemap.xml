@@ -11,7 +11,15 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- 0. JaiHo Rummy APK -->
+  <!-- 0. Top Rummy APK (India #1) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=top-rummy-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 1. JaiHo Rummy APK -->
   <url>
     <loc>https://yono-game.vercel.app/?app=jaiho-rummy-apk-download</loc>
     <lastmod>2026-08-29</lastmod>

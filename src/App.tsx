@@ -30,16 +30,16 @@ const AppEditorModal = lazy(() => import('./components/AppEditorModal').then(m =
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
 // Storage keys for persistent state
-const APPS_STORAGE_KEY = 'yono_user_custom_apps_v9';
-const PROMOS_STORAGE_KEY = 'yono_custom_promos_v9';
-const SETTINGS_STORAGE_KEY = 'yono_site_settings_v9';
-const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v9';
-const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v9';
+const APPS_STORAGE_KEY = 'yono_user_custom_apps_v10';
+const PROMOS_STORAGE_KEY = 'yono_custom_promos_v10';
+const SETTINGS_STORAGE_KEY = 'yono_site_settings_v10';
+const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v10';
+const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v10';
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: 'ALL NEW YONO APPS, ABC RUMMY, DHAN GAME & SAGA SLOTS (2026) - APK Downloads',
-  metaDescription: 'Official portal for ABC Rummy, Dhan Game, Saga Slots & 789jackpots APK Downloads with ₹7-₹777 Welcome Bonus, 200% Deposit Boost & ₹100 instant UPI withdrawals.',
-  metaKeywords: 'abc rummy, abc rummy apk download, dhan game, dhan game apk download, saga slots, saga slots apk download, all yono games, yono app list 2026, abc rummy code 75C7N8X46K5, all yono vip',
+  siteTitle: 'ALL NEW YONO APPS, TOP RUMMY, JAIHO RUMMY, ABC RUMMY & DHAN GAME (2026) - APK Downloads',
+  metaDescription: 'Official portal for Top Rummy, JaiHo Rummy, ABC Rummy & Dhan Game APK Downloads with ₹5-₹777 Welcome Bonus, 100% Deposit Cashback & ₹100 instant UPI withdrawals.',
+  metaKeywords: 'top rummy, top rummy apk download, top rummy referral code 7K9QGK4RFQ6, jaiho rummy, abc rummy, dhan game, saga slots, all yono games, yono app list 2026, all yono vip',
   canonicalUrl: 'https://yonoj.netlify.app',
   siteAuthor: 'Yono VIP Official Network',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',
@@ -49,14 +49,15 @@ const DEFAULT_SETTINGS: SiteSettings = {
   showTicker: true,
   showAgeDisclaimer: true,
   showPlayProtectBadge: true,
-  whatsappShareText: '💎 Download ABC Rummy, Dhan Game & Saga Slots with Free ₹100-₹777 Welcome Bonus + 200% Deposit Boost & Instant ₹100 UPI Cashout! Code: 75C7N8X46K5',
+  whatsappShareText: '👑 Download Top Rummy & JaiHo Rummy with Free ₹5-₹80 Welcome Bonus + 100% Deposit Cashback & Instant ₹100 UPI Cashout! Code: 7K9QGK4RFQ6',
   adminPin: 'admin123',
   notices: [
+    { id: 'top-1', type: 'sparkles', text: '👑 TOP RUMMY INDIA #1: ₹5 Free Instant Joining + ₹80 7-Day Login Bonus + 100% First Deposit Cashback! Code: 7K9QGK4RFQ6' },
     { id: '0', type: 'sparkles', text: '🎯 JAIHO RUMMY LAUNCH: ₹9-₹89 Free Sweet Start (Bina Deposit) + 150% 1st Deposit Bonus + 1% Lifetime Win Commission! Code: E74UDCLFRCL' },
     { id: '1', type: 'sparkles', text: '💎 ABC RUMMY VIP INVITATION: Up to ₹100 Welcome Cash + 200% 1st Deposit Boost + ₹10,000 Lucky Spin!' },
     { id: '2', type: 'sparkles', text: '👑 DHAN GAME OFFICIAL: Up to ₹777 Welcome Bonus FREE + 886% 7-Day Login + 500% Deposit Bonus!' },
     { id: '3', type: 'flame', text: '🎰 SAGA SLOTS LIVE: ₹7 Instant Joining + ₹259 7-Days Login Bonus + 100% Deposit Cashback!' },
-    { id: '4', type: 'gift', text: '🎁 JaiHo Rummy: E74UDCLFRCL | ABC Rummy: 75C7N8X46K5 | Dhan Game: 47TQCRTKJR7 | Saga Slots: 0QH9RU9PRNL' },
+    { id: '4', type: 'gift', text: '🎁 Top Rummy: 7K9QGK4RFQ6 | JaiHo Rummy: E74UDCLFRCL | ABC Rummy: 75C7N8X46K5 | Dhan Game: 47TQCRTKJR7' },
     { id: '5', type: 'shield', text: '🛡️ Safe & Tested: Direct APK download verified 100% virus-free on Android 13, 14 & 15.' }
   ]
 };
