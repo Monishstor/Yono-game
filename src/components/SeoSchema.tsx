@@ -182,15 +182,17 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
         '@type': 'ItemList',
         'name': 'Top All Yono Games APK Download List (2026)',
         'description': 'Verified collection of top rated Yono apps with real-cash bonuses and instant UPI withdrawals',
-        'itemListElement': (apps.length > 0 ? apps : []).slice(0, 10).map((app, idx) => ({
+        'itemListElement': (apps.length > 0 ? apps : []).map((app, idx) => ({
           '@type': 'ListItem',
           'position': idx + 1,
           'item': {
             '@type': 'SoftwareApplication',
-            'name': app.name,
+            'name': `${app.name} APK`,
+            'url': `${originUrl}/?app=${app.slug || app.id}`,
             'operatingSystem': 'Android 5.0+',
             'applicationCategory': 'GameApplication',
             'fileSize': app.apkSize || '45MB',
+            'softwareVersion': app.version || '2026.8',
             'offers': {
               '@type': 'Offer',
               'price': '0',
