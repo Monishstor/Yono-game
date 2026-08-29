@@ -14,8 +14,7 @@ import { SeoSchema } from './components/SeoSchema';
 import { FloatingTelegramBar } from './components/FloatingTelegramBar';
 import { useTheme } from './lib/theme';
 import { Sun, Moon, ArrowRightLeft, Loader2 } from 'lucide-react';
-import { db, handleFirestoreError, OperationType, testConnection } from './lib/firebase';
-import { collection, doc, onSnapshot, setDoc, deleteDoc } from 'firebase/firestore';
+import { startAppsSync, startSettingsSync, saveAppToFirestore, deleteAppFromFirestore, saveSettingsToFirestore } from './lib/firebaseSync';
 
 // Lazy-loaded components to minimize initial bundle size and maximize PageSpeed score
 const AdminPanel = lazy(() => import('./components/AdminPanel').then(m => ({ default: m.AdminPanel })));
@@ -280,79 +279,36 @@ export default function App() {
     }
   };
 
-  // Firebase Firestore Connectivity & Real-Time Sync
+  // Firebase Firestore Asynchronous Real-Time Sync (Deferred to keep Mobile 95+ PageSpeed)
   useEffect(() => {
-    testConnection();
-
-    // Listen for real-time app updates from Firestore
-    const unsubscribe = onSnapshot(
-      collection(db, 'apps'),
-      (snapshot) => {
-        if (!snapshot.empty) {
-          const firestoreApps: YonoApp[] = [];
-          snapshot.forEach((docSnap) => {
-            const data = docSnap.data() as YonoApp;
-            if (data && data.id && data.name) {
-              firestoreApps.push(data);
-            }
-          });
-
-          if (firestoreApps.length > 0) {
-            setApps((prevApps) => {
-              const merged = [...prevApps];
-              firestoreApps.forEach((fsApp) => {
-                const idx = merged.findIndex((a) => a.id === fsApp.id);
-                if (idx >= 0) {
-                  merged[idx] = { ...merged[idx], ...fsApp };
-                } else {
-                  merged.unshift(fsApp);
-                }
-              });
-              try {
-                localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(merged));
-              } catch (e) {}
-              return merged;
-            });
+    // 1. Listen for real-time app updates from Firestore
+    const stopAppsSync = startAppsSync((firestoreApps) => {
+      setApps((prevApps) => {
+        const merged = [...prevApps];
+        firestoreApps.forEach((fsApp) => {
+          const idx = merged.findIndex((a) => a.id === fsApp.id);
+          if (idx >= 0) {
+            merged[idx] = { ...merged[idx], ...fsApp };
+          } else {
+            merged.unshift(fsApp);
           }
-        }
-      },
-      (error) => {
-        handleFirestoreError(error, OperationType.GET, 'apps');
-      }
-    );
+        });
+        try {
+          localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(merged));
+        } catch (e) {}
+        return merged;
+      });
+    });
 
-    // Listen for global settings
-    const unsubSettings = onSnapshot(
-      doc(db, 'settings', 'global'),
-      (docSnap) => {
-        if (docSnap.exists()) {
-          const data = docSnap.data() as Partial<SiteSettings>;
-          if (data && Object.keys(data).length > 0) {
-            setSiteSettings((prev) => ({ ...prev, ...data }));
-          }
-        }
-      },
-      (error) => {
-        handleFirestoreError(error, OperationType.GET, 'settings/global');
-      }
-    );
+    // 2. Listen for global settings
+    const stopSettingsSync = startSettingsSync((newSettings) => {
+      setSiteSettings((prev) => ({ ...prev, ...newSettings }));
+    });
 
     return () => {
-      unsubscribe();
-      unsubSettings();
+      stopAppsSync();
+      stopSettingsSync();
     };
-  }, []);
-
-  // Asynchronously synchronize initial apps & settings with Cloud SQL backend
-  useEffect(() => {
-    fetch('/api/db/apps')
-      .then(res => res.ok ? res.json() : null)
-      .then(dbApps => {
-        if (dbApps && Array.isArray(dbApps) && dbApps.length > 0) {
-          console.log(`Cloud SQL: Loaded ${dbApps.length} apps from PostgreSQL`);
-        }
-      })
-      .catch(err => console.log('Cloud SQL sync notification:', err));
   }, []);
 
   const handleSavePromoCodes = (updatedPromos: PromoCode[]) => {
@@ -371,9 +327,8 @@ export default function App() {
     } catch (e) {
       console.error('Settings save error', e);
     }
-    // Save to Firestore
-    setDoc(doc(db, 'settings', 'global'), updatedSettings, { merge: true })
-      .catch((err) => handleFirestoreError(err, OperationType.WRITE, 'settings/global'));
+    // Save to Firestore asynchronously
+    saveSettingsToFirestore(updatedSettings);
   };
 
   const handleSaveWithdrawals = (updatedRecords: WithdrawalRecord[]) => {
@@ -531,9 +486,8 @@ export default function App() {
     }
     saveAppsToStorage(updated);
 
-    // Save to Firestore
-    setDoc(doc(db, 'apps', savedApp.id), savedApp, { merge: true })
-      .catch((err) => handleFirestoreError(err, OperationType.WRITE, `apps/${savedApp.id}`));
+    // Save to Firestore asynchronously
+    saveAppToFirestore(savedApp);
 
     if (selectedDetailApp && selectedDetailApp.id === savedApp.id) {
       setSelectedDetailApp(savedApp);
@@ -544,9 +498,8 @@ export default function App() {
     const updated = apps.filter((a) => a.id !== appId);
     saveAppsToStorage(updated);
 
-    // Delete from Firestore
-    deleteDoc(doc(db, 'apps', appId))
-      .catch((err) => handleFirestoreError(err, OperationType.DELETE, `apps/${appId}`));
+    // Delete from Firestore asynchronously
+    deleteAppFromFirestore(appId);
 
     if (selectedDetailApp?.id === appId) {
       setSelectedDetailApp(null);

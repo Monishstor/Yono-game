@@ -33,7 +33,7 @@ export const LiveWithdrawalFeed: React.FC<LiveWithdrawalFeedProps> = ({ records 
   const current = activeRecords[currentIndex] || activeRecords[0];
 
   return (
-    <div className={`fixed bottom-4 left-4 z-40 max-w-xs sm:max-w-sm transition-all duration-500 transform ${
+    <div className={`fixed bottom-20 left-3 sm:bottom-4 sm:left-4 z-30 max-w-xs sm:max-w-sm hidden sm:block transition-all duration-500 transform ${
       visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
     }`}>
       <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/95 backdrop-blur-md border border-slate-700 shadow-2xl text-slate-100 text-xs">
