@@ -28,7 +28,8 @@ export const AppIcon: React.FC<AppIconProps> = ({
       >
         <img
           src={resolvedUrl}
-          alt={`${app.name} icon`}
+          alt={`${app.name} Official APK Download Icon 2026`}
+          title={`${app.name} APK - Real Cash Games & Free Sign-Up Bonus`}
           width="56"
           height="56"
           loading={priority ? 'eager' : 'lazy'}

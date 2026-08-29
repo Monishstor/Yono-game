@@ -29,7 +29,9 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
     ? `${activeApp.name} apk download, ${activeApp.name} official app, ${activeApp.name} refer code, ${activeApp.name} bonus ₹${activeApp.signupBonus}, ${activeApp.name} rummy apk, ${activeApp.name} withdrawal proof, all yono apps 2026`
     : (siteSettings?.metaKeywords || 'all yono apps, yono games apk download, all new yono app 2026, yono vip, yono rummy 500 bonus, yono slots 777, yono games list, yono referral code');
 
-  const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://allnewyonoapps.com';
+  const originUrl = typeof window !== 'undefined' && window.location.origin
+    ? window.location.origin
+    : (siteSettings?.canonicalUrl || 'https://yono-game.vercel.app');
   const currentCanonical = isSingleAppPage && activeApp
     ? `${originUrl}/?app=${activeApp.slug || activeApp.id}`
     : (siteSettings?.canonicalUrl || originUrl);
@@ -38,7 +40,7 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
   const googleVerification = siteSettings?.googleSiteVerification;
   const currentOgImage = (isSingleAppPage && activeApp && activeApp.imageUrl)
     ? (activeApp.imageUrl.startsWith('http') ? activeApp.imageUrl : `${originUrl}${activeApp.imageUrl}`)
-    : 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&auto=format&fit=crop&q=80';
+    : `${originUrl}/main-site-logo.svg`;
 
   useEffect(() => {
     // 1. Dynamic Document Title
@@ -173,7 +175,7 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
           'ratingCount': activeApp.reviewsCount ? activeApp.reviewsCount.toString() : '28500'
         },
         'description': `Download official ${activeApp.name} APK. Claim ₹${activeApp.signupBonus} free sign-up bonus with ₹${activeApp.minWithdrawal} instant minimum UPI withdrawal.`,
-        'downloadUrl': activeApp.downloadUrl || '#'
+        'downloadUrl': (activeApp.downloadUrl && !activeApp.downloadUrl.startsWith('#')) ? activeApp.downloadUrl : `${originUrl}/?app=${activeApp.slug || activeApp.id}`
       };
     } else {
       // Portal-wide Top Apps ItemList Schema

@@ -66,14 +66,14 @@ export const InstallGuide: React.FC = () => {
                 {/* Text Content (Short & Punchy) */}
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1">
-                    <span className="text-[10px] font-black text-amber-600 dark:text-amber-400/90 font-mono">
+                    <span className="text-xs font-black text-amber-600 dark:text-amber-400/90 font-mono">
                       #{step.num}
                     </span>
                     <h3 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                       {step.title}
                     </h3>
                   </div>
-                  <p className="text-[10.5px] text-slate-600 dark:text-slate-400 truncate leading-tight">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 truncate leading-tight">
                     {step.desc}
                   </p>
                 </div>

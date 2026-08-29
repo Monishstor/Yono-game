@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
             <a 
-              href="#" 
+              href="/" 
               id="header-brand-logo"
               className="flex items-center gap-3 group text-decoration-none"
               onClick={(e) => {
@@ -88,12 +88,12 @@ export const Header: React.FC<HeaderProps> = ({
                   <span className="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 dark:text-white font-['Outfit',sans-serif]">
                     ALL NEW <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 dark:from-amber-400 dark:via-yellow-300 dark:to-amber-500">YONO APPS</span>
                   </span>
-                  <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
+                  <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-xs font-bold bg-amber-50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
                     2026 OFFICIAL
                   </span>
                 </div>
-                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">
-                  Verified APKs • Instant Bonus ₹51-₹1500 • Custom Apps Supported
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  Verified APKs • Instant Bonus ₹51-₹1500 • Safe & Fast UPI
                 </p>
               </div>
             </a>
