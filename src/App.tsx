@@ -5,18 +5,19 @@ import { YonoApp, AppCategory, PromoCode, SiteSettings, WithdrawalRecord } from 
 import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
 import { AppGrid } from './components/AppGrid';
-import { InstallGuide } from './components/InstallGuide';
-import { LiveWithdrawalFeed } from './components/LiveWithdrawalFeed';
-import { FaqSection } from './components/FaqSection';
-import { Footer } from './components/Footer';
-import { ResponsibleGamingBanner } from './components/ResponsibleGamingBanner';
 import { SeoSchema } from './components/SeoSchema';
-import { FloatingTelegramBar } from './components/FloatingTelegramBar';
 import { useTheme } from './lib/theme';
 import { Sun, Moon, ArrowRightLeft, Loader2 } from 'lucide-react';
 import { startAppsSync, startSettingsSync, saveAppToFirestore, deleteAppFromFirestore, saveSettingsToFirestore } from './lib/firebaseSync';
 
-// Lazy-loaded components to minimize initial bundle size and maximize PageSpeed score
+// Lazy-loaded components to minimize initial bundle size and maximize PageSpeed score (100% Green)
+const InstallGuide = lazy(() => import('./components/InstallGuide').then(m => ({ default: m.InstallGuide })));
+const FaqSection = lazy(() => import('./components/FaqSection').then(m => ({ default: m.FaqSection })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+const ResponsibleGamingBanner = lazy(() => import('./components/ResponsibleGamingBanner').then(m => ({ default: m.ResponsibleGamingBanner })));
+const LiveWithdrawalFeed = lazy(() => import('./components/LiveWithdrawalFeed').then(m => ({ default: m.LiveWithdrawalFeed })));
+const FloatingTelegramBar = lazy(() => import('./components/FloatingTelegramBar').then(m => ({ default: m.FloatingTelegramBar })));
+
 const AdminPanel = lazy(() => import('./components/AdminPanel').then(m => ({ default: m.AdminPanel })));
 const AdminLoginPage = lazy(() => import('./components/AdminLoginPage').then(m => ({ default: m.AdminLoginPage })));
 const GameLandingPage = lazy(() => import('./components/GameLandingPage').then(m => ({ default: m.GameLandingPage })));
@@ -684,16 +685,13 @@ export default function App() {
             </section>
 
             {/* 4-Step Installation & Troubleshooting Guide */}
-            <InstallGuide />
-
-            {/* FAQ Section */}
-            <FaqSection />
+            <Suspense fallback={null}>
+              <InstallGuide />
+              <FaqSection />
+            </Suspense>
           </>
         )}
       </main>
-
-      {/* Real-time Live Withdrawal Toasts */}
-      <LiveWithdrawalFeed records={withdrawalRecords} />
 
       {/* Instant Download Toast Feedback */}
       {downloadToast && (
@@ -717,18 +715,19 @@ export default function App() {
         </div>
       )}
 
-      {/* Footer with built-in WhatsApp & Telegram Share */}
-      <Footer
-        onOpenPromo={() => setIsPromoCodesOpen(true)}
-        onScrollTo={handleScrollToSection}
-        telegramLink={siteSettings.telegramLink}
-      />
-
-      {/* High Converting Floating Telegram VIP Community Bar */}
-      <FloatingTelegramBar
-        telegramLink={siteSettings.telegramLink}
-        memberCount={`${siteSettings.telegramSubscribers || '88K'} Members`}
-      />
+      {/* Real-time Live Withdrawal Toasts & Footer elements */}
+      <Suspense fallback={null}>
+        <LiveWithdrawalFeed records={withdrawalRecords} />
+        <Footer
+          onOpenPromo={() => setIsPromoCodesOpen(true)}
+          onScrollTo={handleScrollToSection}
+          telegramLink={siteSettings.telegramLink}
+        />
+        <FloatingTelegramBar
+          telegramLink={siteSettings.telegramLink}
+          memberCount={`${siteSettings.telegramSubscribers || '88K'} Members`}
+        />
+      </Suspense>
 
       {/* Floating Theme Quick Switcher with Arrow Indicator */}
       <div className="fixed bottom-20 right-4 z-30 hidden sm:flex items-center">

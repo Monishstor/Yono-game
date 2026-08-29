@@ -30,10 +30,12 @@ export const AppIcon: React.FC<AppIconProps> = ({
           src={resolvedUrl}
           alt={`${app.name} Official APK Download Icon 2026`}
           title={`${app.name} APK - Real Cash Games & Free Sign-Up Bonus`}
-          width="56"
-          height="56"
+          width={56}
+          height={56}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
+          // @ts-expect-error fetchpriority attribute
+          fetchpriority={priority ? 'high' : 'auto'}
           referrerPolicy="no-referrer"
           onError={() => setImageError(true)}
           className="w-full h-full object-cover"
