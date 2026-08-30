@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'WTPQVSQURZJ',
+    title: '567 Slots Official Launch Bonus & VIP Free Spins',
+    reward: 'Instant Welcome Bonus + High RTP 567 Ruby Slots Multiplier + Daily Rebates',
+    expiry: 'Official Active Code',
+    appTarget: '567 Slots',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '8JTVPXAN88N',
     title: 'WINRUMMY India #1 Skilled Gaming Welcome Bonus & ₹9 Cr Prize Pool',
     reward: 'Up to ₹199 Free Welcome Bonus + 100% Extra Deposit Boost + Daily ₹99,999 Mystery Gift',
