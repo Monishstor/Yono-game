@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'J5KT7T6ZAFU',
+    title: 'Joy Rummy VIP Invitation Welcome Cash & 100% Deposit Boost',
+    reward: 'Up to ₹300 Free Welcome Cash + 100% 1st Deposit Boost + ₹10,000 Lucky Spin',
+    expiry: 'Official Active Code',
+    appTarget: 'Joy Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'JLXS8QC8YBX',
     title: 'GOLD RUMMY ₹199 Welcome Bonus & 300% Deposit Boost',
     reward: 'Up to ₹199 Free Welcome Bonus + 300% 1st Deposit Bonus + ₹99,999 Lucky Wheel',
