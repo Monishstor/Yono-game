@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Gradient -->
+    <radialGradient id="okBgRadial" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0b5e39"/>
+      <stop offset="40%" stop-color="#054425"/>
+      <stop offset="80%" stop-color="#022414"/>
+      <stop offset="100%" stop-color="#011209"/>
+    </radialGradient>
+
+    <!-- Center Rotated Diamond Plate Gradient -->
+    <linearGradient id="okDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f6b41"/>
+      <stop offset="50%" stop-color="#084d2d"/>
+      <stop offset="100%" stop-color="#032a18"/>
+    </linearGradient>
+
+    <!-- Golden Crown Gradients -->
+    <linearGradient id="okCrownGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#fff59d"/>
+      <stop offset="55%" stop-color="#fbc02d"/>
+      <stop offset="85%" stop-color="#f57f17"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <linearGradient id="okCrownBase" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="25%" stop-color="#fff9c4"/>
+      <stop offset="50%" stop-color="#fbc02d"/>
+      <stop offset="75%" stop-color="#fff9c4"/>
+      <stop offset="100%" stop-color="#9a3412"/>
+    </linearGradient>
+
+    <!-- 3D "OK" Typography Gradients -->
+    <linearGradient id="okGoldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffde7"/>
+      <stop offset="15%" stop-color="#fff176"/>
+      <stop offset="50%" stop-color="#fbc02d"/>
+      <stop offset="85%" stop-color="#f57f17"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </linearGradient>
+
+    <linearGradient id="okGoldBevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#fff59d"/>
+      <stop offset="65%" stop-color="#ffa000"/>
+      <stop offset="100%" stop-color="#8a2b00"/>
+    </linearGradient>
+
+    <!-- Slot Roller Outer Metallic Green Frame -->
+    <linearGradient id="okReelGreenFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#16a34a"/>
+      <stop offset="85%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+
+    <!-- Slot Reel Body (White/Silver Cylinder) -->
+    <linearGradient id="okReelSilverCylinder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="12%" stop-color="#e2e8f0"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Emerald Green "RUMMY" Letter Face Gradient -->
+    <linearGradient id="okRummyGreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="30%" stop-color="#059669"/>
+      <stop offset="70%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="okMainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+
+    <filter id="okStarGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle with Deep Green Texture -->
+  <rect width="512" height="512" rx="112" fill="url(#okBgRadial)"/>
+
+  <!-- Checkerboard / Diamond Quilted Pattern -->
+  <g opacity="0.25" stroke="#22c55e" stroke-width="1.2" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Neon Green Accent Border -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="4.5" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Green Glow Border -->
+  <g filter="url(#okMainShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#okDiamondGrad)" stroke="#22c55e" stroke-width="5" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- ==================== TOP 3D GOLDEN CROWN ==================== -->
+  <g filter="url(#okMainShadow)">
+    <!-- Crown Base Shadow -->
+    <path d="M168 152 L152 82 L206 112 L256 42 L306 112 L360 82 L344 152 Z" fill="#2d1300" opacity="0.6" transform="translate(0, 4)"/>
+
+    <!-- Crown Velvet Arch/Inner Cushion -->
+    <path d="M174 146 C174 94 338 94 338 146 Z" fill="#7f1d1d" stroke="#450a0a" stroke-width="2"/>
+
+    <!-- 3D Crown Body -->
+    <path d="M170 146 L154 80 L208 110 L256 38 L304 110 L358 80 L342 146 Z" fill="url(#okCrownGold)" stroke="#b45309" stroke-width="2.5"/>
+
+    <!-- Center Ruby Diamond on Crown -->
+    <polygon points="256,76 266,88 256,100 246,88" fill="#dc2626" stroke="#991b1b" stroke-width="1"/>
+
+    <!-- Crown 5 Pearls on Peak Tips -->
+    <!-- Left 1 -->
+    <circle cx="154" cy="80" r="7.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="152" cy="78" r="2.5" fill="#ffffff"/>
+    <!-- Left 2 -->
+    <circle cx="208" cy="110" r="6.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="206" cy="108" r="2" fill="#ffffff"/>
+    <!-- Center (Top Big Pearl/Heart) -->
+    <circle cx="256" cy="36" r="10" fill="#fff9c4" stroke="#d97706" stroke-width="2"/>
+    <circle cx="253" cy="33" r="4" fill="#ffffff"/>
+    <!-- Right 2 -->
+    <circle cx="304" cy="110" r="6.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="302" cy="108" r="2" fill="#ffffff"/>
+    <!-- Right 1 -->
+    <circle cx="358" cy="80" r="7.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="356" cy="78" r="2.5" fill="#ffffff"/>
+
+    <!-- Crown Lower Embellished Rim Band -->
+    <rect x="166" y="138" width="180" height="20" rx="10" fill="url(#okCrownBase)" stroke="#78350f" stroke-width="2"/>
+    <!-- Row of White Pearls along the rim -->
+    <g fill="#ffffff" opacity="0.95">
+      <circle cx="180" cy="148" r="3"/>
+      <circle cx="196" cy="148" r="3"/>
+      <circle cx="212" cy="148" r="3"/>
+      <circle cx="228" cy="148" r="3"/>
+      <circle cx="244" cy="148" r="3"/>
+      <circle cx="256" cy="148" r="3.5"/>
+      <circle cx="268" cy="148" r="3"/>
+      <circle cx="284" cy="148" r="3"/>
+      <circle cx="300" cy="148" r="3"/>
+      <circle cx="316" cy="148" r="3"/>
+      <circle cx="332" cy="148" r="3"/>
+    </g>
+  </g>
+
+  <!-- Sparkle Stars on OK text -->
+  <g filter="url(#okStarGlow)">
+    <!-- Top Left Sparkle on O -->
+    <path d="M120 160 Q120 174 134 174 Q120 174 120 188 Q120 174 106 174 Q120 174 120 160 Z" fill="#ffffff" />
+    <path d="M120 163 Q120 174 130 174 Q120 174 120 185 Q120 174 110 174 Q120 174 120 163 Z" fill="#ffd700" />
+    
+    <!-- Top Right Sparkle on K -->
+    <path d="M374 170 Q374 184 388 184 Q374 184 374 198 Q374 184 360 184 Q374 184 374 170 Z" fill="#ffffff" />
+    <path d="M374 173 Q374 184 384 184 Q374 184 374 195 Q374 184 364 184 Q374 184 374 173 Z" fill="#ffd700" />
+  </g>
+
+  <!-- ==================== 3D "OK" BOLD TYPOGRAPHY ==================== -->
+  <g filter="url(#okMainShadow)">
+    <!-- Deep Crimson/Red 3D Extrusion Shadow Layers -->
+    <text x="256" y="270" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="182" letter-spacing="4" fill="#3b0800" stroke="#3b0800" stroke-width="20" stroke-linejoin="round">OK</text>
+    <text x="256" y="265" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="182" letter-spacing="4" fill="#6b1200" stroke="#6b1200" stroke-width="16" stroke-linejoin="round">OK</text>
+    <text x="256" y="260" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="182" letter-spacing="4" fill="#9e1e00" stroke="#9e1e00" stroke-width="13" stroke-linejoin="round">OK</text>
+    <text x="256" y="255" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="182" letter-spacing="4" fill="#d82d00" stroke="#d82d00" stroke-width="10" stroke-linejoin="round">OK</text>
+
+    <!-- Warm Golden Bevel Outline -->
+    <text x="256" y="250" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="182" letter-spacing="4" fill="url(#okGoldBevel)" stroke="url(#okGoldBevel)" stroke-width="8" stroke-linejoin="round">OK</text>
+
+    <!-- Crisp Rich Yellow Gold Front Face -->
+    <text x="256" y="250" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="182" letter-spacing="4" fill="url(#okGoldFace)">OK</text>
+  </g>
+
+  <!-- ==================== 5-SLOT "RUMMY" CYLINDER REEL ==================== -->
+  <g filter="url(#okMainShadow)">
+    <!-- Slot Roller Outer Dark Rim -->
+    <rect x="36" y="280" width="440" height="136" rx="68" fill="#011b10" stroke="#000000" stroke-width="6"/>
+
+    <!-- Shiny Chrome Green Rim -->
+    <rect x="40" y="284" width="432" height="128" rx="64" fill="url(#okReelGreenFrame)" stroke="#166534" stroke-width="2"/>
+
+    <!-- 5-Slot White/Silver Cylinder Reel Body -->
+    <rect x="48" y="292" width="416" height="112" rx="56" fill="url(#okReelSilverCylinder)"/>
+
+    <!-- 5 Individual Reel Column Dividers -->
+    <!-- Col 1 (R) / Col 2 (U) -->
+    <path d="M130 292 L130 404" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M133 292 L133 404" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 2 (U) / Col 3 (M) -->
+    <path d="M214 292 L214 404" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M217 292 L217 404" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 3 (M) / Col 4 (M) -->
+    <path d="M298 292 L298 404" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M301 292 L301 404" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 4 (M) / Col 5 (Y) -->
+    <path d="M382 292 L382 404" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M385 292 L385 404" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Reel Cylindrical Gloss Highlight (Top white reflection) -->
+    <rect x="68" y="296" width="376" height="20" rx="10" fill="#ffffff" opacity="0.75"/>
+    <rect x="78" y="300" width="356" height="6" rx="3" fill="#ffffff" opacity="0.95"/>
+
+    <!-- Bottom subtle reflection -->
+    <rect x="88" y="386" width="336" height="8" rx="4" fill="#ffffff" opacity="0.3"/>
+
+    <!-- ==================== 5 EMERALD GREEN BOLD LETTERS: R - U - M - M - Y ==================== -->
+    
+    <!-- LETTER 1: "R" (x: 88) -->
+    <g>
+      <text x="88" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">R</text>
+      <text x="88" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">R</text>
+      <text x="88" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#okRummyGreenGrad)">R</text>
+    </g>
+
+    <!-- LETTER 2: "U" (x: 172) -->
+    <g>
+      <text x="172" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">U</text>
+      <text x="172" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">U</text>
+      <text x="172" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#okRummyGreenGrad)">U</text>
+    </g>
+
+    <!-- LETTER 3: "M" (x: 256) -->
+    <g>
+      <text x="256" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">M</text>
+      <text x="256" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">M</text>
+      <text x="256" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#okRummyGreenGrad)">M</text>
+    </g>
+
+    <!-- LETTER 4: "M" (x: 340) -->
+    <g>
+      <text x="340" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">M</text>
+      <text x="340" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">M</text>
+      <text x="340" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#okRummyGreenGrad)">M</text>
+    </g>
+
+    <!-- LETTER 5: "Y" (x: 424) -->
+    <g>
+      <text x="424" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">Y</text>
+      <text x="424" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">Y</text>
+      <text x="424" y="382" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#okRummyGreenGrad)">Y</text>
+    </g>
+  </g>
+</svg>

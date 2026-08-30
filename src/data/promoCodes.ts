@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'H2GPJ5DAPZW',
+    title: 'OKRUMMY India #1 Skilled Gaming Welcome Bonus & Mystery Gift',
+    reward: 'Up to ₹199 Free Instant Welcome Bonus + 100% Deposit Match + ₹9 Cr Members\' Day Pool',
+    expiry: 'Official Active Code',
+    appTarget: 'OKRUMMY',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'J5KT7T6ZAFU',
     title: 'Joy Rummy VIP Invitation Welcome Cash & 100% Deposit Boost',
     reward: 'Up to ₹300 Free Welcome Cash + 100% 1st Deposit Boost + ₹10,000 Lucky Spin',
