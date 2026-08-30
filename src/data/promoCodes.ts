@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '89SJ7VHBRUF',
+    title: 'GameRummy Play FREE 6 Daily Spins & 24h Red Envelopes',
+    reward: '6 FREE Daily Spins (No Deposit) + 24-Hour Red Envelopes + Daily Mystery Rewards',
+    expiry: 'Official Active Code',
+    appTarget: 'GameRummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'H2GPJ5DAPZW',
     title: 'OKRUMMY India #1 Skilled Gaming Welcome Bonus & Mystery Gift',
     reward: 'Up to ₹199 Free Instant Welcome Bonus + 100% Deposit Match + ₹9 Cr Members\' Day Pool',
