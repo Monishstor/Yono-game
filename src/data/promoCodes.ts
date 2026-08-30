@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'JLXS8QC8YBX',
+    title: 'GOLD RUMMY ₹199 Welcome Bonus & 300% Deposit Boost',
+    reward: 'Up to ₹199 Free Welcome Bonus + 300% 1st Deposit Bonus + ₹99,999 Lucky Wheel',
+    expiry: 'Official Active Code',
+    appTarget: 'GOLD RUMMY',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'WZTEYYWJNZK',
     title: 'RummyLudo Free Welcome Bonus & Instant UPI Payouts',
     reward: 'Up to ₹50 Free Instant Welcome Bonus (No Deposit Required) + 30% Lifetime Agent Commission',

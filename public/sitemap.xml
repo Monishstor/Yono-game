@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. GOLD RUMMY APK (Play More. Win More) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=gold-rummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. RummyLudo APK (Win Big & Play Instantly) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=rummy-ludo-apk-download</loc>

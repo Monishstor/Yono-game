@@ -1,0 +1,303 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Gradient -->
+    <radialGradient id="grBgRadial" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0b5e39"/>
+      <stop offset="40%" stop-color="#054425"/>
+      <stop offset="80%" stop-color="#022414"/>
+      <stop offset="100%" stop-color="#011209"/>
+    </radialGradient>
+
+    <!-- Center Rotated Diamond Plate Gradient -->
+    <linearGradient id="grDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f6b41"/>
+      <stop offset="50%" stop-color="#084d2d"/>
+      <stop offset="100%" stop-color="#032a18"/>
+    </linearGradient>
+
+    <!-- Diamond Encrusted Golden Crown Gradients -->
+    <linearGradient id="grCrownGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#fff59d"/>
+      <stop offset="55%" stop-color="#fbc02d"/>
+      <stop offset="85%" stop-color="#f57f17"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <linearGradient id="grCrownBase" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="25%" stop-color="#fff9c4"/>
+      <stop offset="50%" stop-color="#fbc02d"/>
+      <stop offset="75%" stop-color="#fff9c4"/>
+      <stop offset="100%" stop-color="#9a3412"/>
+    </linearGradient>
+
+    <!-- 3D "GOLD" Typography Gradients -->
+    <linearGradient id="grGoldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffde7"/>
+      <stop offset="20%" stop-color="#fff176"/>
+      <stop offset="50%" stop-color="#fbc02d"/>
+      <stop offset="80%" stop-color="#f57f17"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="grGoldBevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#fff59d"/>
+      <stop offset="65%" stop-color="#ffa000"/>
+      <stop offset="100%" stop-color="#8a2b00"/>
+    </linearGradient>
+
+    <!-- Slot Roller Outer Metallic Green Frame -->
+    <linearGradient id="grReelGreenFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#16a34a"/>
+      <stop offset="85%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+
+    <!-- Slot Reel Body (White/Silver Cylinder) -->
+    <linearGradient id="grReelSilverCylinder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="12%" stop-color="#e2e8f0"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Dark Green/Black "RUMMY" Letter Fill Gradient -->
+    <linearGradient id="grRummyLetterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="35%" stop-color="#022c22"/>
+      <stop offset="70%" stop-color="#011b14"/>
+      <stop offset="100%" stop-color="#000e0a"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="grMainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+
+    <filter id="grStarGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle with Deep Green Texture -->
+  <rect width="512" height="512" rx="112" fill="url(#grBgRadial)"/>
+
+  <!-- Checkerboard / Diamond Quilted Pattern -->
+  <g opacity="0.25" stroke="#22c55e" stroke-width="1.2" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Neon Green Accent Border -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="4.5" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Green Glow Border -->
+  <g filter="url(#grMainShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#grDiamondGrad)" stroke="#22c55e" stroke-width="5" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- ==================== TOP 3D ROYAL GOLDEN CROWN ==================== -->
+  <g filter="url(#grMainShadow)">
+    <!-- Crown Base Shadow -->
+    <path d="M168 152 L152 82 L206 112 L256 42 L306 112 L360 82 L344 152 Z" fill="#2d1300" opacity="0.6" transform="translate(0, 4)"/>
+
+    <!-- Crown Velvet Arch/Inner Cushion -->
+    <path d="M174 146 C174 94 338 94 338 146 Z" fill="#581c87" stroke="#2e1065" stroke-width="2"/>
+
+    <!-- 3D Crown Body -->
+    <path d="M170 146 L154 80 L208 110 L256 38 L304 110 L358 80 L342 146 Z" fill="url(#grCrownGold)" stroke="#b45309" stroke-width="2.5"/>
+
+    <!-- Diamond Strands on Crown Body -->
+    <g fill="#ffffff" opacity="0.85">
+      <!-- Center Peak Diamonds -->
+      <circle cx="256" cy="62" r="3"/>
+      <circle cx="256" cy="74" r="3.5"/>
+      <circle cx="256" cy="88" r="4"/>
+      <circle cx="256" cy="104" r="4.5"/>
+      <circle cx="256" cy="122" r="5"/>
+
+      <!-- Left Mid Peak Diamonds -->
+      <circle cx="218" cy="120" r="3.5"/>
+      <circle cx="228" cy="132" r="4"/>
+      <!-- Right Mid Peak Diamonds -->
+      <circle cx="294" cy="120" r="3.5"/>
+      <circle cx="284" cy="132" r="4"/>
+    </g>
+
+    <!-- Crown 5 Pearls on Peak Tips -->
+    <!-- Left 1 -->
+    <circle cx="154" cy="80" r="7.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="152" cy="78" r="2.5" fill="#ffffff"/>
+    <!-- Left 2 -->
+    <circle cx="208" cy="110" r="6.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="206" cy="108" r="2" fill="#ffffff"/>
+    <!-- Center (Top Big Pearl) -->
+    <circle cx="256" cy="36" r="10" fill="#fff9c4" stroke="#d97706" stroke-width="2"/>
+    <circle cx="253" cy="33" r="4" fill="#ffffff"/>
+    <!-- Right 2 -->
+    <circle cx="304" cy="110" r="6.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="302" cy="108" r="2" fill="#ffffff"/>
+    <!-- Right 1 -->
+    <circle cx="358" cy="80" r="7.5" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="356" cy="78" r="2.5" fill="#ffffff"/>
+
+    <!-- Crown Lower Embellished Diamond Rim Band -->
+    <rect x="166" y="138" width="180" height="20" rx="10" fill="url(#grCrownBase)" stroke="#78350f" stroke-width="2"/>
+    <!-- Row of White Diamonds along the rim -->
+    <g fill="#ffffff" opacity="0.95">
+      <circle cx="180" cy="148" r="3"/>
+      <circle cx="196" cy="148" r="3"/>
+      <circle cx="212" cy="148" r="3"/>
+      <circle cx="228" cy="148" r="3"/>
+      <circle cx="244" cy="148" r="3"/>
+      <circle cx="256" cy="148" r="3.5"/>
+      <circle cx="268" cy="148" r="3"/>
+      <circle cx="284" cy="148" r="3"/>
+      <circle cx="300" cy="148" r="3"/>
+      <circle cx="316" cy="148" r="3"/>
+      <circle cx="332" cy="148" r="3"/>
+    </g>
+  </g>
+
+  <!-- Sparkle Stars near GOLD text -->
+  <g filter="url(#grStarGlow)">
+    <!-- Top Left of G -->
+    <path d="M128 170 Q128 180 138 180 Q128 180 128 190 Q128 180 118 180 Q128 180 128 170 Z" fill="#ffffff" />
+    <path d="M128 172 Q128 180 136 180 Q128 180 128 188 Q128 180 120 180 Q128 180 128 172 Z" fill="#ffd700" />
+    
+    <!-- Top Right of D -->
+    <path d="M380 170 Q380 180 390 180 Q380 180 380 190 Q380 180 370 180 Q380 180 380 170 Z" fill="#ffffff" />
+    <path d="M380 172 Q380 180 388 180 Q380 180 380 188 Q380 180 372 180 Q380 180 380 172 Z" fill="#ffd700" />
+  </g>
+
+  <!-- ==================== 3D "GOLD" BOLD TEXT ==================== -->
+  <g filter="url(#grMainShadow)">
+    <!-- Deep Red/Brown 3D Extrusion Layers -->
+    <text x="256" y="260" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="4" fill="#380e00" stroke="#380e00" stroke-width="18" stroke-linejoin="round">GOLD</text>
+    <text x="256" y="255" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="4" fill="#601800" stroke="#601800" stroke-width="15" stroke-linejoin="round">GOLD</text>
+    <text x="256" y="250" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="4" fill="#902600" stroke="#902600" stroke-width="12" stroke-linejoin="round">GOLD</text>
+    <text x="256" y="245" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="4" fill="#c23b00" stroke="#c23b00" stroke-width="10" stroke-linejoin="round">GOLD</text>
+
+    <!-- Warm Golden Bevel Outline -->
+    <text x="256" y="240" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="4" fill="url(#grGoldBevel)" stroke="url(#grGoldBevel)" stroke-width="8" stroke-linejoin="round">GOLD</text>
+
+    <!-- Crisp Rich Yellow Gold Front Face -->
+    <text x="256" y="240" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="4" fill="url(#grGoldFace)">GOLD</text>
+  </g>
+
+  <!-- ==================== 5-SLOT "RUMMY" CYLINDER REEL ==================== -->
+  <g filter="url(#grMainShadow)">
+    <!-- Slot Roller Outer Dark Rim -->
+    <rect x="42" y="272" width="428" height="120" rx="60" fill="#011b10" stroke="#000000" stroke-width="5"/>
+
+    <!-- Shiny Chrome Green Rim -->
+    <rect x="46" y="276" width="420" height="112" rx="56" fill="url(#grReelGreenFrame)" stroke="#166534" stroke-width="2"/>
+
+    <!-- 5-Slot White/Silver Cylinder Reel Body -->
+    <rect x="52" y="282" width="408" height="100" rx="50" fill="url(#grReelSilverCylinder)"/>
+
+    <!-- 5 Individual Reel Column Dividers -->
+    <!-- Col 1 (R) / Col 2 (U) -->
+    <path d="M136 282 L136 382" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M139 282 L139 382" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 2 (U) / Col 3 (M) -->
+    <path d="M216 282 L216 382" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M219 282 L219 382" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 3 (M) / Col 4 (M) -->
+    <path d="M296 282 L296 382" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M299 282 L299 382" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 4 (M) / Col 5 (Y) -->
+    <path d="M376 282 L376 382" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M379 282 L379 382" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Reel Cylindrical Gloss Highlight (Top white reflection) -->
+    <rect x="70" y="286" width="372" height="16" rx="8" fill="#ffffff" opacity="0.8"/>
+    <rect x="80" y="290" width="352" height="5" rx="2.5" fill="#ffffff" opacity="0.95"/>
+
+    <!-- Bottom subtle reflection -->
+    <rect x="88" y="366" width="336" height="8" rx="4" fill="#ffffff" opacity="0.3"/>
+
+    <!-- ==================== 5 DARK GREEN BOLD LETTERS: R - U - M - M - Y ==================== -->
+    
+    <!-- LETTER 1: "R" (x: 94) -->
+    <g>
+      <text x="94" y="360" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="#011b10" stroke="#011b10" stroke-width="6" stroke-linejoin="round">R</text>
+      <text x="94" y="357" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="url(#grRummyLetterGrad)">R</text>
+    </g>
+
+    <!-- LETTER 2: "U" (x: 178) -->
+    <g>
+      <text x="178" y="360" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="#011b10" stroke="#011b10" stroke-width="6" stroke-linejoin="round">U</text>
+      <text x="178" y="357" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="url(#grRummyLetterGrad)">U</text>
+    </g>
+
+    <!-- LETTER 3: "M" (x: 258) -->
+    <g>
+      <text x="258" y="360" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="#011b10" stroke="#011b10" stroke-width="6" stroke-linejoin="round">M</text>
+      <text x="258" y="357" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="url(#grRummyLetterGrad)">M</text>
+    </g>
+
+    <!-- LETTER 4: "M" (x: 338) -->
+    <g>
+      <text x="338" y="360" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="#011b10" stroke="#011b10" stroke-width="6" stroke-linejoin="round">M</text>
+      <text x="338" y="357" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="url(#grRummyLetterGrad)">M</text>
+    </g>
+
+    <!-- LETTER 5: "Y" (x: 418) -->
+    <g>
+      <text x="418" y="360" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="#011b10" stroke="#011b10" stroke-width="6" stroke-linejoin="round">Y</text>
+      <text x="418" y="357" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="82" fill="url(#grRummyLetterGrad)">Y</text>
+    </g>
+  </g>
+
+  <!-- ==================== BOTTOM CARD SUITS & DOTS: • • ♥ ♦ ♣ ♠ • • ==================== -->
+  <g transform="translate(256, 424)" filter="url(#grMainShadow)">
+    <!-- Left Dots -->
+    <circle cx="-120" cy="0" r="3.5" fill="#f59e0b"/>
+    <circle cx="-104" cy="0" r="3.5" fill="#f59e0b"/>
+
+    <!-- Heart (♥) -->
+    <path d="M-60 -8 C-67 -16 -76 -7 -76 1 C-76 8 -66 14 -60 19 C-54 14 -44 8 -44 1 C-44 -7 -53 -16 -60 -8 Z" fill="#f59e0b" stroke="#78350f" stroke-width="1"/>
+
+    <!-- Diamond (♦) -->
+    <path d="M-20 -12 L-6 0 L-20 12 L-34 0 Z" fill="#f59e0b" stroke="#78350f" stroke-width="1"/>
+
+    <!-- Club (♣) -->
+    <g transform="translate(20, 0)">
+      <circle cx="0" cy="-6" r="6" fill="#f59e0b"/>
+      <circle cx="-6" cy="2" r="6" fill="#f59e0b"/>
+      <circle cx="6" cy="2" r="6" fill="#f59e0b"/>
+      <path d="M-2 2 L-4 12 L4 12 L2 2 Z" fill="#f59e0b"/>
+    </g>
+
+    <!-- Spade (♠) -->
+    <g transform="translate(60, 0)">
+      <path d="M0 -12 C-8 -4 -11 1 -11 6 C-11 10 -8 13 -4 13 C-1 13 0 11 0 11 C0 11 1 13 4 13 C8 13 11 10 11 6 C11 1 8 -4 0 -12 Z" fill="#f59e0b"/>
+      <path d="M-2 10 L-4 15 L4 15 L2 10 Z" fill="#f59e0b"/>
+    </g>
+
+    <!-- Right Dots -->
+    <circle cx="104" cy="0" r="3.5" fill="#f59e0b"/>
+    <circle cx="120" cy="0" r="3.5" fill="#f59e0b"/>
+  </g>
+</svg>
