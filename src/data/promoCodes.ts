@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '8JTVPXAN88N',
+    title: 'WINRUMMY India #1 Skilled Gaming Welcome Bonus & ₹9 Cr Prize Pool',
+    reward: 'Up to ₹199 Free Welcome Bonus + 100% Extra Deposit Boost + Daily ₹99,999 Mystery Gift',
+    expiry: 'Official Active Code',
+    appTarget: 'WINRUMMY',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'W3V54MXH67M',
     title: 'IND CLUB Play Now & Win Rewards Instant Welcome Bonus',
     reward: 'Up to ₹33 Instant Welcome Bonus + High Multiplier Slots & Daily Rebates',
