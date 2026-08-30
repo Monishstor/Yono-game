@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'J24DSEXDU39',
+    title: 'Maha Games India #1 Skilled Gaming Welcome Bonus & 7-Days Login',
+    reward: '₹1 Free Joining + ₹182 7-Days Login Bonus + 100% First Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Maha Games',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '89SJ7VHBRUF',
     title: 'GameRummy Play FREE 6 Daily Spins & 24h Red Envelopes',
     reward: '6 FREE Daily Spins (No Deposit) + 24-Hour Red Envelopes + Daily Mystery Rewards',
