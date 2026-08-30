@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'W3V54MXH67M',
+    title: 'IND CLUB Play Now & Win Rewards Instant Welcome Bonus',
+    reward: 'Up to ₹33 Instant Welcome Bonus + High Multiplier Slots & Daily Rebates',
+    expiry: 'Official Active Code',
+    appTarget: 'IND CLUB',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'J24DSEXDU39',
     title: 'Maha Games India #1 Skilled Gaming Welcome Bonus & 7-Days Login',
     reward: '₹1 Free Joining + ₹182 7-Days Login Bonus + 100% First Deposit Cashback',

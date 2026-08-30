@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. IND CLUB APK (Play Now & Win Rewards) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=ind-club-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. Maha Games APK (India #1 Skilled Gaming) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=maha-games-apk-download</loc>
