@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'WZTEYYWJNZK',
+    title: 'RummyLudo Free Welcome Bonus & Instant UPI Payouts',
+    reward: 'Up to ₹50 Free Instant Welcome Bonus (No Deposit Required) + 30% Lifetime Agent Commission',
+    expiry: 'Official Active Code',
+    appTarget: 'RummyLudo',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'DR0XFAYTDGS',
     title: 'Neta.VIP India\'s #1 Skilled Gaming Welcome Pack',
     reward: '₹4 Free Joining + ₹297 7-Days Login Bonus + 100% 1st Deposit Cashback',
