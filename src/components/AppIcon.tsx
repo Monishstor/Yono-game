@@ -34,8 +34,7 @@ export const AppIcon: React.FC<AppIconProps> = ({
           height={56}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
-          // @ts-expect-error fetchpriority attribute
-          fetchpriority={priority ? 'high' : 'auto'}
+          fetchPriority={priority ? 'high' : 'auto'}
           referrerPolicy="no-referrer"
           onError={() => setImageError(true)}
           className="w-full h-full object-cover"

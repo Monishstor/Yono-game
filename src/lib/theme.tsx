@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 
-export type ThemeMode = 'dark' | 'light';
+export type ThemeMode = 'dark';
 
 interface ThemeContextType {
   theme: ThemeMode;
@@ -12,61 +12,41 @@ interface ThemeContextType {
 
 const THEME_STORAGE_KEY = 'yono_portal_theme_mode_v1';
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'dark',
+  isLight: false,
+  isDark: true,
+  toggleTheme: () => {},
+  setTheme: () => {}
+});
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<ThemeMode>(() => {
+  useEffect(() => {
     try {
       if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem(THEME_STORAGE_KEY);
-        if (saved === 'light' || saved === 'dark') {
-          return saved;
+        localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+        const root = document.documentElement;
+        root.classList.add('dark');
+        root.classList.remove('light');
+        root.setAttribute('data-theme', 'dark');
+        if (document.body) {
+          document.body.classList.add('dark');
+          document.body.classList.remove('light');
         }
       }
     } catch (e) {
-      console.error('Error reading theme from storage', e);
+      console.error('Error enforcing dark theme', e);
     }
-    // Default to Dark Mode for all new visitors
-    return 'dark';
-  });
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, theme);
-    } catch (e) {}
-
-    const root = document.documentElement;
-    if (theme === 'light') {
-      root.classList.add('light');
-      root.classList.remove('dark');
-      root.setAttribute('data-theme', 'light');
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-    } else {
-      root.classList.add('dark');
-      root.classList.remove('light');
-      root.setAttribute('data-theme', 'dark');
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  const setTheme = (mode: ThemeMode) => {
-    setThemeState(mode);
-  };
+  }, []);
 
   return (
     <ThemeContext.Provider
       value={{
-        theme,
-        isLight: theme === 'light',
-        isDark: theme === 'dark',
-        toggleTheme,
-        setTheme
+        theme: 'dark',
+        isLight: false,
+        isDark: true,
+        toggleTheme: () => {},
+        setTheme: () => {}
       }}
     >
       {children}
@@ -75,9 +55,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 };
 
 export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
+  return useContext(ThemeContext);
 };
+

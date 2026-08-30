@@ -6,8 +6,7 @@ import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
 import { AppGrid } from './components/AppGrid';
 import { SeoSchema } from './components/SeoSchema';
-import { useTheme } from './lib/theme';
-import { Sun, Moon, ArrowRightLeft, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { startAppsSync, startSettingsSync, saveAppToFirestore, deleteAppFromFirestore, saveSettingsToFirestore } from './lib/firebaseSync';
 
 // Lazy-loaded components to minimize initial bundle size and maximize PageSpeed score (100% Green)
@@ -244,7 +243,6 @@ export default function App() {
   // Modal States
   const [isAdminLoginModalOpen, setIsAdminLoginModalOpen] = useState(false);
   const [isAdminMode, setIsAdminMode] = useState(false);
-  const { theme, isLight, toggleTheme } = useTheme();
 
   // Search & Catalog View States
   const [searchQuery, setSearchQuery] = useState('');
@@ -608,7 +606,7 @@ export default function App() {
   // ROUTE 3: PUBLIC USER PANEL (VISITOR WEBSITE)
   // ========================================================
   return (
-    <div className={`min-h-screen ${isLight ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'} flex flex-col selection:bg-amber-500 selection:text-slate-950 font-['Plus_Jakarta_Sans',sans-serif] transition-colors duration-300`}>
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-500 selection:text-slate-950 font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Automated Programmatic Google SEO & Schema.org JSON-LD Injector (Supports Single-App & Full-List) */}
       <SeoSchema apps={apps} activeApp={activeLandingApp} siteSettings={siteSettings} siteTitle={siteSettings.siteTitle} />
 
@@ -728,34 +726,6 @@ export default function App() {
           memberCount={`${siteSettings.telegramSubscribers || '88K'} Members`}
         />
       </Suspense>
-
-      {/* Floating Theme Quick Switcher with Arrow Indicator */}
-      <div className="fixed bottom-20 right-4 z-30 hidden sm:flex items-center">
-        <button
-          id="floating-theme-switch-btn"
-          onClick={toggleTheme}
-          className={`flex items-center gap-2 px-3.5 py-2 rounded-full font-bold text-xs shadow-2xl border transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md ${
-            isLight
-              ? 'bg-white/95 text-slate-900 border-slate-300 shadow-slate-400/30'
-              : 'bg-slate-900/95 text-amber-300 border-amber-500/40 shadow-black/60'
-          }`}
-          title={isLight ? 'Switch to Dark Mode (रात का डार्क मोड)' : 'Switch to Light Mode (दिन का लाइट मोड)'}
-        >
-          {isLight ? (
-            <>
-              <Sun className="w-4 h-4 text-amber-500 fill-amber-400" />
-              <span>Light</span>
-              <ArrowRightLeft className="w-3.5 h-3.5 text-amber-600 ml-0.5" />
-            </>
-          ) : (
-            <>
-              <Moon className="w-4 h-4 text-amber-400 fill-amber-400/40" />
-              <span>Dark</span>
-              <ArrowRightLeft className="w-3.5 h-3.5 text-amber-400 ml-0.5" />
-            </>
-          )}
-        </button>
-      </div>
 
       {/* Interactive Modals loaded on-demand */}
       <Suspense fallback={null}>
