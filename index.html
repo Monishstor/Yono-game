@@ -17,9 +17,25 @@
     <meta name="google-site-verification" content="PuYCOqnll6hKoInkrOAa3rbDy2J5Pt_T_ziySmBgcjA" />
     <meta name="google-site-verification" content="google335fb29481cc8d5a" />
     <meta name="google-site-verification" content="G13qwAPXt9jBmgcnTy-OuoPL06U8ibyQFR2zQ_J2xbU" />
-    <link rel="canonical" href="https://yono-game.vercel.app/" />
+    <link rel="canonical" href="https://yono-game.vercel.app/" id="dynamic-canonical" />
     <link rel="alternate" hreflang="en-IN" href="https://yono-game.vercel.app/" />
     <link rel="alternate" hreflang="x-default" href="https://yono-game.vercel.app/" />
+    
+    <script>
+      (function() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var appSlug = params.get('app');
+          var canonicalEl = document.getElementById('dynamic-canonical');
+          if (appSlug && canonicalEl) {
+            var fullUrl = window.location.origin + '/?app=' + encodeURIComponent(appSlug);
+            canonicalEl.setAttribute('href', fullUrl);
+            var ogUrl = document.querySelector('meta[property="og:url"]');
+            if (ogUrl) ogUrl.setAttribute('content', fullUrl);
+          }
+        } catch(e) {}
+      })();
+    </script>
     
     <!-- Favicon & Touch Icon -->
     <link rel="icon" type="image/svg+xml" href="/main-site-logo.svg" />
@@ -91,7 +107,7 @@
       <main style="max-width: 900px; margin: 0 auto; padding: 16px;">
         <h2 style="font-size: 20px; font-weight: bold; color: #ffffff;">Trending Yono Games & APK Links</h2>
         <ul style="color: #94a3b8; line-height: 1.8;">
-          <li><strong style="color: #38bdf8;">New Yono Games (Official 2026):</strong> All New Yono Games List, New Yono App Launch Today, Free ₹51-₹777 Welcome Bonus + 100% Instant ₹100 UPI Withdrawals, 5.0⭐ Rating.</li>
+          <li><strong style="color: #38bdf8;">Love Rummy APK:</strong> India’s #1 Skill Gaming App, Up to ₹100 Free Cash, 500% Deposit Cashback, ₹10,000 Lucky Spin Wheel, 4.9⭐ Rating.</li>
           <li><strong style="color: #38bdf8;">567 Slots APK:</strong> 567Slots is Now Live, Quick Access & Smooth Gameplay, High RTP Slots, 4.9⭐ Rating.</li>
           <li><strong style="color: #38bdf8;">WINRUMMY APK:</strong> Up to ₹199 Free Welcome Bonus + 100% Extra Deposit Boost + ₹9 Cr Members' Day, 4.9⭐ Rating.</li>
           <li><strong style="color: #38bdf8;">IND CLUB APK:</strong> Up to ₹33 Instant Welcome Bonus + High Multiplier Slots & Rummy, 4.9⭐ Rating.</li>
