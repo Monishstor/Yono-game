@@ -56,6 +56,7 @@ interface AdminPanelProps {
   onAddNewApp: () => void;
   onEditApp: (app: YonoApp) => void;
   onDeleteApp: (appId: string) => void;
+  onTogglePinToBottom?: (appId: string) => void;
   onUpdateApps?: (apps: YonoApp[]) => void;
   onSavePromoCodes: (promos: PromoCode[]) => void;
   onSaveSiteSettings: (settings: SiteSettings) => void;
@@ -77,6 +78,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   onAddNewApp,
   onEditApp,
   onDeleteApp,
+  onTogglePinToBottom,
   onUpdateApps,
   onSavePromoCodes,
   onSaveSiteSettings,
@@ -175,6 +177,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       app.referCode.toLowerCase().includes(searchTerm.toLowerCase());
     
     if (filterCategory === 'all') return matchesSearch;
+    if (filterCategory === 'pinned') return matchesSearch && !!app.pinToBottom;
     if (filterCategory === 'custom') return matchesSearch && !!app.isCustom;
     if (filterCategory === 'custom_img') return matchesSearch && !!app.imageUrl;
     return matchesSearch && app.category.includes(filterCategory as any);
@@ -772,6 +775,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     className="bg-slate-900 text-slate-200 text-xs px-3 py-2 rounded-xl border border-slate-700 font-semibold focus:outline-hidden focus:border-amber-400"
                   >
                     <option value="all">All Categories ({apps.length})</option>
+                    <option value="pinned">📌 Pinned to Bottom ({apps.filter(a => a.pinToBottom).length})</option>
                     <option value="custom">Custom Added Apps Only</option>
                     <option value="custom_img">With Custom Image Logo</option>
                     <option value="trending">🔥 Trending</option>
@@ -841,6 +845,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                                         {app.badge}
                                       </span>
                                     )}
+                                    {app.pinToBottom && (
+                                      <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 inline-flex items-center gap-0.5" title="Pinned to bottom of list">
+                                        <Pin className="w-2.5 h-2.5 rotate-45" />
+                                        <span>Pinned Bottom</span>
+                                      </span>
+                                    )}
                                   </div>
                                   <p className="text-[11px] text-slate-400 truncate max-w-xs">{app.tagline}</p>
                                   <div className="flex items-center gap-2 text-[10px] text-slate-500 mt-0.5">
@@ -896,6 +906,21 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
                             <td className="py-3 px-4 text-right">
                               <div className="flex items-center justify-end gap-1.5">
+                                {onTogglePinToBottom && (
+                                  <button
+                                    onClick={() => onTogglePinToBottom(app.id)}
+                                    className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                      app.pinToBottom
+                                        ? 'bg-amber-500 text-slate-950 font-black shadow-sm'
+                                        : 'bg-slate-800 text-slate-300 hover:text-amber-300 hover:bg-slate-700'
+                                    }`}
+                                    title={app.pinToBottom ? 'Click to Unpin from Bottom' : 'Click to Pin to Bottom (SEO)'}
+                                  >
+                                    <Pin className={`w-3 h-3 ${app.pinToBottom ? 'rotate-45 fill-slate-950' : 'rotate-45'}`} />
+                                    <span>{app.pinToBottom ? 'Pinned' : 'Pin Bottom'}</span>
+                                  </button>
+                                )}
+
                                 <button
                                   onClick={() => onEditApp(app)}
                                   className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold transition-all cursor-pointer"

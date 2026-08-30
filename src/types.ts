@@ -43,6 +43,7 @@ export interface YonoApp {
   withdrawalSpeed: string; // e.g. "1-5 Minutes"
   safetyScore: number; // e.g. 99%
   isCustom?: boolean; // Tag for user-added apps
+  pinToBottom?: boolean; // When true, stays permanently pinned at the bottom of the list
 }
 
 export interface PromoCode {

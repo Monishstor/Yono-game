@@ -15,7 +15,8 @@ import {
   Crown,
   Gamepad2,
   FileCode,
-  Download
+  Download,
+  Pin
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 import { openGoogleFilePicker } from '../lib/googlePicker';
@@ -93,6 +94,7 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
   const [gamesInput, setGamesInput] = useState('Dragon vs Tiger, Aviator, Rummy, Teen Patti, Mines, Roulette');
   const [description, setDescription] = useState('');
   const [featuresInput, setFeaturesInput] = useState('Instant 2-Minute UPI Payouts\nOTP Registration ₹150 Bonus\nDaily Free Spin Wheel & VIP Cashback\n100% Virus-Safe & Certified APK');
+  const [pinToBottom, setPinToBottom] = useState(false);
 
   // Load app data if editing
   useEffect(() => {
@@ -125,6 +127,7 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
       setGamesInput(appToEdit.gamesList ? appToEdit.gamesList.join(', ') : 'Dragon vs Tiger, Aviator, Rummy, Teen Patti');
       setDescription(appToEdit.description || '');
       setFeaturesInput(appToEdit.features ? appToEdit.features.join('\n') : '');
+      setPinToBottom(appToEdit.pinToBottom ?? false);
     } else {
       // Defaults for brand new app
       const randomCode = 'YONO' + Math.floor(1000 + Math.random() * 9000);
@@ -151,6 +154,7 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
       setGamesInput('Dragon vs Tiger, Aviator, Rummy, Teen Patti, Mines, Roulette, Andar Bahar');
       setDescription('Brand new verified Yono gaming APK for 2026. Claim free bonus immediately upon mobile registration with instant 2-minute UPI cashout.');
       setFeaturesInput('Instant 2-Minute UPI Payouts\nOTP Registration Bonus\nDaily Free Spin Wheel & VIP Cashback\n100% Virus-Safe & Certified APK');
+      setPinToBottom(false);
     }
   }, [appToEdit, isOpen]);
 
@@ -223,7 +227,8 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
       .filter(Boolean),
     withdrawalSpeed: withdrawalSpeed || 'Instant 2 Min',
     safetyScore: 99,
-    isCustom: true
+    isCustom: true,
+    pinToBottom: pinToBottom
   };
 
   const handleSave = (e: React.FormEvent) => {
@@ -674,6 +679,43 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
                     className="w-full bg-slate-950 text-slate-100 text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 font-mono"
                   />
                 </div>
+              </div>
+
+              {/* 9. PIN TO BOTTOM FEATURE (SEO / Priority Management) */}
+              <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-between gap-3">
+                <div className="flex items-start gap-2.5">
+                  <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400 mt-0.5 shrink-0">
+                    <Pin className="w-4 h-4 rotate-45" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                      <span>Pin to Bottom (वेबसाइट में हमेशा सबसे नीचे रखें)</span>
+                      {pinToBottom && (
+                        <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-400 text-slate-950">
+                          ACTIVE
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+                      इस ऐप को मुख्य लिस्ट में सबसे नीचे (Last Position) पर लॉक रखें। यह फीचर SEO आर्टिकल्स या बैकलिंक गेम्स के लिए उपयुक्त है ताकि नए और मुख्य गेम्स हमेशा ऊपर रहें।
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setPinToBottom(!pinToBottom)}
+                  className={`shrink-0 relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-hidden cursor-pointer ${
+                    pinToBottom ? 'bg-amber-500' : 'bg-slate-700'
+                  }`}
+                  aria-pressed={pinToBottom}
+                >
+                  <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-slate-950 transition-transform ${
+                      pinToBottom ? 'translate-x-6' : 'translate-x-1'
+                    }`}
+                  />
+                </button>
               </div>
 
             </div>

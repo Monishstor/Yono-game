@@ -129,7 +129,13 @@ export default function App() {
           const customApps = parsed.filter((a: YonoApp) => a.isCustom === true && !YONO_APPS.some(d => d.id === a.id));
           const updatedDefaults = YONO_APPS.map(defaultApp => {
             const found = parsed.find((p: YonoApp) => p.id === defaultApp.id);
-            return found ? { ...found, ...defaultApp, isCustom: false } : defaultApp;
+            if (!found) return defaultApp;
+            return {
+              ...defaultApp,
+              ...found,
+              pinToBottom: found.pinToBottom !== undefined ? found.pinToBottom : defaultApp.pinToBottom,
+              isCustom: false
+            };
           });
           const merged = [...updatedDefaults, ...customApps];
           localStorage.setItem(APPS_STORAGE_KEY, JSON.stringify(merged));
@@ -391,6 +397,11 @@ export default function App() {
 
       return true;
     }).sort((a, b) => {
+      // 📌 PIN TO BOTTOM RULE:
+      // Any app flagged with pinToBottom: true is strictly locked to the very bottom of the catalog.
+      if (a.pinToBottom && !b.pinToBottom) return 1;
+      if (!a.pinToBottom && b.pinToBottom) return -1;
+
       if (sortBy === 'bonus_high') {
         return (b.maxSignupBonus || b.signupBonus) - (a.maxSignupBonus || a.signupBonus);
       }
@@ -512,6 +523,21 @@ export default function App() {
     }
   };
 
+  const handleTogglePinToBottom = (appId: string) => {
+    const updated = apps.map((app) => {
+      if (app.id === appId) {
+        return { ...app, pinToBottom: !app.pinToBottom };
+      }
+      return app;
+    });
+    saveAppsToStorage(updated);
+
+    const target = updated.find((a) => a.id === appId);
+    if (target) {
+      saveAppToFirestore(target);
+    }
+  };
+
   // Full Export / Import JSON
   const handleExportAllData = () => {
     const backup = {
@@ -569,6 +595,7 @@ export default function App() {
           onAddNewApp={handleAddNewApp}
           onEditApp={handleOpenEditApp}
           onDeleteApp={handleDeleteApp}
+          onTogglePinToBottom={handleTogglePinToBottom}
           onUpdateApps={saveAppsToStorage}
           onSavePromoCodes={handleSavePromoCodes}
           onSaveSiteSettings={handleSaveSiteSettings}

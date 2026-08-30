@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'ALLNEWYONO2026',
+    title: 'All New Yono Games Master Welcome Bonus & VIP Pass (2026 Official)',
+    reward: 'Up to ₹777 Instant Free Sign-Up Bonus + VIP Daily Spin & 100% Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'New Yono Games',
+    usesLeft: 99999,
+    status: 'Hot'
+  },
+  {
     code: 'WTPQVSQURZJ',
     title: '567 Slots Official Launch Bonus & VIP Free Spins',
     reward: 'Instant Welcome Bonus + High RTP 567 Ruby Slots Multiplier + Daily Rebates',

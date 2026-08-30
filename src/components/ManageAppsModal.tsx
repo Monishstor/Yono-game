@@ -14,7 +14,8 @@ import {
   FileJson,
   Layers,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Pin
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 
@@ -25,6 +26,7 @@ interface ManageAppsModalProps {
   onAddNewApp: () => void;
   onEditApp: (app: YonoApp) => void;
   onDeleteApp: (appId: string) => void;
+  onTogglePinToBottom?: (appId: string) => void;
   onResetDefaultApps: () => void;
   onImportApps: (importedApps: YonoApp[]) => void;
 }
@@ -36,6 +38,7 @@ export const ManageAppsModal: React.FC<ManageAppsModalProps> = ({
   onAddNewApp,
   onEditApp,
   onDeleteApp,
+  onTogglePinToBottom,
   onResetDefaultApps,
   onImportApps
 }) => {
@@ -211,6 +214,12 @@ export const ManageAppsModal: React.FC<ManageAppsModalProps> = ({
                           Custom Image
                         </span>
                       )}
+                      {app.pinToBottom && (
+                        <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 inline-flex items-center gap-0.5">
+                          <Pin className="w-2.5 h-2.5 rotate-45" />
+                          <span>Pinned Bottom</span>
+                        </span>
+                      )}
                     </div>
                     <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
                       <span className="text-amber-400 font-bold font-mono">Bonus ₹{app.signupBonus}</span>
@@ -224,6 +233,20 @@ export const ManageAppsModal: React.FC<ManageAppsModalProps> = ({
 
                 {/* Edit & Delete Action Buttons */}
                 <div className="flex items-center gap-1.5 shrink-0">
+                  {onTogglePinToBottom && (
+                    <button
+                      onClick={() => onTogglePinToBottom(app.id)}
+                      className={`p-1.5 rounded-xl transition-all cursor-pointer ${
+                        app.pinToBottom
+                          ? 'bg-amber-500 text-slate-950 font-bold'
+                          : 'bg-slate-800 text-slate-400 hover:text-amber-300 hover:bg-slate-700'
+                      }`}
+                      title={app.pinToBottom ? 'Unpin from Bottom' : 'Pin to Bottom (SEO)'}
+                    >
+                      <Pin className={`w-3.5 h-3.5 ${app.pinToBottom ? 'rotate-45 fill-slate-950' : 'rotate-45'}`} />
+                    </button>
+                  )}
+
                   <button
                     onClick={() => {
                       onClose();
