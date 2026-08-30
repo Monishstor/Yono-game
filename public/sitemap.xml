@@ -6,9 +6,17 @@
   <!-- Main Homepage -->
   <url>
     <loc>https://yono-game.vercel.app/</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- 0. Neta.VIP APK (India #1 Skilled Gaming) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=neta-vip-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
   </url>
 
   <!-- 0. JaihoSpin APK (New Launch) -->

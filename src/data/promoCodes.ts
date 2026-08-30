@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'DR0XFAYTDGS',
+    title: 'Neta.VIP India\'s #1 Skilled Gaming Welcome Pack',
+    reward: '₹4 Free Joining + ₹297 7-Days Login Bonus + 100% 1st Deposit Cashback',
+    expiry: 'Official Active Code',
+    appTarget: 'Neta.VIP',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '7TAQW92DSQE',
     title: 'JaihoSpin Welcome Fortune & 200% Deposit Cashback Pack',
     reward: '₹10-₹100 Free Signup + 60%-200% Deposit Cashback + Win ₹5,000 Free Spin Wheel',
