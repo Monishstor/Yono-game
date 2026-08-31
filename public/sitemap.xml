@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. Yono Arcade APK (India #1 Skilled Gaming App) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=yono-arcade-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. Jaiho Win APK (India #1 Skilled Gaming App) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=jaiho-win-apk-download</loc>

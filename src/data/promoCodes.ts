@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '96LMT59AZ9P',
+    title: 'Yono Arcade India #1 Skilled Gaming ₹10 Free Joining + ₹51 7-Days Login Bonus',
+    reward: '₹10 Free Joining Bonus + ₹51 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'Yono Arcade',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '1XNYCZF41NC',
     title: 'Jaiho Win India #1 Skilled Gaming ₹10 Free Joining + ₹154 7-Days Login Bonus',
     reward: '₹10 Free Joining Bonus + ₹154 7-Days Login Cash + 100% First Deposit Match',
