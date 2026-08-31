@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'JMQ6U33QCCZ',
+    title: 'INR Rummy India #1 Skilled Gaming ₹5 Free Joining + ₹406 7-Days Login Bonus',
+    reward: '₹5 Free Joining Bonus + ₹406 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'INR Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'XJBQCR1FP51',
     title: 'Slots Spin India #1 Skilled Gaming ₹10 Free Joining + ₹200 7-Days Login Bonus',
     reward: '₹10 Free Joining Bonus + ₹200 7-Days Login Cash + 100% First Deposit Match',

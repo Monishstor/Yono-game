@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. INR Rummy APK (India #1 Skilled Gaming App) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=inr-rummy-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. Slots Spin APK (India #1 Skilled Gaming App) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=slots-spin-apk-download</loc>
