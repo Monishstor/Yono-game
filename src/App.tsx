@@ -26,6 +26,7 @@ const PromoCodeVault = lazy(() => import('./components/PromoCodeVault').then(m =
 const DailyCheckinModal = lazy(() => import('./components/DailyCheckinModal').then(m => ({ default: m.DailyCheckinModal })));
 const AdminLoginModal = lazy(() => import('./components/AdminLoginModal').then(m => ({ default: m.AdminLoginModal })));
 const AppEditorModal = lazy(() => import('./components/AppEditorModal').then(m => ({ default: m.AppEditorModal })));
+const ContactLegalModal = lazy(() => import('./components/ContactLegalModal').then(m => ({ default: m.ContactLegalModal })));
 
 type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
@@ -264,6 +265,8 @@ export default function App() {
   const [selectedDetailApp, setSelectedDetailApp] = useState<YonoApp | null>(null);
   const [isPromoCodesOpen, setIsPromoCodesOpen] = useState(false);
   const [isDailyCheckinOpen, setIsDailyCheckinOpen] = useState(false);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
+  const [legalInitialTab, setLegalInitialTab] = useState<'contact' | 'about' | 'privacy' | 'terms' | 'dmca' | 'disclaimer'>('contact');
 
   // App Editor Modal (Add/Edit App with photo upload)
   const [isAppEditorOpen, setIsAppEditorOpen] = useState(false);
@@ -670,6 +673,10 @@ export default function App() {
         onOpenAdminLogin={() => setIsAdminLoginModalOpen(true)}
         isAdminMode={isAdminMode}
         onToggleAdminMode={() => setIsAdminMode((prev) => !prev)}
+        onOpenContact={() => {
+          setLegalInitialTab('contact');
+          setIsLegalModalOpen(true);
+        }}
       />
 
       {/* Main Content Area */}
@@ -756,6 +763,10 @@ export default function App() {
           onOpenPromo={() => setIsPromoCodesOpen(true)}
           onScrollTo={handleScrollToSection}
           telegramLink={siteSettings.telegramLink}
+          onOpenLegal={(tab) => {
+            setLegalInitialTab(tab);
+            setIsLegalModalOpen(true);
+          }}
         />
         <FloatingTelegramBar
           telegramLink={siteSettings.telegramLink}
@@ -765,6 +776,14 @@ export default function App() {
 
       {/* Interactive Modals loaded on-demand */}
       <Suspense fallback={null}>
+        {isLegalModalOpen && (
+          <ContactLegalModal
+            isOpen={isLegalModalOpen}
+            onClose={() => setIsLegalModalOpen(false)}
+            initialTab={legalInitialTab}
+            telegramLink={siteSettings.telegramLink}
+          />
+        )}
         {selectedDownloadApp && (
           <DownloadModal
             app={selectedDownloadApp}

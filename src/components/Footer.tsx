@@ -5,12 +5,14 @@ interface FooterProps {
   onOpenPromo: () => void;
   onScrollTo: (id: string) => void;
   telegramLink?: string;
+  onOpenLegal?: (tab: 'contact' | 'about' | 'privacy' | 'terms' | 'dmca' | 'disclaimer') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ 
   onOpenPromo, 
   onScrollTo,
-  telegramLink = 'https://t.me/yonojiunauxcom'
+  telegramLink = 'https://t.me/yonojiunauxcom',
+  onOpenLegal
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -159,21 +161,45 @@ export const Footer: React.FC<FooterProps> = ({
                   APK Installation Guide
                 </button>
               </li>
+              <li>
+                <button onClick={() => onOpenLegal?.('contact')} className="hover:text-amber-400 transition-colors text-left cursor-pointer text-amber-400 font-bold">
+                  Contact Support & Helpdesk
+                </button>
+              </li>
             </ul>
           </div>
 
           {/* Popular Categories */}
           <div className="space-y-2">
             <h3 className="font-bold text-white uppercase text-[11px] tracking-wider">
-              Top Yono Games
+              Legal & Support
             </h3>
             <ul className="space-y-1.5 text-xs text-slate-400">
-              <li>Yono 777 APK Download</li>
-              <li>Yono Arcade Official</li>
-              <li>Spin Winner ₹55 Bonus</li>
-              <li>Yono VIP Games 2026</li>
-              <li>Jaiho Rummy & Teen Patti</li>
-              <li>MBM Bet & 101z Games</li>
+              <li>
+                <button onClick={() => onOpenLegal?.('about')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
+                  About Yono Games Hub
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegal?.('privacy')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
+                  Privacy Policy & Data
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegal?.('terms')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
+                  Terms of Service (18+ Only)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegal?.('dmca')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
+                  DMCA Copyright Notice
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegal?.('disclaimer')} className="hover:text-amber-400 transition-colors text-left cursor-pointer">
+                  Responsible Gaming
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -186,21 +212,25 @@ export const Footer: React.FC<FooterProps> = ({
             <span>Statutory Risk Disclaimer & 18+ Only Notice:</span>
           </div>
           <p className="text-[11px] text-slate-400 leading-relaxed">
-            This game involves an element of financial risk and may be addictive. Please play responsibly and at your own risk. This portal only provides information, download links, and guides for entertainment purposes. We do not operate or host real-money gambling servers. Players must be 18 years of age or older. Prohibited in Assam, Odisha, Andhra Pradesh, Telangana, and states where skill-based gaming is restricted.
+            Skill-based cash games involve an element of financial risk and may be habit-forming. Please play responsibly and at your own risk. This portal is an independent real-money gaming APK catalog and reviews directory. We do not host or operate betting servers. Restricted in Assam, Odisha, Andhra Pradesh, Telangana, and states where skill-based gaming is legally barred.
           </p>
         </div>
 
-        {/* Copyright & Disclaimer Bar (Cleaned, no visible admin link) */}
+        {/* Copyright & Disclaimer Bar */}
         <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
           <div>
-            © 2026 AllNewYonoApps.com — All Rights Reserved. Not affiliated with SBI YONO.
+            © 2026 All New Yono Games — Independent APK & Skill Gaming Portal.
           </div>
-          <div className="flex items-center gap-4">
-            <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
+            <button onClick={() => onOpenLegal?.('contact')} className="hover:text-amber-400 transition-colors cursor-pointer">Contact Us</button>
             <span>•</span>
-            <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
+            <button onClick={() => onOpenLegal?.('privacy')} className="hover:text-amber-400 transition-colors cursor-pointer">Privacy Policy</button>
             <span>•</span>
-            <span className="hover:text-slate-400 cursor-pointer">DMCA Notice</span>
+            <button onClick={() => onOpenLegal?.('terms')} className="hover:text-amber-400 transition-colors cursor-pointer">Terms of Service</button>
+            <span>•</span>
+            <button onClick={() => onOpenLegal?.('dmca')} className="hover:text-amber-400 transition-colors cursor-pointer">DMCA</button>
+            <span>•</span>
+            <button onClick={() => onOpenLegal?.('disclaimer')} className="hover:text-amber-400 transition-colors cursor-pointer">Disclaimer</button>
           </div>
         </div>
 

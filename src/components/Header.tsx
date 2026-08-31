@@ -31,6 +31,7 @@ interface HeaderProps {
   onOpenAdminLogin: () => void;
   isAdminMode: boolean;
   onToggleAdminMode: () => void;
+  onOpenContact?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -45,7 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenAdminPanel,
   onOpenAdminLogin,
   isAdminMode,
-  onToggleAdminMode
+  onToggleAdminMode,
+  onOpenContact
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -183,6 +185,19 @@ export const Header: React.FC<HeaderProps> = ({
               <Flame className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>Daily Check-in</span>
             </button>
+
+            {/* Contact & Helpdesk */}
+            {onOpenContact && (
+              <button
+                id="header-contact-btn"
+                onClick={onOpenContact}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                title="Contact Support & Helpdesk"
+              >
+                <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
+                <span>Help / Contact</span>
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu & Quick Actions */}
@@ -313,6 +328,19 @@ export const Header: React.FC<HeaderProps> = ({
                 <Flame className="w-4 h-4 text-orange-400" />
                 <span>Referral Calc</span>
               </button>
+
+              {onOpenContact && (
+                <button
+                  onClick={() => {
+                    onOpenContact();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900 text-amber-300 text-xs font-semibold border border-amber-500/20"
+                >
+                  <HelpCircle className="w-4 h-4 text-amber-400" />
+                  <span>Contact & Help</span>
+                </button>
+              )}
             </div>
 
             <a
