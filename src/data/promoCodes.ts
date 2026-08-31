@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '1XNYCZF41NC',
+    title: 'Jaiho Win India #1 Skilled Gaming ₹10 Free Joining + ₹154 7-Days Login Bonus',
+    reward: '₹10 Free Joining Bonus + ₹154 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'Jaiho Win',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '7V9L8W8XVH7',
     title: 'SPIN 777 India #1 Skilled Gaming ₹7 Free Joining + ₹74 7-Days Login Bonus',
     reward: '₹7 Free Joining Bonus + ₹74 7-Days Login Cash + 100% First Deposit Match',
