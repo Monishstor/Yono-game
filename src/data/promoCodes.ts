@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '7V9L8W8XVH7',
+    title: 'SPIN 777 India #1 Skilled Gaming ₹7 Free Joining + ₹74 7-Days Login Bonus',
+    reward: '₹7 Free Joining Bonus + ₹74 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'SPIN 777',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '9HFM7XR3QRG',
     title: 'Boss Rummy India #1 Rummy ₹66 Free Registration + 180% First Deposit Match',
     reward: '₹66 Free Registration Bonus + 180% First Deposit Match + ₹500 Daily Cash Codes',

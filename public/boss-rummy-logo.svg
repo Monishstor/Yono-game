@@ -19,16 +19,9 @@
     <linearGradient id="bossGoldFace" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="15%" stop-color="#fff59d"/>
-      <stop offset="50%" stop-color="#ffd600"/>
-      <stop offset="80%" stop-color="#ffb300"/>
+      <stop offset="45%" stop-color="#ffd600"/>
+      <stop offset="75%" stop-color="#ffb300"/>
       <stop offset="100%" stop-color="#ff8f00"/>
-    </linearGradient>
-
-    <!-- 3D Gold Extrusion / Bevel Gradient -->
-    <linearGradient id="bossGoldBevel" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffe082"/>
-      <stop offset="50%" stop-color="#ff8f00"/>
-      <stop offset="100%" stop-color="#bf360c"/>
     </linearGradient>
 
     <!-- Slot Roller Outer Metallic Green Frame -->
@@ -103,9 +96,8 @@
     <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-opacity="0.8"/>
   </g>
 
-  <!-- 32 Glowing Neon Casino Light Bulbs on Diamond Perimeter -->
+  <!-- Glowing Neon Casino Light Bulbs on Diamond Perimeter -->
   <g filter="url(#bossBulbGlow)">
-    <!-- Top Corner Bulbs -->
     <circle cx="256" cy="40" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
     <circle cx="218" cy="78" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
     <circle cx="294" cy="78" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
@@ -117,12 +109,8 @@
     <circle cx="408" cy="192" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
     <circle cx="66" cy="230" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
     <circle cx="446" cy="230" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
-
-    <!-- Middle Left/Right Apex Bulbs -->
     <circle cx="40" cy="256" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
     <circle cx="472" cy="256" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
-
-    <!-- Bottom Corner Bulbs -->
     <circle cx="66" cy="282" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
     <circle cx="446" cy="282" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
     <circle cx="104" cy="320" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
@@ -136,60 +124,17 @@
     <circle cx="256" cy="472" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
   </g>
 
-  <!-- ==================== 3D "BOSS" TOP SECTION ==================== -->
+  <!-- ==================== 3D "BOSS" TOP SECTION (PERFECTLY ORIENTED B-O-S-S) ==================== -->
   <g filter="url(#bossMainShadow)">
-    
-    <!-- ========== LETTER 'B' ========== -->
-    <g transform="translate(48, 102)">
-      <!-- 3D Shadow -->
-      <path d="M10 16 L66 16 C86 16 98 26 98 42 C98 52 92 60 80 64 C96 68 104 78 104 98 C104 116 88 130 66 130 L10 130 Z M38 42 L38 56 L60 56 C68 56 72 52 72 48 C72 44 68 42 60 42 Z M38 84 L38 104 L64 104 C72 104 76 98 76 94 C76 90 72 84 64 84 Z" fill="#3e1400" transform="translate(4, 6)"/>
-      <!-- 3D Bevel -->
-      <path d="M10 16 L22 2 L78 2 C98 2 110 12 110 28 C110 38 104 46 92 50 C108 54 116 64 116 84 C116 102 100 116 78 116 L22 116 L10 130 Z" fill="url(#bossGoldBevel)"/>
-      <path d="M8 14 L64 14 C84 14 96 24 96 40 C96 50 90 58 78 62 C94 66 102 76 102 96 C102 114 86 128 64 128 L8 128 Z" fill="#e65100"/>
-      <!-- Front Face -->
-      <path d="M6 12 L62 12 C82 12 94 22 94 38 C94 48 88 56 76 60 C92 64 100 74 100 94 C100 112 84 126 62 126 L6 126 Z M34 38 L34 52 L56 52 C64 52 68 48 68 44 C68 40 64 38 56 38 Z M34 80 L34 100 L60 100 C68 100 72 94 72 90 C72 86 68 80 60 80 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
-      <!-- Highlights -->
-      <rect x="10" y="15" width="50" height="5" fill="#ffffff" opacity="0.8" rx="2.5"/>
-    </g>
-
-    <!-- ========== LETTER 'O' ========== -->
-    <g transform="translate(152, 102)">
-      <!-- 3D Shadow -->
-      <ellipse cx="54" cy="74" rx="46" ry="58" fill="#3e1400" transform="translate(4, 6)"/>
-      <!-- 3D Bevel -->
-      <ellipse cx="64" cy="62" rx="46" ry="58" fill="url(#bossGoldBevel)"/>
-      <ellipse cx="52" cy="72" rx="46" ry="58" fill="#e65100"/>
-      <!-- Front Face -->
-      <path d="M50 12 C24 12 6 36 6 70 C6 104 24 126 50 126 C76 126 94 104 94 70 C94 36 76 12 50 12 Z M50 42 C60 42 66 54 66 70 C66 86 60 96 50 96 C40 96 34 86 34 70 C34 54 40 42 50 42 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
-      <!-- Highlights -->
-      <ellipse cx="50" cy="20" rx="28" ry="6" fill="#ffffff" opacity="0.8"/>
-    </g>
-
-    <!-- ========== LETTER 'S' (FIRST S) ========== -->
-    <g transform="translate(258, 102)">
-      <!-- 3D Shadow -->
-      <path d="M16 38 C16 22 30 14 52 14 C74 14 88 24 88 38 C88 56 68 62 46 68 C30 72 20 80 20 94 C20 112 34 126 56 126 C78 126 92 114 92 98 L66 98 C66 104 60 108 52 108 C44 108 38 102 38 96 C38 88 48 84 64 80 C84 74 96 66 96 46 C96 26 80 12 54 12 C28 12 12 26 12 44 Z" fill="#3e1400" transform="translate(4, 6)"/>
-      <!-- 3D Bevel -->
-      <path d="M26 26 C26 10 40 2 62 2 C84 2 98 12 98 26 L88 38 C88 24 74 14 52 14 C30 14 16 22 16 38 Z" fill="url(#bossGoldBevel)"/>
-      <path d="M14 36 C14 20 28 12 50 12 C72 12 86 22 86 36 C86 54 66 60 44 66 C28 70 18 78 18 92 C18 110 32 124 54 124 C76 124 90 112 90 96 L64 96 C64 102 58 106 50 106 C42 106 36 100 36 94 C36 86 46 82 62 78 C82 72 94 64 94 44 C94 24 78 10 52 10 C26 10 10 24 10 42 Z" fill="#e65100"/>
-      <!-- Front Face -->
-      <path d="M12 34 C12 18 26 10 48 10 C70 10 84 20 84 34 C84 52 64 58 42 64 C26 68 16 76 16 90 C16 108 30 122 52 122 C74 122 88 110 88 94 L62 94 C62 100 56 104 48 104 C40 104 34 98 34 92 C34 84 44 80 60 76 C80 70 92 62 92 42 C92 22 76 8 50 8 C24 8 8 22 8 40 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
-      <!-- Highlights -->
-      <path d="M26 14 C34 11 44 10 52 10 C68 10 78 16 78 24" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
-    </g>
-
-    <!-- ========== LETTER 'S' (SECOND S) ========== -->
-    <g transform="translate(366, 102)">
-      <!-- 3D Shadow -->
-      <path d="M16 38 C16 22 30 14 52 14 C74 14 88 24 88 38 C88 56 68 62 46 68 C30 72 20 80 20 94 C20 112 34 126 56 126 C78 126 92 114 92 98 L66 98 C66 104 60 108 52 108 C44 108 38 102 38 96 C38 88 48 84 64 80 C84 74 96 66 96 46 C96 26 80 12 54 12 C28 12 12 26 12 44 Z" fill="#3e1400" transform="translate(4, 6)"/>
-      <!-- 3D Bevel -->
-      <path d="M26 26 C26 10 40 2 62 2 C84 2 98 12 98 26 L88 38 C88 24 74 14 52 14 C30 14 16 22 16 38 Z" fill="url(#bossGoldBevel)"/>
-      <path d="M14 36 C14 20 28 12 50 12 C72 12 86 22 86 36 C86 54 66 60 44 66 C28 70 18 78 18 92 C18 110 32 124 54 124 C76 124 90 112 90 96 L64 96 C64 102 58 106 50 106 C42 106 36 100 36 94 C36 86 46 82 62 78 C82 72 94 64 94 44 C94 24 78 10 52 10 C26 10 10 24 10 42 Z" fill="#e65100"/>
-      <!-- Front Face -->
-      <path d="M12 34 C12 18 26 10 48 10 C70 10 84 20 84 34 C84 52 64 58 42 64 C26 68 16 76 16 90 C16 108 30 122 52 122 C74 122 88 110 88 94 L62 94 C62 100 56 104 48 104 C40 104 34 98 34 92 C34 84 44 80 60 76 C80 70 92 62 92 42 C92 22 76 8 50 8 C24 8 8 22 8 40 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
-      <!-- Highlights -->
-      <path d="M26 14 C34 11 44 10 52 10 C68 10 78 16 78 24" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
-    </g>
+    <!-- Bottom Deep 3D Shadow -->
+    <text x="256" y="232" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="4" fill="#2d0c00" stroke="#2d0c00" stroke-width="16" stroke-linejoin="round">BOSS</text>
+    <!-- Extrusion Bevels -->
+    <text x="256" y="226" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="4" fill="#7c2d12" stroke="#7c2d12" stroke-width="14" stroke-linejoin="round">BOSS</text>
+    <text x="256" y="220" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="4" fill="#c2410c" stroke="#c2410c" stroke-width="10" stroke-linejoin="round">BOSS</text>
+    <text x="256" y="215" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="4" fill="#ea580c" stroke="#ea580c" stroke-width="8" stroke-linejoin="round">BOSS</text>
+    <text x="256" y="210" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="4" fill="#f59e0b" stroke="#f59e0b" stroke-width="5" stroke-linejoin="round">BOSS</text>
+    <!-- Top Glowing Golden Face with Outline -->
+    <text x="256" y="206" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="4" fill="url(#bossGoldFace)" stroke="#fef08a" stroke-width="3" stroke-linejoin="round">BOSS</text>
   </g>
 
   <!-- ==================== 5-SLOT "[R] [U] [M] [M] [Y]" CYLINDER REEL ==================== -->

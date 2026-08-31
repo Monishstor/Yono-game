@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Radial Gradient -->
+    <radialGradient id="spinBgRadial" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0c633c"/>
+      <stop offset="40%" stop-color="#064828"/>
+      <stop offset="80%" stop-color="#022816"/>
+      <stop offset="100%" stop-color="#01130a"/>
+    </radialGradient>
+
+    <!-- Center Rotated Diamond Plate Gradient -->
+    <linearGradient id="spinDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#117547"/>
+      <stop offset="50%" stop-color="#095532"/>
+      <stop offset="100%" stop-color="#04311c"/>
+    </linearGradient>
+
+    <!-- 3D Gold Typography Face Gradient -->
+    <linearGradient id="spinGoldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#fff59d"/>
+      <stop offset="45%" stop-color="#ffd600"/>
+      <stop offset="75%" stop-color="#ffb300"/>
+      <stop offset="100%" stop-color="#ff8f00"/>
+    </linearGradient>
+
+    <!-- Slot Roller Outer Metallic Green Frame -->
+    <linearGradient id="spinReelGreenFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#16a34a"/>
+      <stop offset="85%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+
+    <!-- Slot Reel Body (White/Silver Cylinder) -->
+    <linearGradient id="spinReelSilverCylinder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="12%" stop-color="#e2e8f0"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Emerald Green Reel Symbols Gradient (Cherries & 777) -->
+    <linearGradient id="spinGreenSymbolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="40%" stop-color="#065f46"/>
+      <stop offset="80%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c19"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="spinMainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle with Deep Green Texture -->
+  <rect width="512" height="512" rx="112" fill="url(#spinBgRadial)"/>
+
+  <!-- Checkerboard / Diamond Quilted Pattern -->
+  <g opacity="0.25" stroke="#22c55e" stroke-width="1.2" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Neon Green Accent Border -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="4.5" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Green Glow Border -->
+  <g filter="url(#spinMainShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#spinDiamondGrad)" stroke="#22c55e" stroke-width="5" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- ==================== 3D "SPIN" TOP SECTION (PERFECTLY ORIENTED S-P-I-N) ==================== -->
+  <g filter="url(#spinMainShadow)">
+    <!-- Bottom Deep 3D Shadow -->
+    <text x="256" y="232" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="150" letter-spacing="2" fill="#2d0c00" stroke="#2d0c00" stroke-width="16" stroke-linejoin="round">SPIN</text>
+    <!-- Extrusion Bevels -->
+    <text x="256" y="226" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="150" letter-spacing="2" fill="#7c2d12" stroke="#7c2d12" stroke-width="14" stroke-linejoin="round">SPIN</text>
+    <text x="256" y="220" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="150" letter-spacing="2" fill="#c2410c" stroke="#c2410c" stroke-width="10" stroke-linejoin="round">SPIN</text>
+    <text x="256" y="215" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="150" letter-spacing="2" fill="#ea580c" stroke="#ea580c" stroke-width="8" stroke-linejoin="round">SPIN</text>
+    <text x="256" y="210" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="150" letter-spacing="2" fill="#f59e0b" stroke="#f59e0b" stroke-width="5" stroke-linejoin="round">SPIN</text>
+    <!-- Top Glowing Golden Face with Outline -->
+    <text x="256" y="206" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="150" letter-spacing="2" fill="url(#spinGoldFace)" stroke="#fef08a" stroke-width="3" stroke-linejoin="round">SPIN</text>
+
+    <!-- Center Big Sparkle on Top Right of SPIN -->
+    <path d="M332 96 Q332 110 344 110 Q332 110 332 124 Q332 110 320 110 Q332 110 332 96 Z" fill="#ffffff"/>
+    <path d="M332 100 Q332 110 340 110 Q332 110 332 120 Q332 110 324 110 Q332 110 332 100 Z" fill="#fef08a"/>
+  </g>
+
+  <!-- ==================== 5-SLOT "[🍒] [7] [7] [7] [🍒]" CYLINDER REEL ==================== -->
+  <g filter="url(#spinMainShadow)">
+    <!-- Slot Roller Outer Dark Rim -->
+    <rect x="22" y="268" width="468" height="140" rx="70" fill="#011b10" stroke="#000000" stroke-width="6"/>
+
+    <!-- Shiny Chrome Green Rim -->
+    <rect x="26" y="272" width="460" height="132" rx="66" fill="url(#spinReelGreenFrame)" stroke="#166534" stroke-width="2"/>
+
+    <!-- 5-Slot White/Silver Cylinder Reel Body -->
+    <rect x="34" y="280" width="444" height="116" rx="58" fill="url(#spinReelSilverCylinder)"/>
+
+    <!-- 4 Reel Column Dividers -->
+    <!-- Col 1 (🍒) / Col 2 (7) -->
+    <path d="M122 280 L122 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M124 280 L124 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 2 (7) / Col 3 (7) -->
+    <path d="M212 280 L212 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M214 280 L214 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 3 (7) / Col 4 (7) -->
+    <path d="M300 280 L300 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M302 280 L302 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 4 (7) / Col 5 (🍒) -->
+    <path d="M388 280 L388 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M390 280 L390 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Reel Cylindrical Gloss Highlight (Top white reflection) -->
+    <rect x="54" y="284" width="404" height="22" rx="11" fill="#ffffff" opacity="0.75"/>
+    <rect x="64" y="288" width="384" height="7" rx="3.5" fill="#ffffff" opacity="0.95"/>
+
+    <!-- Bottom subtle reflection -->
+    <rect x="74" y="378" width="364" height="8" rx="4" fill="#ffffff" opacity="0.3"/>
+
+    <!-- ==================== 5 SYMBOLS: 🍒 - 7 - 7 - 7 - 🍒 ==================== -->
+    
+    <!-- SLOT 1: DOUBLE CHERRIES 🍒 (cx: 78, cy: 338) -->
+    <g transform="translate(46, 304)">
+      <!-- Cherry Stems and Leaf Shadow -->
+      <path d="M24 6 C28 2 34 0 40 2 C44 4 48 8 50 14 C44 14 38 12 32 14 C26 16 22 22 20 28 M40 4 C38 14 34 24 38 34" stroke="#012417" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <!-- Cherry Berries Shadow -->
+      <circle cx="18" cy="38" r="16" fill="#012417" stroke="#012417" stroke-width="5"/>
+      <circle cx="44" cy="36" r="15" fill="#012417" stroke="#012417" stroke-width="5"/>
+      
+      <!-- Stems and Leaf -->
+      <path d="M24 6 C28 2 34 0 40 2 C44 4 48 8 50 14 C44 14 38 12 32 14 C26 16 22 22 20 28" fill="#15803d" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+      <path d="M38 4 C36 14 32 24 36 34" stroke="#047857" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M24 6 C28 2 34 0 40 2 C44 4 48 8 50 14 C44 14 38 12 32 14 C26 16 22 22 20 28 Z" fill="#059669"/>
+
+      <!-- Cherries Body -->
+      <circle cx="18" cy="38" r="16" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2"/>
+      <circle cx="44" cy="36" r="15" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2"/>
+      <!-- Gloss highlight on cherries -->
+      <ellipse cx="14" cy="32" rx="5" ry="3" fill="#ffffff" opacity="0.6" transform="rotate(-30 14 32)"/>
+      <ellipse cx="40" cy="30" rx="4" ry="2.5" fill="#ffffff" opacity="0.6" transform="rotate(-30 40 30)"/>
+    </g>
+
+    <!-- SLOT 2: LETTER '7' (cx: 167) -->
+    <g transform="translate(136, 302)">
+      <!-- 3D Shadow -->
+      <path d="M6 8 L56 8 L56 22 L32 72 L12 72 L36 24 L6 24 Z" fill="#012417" stroke="#012417" stroke-width="6" stroke-linejoin="round" transform="translate(0, 3)"/>
+      <!-- Front Face -->
+      <path d="M6 8 L56 8 L56 22 L32 72 L12 72 L36 24 L6 24 Z" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Top Highlight -->
+      <rect x="8" y="10" width="46" height="5" fill="#ffffff" opacity="0.4" rx="2"/>
+    </g>
+
+    <!-- SLOT 3: LETTER '7' (cx: 256) -->
+    <g transform="translate(225, 302)">
+      <!-- 3D Shadow -->
+      <path d="M6 8 L56 8 L56 22 L32 72 L12 72 L36 24 L6 24 Z" fill="#012417" stroke="#012417" stroke-width="6" stroke-linejoin="round" transform="translate(0, 3)"/>
+      <!-- Front Face -->
+      <path d="M6 8 L56 8 L56 22 L32 72 L12 72 L36 24 L6 24 Z" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Top Highlight -->
+      <rect x="8" y="10" width="46" height="5" fill="#ffffff" opacity="0.4" rx="2"/>
+    </g>
+
+    <!-- SLOT 4: LETTER '7' (cx: 345) -->
+    <g transform="translate(314, 302)">
+      <!-- 3D Shadow -->
+      <path d="M6 8 L56 8 L56 22 L32 72 L12 72 L36 24 L6 24 Z" fill="#012417" stroke="#012417" stroke-width="6" stroke-linejoin="round" transform="translate(0, 3)"/>
+      <!-- Front Face -->
+      <path d="M6 8 L56 8 L56 22 L32 72 L12 72 L36 24 L6 24 Z" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Top Highlight -->
+      <rect x="8" y="10" width="46" height="5" fill="#ffffff" opacity="0.4" rx="2"/>
+    </g>
+
+    <!-- SLOT 5: DOUBLE CHERRIES 🍒 (cx: 434, cy: 338) -->
+    <g transform="translate(402, 304)">
+      <!-- Cherry Stems and Leaf Shadow -->
+      <path d="M24 6 C28 2 34 0 40 2 C44 4 48 8 50 14 C44 14 38 12 32 14 C26 16 22 22 20 28 M40 4 C38 14 34 24 38 34" stroke="#012417" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <!-- Cherry Berries Shadow -->
+      <circle cx="18" cy="38" r="16" fill="#012417" stroke="#012417" stroke-width="5"/>
+      <circle cx="44" cy="36" r="15" fill="#012417" stroke="#012417" stroke-width="5"/>
+      
+      <!-- Stems and Leaf -->
+      <path d="M24 6 C28 2 34 0 40 2 C44 4 48 8 50 14 C44 14 38 12 32 14 C26 16 22 22 20 28" fill="#15803d" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+      <path d="M38 4 C36 14 32 24 36 34" stroke="#047857" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M24 6 C28 2 34 0 40 2 C44 4 48 8 50 14 C44 14 38 12 32 14 C26 16 22 22 20 28 Z" fill="#059669"/>
+
+      <!-- Cherries Body -->
+      <circle cx="18" cy="38" r="16" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2"/>
+      <circle cx="44" cy="36" r="15" fill="url(#spinGreenSymbolGrad)" stroke="#047857" stroke-width="2"/>
+      <!-- Gloss highlight on cherries -->
+      <ellipse cx="14" cy="32" rx="5" ry="3" fill="#ffffff" opacity="0.6" transform="rotate(-30 14 32)"/>
+      <ellipse cx="40" cy="30" rx="4" ry="2.5" fill="#ffffff" opacity="0.6" transform="rotate(-30 40 30)"/>
+    </g>
+  </g>
+</svg>
