@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Radial Gradient -->
+    <radialGradient id="bossBgRadial" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0c633c"/>
+      <stop offset="40%" stop-color="#064828"/>
+      <stop offset="80%" stop-color="#022816"/>
+      <stop offset="100%" stop-color="#01130a"/>
+    </radialGradient>
+
+    <!-- Center Rotated Diamond Plate Gradient -->
+    <linearGradient id="bossDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#117547"/>
+      <stop offset="50%" stop-color="#095532"/>
+      <stop offset="100%" stop-color="#04311c"/>
+    </linearGradient>
+
+    <!-- 3D Gold Typography Face Gradient -->
+    <linearGradient id="bossGoldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#fff59d"/>
+      <stop offset="50%" stop-color="#ffd600"/>
+      <stop offset="80%" stop-color="#ffb300"/>
+      <stop offset="100%" stop-color="#ff8f00"/>
+    </linearGradient>
+
+    <!-- 3D Gold Extrusion / Bevel Gradient -->
+    <linearGradient id="bossGoldBevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe082"/>
+      <stop offset="50%" stop-color="#ff8f00"/>
+      <stop offset="100%" stop-color="#bf360c"/>
+    </linearGradient>
+
+    <!-- Slot Roller Outer Metallic Green Frame -->
+    <linearGradient id="bossReelGreenFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#16a34a"/>
+      <stop offset="85%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+
+    <!-- Slot Reel Body (White/Silver Cylinder) -->
+    <linearGradient id="bossReelSilverCylinder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="12%" stop-color="#e2e8f0"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Bright Green "RUMMY" Letter Face Gradient -->
+    <linearGradient id="bossRummyGreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00e676"/>
+      <stop offset="35%" stop-color="#00c853"/>
+      <stop offset="75%" stop-color="#008a38"/>
+      <stop offset="100%" stop-color="#004d20"/>
+    </linearGradient>
+
+    <!-- Bulb Glow Filter -->
+    <filter id="bossBulbGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Drop Shadows -->
+    <filter id="bossMainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle with Deep Green Texture -->
+  <rect width="512" height="512" rx="112" fill="url(#bossBgRadial)"/>
+
+  <!-- Checkerboard / Diamond Quilted Pattern -->
+  <g opacity="0.25" stroke="#22c55e" stroke-width="1.2" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Neon Green Accent Border -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="4.5" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Casino Bulbs Frame -->
+  <g filter="url(#bossMainShadow)">
+    <!-- Base rotated diamond -->
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#bossDiamondGrad)" stroke="#16a34a" stroke-width="14" stroke-opacity="0.9"/>
+    <!-- Inner bright neon ring -->
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-opacity="0.8"/>
+  </g>
+
+  <!-- 32 Glowing Neon Casino Light Bulbs on Diamond Perimeter -->
+  <g filter="url(#bossBulbGlow)">
+    <!-- Top Corner Bulbs -->
+    <circle cx="256" cy="40" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+    <circle cx="218" cy="78" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="294" cy="78" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="180" cy="116" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="332" cy="116" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="142" cy="154" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="370" cy="154" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="104" cy="192" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="408" cy="192" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="66" cy="230" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="446" cy="230" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+
+    <!-- Middle Left/Right Apex Bulbs -->
+    <circle cx="40" cy="256" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+    <circle cx="472" cy="256" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+
+    <!-- Bottom Corner Bulbs -->
+    <circle cx="66" cy="282" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="446" cy="282" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="104" cy="320" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="408" cy="320" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="142" cy="358" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="370" cy="358" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="180" cy="396" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="332" cy="396" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="218" cy="434" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="294" cy="434" r="4.5" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.8"/>
+    <circle cx="256" cy="472" r="5" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+  </g>
+
+  <!-- ==================== 3D "BOSS" TOP SECTION ==================== -->
+  <g filter="url(#bossMainShadow)">
+    
+    <!-- ========== LETTER 'B' ========== -->
+    <g transform="translate(48, 102)">
+      <!-- 3D Shadow -->
+      <path d="M10 16 L66 16 C86 16 98 26 98 42 C98 52 92 60 80 64 C96 68 104 78 104 98 C104 116 88 130 66 130 L10 130 Z M38 42 L38 56 L60 56 C68 56 72 52 72 48 C72 44 68 42 60 42 Z M38 84 L38 104 L64 104 C72 104 76 98 76 94 C76 90 72 84 64 84 Z" fill="#3e1400" transform="translate(4, 6)"/>
+      <!-- 3D Bevel -->
+      <path d="M10 16 L22 2 L78 2 C98 2 110 12 110 28 C110 38 104 46 92 50 C108 54 116 64 116 84 C116 102 100 116 78 116 L22 116 L10 130 Z" fill="url(#bossGoldBevel)"/>
+      <path d="M8 14 L64 14 C84 14 96 24 96 40 C96 50 90 58 78 62 C94 66 102 76 102 96 C102 114 86 128 64 128 L8 128 Z" fill="#e65100"/>
+      <!-- Front Face -->
+      <path d="M6 12 L62 12 C82 12 94 22 94 38 C94 48 88 56 76 60 C92 64 100 74 100 94 C100 112 84 126 62 126 L6 126 Z M34 38 L34 52 L56 52 C64 52 68 48 68 44 C68 40 64 38 56 38 Z M34 80 L34 100 L60 100 C68 100 72 94 72 90 C72 86 68 80 60 80 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Highlights -->
+      <rect x="10" y="15" width="50" height="5" fill="#ffffff" opacity="0.8" rx="2.5"/>
+    </g>
+
+    <!-- ========== LETTER 'O' ========== -->
+    <g transform="translate(152, 102)">
+      <!-- 3D Shadow -->
+      <ellipse cx="54" cy="74" rx="46" ry="58" fill="#3e1400" transform="translate(4, 6)"/>
+      <!-- 3D Bevel -->
+      <ellipse cx="64" cy="62" rx="46" ry="58" fill="url(#bossGoldBevel)"/>
+      <ellipse cx="52" cy="72" rx="46" ry="58" fill="#e65100"/>
+      <!-- Front Face -->
+      <path d="M50 12 C24 12 6 36 6 70 C6 104 24 126 50 126 C76 126 94 104 94 70 C94 36 76 12 50 12 Z M50 42 C60 42 66 54 66 70 C66 86 60 96 50 96 C40 96 34 86 34 70 C34 54 40 42 50 42 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Highlights -->
+      <ellipse cx="50" cy="20" rx="28" ry="6" fill="#ffffff" opacity="0.8"/>
+    </g>
+
+    <!-- ========== LETTER 'S' (FIRST S) ========== -->
+    <g transform="translate(258, 102)">
+      <!-- 3D Shadow -->
+      <path d="M16 38 C16 22 30 14 52 14 C74 14 88 24 88 38 C88 56 68 62 46 68 C30 72 20 80 20 94 C20 112 34 126 56 126 C78 126 92 114 92 98 L66 98 C66 104 60 108 52 108 C44 108 38 102 38 96 C38 88 48 84 64 80 C84 74 96 66 96 46 C96 26 80 12 54 12 C28 12 12 26 12 44 Z" fill="#3e1400" transform="translate(4, 6)"/>
+      <!-- 3D Bevel -->
+      <path d="M26 26 C26 10 40 2 62 2 C84 2 98 12 98 26 L88 38 C88 24 74 14 52 14 C30 14 16 22 16 38 Z" fill="url(#bossGoldBevel)"/>
+      <path d="M14 36 C14 20 28 12 50 12 C72 12 86 22 86 36 C86 54 66 60 44 66 C28 70 18 78 18 92 C18 110 32 124 54 124 C76 124 90 112 90 96 L64 96 C64 102 58 106 50 106 C42 106 36 100 36 94 C36 86 46 82 62 78 C82 72 94 64 94 44 C94 24 78 10 52 10 C26 10 10 24 10 42 Z" fill="#e65100"/>
+      <!-- Front Face -->
+      <path d="M12 34 C12 18 26 10 48 10 C70 10 84 20 84 34 C84 52 64 58 42 64 C26 68 16 76 16 90 C16 108 30 122 52 122 C74 122 88 110 88 94 L62 94 C62 100 56 104 48 104 C40 104 34 98 34 92 C34 84 44 80 60 76 C80 70 92 62 92 42 C92 22 76 8 50 8 C24 8 8 22 8 40 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Highlights -->
+      <path d="M26 14 C34 11 44 10 52 10 C68 10 78 16 78 24" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+    </g>
+
+    <!-- ========== LETTER 'S' (SECOND S) ========== -->
+    <g transform="translate(366, 102)">
+      <!-- 3D Shadow -->
+      <path d="M16 38 C16 22 30 14 52 14 C74 14 88 24 88 38 C88 56 68 62 46 68 C30 72 20 80 20 94 C20 112 34 126 56 126 C78 126 92 114 92 98 L66 98 C66 104 60 108 52 108 C44 108 38 102 38 96 C38 88 48 84 64 80 C84 74 96 66 96 46 C96 26 80 12 54 12 C28 12 12 26 12 44 Z" fill="#3e1400" transform="translate(4, 6)"/>
+      <!-- 3D Bevel -->
+      <path d="M26 26 C26 10 40 2 62 2 C84 2 98 12 98 26 L88 38 C88 24 74 14 52 14 C30 14 16 22 16 38 Z" fill="url(#bossGoldBevel)"/>
+      <path d="M14 36 C14 20 28 12 50 12 C72 12 86 22 86 36 C86 54 66 60 44 66 C28 70 18 78 18 92 C18 110 32 124 54 124 C76 124 90 112 90 96 L64 96 C64 102 58 106 50 106 C42 106 36 100 36 94 C36 86 46 82 62 78 C82 72 94 64 94 44 C94 24 78 10 52 10 C26 10 10 24 10 42 Z" fill="#e65100"/>
+      <!-- Front Face -->
+      <path d="M12 34 C12 18 26 10 48 10 C70 10 84 20 84 34 C84 52 64 58 42 64 C26 68 16 76 16 90 C16 108 30 122 52 122 C74 122 88 110 88 94 L62 94 C62 100 56 104 48 104 C40 104 34 98 34 92 C34 84 44 80 60 76 C80 70 92 62 92 42 C92 22 76 8 50 8 C24 8 8 22 8 40 Z" fill="url(#bossGoldFace)" stroke="#ffe082" stroke-width="3" stroke-linejoin="round"/>
+      <!-- Highlights -->
+      <path d="M26 14 C34 11 44 10 52 10 C68 10 78 16 78 24" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- ==================== 5-SLOT "[R] [U] [M] [M] [Y]" CYLINDER REEL ==================== -->
+  <g filter="url(#bossMainShadow)">
+    <!-- Slot Roller Outer Dark Rim -->
+    <rect x="22" y="268" width="468" height="140" rx="70" fill="#011b10" stroke="#000000" stroke-width="6"/>
+
+    <!-- Shiny Chrome Green Rim -->
+    <rect x="26" y="272" width="460" height="132" rx="66" fill="url(#bossReelGreenFrame)" stroke="#166534" stroke-width="2"/>
+
+    <!-- 5-Slot White/Silver Cylinder Reel Body -->
+    <rect x="34" y="280" width="444" height="116" rx="58" fill="url(#bossReelSilverCylinder)"/>
+
+    <!-- 4 Reel Column Dividers -->
+    <!-- Col 1 (R) / Col 2 (U) -->
+    <path d="M122 280 L122 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M124 280 L124 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 2 (U) / Col 3 (M) -->
+    <path d="M212 280 L212 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M214 280 L214 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 3 (M) / Col 4 (M) -->
+    <path d="M300 280 L300 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M302 280 L302 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 4 (M) / Col 5 (Y) -->
+    <path d="M388 280 L388 396" stroke="#94a3b8" stroke-width="3" opacity="0.75"/>
+    <path d="M390 280 L390 396" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Reel Cylindrical Gloss Highlight (Top white reflection) -->
+    <rect x="54" y="284" width="404" height="22" rx="11" fill="#ffffff" opacity="0.75"/>
+    <rect x="64" y="288" width="384" height="7" rx="3.5" fill="#ffffff" opacity="0.95"/>
+
+    <!-- Bottom subtle reflection -->
+    <rect x="74" y="378" width="364" height="8" rx="4" fill="#ffffff" opacity="0.3"/>
+
+    <!-- ==================== 5 SLOTS: R - U - M - M - Y ==================== -->
+    
+    <!-- SLOT 1: LETTER 'R' (cx: 78) -->
+    <g>
+      <text x="78" y="376" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">R</text>
+      <text x="78" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#00e676" stroke="#00c853" stroke-width="4" stroke-linejoin="round">R</text>
+      <text x="78" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="url(#bossRummyGreenGrad)">R</text>
+    </g>
+
+    <!-- SLOT 2: LETTER 'U' (cx: 167) -->
+    <g>
+      <text x="167" y="376" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">U</text>
+      <text x="167" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#00e676" stroke="#00c853" stroke-width="4" stroke-linejoin="round">U</text>
+      <text x="167" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="url(#bossRummyGreenGrad)">U</text>
+    </g>
+
+    <!-- SLOT 3: LETTER 'M' (cx: 256) -->
+    <g>
+      <text x="256" y="376" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">M</text>
+      <text x="256" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#00e676" stroke="#00c853" stroke-width="4" stroke-linejoin="round">M</text>
+      <text x="256" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="url(#bossRummyGreenGrad)">M</text>
+    </g>
+
+    <!-- SLOT 4: LETTER 'M' (cx: 345) -->
+    <g>
+      <text x="345" y="376" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">M</text>
+      <text x="345" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#00e676" stroke="#00c853" stroke-width="4" stroke-linejoin="round">M</text>
+      <text x="345" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="url(#bossRummyGreenGrad)">M</text>
+    </g>
+
+    <!-- SLOT 5: LETTER 'Y' (cx: 434) -->
+    <g>
+      <text x="434" y="376" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">Y</text>
+      <text x="434" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="#00e676" stroke="#00c853" stroke-width="4" stroke-linejoin="round">Y</text>
+      <text x="434" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="96" fill="url(#bossRummyGreenGrad)">Y</text>
+    </g>
+  </g>
+</svg>

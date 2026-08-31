@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. Boss Rummy APK (India #1 Rummy App) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=boss-rummy-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. HiRummy APK (Popular Skill Gaming Platform) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=hi-rummy-apk-download</loc>

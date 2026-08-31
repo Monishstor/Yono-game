@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '9HFM7XR3QRG',
+    title: 'Boss Rummy India #1 Rummy ₹66 Free Registration + 180% First Deposit Match',
+    reward: '₹66 Free Registration Bonus + 180% First Deposit Match + ₹500 Daily Cash Codes',
+    expiry: 'Official Active Code',
+    appTarget: 'Boss Rummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'RX3VG4VWKTA',
     title: 'HiRummy Popular Gaming Platform Free Welcome Bonus & 100% Deposit Match',
     reward: 'Free Welcome Signup Cash + 100% First Deposit Match + VIP Daily Pass',
