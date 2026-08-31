@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'C42DVFVVW85',
+    title: 'Jaiho 91 India #1 Skilled Gaming ₹8 Free Joining + ₹80 7-Days Login Bonus',
+    reward: '₹8 Free Joining Bonus + ₹80 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'Jaiho 91',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '9VC7N8B8WK7',
     title: 'Club INR India #1 Skilled Gaming ₹5 Free Joining + ₹264 7-Days Login Bonus',
     reward: '₹5 Free Joining Bonus + ₹264 7-Days Login Cash + 100% First Deposit Match',

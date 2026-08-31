@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Outer Metallic Bezel Gradient -->
+    <linearGradient id="jaihoOuterChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#94a3b8"/>
+      <stop offset="35%" stop-color="#334155"/>
+      <stop offset="55%" stop-color="#cbd5e1"/>
+      <stop offset="75%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+
+    <!-- Dark Quilted Carbon Background Gradient -->
+    <radialGradient id="jaihoBgDark" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#242c38"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </radialGradient>
+
+    <!-- 3D Chrome Silver Face Gradient for JAIHO -->
+    <linearGradient id="jaihoChromeSilver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#f1f5f9"/>
+      <stop offset="48%" stop-color="#cbd5e1"/>
+      <stop offset="52%" stop-color="#64748b"/>
+      <stop offset="80%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+
+    <!-- Slot Reel Silver Cylinder Gradient -->
+    <linearGradient id="jaihoReelSilver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="12%" stop-color="#e2e8f0"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="78%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+
+    <!-- Hot Magenta / Neon Pink Glow Gradient for 91 & Stars -->
+    <linearGradient id="jaihoNeonMagenta" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff77e9"/>
+      <stop offset="30%" stop-color="#ec4899"/>
+      <stop offset="70%" stop-color="#db2777"/>
+      <stop offset="100%" stop-color="#9d174d"/>
+    </linearGradient>
+
+    <!-- Neon Pink Endcaps Gradient -->
+    <linearGradient id="jaihoEndcapsPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2a85"/>
+      <stop offset="50%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#881337"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="jaihoShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+
+    <!-- Glow Filter for Pink Elements -->
+    <filter id="pinkGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Heavy Outer Chrome Rim -->
+  <rect x="12" y="12" width="488" height="488" rx="96" fill="url(#jaihoOuterChrome)" stroke="#0f172a" stroke-width="4"/>
+
+  <!-- Inner Dark Bezel Rim -->
+  <rect x="22" y="22" width="468" height="468" rx="86" fill="#090d16" stroke="#475569" stroke-width="2.5"/>
+
+  <!-- Main Background Container -->
+  <rect x="28" y="28" width="456" height="456" rx="80" fill="url(#jaihoBgDark)"/>
+
+  <!-- Quilted Diamond Grid Texture -->
+  <g opacity="0.35" stroke="#475569" stroke-width="1.2" fill="none">
+    <line x1="28" y1="90" x2="420" y2="484" />
+    <line x1="28" y1="160" x2="350" y2="484" />
+    <line x1="28" y1="230" x2="280" y2="484" />
+    <line x1="28" y1="300" x2="210" y2="484" />
+    <line x1="28" y1="370" x2="140" y2="484" />
+    <line x1="90" y1="28" x2="484" y2="420" />
+    <line x1="160" y1="28" x2="484" y2="350" />
+    <line x1="230" y1="28" x2="484" y2="280" />
+    <line x1="300" y1="28" x2="484" y2="210" />
+    <line x1="370" y1="28" x2="484" y2="140" />
+
+    <line x1="420" y1="28" x2="28" y2="420" />
+    <line x1="350" y1="28" x2="28" y2="350" />
+    <line x1="280" y1="28" x2="28" y2="280" />
+    <line x1="210" y1="28" x2="28" y2="210" />
+    <line x1="140" y1="28" x2="28" y2="140" />
+    <line x1="484" y1="90" x2="90" y2="484" />
+    <line x1="484" y1="160" x2="160" y2="484" />
+    <line x1="484" y1="230" x2="230" y2="484" />
+    <line x1="484" y1="300" x2="300" y2="484" />
+    <line x1="484" y1="370" x2="370" y2="484" />
+  </g>
+
+  <!-- ==================== 3D "JAIHO" CHROME METALLIC TEXT ==================== -->
+  <g filter="url(#jaihoShadow)">
+    <!-- 3D Extrusion Layers (Dark Metallic Chrome Backing) -->
+    <text x="256" y="232" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="2" fill="#020617" stroke="#020617" stroke-width="22" stroke-linejoin="round">JAIHO</text>
+    <text x="256" y="226" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="2" fill="#1e293b" stroke="#1e293b" stroke-width="18" stroke-linejoin="round">JAIHO</text>
+    <text x="256" y="220" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="2" fill="#334155" stroke="#334155" stroke-width="14" stroke-linejoin="round">JAIHO</text>
+    <text x="256" y="214" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="2" fill="#64748b" stroke="#64748b" stroke-width="10" stroke-linejoin="round">JAIHO</text>
+    <text x="256" y="208" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="2" fill="#94a3b8" stroke="#94a3b8" stroke-width="6" stroke-linejoin="round">JAIHO</text>
+    <!-- Shiny Chrome Top Face -->
+    <text x="256" y="202" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="144" letter-spacing="2" fill="url(#jaihoChromeSilver)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round">JAIHO</text>
+
+    <!-- Star Glints on JAIHO Text -->
+    <!-- Glint on J -->
+    <g transform="translate(74, 136)">
+      <polygon points="0,-16 4,-4 16,0 4,4 0,16 -4,4 -16,0 -4,-4" fill="#ffffff"/>
+      <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+    </g>
+    <!-- Glint on H -->
+    <g transform="translate(322, 116)">
+      <polygon points="0,-18 4.5,-4.5 18,0 4.5,4.5 0,18 -4.5,4.5 -18,0 -4.5,-4.5" fill="#ffffff"/>
+      <circle cx="0" cy="0" r="3.5" fill="#ffffff"/>
+    </g>
+  </g>
+
+  <!-- ==================== 4-SLOT CYLINDER REEL [ ★ ] [ 9 ] [ 1 ] [ ★ ] ==================== -->
+  <g filter="url(#jaihoShadow)">
+    <!-- Slot Ground Reflection -->
+    <ellipse cx="256" cy="416" rx="200" ry="18" fill="#000000" opacity="0.6"/>
+
+    <!-- Left & Right Neon Pink Rounded Caps -->
+    <!-- Left Cap -->
+    <ellipse cx="56" cy="328" rx="26" ry="62" fill="url(#jaihoEndcapsPink)" stroke="#ff0077" stroke-width="3" filter="url(#pinkGlow)"/>
+    <ellipse cx="54" cy="328" rx="14" ry="54" fill="#ffffff" opacity="0.6"/>
+
+    <!-- Right Cap -->
+    <ellipse cx="456" cy="328" rx="26" ry="62" fill="url(#jaihoEndcapsPink)" stroke="#ff0077" stroke-width="3" filter="url(#pinkGlow)"/>
+    <ellipse cx="458" cy="328" rx="14" ry="54" fill="#ffffff" opacity="0.6"/>
+
+    <!-- Main Silver Cylinder Body -->
+    <rect x="62" y="268" width="388" height="120" rx="30" fill="url(#jaihoReelSilver)" stroke="#334155" stroke-width="2"/>
+
+    <!-- 3 Column Reel Dividers -->
+    <!-- Divider 1: Star 1 / 9 -->
+    <line x1="160" y1="268" x2="160" y2="388" stroke="#334155" stroke-width="4"/>
+    <line x1="162" y1="268" x2="162" y2="388" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+
+    <!-- Divider 2: 9 / 1 -->
+    <line x1="256" y1="268" x2="256" y2="388" stroke="#334155" stroke-width="4"/>
+    <line x1="258" y1="268" x2="258" y2="388" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+
+    <!-- Divider 3: 1 / Star 2 -->
+    <line x1="352" y1="268" x2="352" y2="388" stroke="#334155" stroke-width="4"/>
+    <line x1="354" y1="268" x2="354" y2="388" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+
+    <!-- Cylinder Gloss Highlights -->
+    <rect x="74" y="272" width="364" height="20" rx="10" fill="#ffffff" opacity="0.75"/>
+    <rect x="84" y="276" width="344" height="6" rx="3" fill="#ffffff" opacity="0.95"/>
+    <rect x="84" y="374" width="344" height="8" rx="4" fill="#ffffff" opacity="0.25"/>
+
+    <!-- Top & Bottom Edge Neon Pink Accents -->
+    <path d="M 64 268 L 448 268" stroke="#ff007f" stroke-width="4" opacity="0.9" stroke-linecap="round"/>
+    <path d="M 64 388 L 448 388" stroke="#ff007f" stroke-width="4" opacity="0.9" stroke-linecap="round"/>
+
+    <!-- ==================== REEL ICONS ==================== -->
+
+    <!-- REEL 1: NEON PINK STAR (cx: 111) -->
+    <g transform="translate(111, 328)">
+      <!-- 5-Point Star -->
+      <polygon points="0,-32 9.5,-10 32,-8 15,9 20,31 0,18 -20,31 -15,9 -32,-8 -9.5,-10" fill="url(#jaihoNeonMagenta)" stroke="#ffffff" stroke-width="2" filter="url(#pinkGlow)"/>
+      <circle cx="0" cy="0" r="6" fill="#ffffff" opacity="0.7"/>
+    </g>
+
+    <!-- REEL 2: NEON PINK DIGIT '9' (cx: 208) -->
+    <g>
+      <!-- Extrusion Shadow -->
+      <text x="208" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="108" fill="#500724" stroke="#500724" stroke-width="8" stroke-linejoin="round">9</text>
+      <!-- Main Face -->
+      <text x="208" y="366" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="108" fill="url(#jaihoNeonMagenta)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" filter="url(#pinkGlow)">9</text>
+      <!-- Center Hole Highlight -->
+      <circle cx="208" cy="316" r="8" fill="#ffffff" opacity="0.9"/>
+    </g>
+
+    <!-- REEL 3: NEON PINK DIGIT '1' (cx: 304) -->
+    <g>
+      <!-- Extrusion Shadow -->
+      <text x="304" y="372" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="108" fill="#500724" stroke="#500724" stroke-width="8" stroke-linejoin="round">1</text>
+      <!-- Main Face -->
+      <text x="304" y="366" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="108" fill="url(#jaihoNeonMagenta)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" filter="url(#pinkGlow)">1</text>
+    </g>
+
+    <!-- REEL 4: NEON PINK STAR (cx: 401) -->
+    <g transform="translate(401, 328)">
+      <!-- 5-Point Star -->
+      <polygon points="0,-32 9.5,-10 32,-8 15,9 20,31 0,18 -20,31 -15,9 -32,-8 -9.5,-10" fill="url(#jaihoNeonMagenta)" stroke="#ffffff" stroke-width="2" filter="url(#pinkGlow)"/>
+      <circle cx="0" cy="0" r="6" fill="#ffffff" opacity="0.7"/>
+    </g>
+  </g>
+</svg>

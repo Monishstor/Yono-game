@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. Jaiho 91 APK (India #1 Skilled Gaming App) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-91-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. Club INR APK (India #1 Skilled Gaming App) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=club-inr-apk-download</loc>
