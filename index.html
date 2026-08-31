@@ -26,14 +26,30 @@
     <script>
       (function() {
         try {
-          var params = new URLSearchParams(window.location.search);
-          var appSlug = params.get('app');
+          var origin = window.location.origin || 'https://yono-game.vercel.app';
+          var search = window.location.search || '';
+          var pathname = window.location.pathname || '';
+          var params = new URLSearchParams(search);
+          var appSlug = params.get('app') || params.get('game') || params.get('apk');
+          
+          if (!appSlug && pathname && pathname !== '/' && !pathname.includes('.')) {
+            var cleanPath = pathname.replace(/^\/+|\/+$/g, '').replace(/^(app|game)\//, '');
+            if (cleanPath && cleanPath !== 'admin') {
+              appSlug = cleanPath;
+            }
+          }
+
           var canonicalEl = document.getElementById('dynamic-canonical');
-          if (appSlug && canonicalEl) {
-            var fullUrl = window.location.origin + '/?app=' + encodeURIComponent(appSlug);
+          var fullUrl = appSlug 
+            ? origin + '/?app=' + encodeURIComponent(appSlug)
+            : origin + '/';
+
+          if (canonicalEl) {
             canonicalEl.setAttribute('href', fullUrl);
-            var ogUrl = document.querySelector('meta[property="og:url"]');
-            if (ogUrl) ogUrl.setAttribute('content', fullUrl);
+          }
+          var ogUrl = document.querySelector('meta[property="og:url"]');
+          if (ogUrl) {
+            ogUrl.setAttribute('content', fullUrl);
           }
         } catch(e) {}
       })();
@@ -164,12 +180,18 @@
         {
           "@type": "ListItem",
           "position": 1,
+          "url": "https://yono-game.vercel.app/?app=club-inr-apk-download",
+          "name": "Club INR APK"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
           "url": "https://yono-game.vercel.app/?app=max-rummy-apk-download",
           "name": "Max Rummy APK"
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 3,
           "url": "https://yono-game.vercel.app/?app=inr-rummy-apk-download",
           "name": "INR Rummy APK"
         },
@@ -227,6 +249,7 @@
       <main style="max-width: 900px; margin: 0 auto; padding: 16px;">
         <h2 style="font-size: 20px; font-weight: bold; color: #ffffff;">Trending Yono Games & APK Download Links</h2>
         <ul style="color: #94a3b8; line-height: 1.8;">
+          <li><a href="/?app=club-inr-apk-download" style="color: #38bdf8; text-decoration: underline;"><strong>Club INR APK:</strong></a> India’s #1 Skilled Gaming App, ₹5 Free Joining Bonus, ₹264 7-Days Login Bonus, 100% First Deposit Cashback, 30+ Skilled Games (Rummy, Ludo, Poker), 4.9⭐ Rating.</li>
           <li><a href="/?app=max-rummy-apk-download" style="color: #38bdf8; text-decoration: underline;"><strong>Max Rummy APK:</strong></a> India’s #1 Skilled Gaming App, ₹5 Free Joining Bonus, ₹154 7-Days Login Bonus, 100% First Deposit Cashback, 30+ Skilled Games (Rummy, Ludo, Poker), 4.9⭐ Rating.</li>
           <li><a href="/?app=inr-rummy-apk-download" style="color: #38bdf8; text-decoration: underline;"><strong>INR Rummy APK:</strong></a> India’s #1 Skilled Gaming App (You Only Need One Games App), ₹5 Free Joining Bonus, ₹406 7-Days Login Bonus, 100% First Deposit Cashback, 30+ Skilled Games (Rummy, Ludo, Poker), 4.9⭐ Rating.</li>
           <li><a href="/?app=slots-spin-apk-download" style="color: #38bdf8; text-decoration: underline;"><strong>Slots Spin APK:</strong></a> India’s #1 Skilled Gaming App, ₹10 Free Joining Bonus, ₹200 7-Days Login Bonus, 100% First Deposit Cashback, 30+ Skilled Games (Rummy, Ludo, Poker), 4.9⭐ Rating.</li>

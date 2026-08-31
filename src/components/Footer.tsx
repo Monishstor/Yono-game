@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({
   const [copied, setCopied] = useState(false);
 
   const getShareUrl = () => {
-    return typeof window !== 'undefined' ? window.location.origin + window.location.pathname : 'https://yonoji.netlify.app';
+    return typeof window !== 'undefined' ? window.location.origin + window.location.pathname : 'https://yono-game.vercel.app';
   };
 
   const shareText = `🔥 *ALL NEW YONO APPS 2026 - FREE ₹51 TO ₹1500 BONUS!* 🎁\n\nDirect working APK Download links with 2-Minute Instant UPI Cashout ⚡\n\n✅ 100% Virus-Free & Safe\n✅ Daily Free Spin & Free Promo Codes\n✅ Lowest Minimum Withdrawal ₹100\n\n👇 *Download Now & Claim Free Bonus:* \n${getShareUrl()}`;

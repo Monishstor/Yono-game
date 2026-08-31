@@ -31,10 +31,15 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
 
   const originUrl = typeof window !== 'undefined' && window.location.origin
     ? window.location.origin
-    : (siteSettings?.canonicalUrl || 'https://yono-game.vercel.app');
+    : 'https://yono-game.vercel.app';
+
+  const siteCanonical = siteSettings?.canonicalUrl && !siteSettings.canonicalUrl.includes('netlify') && !siteSettings.canonicalUrl.includes('allnewyonoapps')
+    ? siteSettings.canonicalUrl
+    : originUrl;
+
   const currentCanonical = isSingleAppPage && activeApp
     ? `${originUrl}/?app=${activeApp.slug || activeApp.id}`
-    : (siteSettings?.canonicalUrl || originUrl);
+    : siteCanonical;
 
   const currentAuthor = siteSettings?.siteAuthor || 'YONO Official Community';
   const googleVerification = siteSettings?.googleSiteVerification;

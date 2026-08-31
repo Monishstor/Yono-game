@@ -37,11 +37,11 @@ const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v12';
 const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v12';
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: 'ALL NEW YONO APPS, JAIHOSPIN, SLOTS WINNER, TOP RUMMY & JAIHO RUMMY (2026) - APK Downloads',
-  metaDescription: 'Official portal for JaihoSpin, Slots Winner, Top Rummy, JaiHo Rummy & Dhan Game APK Downloads with ₹10-₹777 Welcome Bonus, 200% Deposit Cashback & ₹100 instant UPI withdrawals.',
-  metaKeywords: 'jaihospin, jaiho spin, jaihospin apk download, jaiho spin referral code 7TAQW92DSQE, slots winner, top rummy, jaiho rummy, abc rummy, dhan game, saga slots, all yono games, yono app list 2026, all yono vip',
-  canonicalUrl: 'https://yonoj.netlify.app',
-  siteAuthor: 'Yono VIP Official Network',
+  siteTitle: 'All New Yono Games & APK Downloads (2026 List) - Max Rummy, INR Rummy, Slots Spin',
+  metaDescription: 'Download All New Yono Games 2026 List: Max Rummy, INR Rummy, Slots Spin, Yono Arcade, Jaiho Win & all verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals.',
+  metaKeywords: 'all new yono games, max rummy apk, inr rummy apk, slots spin apk, yono arcade, jaiho win, new yono app launch today, yono all games list 2026, 567 slots, winrummy, ind club, maha games',
+  canonicalUrl: 'https://yono-game.vercel.app',
+  siteAuthor: 'All New Yono Apps Official Portal',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',
   telegramLink: 'https://t.me/yonojiunauxcom',
   telegramSubscribers: '88K',
@@ -210,6 +210,9 @@ export default function App() {
           if (!merged.telegramLink || merged.telegramLink === 'https://t.me/' || merged.telegramLink === 'https://t.me') {
             merged.telegramLink = 'https://t.me/yonojiunauxcom';
           }
+          if (!merged.canonicalUrl || merged.canonicalUrl.includes('netlify') || merged.canonicalUrl.includes('allnewyonoapps')) {
+            merged.canonicalUrl = 'https://yono-game.vercel.app';
+          }
           return merged;
         }
       }
@@ -311,7 +314,13 @@ export default function App() {
 
     // 2. Listen for global settings
     const stopSettingsSync = startSettingsSync((newSettings) => {
-      setSiteSettings((prev) => ({ ...prev, ...newSettings }));
+      setSiteSettings((prev) => {
+        const merged = { ...prev, ...newSettings };
+        if (!merged.canonicalUrl || merged.canonicalUrl.includes('netlify') || merged.canonicalUrl.includes('allnewyonoapps')) {
+          merged.canonicalUrl = 'https://yono-game.vercel.app';
+        }
+        return merged;
+      });
     });
 
     return () => {

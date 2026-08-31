@@ -108,7 +108,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const [seoTitle, setSeoTitle] = useState(siteSettings.siteTitle || 'ALL NEW YONO APPS (2026) - Real Cash Games & APK Downloads');
   const [seoDescription, setSeoDescription] = useState(siteSettings.siteDescription || 'Download All New Yono Games & Apps 2026 list with ₹51 to ₹1500 sign-up bonus, ₹100 instant minimum UPI withdrawal, daily promo codes and safe verified APK files.');
   const [seoKeywords, setSeoKeywords] = useState(siteSettings.metaKeywords || 'all yono apps, yono games apk download, all new yono app 2026, yono vip, yono rummy 500 bonus, yono slots 777, yono games list, yono referral code');
-  const [seoCanonical, setSeoCanonical] = useState(siteSettings.canonicalUrl || (typeof window !== 'undefined' ? window.location.origin : 'https://allnewyonoapps.com'));
+  const [seoCanonical, setSeoCanonical] = useState(siteSettings.canonicalUrl || (typeof window !== 'undefined' ? window.location.origin : 'https://yono-game.vercel.app'));
   const [seoAuthor, setSeoAuthor] = useState(siteSettings.authorName || 'YONO Official Community');
   const [googleVerificationCode, setGoogleVerificationCode] = useState(siteSettings.googleVerificationCode || '');
   const [ogImageUrl, setOgImageUrl] = useState(siteSettings.ogImage || 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&auto=format&fit=crop&q=80');

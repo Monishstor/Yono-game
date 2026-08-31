@@ -41,7 +41,7 @@ export const SeoSettingsPanel: React.FC<SeoSettingsPanelProps> = ({
       'all yono apps, yono games apk download, all new yono app 2026, yono vip, yono rummy 500 bonus, yono slots 777, yono games list, yono referral code'
   );
   const [canonicalUrl, setCanonicalUrl] = useState(
-    siteSettings.canonicalUrl || (typeof window !== 'undefined' ? window.location.origin : 'https://allnewyonoapps.com')
+    siteSettings.canonicalUrl || (typeof window !== 'undefined' ? window.location.origin : 'https://yono-game.vercel.app')
   );
   const [authorName, setAuthorName] = useState(
     siteSettings.authorName || 'YONO Official Community'
