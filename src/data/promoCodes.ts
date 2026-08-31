@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'H53VNB12FUC',
+    title: '777 Game Official Real-Money Welcome Bonus & 100% Deposit Match',
+    reward: 'Free Signup Bonus + 100% First Deposit Match + Daily Real Cash Spin',
+    expiry: 'Official Active Code',
+    appTarget: '777 Game',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '3CRF3EWGRQC',
     title: 'Yono VIP Official ₹5 Free Joining + ₹80 7-Days Login Cash + 100% Deposit Cashback',
     reward: '₹5 Free Joining Bonus + ₹80 Daily Login Cash (7 Days) + 100% First Deposit Match',

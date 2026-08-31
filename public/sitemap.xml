@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 0. 777 Game APK (Real-Money Casino & Slots) -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=777-game-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 0. Yono VIP APK (India #1 Skilled Gaming App) -->
   <url>
     <loc>https://yono-game.vercel.app/?app=yono-vip-apk-download</loc>
