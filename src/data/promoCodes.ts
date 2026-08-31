@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '2QT2P9V76WW',
+    title: 'BET 213 India #1 Skilled Gaming ₹5 Free Joining + ₹731 7-Days Login Bonus',
+    reward: '₹5 Free Joining Bonus + ₹731 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'BET 213',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'C42DVFVVW85',
     title: 'Jaiho 91 India #1 Skilled Gaming ₹8 Free Joining + ₹80 7-Days Login Bonus',
     reward: '₹8 Free Joining Bonus + ₹80 7-Days Login Cash + 100% First Deposit Match',
