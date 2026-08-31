@@ -841,6 +841,7 @@ export default function App() {
             app={selectedDownloadApp}
             isOpen={!!selectedDownloadApp}
             onClose={() => setSelectedDownloadApp(null)}
+            telegramLink={siteSettings.telegramLink}
           />
         )}
 
