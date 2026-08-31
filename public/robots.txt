@@ -1,5 +1,21 @@
 User-agent: *
 Allow: /
 
-# Official Sitemap
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Host
+Host: https://yono-game.vercel.app
+
+# Official Sitemaps
 Sitemap: https://yono-game.vercel.app/sitemap.xml
+
