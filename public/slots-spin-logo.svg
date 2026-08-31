@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Radial Background -->
+    <radialGradient id="ssBgRadial" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0c633c"/>
+      <stop offset="40%" stop-color="#064828"/>
+      <stop offset="80%" stop-color="#022816"/>
+      <stop offset="100%" stop-color="#01130a"/>
+    </radialGradient>
+
+    <!-- Outer Golden Border Gradient -->
+    <linearGradient id="ssOuterGoldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe082"/>
+      <stop offset="30%" stop-color="#ffd54f"/>
+      <stop offset="70%" stop-color="#ffb300"/>
+      <stop offset="100%" stop-color="#ff8f00"/>
+    </linearGradient>
+
+    <!-- Diamond Gold Frame Gradient -->
+    <linearGradient id="ssDiamondGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff59d"/>
+      <stop offset="25%" stop-color="#ffd700"/>
+      <stop offset="70%" stop-color="#ff9800"/>
+      <stop offset="100%" stop-color="#e65100"/>
+    </linearGradient>
+
+    <!-- "SLOTS" Yellow Face Gradient -->
+    <linearGradient id="ssSlotsYellowFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#fff9c4"/>
+      <stop offset="45%" stop-color="#ffee58"/>
+      <stop offset="80%" stop-color="#fdd835"/>
+      <stop offset="100%" stop-color="#fbc02d"/>
+    </linearGradient>
+
+    <!-- "SPIN" Ruby Red Face Gradient -->
+    <linearGradient id="ssSpinRubyFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#ff8a80"/>
+      <stop offset="50%" stop-color="#ff1744"/>
+      <stop offset="80%" stop-color="#d50000"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </linearGradient>
+
+    <!-- Slot Reel Silver/White Dome Gradient -->
+    <linearGradient id="ssReelDomeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="15%" stop-color="#f1f5f9"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="75%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+
+    <!-- Gold Coin Gradient -->
+    <radialGradient id="ssCoinGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fff9c4"/>
+      <stop offset="45%" stop-color="#ffd54f"/>
+      <stop offset="85%" stop-color="#ffb300"/>
+      <stop offset="100%" stop-color="#f57c00"/>
+    </radialGradient>
+
+    <!-- Glow Filter for Marquee Bulbs -->
+    <filter id="ssBulbGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Main Drop Shadows -->
+    <filter id="ssMainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base Squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#ssBgRadial)"/>
+
+  <!-- Thick Outer Golden Border (Rounded Squircle) -->
+  <rect x="10" y="10" width="492" height="492" rx="102" fill="none" stroke="url(#ssOuterGoldBorder)" stroke-width="16"/>
+  <rect x="18" y="18" width="476" height="476" rx="94" fill="none" stroke="#2d0c00" stroke-width="3" opacity="0.6"/>
+
+  <!-- Golden Diamond / House Frame Behind "SLOTS" -->
+  <g filter="url(#ssMainShadow)">
+    <path d="M256 36 L486 210 L396 300 L116 300 L26 210 Z" fill="#04321d" stroke="url(#ssDiamondGold)" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M256 50 L466 210 L386 290 L126 290 L46 210 Z" fill="none" stroke="#ffe082" stroke-width="3" opacity="0.8"/>
+  </g>
+
+  <!-- ==================== 3D "SLOTS" TOP TYPOGRAPHY ==================== -->
+  <g filter="url(#ssMainShadow)">
+    <!-- 3D Dark Under Shadow -->
+    <text x="256" y="236" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="2" fill="#2d0c00" stroke="#2d0c00" stroke-width="18" stroke-linejoin="round">SLOTS</text>
+    <!-- 3D Red-Orange Bevel Layer -->
+    <text x="256" y="230" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="2" fill="#7c2d12" stroke="#7c2d12" stroke-width="16" stroke-linejoin="round">SLOTS</text>
+    <text x="256" y="224" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="2" fill="#b91c1c" stroke="#b91c1c" stroke-width="12" stroke-linejoin="round">SLOTS</text>
+    <text x="256" y="218" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="2" fill="#ea580c" stroke="#ea580c" stroke-width="8" stroke-linejoin="round">SLOTS</text>
+    <text x="256" y="212" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="2" fill="#d97706" stroke="#d97706" stroke-width="4" stroke-linejoin="round">SLOTS</text>
+    <!-- 3D Bright Yellow Face with Light Outline -->
+    <text x="256" y="208" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="142" letter-spacing="2" fill="url(#ssSlotsYellowFace)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round">SLOTS</text>
+  </g>
+
+  <!-- ==================== MARQUEE CASINO REEL WITH BULBS ==================== -->
+  <g filter="url(#ssMainShadow)">
+    <!-- Golden Marquee Dome Frame Outer -->
+    <path d="M72 360 C72 260 140 230 256 230 C372 230 440 260 440 360 C440 430 380 440 256 440 C132 440 72 430 72 360 Z" fill="#2d0c00" stroke="#000000" stroke-width="6"/>
+
+    <!-- Shiny Gold Outer Marquee Rim -->
+    <path d="M76 360 C76 264 142 234 256 234 C370 234 436 264 436 360 C436 426 376 436 256 436 C136 436 76 426 76 360 Z" fill="url(#ssOuterGoldBorder)" stroke="#d97706" stroke-width="3"/>
+
+    <!-- Inner Reel Silver Curved Body -->
+    <path d="M96 360 C96 280 152 254 256 254 C360 254 416 280 416 360 C416 414 362 422 256 422 C150 422 96 414 96 360 Z" fill="url(#ssReelDomeGrad)" stroke="#475569" stroke-width="2"/>
+
+    <!-- 3 Reel Divider Lines (for 4 Slots: S - P - I - N) -->
+    <!-- Col 1 (S) / Col 2 (P) -->
+    <path d="M176 262 C172 310 172 370 178 418" stroke="#94a3b8" stroke-width="3" opacity="0.8"/>
+    <path d="M178 262 C174 310 174 370 180 418" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 2 (P) / Col 3 (I) -->
+    <path d="M256 256 L256 422" stroke="#94a3b8" stroke-width="3" opacity="0.8"/>
+    <path d="M258 256 L258 422" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 3 (I) / Col 4 (N) -->
+    <path d="M336 262 C340 310 340 370 334 418" stroke="#94a3b8" stroke-width="3" opacity="0.8"/>
+    <path d="M338 262 C342 310 342 370 336 418" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Top Gloss Arc Reflection -->
+    <path d="M116 340 C116 288 160 264 256 264 C352 264 396 288 396 340" fill="none" stroke="#ffffff" stroke-width="8" opacity="0.75" stroke-linecap="round"/>
+  </g>
+
+  <!-- Glowing Marquee Light Bulbs around Reel Frame -->
+  <g filter="url(#ssBulbGlow)">
+    <circle cx="100" cy="300" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="125" cy="272" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="160" cy="252" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="205" cy="242" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="256" cy="238" r="5.5" fill="#ffffff" stroke="#fff59d" stroke-width="2"/>
+    <circle cx="307" cy="242" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="352" cy="252" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="387" cy="272" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="412" cy="300" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <!-- Bottom bulbs -->
+    <circle cx="86" cy="380" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="140" cy="428" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="205" cy="436" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="256" cy="438" r="5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="307" cy="436" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="372" cy="428" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+    <circle cx="426" cy="380" r="4.5" fill="#ffffff" stroke="#fff59d" stroke-width="1.5"/>
+  </g>
+
+  <!-- ==================== 3D RUBY RED "SPIN" (S - P - I - N) ==================== -->
+  <g filter="url(#ssMainShadow)">
+    <!-- SLOT 1: LETTER 'S' (cx: 140, cy: 375) -->
+    <g>
+      <text x="140" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#3b000a" stroke="#3b000a" stroke-width="14" stroke-linejoin="round">S</text>
+      <text x="140" y="380" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#880e4f" stroke="#880e4f" stroke-width="10" stroke-linejoin="round">S</text>
+      <text x="140" y="374" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#b71c1c" stroke="#b71c1c" stroke-width="6" stroke-linejoin="round">S</text>
+      <text x="140" y="370" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="url(#ssSpinRubyFace)" stroke="#ffcdd2" stroke-width="2.5" stroke-linejoin="round">S</text>
+    </g>
+
+    <!-- SLOT 2: LETTER 'P' (cx: 218, cy: 375) -->
+    <g>
+      <text x="218" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#3b000a" stroke="#3b000a" stroke-width="14" stroke-linejoin="round">P</text>
+      <text x="218" y="380" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#880e4f" stroke="#880e4f" stroke-width="10" stroke-linejoin="round">P</text>
+      <text x="218" y="374" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#b71c1c" stroke="#b71c1c" stroke-width="6" stroke-linejoin="round">P</text>
+      <text x="218" y="370" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="url(#ssSpinRubyFace)" stroke="#ffcdd2" stroke-width="2.5" stroke-linejoin="round">P</text>
+    </g>
+
+    <!-- SLOT 3: LETTER 'I' (cx: 294, cy: 375) -->
+    <g>
+      <text x="294" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#3b000a" stroke="#3b000a" stroke-width="14" stroke-linejoin="round">I</text>
+      <text x="294" y="380" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#880e4f" stroke="#880e4f" stroke-width="10" stroke-linejoin="round">I</text>
+      <text x="294" y="374" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#b71c1c" stroke="#b71c1c" stroke-width="6" stroke-linejoin="round">I</text>
+      <text x="294" y="370" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="url(#ssSpinRubyFace)" stroke="#ffcdd2" stroke-width="2.5" stroke-linejoin="round">I</text>
+    </g>
+
+    <!-- SLOT 4: LETTER 'N' (cx: 372, cy: 375) -->
+    <g>
+      <text x="372" y="386" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#3b000a" stroke="#3b000a" stroke-width="14" stroke-linejoin="round">N</text>
+      <text x="372" y="380" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#880e4f" stroke="#880e4f" stroke-width="10" stroke-linejoin="round">N</text>
+      <text x="372" y="374" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="#b71c1c" stroke="#b71c1c" stroke-width="6" stroke-linejoin="round">N</text>
+      <text x="372" y="370" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="104" fill="url(#ssSpinRubyFace)" stroke="#ffcdd2" stroke-width="2.5" stroke-linejoin="round">N</text>
+    </g>
+  </g>
+
+  <!-- ==================== SCATTERED GOLD COINS ==================== -->
+  <g filter="url(#ssMainShadow)">
+    <!-- Left Coin 1 (cx: 66, cy: 330) -->
+    <g transform="rotate(-15 66 330)">
+      <ellipse cx="66" cy="330" rx="20" ry="20" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="2.5"/>
+      <ellipse cx="66" cy="330" rx="14" ry="14" fill="none" stroke="#ffe082" stroke-width="1.8"/>
+    </g>
+    <!-- Left Coin 2 (cx: 110, cy: 430) -->
+    <g transform="rotate(25 110 430)">
+      <ellipse cx="110" cy="430" rx="22" ry="18" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="2.5"/>
+      <ellipse cx="110" cy="430" rx="15" ry="12" fill="none" stroke="#ffe082" stroke-width="1.8"/>
+    </g>
+    <!-- Left Top Coin (cx: 186, cy: 236) -->
+    <g transform="rotate(-30 186 236)">
+      <ellipse cx="186" cy="236" rx="14" ry="10" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="1.5"/>
+    </g>
+    <!-- Center Bottom Coin 1 (cx: 268, cy: 422) -->
+    <g transform="rotate(-10 268 422)">
+      <ellipse cx="268" cy="422" rx="14" ry="10" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="1.5"/>
+    </g>
+    <!-- Center Bottom Coin 2 (cx: 308, cy: 456) -->
+    <g transform="rotate(15 308 456)">
+      <ellipse cx="308" cy="456" rx="20" ry="16" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="2.5"/>
+      <ellipse cx="308" cy="456" rx="13" ry="10" fill="none" stroke="#ffe082" stroke-width="1.8"/>
+    </g>
+    <!-- Right Bottom Coin 1 (cx: 388, cy: 462) -->
+    <g transform="rotate(-20 388 462)">
+      <ellipse cx="388" cy="462" rx="22" ry="18" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="2.5"/>
+      <ellipse cx="388" cy="462" rx="15" ry="12" fill="none" stroke="#ffe082" stroke-width="1.8"/>
+    </g>
+    <!-- Right Coin 2 (cx: 438, cy: 382) -->
+    <g transform="rotate(20 438 382)">
+      <ellipse cx="438" cy="382" rx="20" ry="20" fill="url(#ssCoinGrad)" stroke="#ff8f00" stroke-width="2.5"/>
+      <ellipse cx="438" cy="382" rx="14" ry="14" fill="none" stroke="#ffe082" stroke-width="1.8"/>
+    </g>
+  </g>
+</svg>

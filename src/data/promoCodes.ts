@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'XJBQCR1FP51',
+    title: 'Slots Spin India #1 Skilled Gaming ₹10 Free Joining + ₹200 7-Days Login Bonus',
+    reward: '₹10 Free Joining Bonus + ₹200 7-Days Login Cash + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'Slots Spin',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: '96LMT59AZ9P',
     title: 'Yono Arcade India #1 Skilled Gaming ₹10 Free Joining + ₹51 7-Days Login Bonus',
     reward: '₹10 Free Joining Bonus + ₹51 7-Days Login Cash + 100% First Deposit Match',
