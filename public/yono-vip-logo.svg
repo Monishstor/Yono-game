@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Emerald Green Quilted Background Radial Gradient -->
+    <radialGradient id="yonoVipBgRadial" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0b5e39"/>
+      <stop offset="40%" stop-color="#054425"/>
+      <stop offset="80%" stop-color="#022414"/>
+      <stop offset="100%" stop-color="#011209"/>
+    </radialGradient>
+
+    <!-- Center Rotated Diamond Plate Gradient -->
+    <linearGradient id="yonoVipDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f6b41"/>
+      <stop offset="50%" stop-color="#084d2d"/>
+      <stop offset="100%" stop-color="#032a18"/>
+    </linearGradient>
+
+    <!-- 3D Gold Typography Face Gradient -->
+    <linearGradient id="yonoVipGoldFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#fff59d"/>
+      <stop offset="50%" stop-color="#ffd600"/>
+      <stop offset="80%" stop-color="#ff9100"/>
+      <stop offset="100%" stop-color="#ff6d00"/>
+    </linearGradient>
+
+    <!-- 3D Gold Extrusion / Bevel Gradient -->
+    <linearGradient id="yonoVipGoldBevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe082"/>
+      <stop offset="50%" stop-color="#ff8f00"/>
+      <stop offset="100%" stop-color="#bf360c"/>
+    </linearGradient>
+
+    <!-- Slot Roller Outer Metallic Green Frame -->
+    <linearGradient id="yonoVipReelGreenFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#16a34a"/>
+      <stop offset="85%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+
+    <!-- Slot Reel Body (White/Silver Cylinder) -->
+    <linearGradient id="yonoVipReelSilverCylinder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="12%" stop-color="#e2e8f0"/>
+      <stop offset="45%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Emerald Green "VIP" and Spade Face Gradient -->
+    <linearGradient id="yonoVipGreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="40%" stop-color="#065f46"/>
+      <stop offset="80%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c19"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="yonoVipMainShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle with Deep Green Texture -->
+  <rect width="512" height="512" rx="112" fill="url(#yonoVipBgRadial)"/>
+
+  <!-- Checkerboard / Diamond Quilted Pattern -->
+  <g opacity="0.25" stroke="#22c55e" stroke-width="1.2" fill="none">
+    <path d="M-60 256 L256 -60 L572 256 L256 572 Z" />
+    <path d="M0 256 L256 0 L512 256 L256 512 Z" />
+    <path d="M64 256 L256 64 L448 256 L256 448 Z" />
+    <path d="M128 256 L256 128 L384 256 L256 384 Z" />
+    <path d="M192 256 L256 192 L320 256 L256 320 Z" />
+    <line x1="64" y1="0" x2="512" y2="448" />
+    <line x1="0" y1="64" x2="448" y2="512" />
+    <line x1="0" y1="192" x2="320" y2="512" />
+    <line x1="192" y1="0" x2="512" y2="320" />
+    <line x1="448" y1="0" x2="0" y2="448" />
+    <line x1="512" y1="64" x2="64" y2="512" />
+    <line x1="320" y1="0" x2="0" y2="320" />
+    <line x1="512" y1="192" x2="192" y2="512" />
+  </g>
+
+  <!-- Outer Rounded Neon Green Accent Border -->
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#22c55e" stroke-width="4.5" opacity="0.4"/>
+
+  <!-- Center Rotated Diamond Plate with Neon Green Glow Border -->
+  <g filter="url(#yonoVipMainShadow)">
+    <rect x="76" y="76" width="360" height="360" rx="44" transform="rotate(45 256 256)" fill="url(#yonoVipDiamondGrad)" stroke="#22c55e" stroke-width="5" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- ==================== 3D "YONO" TOP SECTION ==================== -->
+  
+  <!-- Group for YONO with Drop Shadow -->
+  <g filter="url(#yonoVipMainShadow)">
+    
+    <!-- ========== LETTER 'Y' ========== -->
+    <!-- 3D Extrusion -->
+    <path d="M52 116 L94 116 L124 168 L154 116 L196 116 L144 196 L144 246 L104 246 L104 196 Z" fill="#4a1800"/>
+    <path d="M52 116 L68 100 L110 100 L134 144 L158 100 L200 100 L196 116 L154 116 L124 168 L94 116 Z" fill="url(#yonoVipGoldBevel)"/>
+    <path d="M50 114 L92 114 L122 166 L152 114 L194 114 L142 194 L142 244 L102 244 L102 194 Z" fill="#e65100"/>
+    <!-- Front Face -->
+    <path d="M48 112 L90 112 L120 164 L150 112 L192 112 L140 192 L140 242 L100 242 L100 192 Z" fill="url(#yonoVipGoldFace)" stroke="#ffe082" stroke-width="2"/>
+    <!-- Top Highlight -->
+    <rect x="52" y="115" width="34" height="5" fill="#ffffff" opacity="0.75" rx="2.5"/>
+    <rect x="150" y="115" width="38" height="5" fill="#ffffff" opacity="0.75" rx="2.5"/>
+
+
+    <!-- ========== LETTER 'O' (FIRST O) ========== -->
+    <!-- 3D Extrusion -->
+    <path d="M228 116 C190 116 166 142 166 179 C166 216 190 246 228 246 C266 246 290 216 290 179 C290 142 266 116 228 116 Z M228 152 C242 152 248 162 248 179 C248 196 242 210 228 210 C214 210 208 196 208 179 C208 162 214 152 228 152 Z" fill="#4a1800"/>
+    <path d="M228 116 L240 100 C278 100 302 126 302 163 L290 179 C290 142 266 116 228 116 Z" fill="url(#yonoVipGoldBevel)"/>
+    <path d="M226 114 C188 114 164 140 164 177 C164 214 188 244 226 244 C264 244 288 214 288 177 C288 140 264 114 226 114 Z M226 150 C240 150 246 160 246 177 C246 194 240 208 226 208 C212 208 206 194 206 177 C206 160 212 150 226 150 Z" fill="#e65100"/>
+    <!-- Front Face -->
+    <path d="M224 112 C186 112 162 138 162 175 C162 212 186 242 224 242 C262 242 286 212 286 175 C286 138 262 112 224 112 Z M224 148 C238 148 244 158 244 175 C244 192 238 206 224 206 C210 206 204 192 204 175 C204 158 210 148 224 148 Z" fill="url(#yonoVipGoldFace)" stroke="#ffe082" stroke-width="2"/>
+    <!-- Top Highlight -->
+    <ellipse cx="224" cy="122" rx="30" ry="6" fill="#ffffff" opacity="0.65"/>
+
+
+    <!-- ========== LETTER 'N' ========== -->
+    <!-- 3D Extrusion -->
+    <path d="M304 116 L344 116 L374 188 L374 116 L410 116 L410 246 L370 246 L340 174 L340 246 L304 246 Z" fill="#4a1800"/>
+    <path d="M304 116 L320 100 L360 100 L386 164 L386 100 L422 100 L410 116 L374 116 L374 188 L344 116 Z" fill="url(#yonoVipGoldBevel)"/>
+    <path d="M302 114 L342 114 L372 186 L372 114 L408 114 L408 244 L368 244 L338 172 L338 244 L302 244 Z" fill="#e65100"/>
+    <!-- Front Face -->
+    <path d="M300 112 L340 112 L370 184 L370 112 L406 112 L406 242 L366 242 L336 170 L336 242 L300 242 Z" fill="url(#yonoVipGoldFace)" stroke="#ffe082" stroke-width="2"/>
+    <!-- Top Highlight -->
+    <rect x="304" y="115" width="34" height="5" fill="#ffffff" opacity="0.75" rx="2.5"/>
+    <rect x="372" y="115" width="32" height="5" fill="#ffffff" opacity="0.75" rx="2.5"/>
+
+
+    <!-- ========== LETTER 'O' (SECOND O) ========== -->
+    <!-- 3D Extrusion -->
+    <path d="M438 116 C400 116 376 142 376 179 C376 216 400 246 438 246 C476 246 500 216 500 179 C500 142 476 116 438 116 Z M438 152 C452 152 458 162 458 179 C458 196 452 210 438 210 C424 210 418 196 418 179 C418 162 424 152 438 152 Z" fill="#4a1800"/>
+    <path d="M438 116 L450 100 C488 100 512 126 512 163 L500 179 C500 142 476 116 438 116 Z" fill="url(#yonoVipGoldBevel)"/>
+    <path d="M436 114 C398 114 374 140 374 177 C374 214 398 244 436 244 C474 244 498 214 498 177 C498 140 474 114 436 114 Z M436 150 C450 150 456 160 456 177 C456 194 450 208 436 208 C422 208 416 194 416 177 C416 160 422 150 436 150 Z" fill="#e65100"/>
+    <!-- Front Face -->
+    <path d="M434 112 C396 112 372 138 372 175 C372 212 396 242 434 242 C472 242 496 212 496 175 C496 138 472 112 434 112 Z M434 148 C448 148 454 158 454 175 C454 192 448 206 434 206 C420 206 414 192 414 175 C414 158 420 148 434 148 Z" fill="url(#yonoVipGoldFace)" stroke="#ffe082" stroke-width="2"/>
+    <!-- Top Highlight -->
+    <ellipse cx="434" cy="122" rx="30" ry="6" fill="#ffffff" opacity="0.65"/>
+
+
+    <!-- Gold Sparkles over YONO -->
+    <!-- Sparkle on left 'Y' -->
+    <path d="M106 226 Q106 235 115 235 Q106 235 106 244 Q106 235 97 235 Q106 235 106 226 Z" fill="#ffffff"/>
+    <path d="M106 228 Q106 235 113 235 Q106 235 106 242 Q106 235 99 235 Q106 235 106 228 Z" fill="#fff59d"/>
+
+    <!-- Main Sparkle between N and O (top right) -->
+    <path d="M326 122 Q326 136 340 136 Q326 136 326 150 Q326 136 312 136 Q326 136 326 122 Z" fill="#ffffff"/>
+    <path d="M326 126 Q326 136 336 136 Q326 136 326 146 Q326 136 316 136 Q326 136 326 126 Z" fill="#fff59d"/>
+  </g>
+
+
+  <!-- ==================== 5-SLOT "[♠] [V] [I] [P] [♠]" CYLINDER REEL ==================== -->
+  <g filter="url(#yonoVipMainShadow)">
+    <!-- Slot Roller Outer Dark Rim -->
+    <rect x="36" y="270" width="440" height="136" rx="68" fill="#011b10" stroke="#000000" stroke-width="6"/>
+
+    <!-- Shiny Chrome Green Rim -->
+    <rect x="40" y="274" width="432" height="128" rx="64" fill="url(#yonoVipReelGreenFrame)" stroke="#166534" stroke-width="2"/>
+
+    <!-- 5-Slot White/Silver Cylinder Reel Body -->
+    <rect x="48" y="282" width="416" height="112" rx="56" fill="url(#yonoVipReelSilverCylinder)"/>
+
+    <!-- 4 Reel Column Dividers -->
+    <!-- Col 1 (♠) / Col 2 (V) -->
+    <path d="M126 282 L126 394" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M129 282 L129 394" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 2 (V) / Col 3 (I) -->
+    <path d="M214 282 L214 394" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M217 282 L217 394" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 3 (I) / Col 4 (P) -->
+    <path d="M298 282 L298 394" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M301 282 L301 394" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Col 4 (P) / Col 5 (♠) -->
+    <path d="M384 282 L384 394" stroke="#94a3b8" stroke-width="3.5" opacity="0.75"/>
+    <path d="M387 282 L387 394" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Reel Cylindrical Gloss Highlight (Top white reflection) -->
+    <rect x="68" y="286" width="376" height="20" rx="10" fill="#ffffff" opacity="0.75"/>
+    <rect x="78" y="290" width="356" height="6" rx="3" fill="#ffffff" opacity="0.95"/>
+
+    <!-- Bottom subtle reflection -->
+    <rect x="88" y="376" width="336" height="8" rx="4" fill="#ffffff" opacity="0.3"/>
+
+    <!-- ==================== 5 SYMBOLS: ♠ - V - I - P - ♠ ==================== -->
+    
+    <!-- SLOT 1: EMERALD SPADE ♠ (cx: 86, cy: 338) -->
+    <g>
+      <!-- Spade Base & Stem Shadow -->
+      <path d="M86 308 C76 322 62 334 62 347 C62 357 70 364 80 364 C84 364 88 360 88 360 C88 360 85 369 82 373 L90 373 C87 369 84 360 84 360 C84 360 88 364 92 364 C102 364 110 357 110 347 C110 334 96 322 86 308 Z" fill="#012417" stroke="#012417" stroke-width="7" stroke-linejoin="round" transform="translate(0, 3)"/>
+      <!-- Spade Body -->
+      <path d="M86 308 C76 322 62 334 62 347 C62 357 70 364 80 364 C84 364 88 360 88 360 C88 360 85 369 82 373 L90 373 C87 369 84 360 84 360 C84 360 88 364 92 364 C102 364 110 357 110 347 C110 334 96 322 86 308 Z" fill="url(#yonoVipGreenGrad)" stroke="#047857" stroke-width="2"/>
+    </g>
+
+    <!-- SLOT 2: LETTER 'V' (cx: 170) -->
+    <g>
+      <text x="170" y="375" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">V</text>
+      <text x="170" y="371" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">V</text>
+      <text x="170" y="371" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#yonoVipGreenGrad)">V</text>
+    </g>
+
+    <!-- SLOT 3: LETTER 'I' (cx: 256) -->
+    <g>
+      <text x="256" y="375" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">I</text>
+      <text x="256" y="371" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">I</text>
+      <text x="256" y="371" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#yonoVipGreenGrad)">I</text>
+    </g>
+
+    <!-- SLOT 4: LETTER 'P' (cx: 341) -->
+    <g>
+      <text x="341" y="375" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#012417" stroke="#012417" stroke-width="8" stroke-linejoin="round">P</text>
+      <text x="341" y="371" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="#047857" stroke="#065f46" stroke-width="4" stroke-linejoin="round">P</text>
+      <text x="341" y="371" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="94" fill="url(#yonoVipGreenGrad)">P</text>
+    </g>
+
+    <!-- SLOT 5: EMERALD SPADE ♠ (cx: 426, cy: 338) -->
+    <g>
+      <!-- Spade Base & Stem Shadow -->
+      <path d="M426 308 C416 322 402 334 402 347 C402 357 410 364 420 364 C424 364 428 360 428 360 C428 360 425 369 422 373 L430 373 C427 369 424 360 424 360 C424 360 428 364 432 364 C442 364 450 357 450 347 C450 334 436 322 426 308 Z" fill="#012417" stroke="#012417" stroke-width="7" stroke-linejoin="round" transform="translate(0, 3)"/>
+      <!-- Spade Body -->
+      <path d="M426 308 C416 322 402 334 402 347 C402 357 410 364 420 364 C424 364 428 360 428 360 C428 360 425 369 422 373 L430 373 C427 369 424 360 424 360 C424 360 428 364 432 364 C442 364 450 357 450 347 C450 334 436 322 426 308 Z" fill="url(#yonoVipGreenGrad)" stroke="#047857" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: '3CRF3EWGRQC',
+    title: 'Yono VIP Official ₹5 Free Joining + ₹80 7-Days Login Cash + 100% Deposit Cashback',
+    reward: '₹5 Free Joining Bonus + ₹80 Daily Login Cash (7 Days) + 100% First Deposit Match',
+    expiry: 'Official Active Code',
+    appTarget: 'Yono VIP',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'AFCCSVH8F9Y',
     title: 'Love Rummy India #1 Skill Gaming Welcome Offer & 500% Deposit Cashback',
     reward: 'Up to ₹100 Free New Player Cash + 500% First Deposit Boost + ₹10,000 Lucky Spin Wheel',
