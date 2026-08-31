@@ -2,6 +2,15 @@ import { PromoCode, WithdrawalRecord } from '../types';
 
 export const PROMO_CODES: PromoCode[] = [
   {
+    code: 'RX3VG4VWKTA',
+    title: 'HiRummy Popular Gaming Platform Free Welcome Bonus & 100% Deposit Match',
+    reward: 'Free Welcome Signup Cash + 100% First Deposit Match + VIP Daily Pass',
+    expiry: 'Official Active Code',
+    appTarget: 'HiRummy',
+    usesLeft: 9999,
+    status: 'Hot'
+  },
+  {
     code: 'H53VNB12FUC',
     title: '777 Game Official Real-Money Welcome Bonus & 100% Deposit Match',
     reward: 'Free Signup Bonus + 100% First Deposit Match + Daily Real Cash Spin',
