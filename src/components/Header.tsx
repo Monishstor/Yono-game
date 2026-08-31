@@ -95,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Desktop Search Bar */}
-          <div className="hidden lg:flex items-center flex-1 max-w-xs mx-4">
+          <div className="hidden lg:flex items-center flex-1 max-w-sm mx-4">
             <div className="relative w-full">
               <input
                 id="header-search-input"
@@ -103,14 +103,20 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-label="Search Yono Apps"
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="Search Yono 777, Arcade, Custom apps..."
-                className="w-full bg-slate-50 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700/80 focus:outline-hidden focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    onScrollToSection('all-apps-section');
+                  }
+                }}
+                placeholder="Search BET 213, Jaiho 91, Rummy, Aviator..."
+                className="w-full bg-slate-50 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm pl-9 pr-8 py-2 rounded-xl border border-slate-200 dark:border-slate-700/80 focus:outline-hidden focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
               />
               <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-2.5 pointer-events-none" />
               {searchQuery && (
                 <button 
                   onClick={() => onSearchChange('')}
-                  className="absolute right-2.5 top-2.5 text-xs text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  aria-label="Clear search"
+                  className="absolute right-2.5 top-2.5 w-4 h-4 rounded-full bg-slate-200 dark:bg-slate-700 text-[10px] text-slate-600 dark:text-slate-300 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
                 >
                   ✕
                 </button>
@@ -248,10 +254,24 @@ export const Header: React.FC<HeaderProps> = ({
               aria-label="Search Yono Apps Mobile"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search 45+ Yono Apps (777, Arcade, VIP...)"
-              className="w-full bg-slate-900 text-slate-100 placeholder-slate-400 text-xs pl-8 pr-3 py-2 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-400"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  onScrollToSection('all-apps-section');
+                }
+              }}
+              placeholder="Search 50+ Yono Games (BET 213, Jaiho 91, Rummy...)"
+              className="w-full bg-slate-900 text-slate-100 placeholder-slate-400 text-xs pl-8 pr-8 py-2 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-400"
             />
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" />
+            {searchQuery && (
+              <button 
+                onClick={() => onSearchChange('')}
+                aria-label="Clear search mobile"
+                className="absolute right-2.5 top-2 w-4 h-4 rounded-full bg-slate-700 text-[10px] text-slate-300 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
+              >
+                ✕
+              </button>
+            )}
           </div>
         </div>
 

@@ -15,7 +15,6 @@ const FaqSection = lazy(() => import('./components/FaqSection').then(m => ({ def
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const ResponsibleGamingBanner = lazy(() => import('./components/ResponsibleGamingBanner').then(m => ({ default: m.ResponsibleGamingBanner })));
 const LiveWithdrawalFeed = lazy(() => import('./components/LiveWithdrawalFeed').then(m => ({ default: m.LiveWithdrawalFeed })));
-const FloatingTelegramBar = lazy(() => import('./components/FloatingTelegramBar').then(m => ({ default: m.FloatingTelegramBar })));
 
 const AdminPanel = lazy(() => import('./components/AdminPanel').then(m => ({ default: m.AdminPanel })));
 const AdminLoginPage = lazy(() => import('./components/AdminLoginPage').then(m => ({ default: m.AdminLoginPage })));
@@ -387,24 +386,70 @@ export default function App() {
     window.location.hash = '#admin';
   };
 
-  // Filtered and sorted apps
+  // Filtered and sorted apps with Fuzzy & Normalized Search Engine
   const filteredApps = useMemo(() => {
+    const rawQuery = searchQuery.trim();
+    const cleanQuery = rawQuery.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+
     return apps.filter((app) => {
-      // Category check
-      if (selectedCategory !== 'all' && !app.category.includes(selectedCategory)) {
+      // Category check: if NO search query, filter strictly by category
+      // If there IS an active search query, search globally so the user never misses an app
+      if (!rawQuery && selectedCategory !== 'all' && !app.category.includes(selectedCategory)) {
         return false;
       }
 
-      // Search query check (name, tagline, games, symbol, referCode, badge)
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase().trim();
-        const matchesName = app.name.toLowerCase().includes(query);
-        const matchesTagline = app.tagline ? app.tagline.toLowerCase().includes(query) : false;
-        const matchesGame = app.gamesList?.some((g) => g.toLowerCase().includes(query)) || false;
-        const matchesSymbol = app.iconSymbol ? app.iconSymbol.toLowerCase().includes(query) : false;
-        const matchesReferCode = app.referCode ? app.referCode.toLowerCase().includes(query) : false;
-        const matchesBadge = app.badge ? app.badge.toLowerCase().includes(query) : false;
-        return matchesName || matchesTagline || matchesGame || matchesSymbol || matchesReferCode || matchesBadge;
+      // Search query check (name, slug, tagline, games, symbol, referCode, badge, description, features, numeric values)
+      if (rawQuery) {
+        const nameClean = (app.name || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const slugClean = (app.slug || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const taglineClean = (app.tagline || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const badgeClean = (app.badge || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const referClean = (app.referCode || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const descClean = (app.description || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+
+        const matchesName = nameClean.includes(cleanQuery) || app.name.toLowerCase().includes(rawQuery.toLowerCase());
+        const matchesSlug = slugClean.includes(cleanQuery) || (app.slug && app.slug.toLowerCase().includes(rawQuery.toLowerCase()));
+        const matchesTagline = taglineClean.includes(cleanQuery) || (app.tagline && app.tagline.toLowerCase().includes(rawQuery.toLowerCase()));
+        const matchesBadge = badgeClean.includes(cleanQuery) || (app.badge && app.badge.toLowerCase().includes(rawQuery.toLowerCase()));
+        const matchesReferCode = referClean.includes(cleanQuery) || (app.referCode && app.referCode.toLowerCase().includes(rawQuery.toLowerCase()));
+        const matchesDesc = descClean.includes(cleanQuery);
+        
+        const matchesGame = app.gamesList?.some((g) => {
+          const gClean = g.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+          return gClean.includes(cleanQuery) || g.toLowerCase().includes(rawQuery.toLowerCase());
+        }) || false;
+
+        const matchesFeature = app.features?.some((f) => {
+          const fClean = f.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+          return fClean.includes(cleanQuery) || f.toLowerCase().includes(rawQuery.toLowerCase());
+        }) || false;
+
+        const matchesPayment = app.paymentMethods?.some((p) => {
+          const pClean = p.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+          return pClean.includes(cleanQuery) || p.toLowerCase().includes(rawQuery.toLowerCase());
+        }) || false;
+
+        // Numeric match for bonuses or cash limits (e.g. searching "731", "51", "100", "500", "80")
+        const numQuery = parseInt(rawQuery, 10);
+        const matchesNumeric = !isNaN(numQuery) && (
+          app.signupBonus === numQuery ||
+          app.maxSignupBonus === numQuery ||
+          app.minWithdrawal === numQuery ||
+          app.referBonus === numQuery
+        );
+
+        return (
+          matchesName ||
+          matchesSlug ||
+          matchesTagline ||
+          matchesGame ||
+          matchesFeature ||
+          matchesPayment ||
+          matchesReferCode ||
+          matchesBadge ||
+          matchesDesc ||
+          matchesNumeric
+        );
       }
 
       return true;
@@ -413,6 +458,16 @@ export default function App() {
       // Any app flagged with pinToBottom: true is strictly locked to the very bottom of the catalog.
       if (a.pinToBottom && !b.pinToBottom) return 1;
       if (!a.pinToBottom && b.pinToBottom) return -1;
+
+      // When searching, prioritize exact name matches at top
+      if (rawQuery) {
+        const cleanA = (a.name || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const cleanB = (b.name || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
+        const aExact = cleanA === cleanQuery || cleanA.startsWith(cleanQuery);
+        const bExact = cleanB === cleanQuery || cleanB.startsWith(cleanQuery);
+        if (aExact && !bExact) return -1;
+        if (!aExact && bExact) return 1;
+      }
 
       if (sortBy === 'bonus_high') {
         return (b.maxSignupBonus || b.signupBonus) - (a.maxSignupBonus || a.signupBonus);
@@ -718,6 +773,7 @@ export default function App() {
               {/* Clean App Grid */}
               <AppGrid
                 apps={filteredApps}
+                searchQuery={searchQuery}
                 onDownload={handleOpenLandingPage}
                 onViewDetails={handleViewDetails}
                 onResetFilters={handleResetFilters}
@@ -767,10 +823,6 @@ export default function App() {
             setLegalInitialTab(tab);
             setIsLegalModalOpen(true);
           }}
-        />
-        <FloatingTelegramBar
-          telegramLink={siteSettings.telegramLink}
-          memberCount={`${siteSettings.telegramSubscribers || '88K'} Members`}
         />
       </Suspense>
 
