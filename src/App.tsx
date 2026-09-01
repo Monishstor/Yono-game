@@ -6,6 +6,7 @@ import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
 import { AppGrid } from './components/AppGrid';
 import { SeoSchema } from './components/SeoSchema';
+import { HeroSection } from './components/HeroSection';
 import { Loader2 } from 'lucide-react';
 import { startAppsSync, startSettingsSync, saveAppToFirestore, deleteAppFromFirestore, saveSettingsToFirestore } from './lib/firebaseSync';
 import { useDebounce } from './hooks/useDebounce';
@@ -671,6 +672,7 @@ export default function App() {
         ) : (
           /* ALL YONO GAMES CATALOG VIEW */
           <>
+            <HeroSection />
             {/* All Yono Apps Catalog Section */}
             <section id="all-apps-section" className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {isAdminLoggedIn && (
