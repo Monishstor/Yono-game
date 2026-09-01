@@ -197,39 +197,46 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Desktop Nav Actions */}
             <div className="hidden md:flex items-center gap-2 lg:gap-3">
               
-              {/* Top Level Category Switchers: Yono Games & DIWA GAME */}
+              {/* Top Level Category Switchers: Yono Games, DIWA GAME, COLOR TRADING */}
               {onSelectCategory && (
-                <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-900 border border-slate-800 shadow-inner">
+                <div className="flex items-center gap-2 p-1 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-inner">
                   {MAIN_PRIMARY_CATEGORIES.map((cat) => {
                     const isActive = (cat.id === 'all' && (!selectedCategory || selectedCategory === 'all' || selectedCategory === 'yono_games')) || selectedCategory === cat.id;
                     const isDiwa = cat.id === 'diwa_games';
+                    const isColorTrading = cat.id === 'color_trading';
 
                     return (
                       <button
                         key={cat.id}
                         id={`nav-category-${cat.id}-btn`}
                         onClick={() => onSelectCategory(cat.id)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-black transition-all cursor-pointer ${
                           isActive
                             ? isDiwa
-                              ? 'bg-gradient-to-r from-rose-500 via-pink-500 to-orange-500 text-white shadow-md shadow-rose-500/30 scale-[1.02]'
+                              ? 'bg-gradient-to-r from-rose-500 to-orange-500 text-white shadow-md shadow-rose-500/25 scale-[1.02]'
+                              : isColorTrading
+                              ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 shadow-md shadow-emerald-500/25 scale-[1.02]'
                               : 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md shadow-amber-500/25 scale-[1.02]'
                             : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
                         }`}
                         title={`${cat.name} Collection`}
                       >
                         {cat.iconName === 'crown' ? (
-                          <Crown className="w-3.5 h-3.5" />
+                          <Crown className="w-3 h-3" />
+                        ) : cat.iconName === 'flame' ? (
+                          <Flame className="w-3 h-3 text-rose-400" />
                         ) : (
-                          <Flame className="w-3.5 h-3.5 text-rose-400" />
+                          <Zap className="w-3 h-3 text-emerald-400" />
                         )}
                         <span>{cat.name}</span>
                         {cat.badge && (
-                          <span className={`text-[9px] px-1 py-0.2 rounded font-extrabold ${
+                          <span className={`text-[8.5px] px-1 py-0.2 rounded font-extrabold ${
                             isActive
                               ? 'bg-black/30 text-white'
                               : isDiwa
                               ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                              : isColorTrading
+                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                               : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
                           }`}>
                             {cat.badge}
@@ -360,13 +367,14 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         )}
 
-        {/* Front Main Category Switcher (Mobile - Cleanly framed with top divider line and spaced under the top bar) */}
+        {/* Front Main Category Switcher (Mobile - Cleanly framed with top divider line, 3 equal compact buttons with plenty of space, 100% visible with zero cut-off) */}
         {onSelectCategory && (
-          <div className="md:hidden -mx-3 px-3 border-t border-slate-800/90 pt-2.5 pb-2.5 bg-slate-950/40">
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none no-scrollbar">
+          <div className="md:hidden -mx-3 px-3 border-t border-slate-800/80 pt-2 pb-2.5 bg-slate-950/40">
+            <div className="grid grid-cols-3 gap-2 px-1 max-w-md mx-auto">
               {MAIN_PRIMARY_CATEGORIES.map((cat) => {
                 const isActive = (cat.id === 'all' && (!selectedCategory || selectedCategory === 'all' || selectedCategory === 'yono_games')) || selectedCategory === cat.id;
                 const isDiwa = cat.id === 'diwa_games';
+                const isColorTrading = cat.id === 'color_trading';
 
                 return (
                   <button
@@ -376,31 +384,24 @@ export const Header: React.FC<HeaderProps> = ({
                       onSelectCategory(cat.id);
                       onScrollToSection('all-apps-section');
                     }}
-                    className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+                    className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-xl text-[11px] font-bold tracking-tight transition-all cursor-pointer select-none active:scale-95 ${
                       isActive
                         ? isDiwa
-                          ? 'bg-gradient-to-r from-rose-500 via-pink-500 to-orange-500 text-white shadow-md shadow-rose-500/25 ring-1 ring-rose-400 scale-[1.01]'
-                          : 'bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-slate-950 shadow-md shadow-amber-500/20 ring-1 ring-amber-300 scale-[1.01]'
-                        : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+                          ? 'bg-gradient-to-r from-rose-500 to-orange-500 text-white shadow-md shadow-rose-500/25 ring-1 ring-rose-400 font-extrabold'
+                          : isColorTrading
+                          ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-md shadow-emerald-500/25 ring-1 ring-emerald-300 font-extrabold'
+                          : 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md shadow-amber-500/20 ring-1 ring-amber-300 font-extrabold'
+                        : 'bg-slate-900/90 text-slate-300 hover:text-white hover:bg-slate-800/90 border border-slate-800'
                     }`}
                   >
                     {cat.iconName === 'crown' ? (
-                      <Crown className="w-3.5 h-3.5" />
+                      <Crown className="w-3 h-3 shrink-0" />
+                    ) : cat.iconName === 'flame' ? (
+                      <Flame className="w-3 h-3 shrink-0 text-rose-400" />
                     ) : (
-                      <Flame className="w-3.5 h-3.5 text-rose-400" />
+                      <Zap className="w-3 h-3 shrink-0 text-emerald-400" />
                     )}
-                    <span>{cat.name}</span>
-                    {cat.badge && (
-                      <span className={`text-[9px] px-1 py-0.2 rounded font-extrabold ${
-                        isActive
-                          ? 'bg-black/30 text-white'
-                          : isDiwa
-                          ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
-                          : 'bg-slate-800 text-amber-400 border border-amber-500/30'
-                      }`}>
-                        {cat.badge}
-                      </span>
-                    )}
+                    <span className="truncate">{cat.shortName || cat.name}</span>
                   </button>
                 );
               })}

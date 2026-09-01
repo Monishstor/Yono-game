@@ -32,6 +32,7 @@ interface AppEditorModalProps {
 const CATEGORY_OPTIONS: { id: AppCategory; label: string }[] = [
   { id: 'yono_games', label: '👑 Yono Games' },
   { id: 'diwa_games', label: '🔥 DIWA GAME' },
+  { id: 'color_trading', label: '🎨 Color Trading' },
   { id: 'trending', label: '⚡ Trending' },
   { id: 'new', label: '✨ New 2026' },
   { id: 'high_bonus', label: '💰 High Bonus ₹500+' },
