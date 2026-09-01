@@ -1,21 +1,6 @@
+# Crawlers may access public pages and assets.
 User-agent: *
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-Mobile
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Host
-Host: https://yono-game.vercel.app
-
-# Official Sitemaps
+# The sitemap lists only canonical, indexable URLs.
 Sitemap: https://yono-game.vercel.app/sitemap.xml
-
