@@ -33,12 +33,12 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
     ? window.location.origin
     : 'https://yono-game.vercel.app';
 
-  const siteCanonical = siteSettings?.canonicalUrl && !siteSettings.canonicalUrl.includes('netlify') && !siteSettings.canonicalUrl.includes('allnewyonoapps')
+  const siteCanonical = (siteSettings?.canonicalUrl && !siteSettings.canonicalUrl.includes('netlify') && !siteSettings.canonicalUrl.includes('allnewyonoapps')
     ? siteSettings.canonicalUrl
-    : originUrl;
+    : originUrl).replace(/\/+$/, '');
 
   const currentCanonical = isSingleAppPage && activeApp
-    ? `${originUrl}/?app=${activeApp.slug || activeApp.id}`
+    ? `${siteCanonical}/?app=${encodeURIComponent(activeApp.slug || activeApp.id)}`
     : siteCanonical;
 
   const currentAuthor = siteSettings?.siteAuthor || 'YONO Official Community';
@@ -107,17 +107,17 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       'name': siteSettings?.siteTitle || 'All New Yono Apps',
-      'url': originUrl,
+      'url': siteCanonical,
       'potentialAction': {
         '@type': 'SearchAction',
-        'target': `${originUrl}/?search={search_term_string}`,
+        'target': `${siteCanonical}/?search={search_term_string}`,
         'query-input': 'required name=search_term_string'
       },
       'description': currentDesc,
       'author': {
         '@type': 'Organization',
         'name': currentAuthor,
-        'url': originUrl
+        'url': siteCanonical
       }
     };
 
@@ -154,69 +154,20 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
       }))
     };
 
-    // 8. SoftwareApplication Schema for 5-Star Ratings & Rich Snippet Downloads
-    let softwareAppSchema: any;
-
-    if (isSingleAppPage && activeApp) {
-      // Single Dedicated App Schema
-      softwareAppSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
-        'name': `${activeApp.name} APK`,
-        'operatingSystem': 'Android 5.0+',
-        'applicationCategory': 'GameApplication',
-        'fileSize': activeApp.apkSize || '45MB',
-        'softwareVersion': activeApp.version || '2026.8',
-        'offers': {
-          '@type': 'Offer',
-          'price': '0',
-          'priceCurrency': 'INR'
-        },
-        'aggregateRating': {
-          '@type': 'AggregateRating',
-          'ratingValue': activeApp.rating ? activeApp.rating.toString() : '4.9',
-          'bestRating': '5',
-          'worstRating': '1',
-          'ratingCount': activeApp.reviewsCount ? activeApp.reviewsCount.toString() : '28500'
-        },
-        'description': `Download official ${activeApp.name} APK. Claim ₹${activeApp.signupBonus} free sign-up bonus with ₹${activeApp.minWithdrawal} instant minimum UPI withdrawal.`,
-        'downloadUrl': (activeApp.downloadUrl && !activeApp.downloadUrl.startsWith('#')) ? activeApp.downloadUrl : `${originUrl}/?app=${activeApp.slug || activeApp.id}`
-      };
-    } else {
-      // Portal-wide Top Apps ItemList Schema
-      softwareAppSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        'name': 'Top All Yono Games APK Download List (2026)',
-        'description': 'Verified collection of top rated Yono apps with real-cash bonuses and instant UPI withdrawals',
-        'itemListElement': (apps.length > 0 ? apps : []).map((app, idx) => ({
-          '@type': 'ListItem',
-          'position': idx + 1,
-          'item': {
-            '@type': 'SoftwareApplication',
-            'name': `${app.name} APK`,
-            'url': `${originUrl}/?app=${app.slug || app.id}`,
-            'operatingSystem': 'Android 5.0+',
-            'applicationCategory': 'GameApplication',
-            'fileSize': app.apkSize || '45MB',
-            'softwareVersion': app.version || '2026.8',
-            'offers': {
-              '@type': 'Offer',
-              'price': '0',
-              'priceCurrency': 'INR'
-            },
-            'aggregateRating': {
-              '@type': 'AggregateRating',
-              'ratingValue': app.rating ? app.rating.toString() : '4.9',
-              'bestRating': '5',
-              'worstRating': '1',
-              'ratingCount': app.reviewsCount ? app.reviewsCount.toString() : '24800'
-            },
-            'description': `Download ${app.name} APK. Claim sign-up bonus with ₹100 instant minimum UPI withdrawal.`
-          }
-        }))
-      };
-    }
+    // 8. Describe the catalog, rather than claiming product ratings or
+    // publisher status for third-party applications.
+    const appListSchema = !isSingleAppPage ? {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      'name': 'Yono games catalog',
+      'numberOfItems': apps.length,
+      'itemListElement': apps.map((app, idx) => ({
+        '@type': 'ListItem',
+        'position': idx + 1,
+        'name': app.name,
+        'url': `${siteCanonical}/?app=${encodeURIComponent(app.slug || app.id)}`
+      }))
+    } : null;
 
     // 9. BreadcrumbList Schema for Google Search Path Navigation
     const breadcrumbSchema = {
@@ -227,13 +178,13 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': originUrl
+          'item': siteCanonical
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'All Yono Games',
-          'item': `${originUrl}/#all-apps-section`
+          'item': `${siteCanonical}/#all-apps-section`
         },
         {
           '@type': 'ListItem',
@@ -246,30 +197,33 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': originUrl
+          'item': siteCanonical
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'All Yono Games APK List',
-          'item': `${originUrl}/#all-apps-section`
+          'item': `${siteCanonical}/#all-apps-section`
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': 'Bonus & UPI Withdrawals',
-          'item': `${originUrl}/#bonus-table-section`
+          'item': `${siteCanonical}/#bonus-table-section`
         }
       ]
     };
 
     // Inject all structured data into document head
-    const schemas = [
+    const schemas: Array<{ id: string; data: unknown }> = [
       { id: 'seo-schema-website', data: websiteSchema },
       { id: 'seo-schema-faq', data: faqSchema },
-      { id: 'seo-schema-software', data: softwareAppSchema },
       { id: 'seo-schema-breadcrumbs', data: breadcrumbSchema }
     ];
+
+    if (appListSchema) {
+      schemas.push({ id: 'seo-schema-app-list', data: appListSchema });
+    }
 
     schemas.forEach(({ id, data }) => {
       let scriptTag = document.getElementById(id) as HTMLScriptElement | null;
@@ -290,8 +244,7 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
         }
       });
     };
-  }, [apps, activeApp, isSingleAppPage, currentTitle, currentDesc, currentKeywords, currentCanonical, currentAuthor, googleVerification, currentOgImage, originUrl, siteSettings]);
+  }, [apps, activeApp, isSingleAppPage, currentTitle, currentDesc, currentKeywords, currentCanonical, currentAuthor, googleVerification, currentOgImage, originUrl, siteCanonical, siteSettings]);
 
   return null;
 };
-
