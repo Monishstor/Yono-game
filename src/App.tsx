@@ -8,6 +8,8 @@ import { AppGrid } from './components/AppGrid';
 import { SeoSchema } from './components/SeoSchema';
 import { Loader2 } from 'lucide-react';
 import { startAppsSync, startSettingsSync, saveAppToFirestore, deleteAppFromFirestore, saveSettingsToFirestore } from './lib/firebaseSync';
+import { useDebounce } from './hooks/useDebounce';
+import { indexAndSearchApps, SortOption } from './lib/searchIndexer';
 
 // Lazy-loaded components to minimize initial bundle size and maximize PageSpeed score (100% Green)
 const InstallGuide = lazy(() => import('./components/InstallGuide').then(m => ({ default: m.InstallGuide })));
@@ -26,8 +28,6 @@ const DailyCheckinModal = lazy(() => import('./components/DailyCheckinModal').th
 const AdminLoginModal = lazy(() => import('./components/AdminLoginModal').then(m => ({ default: m.AdminLoginModal })));
 const AppEditorModal = lazy(() => import('./components/AppEditorModal').then(m => ({ default: m.AppEditorModal })));
 const ContactLegalModal = lazy(() => import('./components/ContactLegalModal').then(m => ({ default: m.ContactLegalModal })));
-
-type SortOption = 'popular' | 'bonus_high' | 'withdrawal_low' | 'rating' | 'newest';
 
 // Storage keys for persistent state
 const APPS_STORAGE_KEY = 'yono_user_custom_apps_v12';
@@ -255,6 +255,7 @@ export default function App() {
 
   // Search & Catalog View States
   const [searchQuery, setSearchQuery] = useState('');
+  const debouncedSearchQuery = useDebounce(searchQuery, 120);
   const [selectedCategory, setSelectedCategory] = useState<AppCategory>('all');
   const [sortBy, setSortBy] = useState<SortOption>('popular');
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
@@ -386,104 +387,10 @@ export default function App() {
     window.location.hash = '#admin';
   };
 
-  // Filtered and sorted apps with Fuzzy & Normalized Search Engine
+  // Filtered and sorted apps with Debounced Real-Time Search Indexer
   const filteredApps = useMemo(() => {
-    const rawQuery = searchQuery.trim();
-    const cleanQuery = rawQuery.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-
-    return apps.filter((app) => {
-      // Category check: if NO search query, filter strictly by category
-      // If there IS an active search query, search globally so the user never misses an app
-      if (!rawQuery && selectedCategory !== 'all' && !app.category.includes(selectedCategory)) {
-        return false;
-      }
-
-      // Search query check (name, slug, tagline, games, symbol, referCode, badge, description, features, numeric values)
-      if (rawQuery) {
-        const nameClean = (app.name || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const slugClean = (app.slug || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const taglineClean = (app.tagline || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const badgeClean = (app.badge || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const referClean = (app.referCode || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const descClean = (app.description || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-
-        const matchesName = nameClean.includes(cleanQuery) || app.name.toLowerCase().includes(rawQuery.toLowerCase());
-        const matchesSlug = slugClean.includes(cleanQuery) || (app.slug && app.slug.toLowerCase().includes(rawQuery.toLowerCase()));
-        const matchesTagline = taglineClean.includes(cleanQuery) || (app.tagline && app.tagline.toLowerCase().includes(rawQuery.toLowerCase()));
-        const matchesBadge = badgeClean.includes(cleanQuery) || (app.badge && app.badge.toLowerCase().includes(rawQuery.toLowerCase()));
-        const matchesReferCode = referClean.includes(cleanQuery) || (app.referCode && app.referCode.toLowerCase().includes(rawQuery.toLowerCase()));
-        const matchesDesc = descClean.includes(cleanQuery);
-        
-        const matchesGame = app.gamesList?.some((g) => {
-          const gClean = g.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-          return gClean.includes(cleanQuery) || g.toLowerCase().includes(rawQuery.toLowerCase());
-        }) || false;
-
-        const matchesFeature = app.features?.some((f) => {
-          const fClean = f.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-          return fClean.includes(cleanQuery) || f.toLowerCase().includes(rawQuery.toLowerCase());
-        }) || false;
-
-        const matchesPayment = app.paymentMethods?.some((p) => {
-          const pClean = p.toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-          return pClean.includes(cleanQuery) || p.toLowerCase().includes(rawQuery.toLowerCase());
-        }) || false;
-
-        // Numeric match for bonuses or cash limits (e.g. searching "731", "51", "100", "500", "80")
-        const numQuery = parseInt(rawQuery, 10);
-        const matchesNumeric = !isNaN(numQuery) && (
-          app.signupBonus === numQuery ||
-          app.maxSignupBonus === numQuery ||
-          app.minWithdrawal === numQuery ||
-          app.referBonus === numQuery
-        );
-
-        return (
-          matchesName ||
-          matchesSlug ||
-          matchesTagline ||
-          matchesGame ||
-          matchesFeature ||
-          matchesPayment ||
-          matchesReferCode ||
-          matchesBadge ||
-          matchesDesc ||
-          matchesNumeric
-        );
-      }
-
-      return true;
-    }).sort((a, b) => {
-      // 📌 PIN TO BOTTOM RULE:
-      // Any app flagged with pinToBottom: true is strictly locked to the very bottom of the catalog.
-      if (a.pinToBottom && !b.pinToBottom) return 1;
-      if (!a.pinToBottom && b.pinToBottom) return -1;
-
-      // When searching, prioritize exact name matches at top
-      if (rawQuery) {
-        const cleanA = (a.name || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const cleanB = (b.name || '').toLowerCase().replace(/[\s\-_.:,/()#★🔥🎰]/g, '');
-        const aExact = cleanA === cleanQuery || cleanA.startsWith(cleanQuery);
-        const bExact = cleanB === cleanQuery || cleanB.startsWith(cleanQuery);
-        if (aExact && !bExact) return -1;
-        if (!aExact && bExact) return 1;
-      }
-
-      if (sortBy === 'bonus_high') {
-        return (b.maxSignupBonus || b.signupBonus) - (a.maxSignupBonus || a.signupBonus);
-      }
-      if (sortBy === 'withdrawal_low') {
-        return a.minWithdrawal - b.minWithdrawal;
-      }
-      if (sortBy === 'rating') {
-        return b.rating - a.rating;
-      }
-      if (sortBy === 'newest') {
-        return b.version.localeCompare(a.version);
-      }
-      return b.reviewsCount - a.reviewsCount;
-    });
-  }, [apps, searchQuery, selectedCategory, sortBy]);
+    return indexAndSearchApps(apps, debouncedSearchQuery, selectedCategory, sortBy, promoCodes);
+  }, [apps, debouncedSearchQuery, selectedCategory, sortBy, promoCodes]);
 
   // Direct Instant Download Toast Notification
   const [downloadToast, setDownloadToast] = useState<{ appName: string; code?: string } | null>(null);
