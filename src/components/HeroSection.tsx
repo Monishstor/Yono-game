@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Sparkles, 
   ShieldCheck, 
   Zap, 
   TrendingUp, 
@@ -18,13 +17,6 @@ export const HeroSection: React.FC = () => {
         {/* Main Headline & Value Props */}
         <div className="text-center max-w-4xl mx-auto space-y-4 mb-8">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-black shadow-lg shadow-amber-500/10">
-            <Sparkles className="w-4 h-4 text-amber-400 animate-spin-slow" />
-            <span className="tracking-wide">YONO GAMES CATALOG</span>
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-emerald-400 font-mono font-bold">LATEST LIST</span>
-          </div>
-
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white font-['Outfit',sans-serif] tracking-tight leading-tight sm:leading-none">
             Download All <span className="gold-shimmer-text">New Yono Games</span> & Rummy APK
           </h1>
