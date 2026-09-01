@@ -360,9 +360,9 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         )}
 
-        {/* Front Main Category Switcher (Mobile - Clean, Compact directly below top header row) */}
+        {/* Front Main Category Switcher (Mobile - Cleanly framed with top divider line and spaced under the top bar) */}
         {onSelectCategory && (
-          <div className="pb-3 md:hidden">
+          <div className="md:hidden -mx-3 px-3 border-t border-slate-800/90 pt-2.5 pb-2.5 bg-slate-950/40">
             <div className="flex items-center gap-2 overflow-x-auto scrollbar-none no-scrollbar">
               {MAIN_PRIMARY_CATEGORIES.map((cat) => {
                 const isActive = (cat.id === 'all' && (!selectedCategory || selectedCategory === 'all' || selectedCategory === 'yono_games')) || selectedCategory === cat.id;
