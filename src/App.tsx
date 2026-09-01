@@ -38,9 +38,9 @@ const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v12';
 const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v12';
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: 'All New Yono Games & APK Downloads (2026 List) - Max Rummy, INR Rummy, Slots Spin',
-  metaDescription: 'Download All New Yono Games 2026 List: Max Rummy, INR Rummy, Slots Spin, Yono Arcade, Jaiho Win & all verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals.',
-  metaKeywords: 'all new yono games, max rummy apk, inr rummy apk, slots spin apk, yono arcade, jaiho win, new yono app launch today, yono all games list 2026, 567 slots, winrummy, ind club, maha games',
+  siteTitle: 'Yono Games Catalogue | App Information and Download Links',
+  metaDescription: 'Browse the Yono Games catalogue for app information, download links, installation guidance, and responsible-play information.',
+  metaKeywords: 'Yono Games, app catalogue, app information, installation guide',
   canonicalUrl: 'https://yono-game.vercel.app',
   siteAuthor: 'All New Yono Apps Official Portal',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',
