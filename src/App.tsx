@@ -625,6 +625,14 @@ export default function App() {
       <Header
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        selectedCategory={selectedCategory}
+        onSelectCategory={(cat) => {
+          setSelectedCategory(cat);
+          if (activeLandingApp) {
+            handleBackToHome();
+          }
+          handleScrollToSection('all-apps-section');
+        }}
         onOpenPromoCodes={() => setIsPromoCodesOpen(true)}
         onOpenDailyCheckin={() => setIsDailyCheckinOpen(true)}
         onToggleTableView={() => setViewMode((prev) => (prev === 'grid' ? 'table' : 'grid'))}

@@ -1,8 +1,23 @@
 import { YonoApp, AppCategory } from '../types';
 
+export interface MainPrimaryCategory {
+  id: AppCategory;
+  name: string;
+  badge?: string;
+  iconName: 'crown' | 'flame' | 'zap' | 'gamepad' | 'sparkles' | 'star';
+  description?: string;
+}
+
+export const MAIN_PRIMARY_CATEGORIES: MainPrimaryCategory[] = [
+  { id: 'all', name: 'YONO GAMES', badge: 'OFFICIAL', iconName: 'crown' },
+  { id: 'diwa_games', name: 'DIWA GAME', badge: 'HOT', iconName: 'flame' },
+];
+
 export const CATEGORY_TABS: { id: AppCategory; label: string; icon?: string; badge?: string }[] = [
-  { id: 'all', label: 'All Yono Games' },
-  { id: 'trending', label: '🔥 Trending 2026', badge: 'HOT' },
+  { id: 'all', label: 'All Games' },
+  { id: 'yono_games', label: '👑 Yono Games', badge: 'OFFICIAL' },
+  { id: 'diwa_games', label: '🔥 DIWA GAME', badge: 'NEW' },
+  { id: 'trending', label: '⚡ Trending 2026', badge: 'HOT' },
   { id: 'new', label: '✨ Newly Launched' },
   { id: 'high_bonus', label: '💰 Max Bonus (₹500+)' },
   { id: 'low_withdrawal', label: '⚡ Min ₹100 Withdrawal' },

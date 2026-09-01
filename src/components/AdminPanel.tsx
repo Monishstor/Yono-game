@@ -177,6 +177,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       app.referCode.toLowerCase().includes(searchTerm.toLowerCase());
     
     if (filterCategory === 'all') return matchesSearch;
+    if (filterCategory === 'yono_games') return matchesSearch && (app.category.includes('yono_games') || !app.category.includes('diwa_games'));
+    if (filterCategory === 'diwa_games') return matchesSearch && (app.category.includes('diwa_games') || app.name.toLowerCase().includes('diwa'));
     if (filterCategory === 'pinned') return matchesSearch && !!app.pinToBottom;
     if (filterCategory === 'custom') return matchesSearch && !!app.isCustom;
     if (filterCategory === 'custom_img') return matchesSearch && !!app.imageUrl;
@@ -775,6 +777,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     className="bg-slate-900 text-slate-200 text-xs px-3 py-2 rounded-xl border border-slate-700 font-semibold focus:outline-hidden focus:border-amber-400"
                   >
                     <option value="all">All Categories ({apps.length})</option>
+                    <option value="yono_games">👑 Yono Games ({apps.filter(a => a.category.includes('yono_games') || !a.category.includes('diwa_games')).length})</option>
+                    <option value="diwa_games">🔥 DIWA GAME ({apps.filter(a => a.category.includes('diwa_games') || a.name.toLowerCase().includes('diwa')).length})</option>
                     <option value="pinned">📌 Pinned to Bottom ({apps.filter(a => a.pinToBottom).length})</option>
                     <option value="custom">Custom Added Apps Only</option>
                     <option value="custom_img">With Custom Image Logo</option>

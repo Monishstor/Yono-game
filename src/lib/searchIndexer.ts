@@ -356,6 +356,13 @@ export function indexAndSearchApps(
     return apps
       .filter((app) => {
         if (selectedCategory === 'all') return true;
+        if (selectedCategory === 'yono_games') {
+          // If explicitly marked or has standard yono games (all or yono_games in category)
+          return app.category.includes('yono_games') || !app.category.includes('diwa_games');
+        }
+        if (selectedCategory === 'diwa_games') {
+          return app.category.includes('diwa_games') || app.name.toLowerCase().includes('diwa') || (app.tagline && app.tagline.toLowerCase().includes('diwa'));
+        }
         return app.category.includes(selectedCategory);
       })
       .sort((a, b) => {

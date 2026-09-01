@@ -1,5 +1,7 @@
 export type AppCategory = 
   | 'all'
+  | 'yono_games'
+  | 'diwa_games'
   | 'trending'
   | 'new'
   | 'high_bonus'
