@@ -67,7 +67,8 @@ export const PromoCodeVault: React.FC<PromoCodeVaultProps> = ({ isOpen, onClose,
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white"
+          aria-label="Close modal"
+          className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -95,11 +96,13 @@ export const PromoCodeVault: React.FC<PromoCodeVaultProps> = ({ isOpen, onClose,
               value={testCodeInput}
               onChange={(e) => setTestCodeInput(e.target.value)}
               placeholder="Enter or paste your promo code (e.g. YONO2026)..."
+              aria-label="Promo code to verify"
               className="flex-1 bg-slate-900 text-slate-100 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-400 font-mono uppercase"
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-md cursor-pointer"
+              disabled={!testCodeInput.trim()}
+              className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Verify Code
             </button>
