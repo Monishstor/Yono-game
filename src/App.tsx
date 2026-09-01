@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useMemo, useEffect, Suspense, lazy, useCallback } from 'react';
 import { YONO_APPS } from './data/appsData';
 import { PROMO_CODES, LIVE_WITHDRAWALS } from './data/promoCodes';
 import { YonoApp, AppCategory, PromoCode, SiteSettings, WithdrawalRecord } from './types';
@@ -396,7 +396,7 @@ export default function App() {
   // Direct Instant Download Toast Notification
   const [downloadToast, setDownloadToast] = useState<{ appName: string; code?: string } | null>(null);
 
-  const handleDownloadClick = (app: YonoApp) => {
+  const handleDownloadClick = useCallback((app: YonoApp) => {
     // 1. Auto-copy referral code
     if (app.referCode) {
       try {
@@ -416,9 +416,9 @@ export default function App() {
     // 3. Directly open / trigger APK download and referral link
     const targetUrl = app.downloadUrl || 'https://t.me/';
     window.open(targetUrl, '_blank');
-  };
+  }, []);
 
-  const handleOpenLandingPage = (app: YonoApp) => {
+  const handleOpenLandingPage = useCallback((app: YonoApp) => {
     setActiveLandingApp(app);
     if (typeof window !== 'undefined') {
       const slug = app.slug || app.id;
@@ -426,25 +426,25 @@ export default function App() {
       window.history.pushState({ appSlug: slug, appId: app.id }, '', newUrl);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
+  }, []);
 
-  const handleBackToHome = () => {
+  const handleBackToHome = useCallback(() => {
     setActiveLandingApp(null);
     if (typeof window !== 'undefined') {
       window.history.pushState({}, '', window.location.pathname);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
+  }, []);
 
-  const handleViewDetails = (app: YonoApp) => {
+  const handleViewDetails = useCallback((app: YonoApp) => {
     handleOpenLandingPage(app);
-  };
+  }, [handleOpenLandingPage]);
 
-  const handleResetFilters = () => {
+  const handleResetFilters = useCallback(() => {
     setSearchQuery('');
     setSelectedCategory('all');
     setSortBy('popular');
-  };
+  }, []);
 
   const handleScrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -459,10 +459,10 @@ export default function App() {
     setIsAppEditorOpen(true);
   };
 
-  const handleOpenEditApp = (app: YonoApp) => {
+  const handleOpenEditApp = useCallback((app: YonoApp) => {
     setAppToEdit(app);
     setIsAppEditorOpen(true);
-  };
+  }, []);
 
   const handleSaveApp = (savedApp: YonoApp) => {
     const existingIndex = apps.findIndex((a) => a.id === savedApp.id);
