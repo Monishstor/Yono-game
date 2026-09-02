@@ -9,6 +9,13 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Share Slots Official APK -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=share-slots-apk-download</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
   <!-- BET 213 -->
   <url>
     <loc>https://yono-game.vercel.app/?app=bet-213-apk-download</loc>
