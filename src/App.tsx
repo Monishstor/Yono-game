@@ -39,8 +39,8 @@ const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v12';
 
 const DEFAULT_SETTINGS: SiteSettings = {
   siteTitle: 'All New Yono Games & APK Downloads (2026 List) - Download New Yono App & Games',
-  metaDescription: 'Download All New Yono Games 2026 List: Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant ₹5-₹777 welcome bonuses & ₹100 instant UPI withdrawals.',
-  metaKeywords: 'hindi 777 apk download, hindi777 apk, hindi 777 yono, rummy 888 apk download, rummy888 vip apk, share slots apk download, all new yono games, new yono app launch today, yono all games list 2026, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus, yono games download',
+  metaDescription: 'Download All New Yono Games 2026 List: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant ₹5-₹777 welcome bonuses & ₹100 instant UPI withdrawals.',
+  metaKeywords: 'jaiho 777 apk download, jaiho 777, jaiho777 apk, hindi 777 apk download, hindi777 apk, hindi 777 yono, rummy 888 apk download, rummy888 vip apk, share slots apk download, all new yono games, new yono app launch today, yono all games list 2026, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus, yono games download',
   canonicalUrl: 'https://yono-game.vercel.app',
   siteAuthor: 'All New Yono Apps Official Portal',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',

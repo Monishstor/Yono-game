@@ -56,8 +56,8 @@ const htmlContent = `<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>All New Yono Games (2026 List) - Download New Yono App & Games APK</title>
-    <meta name="description" content="Download All New Yono Games 2026 List: Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals." />
-    <meta name="keywords" content="hindi 777 apk download, hindi777 apk, hindi 777 yono, rummy 888 apk download, rummy888 vip apk, share slots apk download, all new yono games, new yono app launch today, yono all games list 2026, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus, yono games download" />
+    <meta name="description" content="Download All New Yono Games 2026 List: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals." />
+    <meta name="keywords" content="jaiho 777 apk download, jaiho 777, jaiho777 apk, hindi 777 apk download, hindi777 apk, hindi 777 yono, rummy 888 apk download, rummy888 vip apk, share slots apk download, all new yono games, new yono app launch today, yono all games list 2026, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus, yono games download" />
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
     <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
     <meta name="bingbot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
@@ -72,13 +72,13 @@ const htmlContent = `<!doctype html>
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:url" content="https://yono-game.vercel.app/" />
-    <meta property="og:title" content="All New Yono Games & APK Downloads 2026 (Hindi 777, Rummy 888, Share Slots, BET 213)" />
-    <meta property="og:description" content="Download All New Yono Games 2026 List: Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant bonuses." />
+    <meta property="og:title" content="All New Yono Games & APK Downloads 2026 (Jaiho 777, Hindi 777, Rummy 888, Share Slots)" />
+    <meta property="og:description" content="Download All New Yono Games 2026 List: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant bonuses." />
     <meta property="og:image" content="https://yono-game.vercel.app/main-site-logo.svg" />
     <meta property="og:site_name" content="All New Yono Apps" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="All New Yono Games 2026 List - Download New Yono App & APKs" />
-    <meta name="twitter:description" content="Download All New Yono Games 2026 List: Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & verified APKs." />
+    <meta name="twitter:description" content="Download All New Yono Games 2026 List: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & verified APKs." />
     <meta name="twitter:image" content="https://yono-game.vercel.app/main-site-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
