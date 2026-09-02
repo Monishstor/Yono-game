@@ -29,7 +29,7 @@ export const PROMO_CODES: PromoCode[] = [
     status: 'Hot'
   },
   {
-    code: 'QUMQ2GR48N3',
+    code: 'QUMFUHZFMEY',
     title: 'Max Rummy India #1 Skilled Gaming ₹5 Free Joining + ₹154 7-Days Login Bonus',
     reward: '₹5 Free Joining Bonus + ₹154 7-Days Login Cash + 100% First Deposit Match',
     expiry: 'Official Active Code',
