@@ -119,20 +119,42 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
       <div className="bg-white/95 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 sticky top-16 sm:top-20 z-30 backdrop-blur-md shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
           
-          <button
+          <a
             id="landing-back-to-home-btn"
-            onClick={onBackToHome}
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onBackToHome();
+            }}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white text-xs sm:text-sm font-bold transition-all border border-slate-300 dark:border-slate-700 cursor-pointer shadow-xs active:scale-95"
           >
             <ArrowLeft className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             <span>All Yono Games List</span>
-          </button>
+          </a>
 
           {/* Clean Breadcrumb Hierarchy for SEO & User Navigation */}
           <nav aria-label="Breadcrumb" className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-            <button onClick={onBackToHome} className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Home</button>
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onBackToHome();
+              }}
+              className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+            >
+              Home
+            </a>
             <span>/</span>
-            <button onClick={onBackToHome} className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">All Yono Games</button>
+            <a
+              href="/#all-apps-section"
+              onClick={(e) => {
+                e.preventDefault();
+                onBackToHome();
+              }}
+              className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+            >
+              All Yono Games
+            </a>
             <span>/</span>
             <span className="text-amber-700 dark:text-amber-400 font-bold truncate max-w-[180px]">{app.name} APK</span>
           </nav>
@@ -553,12 +575,16 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
                 </h2>
                 <p className="text-xs text-slate-600 dark:text-slate-400">Players who downloaded {app.name} also loved these:</p>
               </div>
-              <button
-                onClick={onBackToHome}
-                className="text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-500 underline"
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onBackToHome();
+                }}
+                className="text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-500 underline cursor-pointer"
               >
                 View All {allApps.length}+ Games →
-              </button>
+              </a>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -570,9 +596,16 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
                   <div className="flex items-center gap-3">
                     <AppIcon app={relApp} sizeClassName="w-12 h-12" textClassName="text-xl" />
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
+                      <a
+                        href={`/?app=${encodeURIComponent(relApp.slug || relApp.id)}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          onSelectApp(relApp);
+                        }}
+                        className="text-sm font-bold text-slate-900 dark:text-white truncate block hover:text-amber-600 dark:hover:text-amber-300 transition-colors"
+                      >
                         {relApp.name}
-                      </h3>
+                      </a>
                       <div className="flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 font-bold mt-0.5">
                         <Star className="w-3 h-3 fill-amber-400" />
                         <span>{relApp.rating}</span>
@@ -587,12 +620,16 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
                   </div>
 
                   <div className="flex items-center gap-2 pt-1">
-                    <button
-                      onClick={() => onSelectApp(relApp)}
+                    <a
+                      href={`/?app=${encodeURIComponent(relApp.slug || relApp.id)}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onSelectApp(relApp);
+                      }}
                       className="flex-1 py-2 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all text-center cursor-pointer"
                     >
                       Read Details
-                    </button>
+                    </a>
                     <button
                       onClick={() => onDownload(relApp)}
                       className="py-2 px-3.5 rounded-xl btn-gold-action text-xs font-black transition-all hover:scale-105 cursor-pointer"

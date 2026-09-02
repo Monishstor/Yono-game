@@ -16,7 +16,8 @@ import {
   FileText, 
   Share2, 
   ShieldCheck,
-  RotateCcw
+  RotateCcw,
+  FileCode
 } from 'lucide-react';
 
 interface SeoSettingsPanelProps {
@@ -560,6 +561,82 @@ ${googleVerification ? `<meta name="google-site-verification" content="${googleV
 
         <div className="relative rounded-2xl bg-slate-950 border border-slate-800 p-4 font-mono text-[11px] text-slate-300 overflow-x-auto max-h-48">
           <pre>{generatedMetaTags}</pre>
+        </div>
+      </div>
+
+      {/* ========================================================
+          SECTION 4: GOOGLE SEARCH CONSOLE & XML SITEMAP
+      ======================================================== */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+        <div className="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-slate-800">
+          <div className="flex items-center gap-2">
+            <FileCode className="w-5 h-5 text-emerald-400" />
+            <div>
+              <h3 className="text-sm font-black text-white uppercase tracking-wider">
+                Google Search Console & XML Sitemap (47 URLs)
+              </h3>
+              <p className="text-xs text-slate-400">
+                All 46 Yono Games + Homepage are pre-rendered and verified in your public sitemap.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors"
+            >
+              <span>View sitemap.xml</span>
+              <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
+            </a>
+
+            <button
+              type="button"
+              onClick={() => handleCopy(`${canonicalUrl.replace(/\/+$/, '')}/sitemap.xml`, 'sitemap-url')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 text-xs font-bold border border-emerald-500/30 transition-colors cursor-pointer"
+            >
+              {copiedCode === 'sitemap-url' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedCode === 'sitemap-url' ? 'Sitemap URL Copied!' : 'Copy Sitemap URL'}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Indexing status instructions */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
+            <span className="text-xs font-bold text-amber-400">1. Sitemap Submission</span>
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              Submit <code>https://yono-game.vercel.app/sitemap.xml</code> in GSC &gt; Sitemaps menu.
+            </p>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
+            <span className="text-xs font-bold text-sky-400">2. Pre-Rendered HTML</span>
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              Googlebot reads all 46 games, ratings, and bonuses in raw HTML without waiting for JS.
+            </p>
+          </div>
+
+          <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
+            <span className="text-xs font-bold text-emerald-400">3. Request Indexing</span>
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              Use URL Inspection in GSC to test top priority URLs (e.g. <code>/?app=bet-213-apk-download</code>).
+            </p>
+          </div>
+        </div>
+
+        <div className="pt-2 flex justify-end">
+          <a
+            href="https://search.google.com/search-console"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs transition-all hover:scale-105"
+          >
+            <span>Open Google Search Console</span>
+            <ExternalLink className="w-3.5 h-3.5 stroke-[2.5]" />
+          </a>
         </div>
       </div>
 

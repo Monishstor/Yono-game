@@ -69,7 +69,7 @@ export default function App() {
   // Helper to find an app by ID or slug
   const findAppBySlugOrId = (slugOrId: string, list: YonoApp[]) => {
     if (!slugOrId) return null;
-    const clean = slugOrId.toLowerCase().trim().replace(/^\/+|\/+$/g, '');
+    const clean = slugOrId.toLowerCase().trim().replace(/^\/+|\/+$/g, '').replace(/^(app|game)\//, '');
     return list.find((a) => 
       (a.slug && a.slug.toLowerCase() === clean) ||
       a.id.toLowerCase() === clean ||
