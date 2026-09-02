@@ -134,6 +134,7 @@ export default function App() {
             return {
               ...defaultApp,
               ...found,
+              pinToTop: defaultApp.pinToTop !== undefined ? defaultApp.pinToTop : found.pinToTop,
               pinToBottom: found.pinToBottom !== undefined ? found.pinToBottom : defaultApp.pinToBottom,
               isCustom: false
             };
@@ -498,6 +499,21 @@ export default function App() {
     }
   };
 
+  const handleTogglePinToTop = (appId: string) => {
+    const updated = apps.map((app) => {
+      if (app.id === appId) {
+        return { ...app, pinToTop: !app.pinToTop };
+      }
+      return app;
+    });
+    saveAppsToStorage(updated);
+
+    const target = updated.find((a) => a.id === appId);
+    if (target) {
+      saveAppToFirestore(target);
+    }
+  };
+
   const handleTogglePinToBottom = (appId: string) => {
     const updated = apps.map((app) => {
       if (app.id === appId) {
@@ -570,6 +586,7 @@ export default function App() {
           onAddNewApp={handleAddNewApp}
           onEditApp={handleOpenEditApp}
           onDeleteApp={handleDeleteApp}
+          onTogglePinToTop={handleTogglePinToTop}
           onTogglePinToBottom={handleTogglePinToBottom}
           onUpdateApps={saveAppsToStorage}
           onSavePromoCodes={handleSavePromoCodes}

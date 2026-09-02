@@ -368,7 +368,18 @@ export function indexAndSearchApps(
         return app.category.includes(selectedCategory);
       })
       .sort((a, b) => {
-        // Pin to bottom rule
+        // 1. Pin to top rule (highest priority)
+        if (a.pinToTop && !b.pinToTop) return -1;
+        if (!a.pinToTop && b.pinToTop) return 1;
+        if (a.pinToTop && b.pinToTop) {
+          // Specific order between pinned apps: Yono Games #1, Yono Rummy #2
+          if (a.id === 'yono-games-official') return -1;
+          if (b.id === 'yono-games-official') return 1;
+          if (a.id === 'yono-rummy-official') return -1;
+          if (b.id === 'yono-rummy-official') return 1;
+        }
+
+        // 2. Pin to bottom rule
         if (a.pinToBottom && !b.pinToBottom) return 1;
         if (!a.pinToBottom && b.pinToBottom) return -1;
 
@@ -416,6 +427,20 @@ export function indexAndSearchApps(
   // 3. Sort by Search Relevance Score Descending
   // Exact matches (score >= 10,000) are guaranteed at the top
   scoredApps.sort((a, b) => {
+    // If one is an exact match and other is not, exact match always wins
+    if (a.isExactMatch && !b.isExactMatch) return -1;
+    if (!a.isExactMatch && b.isExactMatch) return 1;
+
+    // Pin to top rule for non-exact matches or equal matches
+    if (a.app.pinToTop && !b.app.pinToTop) return -1;
+    if (!a.app.pinToTop && b.app.pinToTop) return 1;
+    if (a.app.pinToTop && b.app.pinToTop) {
+      if (a.app.id === 'yono-games-official') return -1;
+      if (b.app.id === 'yono-games-official') return 1;
+      if (a.app.id === 'yono-rummy-official') return -1;
+      if (b.app.id === 'yono-rummy-official') return 1;
+    }
+
     // If one app is pinned to bottom, keep it lower UNLESS it's an exact match
     if (a.app.pinToBottom && !b.app.pinToBottom && !a.isExactMatch) return 1;
     if (!a.app.pinToBottom && b.app.pinToBottom && !b.isExactMatch) return -1;

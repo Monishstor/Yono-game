@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { getAllApps, upsertApp, getSiteSettings, updateSiteSettings } from './src/db/queries.ts';
 
@@ -74,6 +75,13 @@ async function startServer() {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
+      const appQuery = (req.query.app || req.query.game || req.query.apk) as string | undefined;
+      if (appQuery && typeof appQuery === 'string') {
+        const appHtmlPath = path.join(distPath, 'app', appQuery, 'index.html');
+        if (fs.existsSync(appHtmlPath)) {
+          return res.sendFile(appHtmlPath);
+        }
+      }
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }

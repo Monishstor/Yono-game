@@ -97,6 +97,7 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
   const [gamesInput, setGamesInput] = useState('Dragon vs Tiger, Aviator, Rummy, Teen Patti, Mines, Roulette');
   const [description, setDescription] = useState('');
   const [featuresInput, setFeaturesInput] = useState('Instant 2-Minute UPI Payouts\nOTP Registration ₹150 Bonus\nDaily Free Spin Wheel & VIP Cashback\n100% Virus-Safe & Certified APK');
+  const [pinToTop, setPinToTop] = useState(false);
   const [pinToBottom, setPinToBottom] = useState(false);
 
   // Load app data if editing
@@ -130,6 +131,7 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
       setGamesInput(appToEdit.gamesList ? appToEdit.gamesList.join(', ') : 'Dragon vs Tiger, Aviator, Rummy, Teen Patti');
       setDescription(appToEdit.description || '');
       setFeaturesInput(appToEdit.features ? appToEdit.features.join('\n') : '');
+      setPinToTop(appToEdit.pinToTop ?? false);
       setPinToBottom(appToEdit.pinToBottom ?? false);
     } else {
       // Defaults for brand new app
@@ -138,6 +140,8 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
       setTagline('Exclusive New Yono Game with Instant OTP Signup Bonus');
       setImageUrl('');
       setImageMode('upload');
+      setPinToTop(false);
+      setPinToBottom(false);
       setIconGradient('from-amber-400 to-orange-600');
       setIconSymbol('NEW');
       setCategories(['trending', 'new']);
@@ -231,6 +235,7 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
     withdrawalSpeed: withdrawalSpeed || 'Instant 2 Min',
     safetyScore: 99,
     isCustom: true,
+    pinToTop: pinToTop,
     pinToBottom: pinToBottom
   };
 
@@ -684,7 +689,44 @@ export const AppEditorModal: React.FC<AppEditorModalProps> = ({
                 </div>
               </div>
 
-              {/* 9. PIN TO BOTTOM FEATURE (SEO / Priority Management) */}
+              {/* 9. PIN TO TOP FEATURE */}
+              <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-between gap-3">
+                <div className="flex items-start gap-2.5">
+                  <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 mt-0.5 shrink-0">
+                    <Pin className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                      <span>Pin to Top (वेबसाइट में हमेशा सबसे ऊपर रखें)</span>
+                      {pinToTop && (
+                        <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-emerald-400 text-slate-950">
+                          ACTIVE PINNED
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+                      इस ऐप को मुख्य वेबसाइट और सभी कैटेगरीज में हमेशा सबसे ऊपर (Top Position) पर लॉक रखें।
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setPinToTop(!pinToTop)}
+                  className={`shrink-0 relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-hidden cursor-pointer ${
+                    pinToTop ? 'bg-emerald-500' : 'bg-slate-700'
+                  }`}
+                  aria-pressed={pinToTop}
+                >
+                  <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-slate-950 transition-transform ${
+                      pinToTop ? 'translate-x-6' : 'translate-x-1'
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {/* 10. PIN TO BOTTOM FEATURE (SEO / Priority Management) */}
               <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-between gap-3">
                 <div className="flex items-start gap-2.5">
                   <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400 mt-0.5 shrink-0">

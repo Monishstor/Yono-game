@@ -56,6 +56,7 @@ interface AdminPanelProps {
   onAddNewApp: () => void;
   onEditApp: (app: YonoApp) => void;
   onDeleteApp: (appId: string) => void;
+  onTogglePinToTop?: (appId: string) => void;
   onTogglePinToBottom?: (appId: string) => void;
   onUpdateApps?: (apps: YonoApp[]) => void;
   onSavePromoCodes: (promos: PromoCode[]) => void;
@@ -78,6 +79,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   onAddNewApp,
   onEditApp,
   onDeleteApp,
+  onTogglePinToTop,
   onTogglePinToBottom,
   onUpdateApps,
   onSavePromoCodes,
@@ -179,6 +181,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     if (filterCategory === 'all') return matchesSearch;
     if (filterCategory === 'yono_games') return matchesSearch && (app.category.includes('yono_games') || !app.category.includes('diwa_games'));
     if (filterCategory === 'diwa_games') return matchesSearch && (app.category.includes('diwa_games') || app.name.toLowerCase().includes('diwa'));
+    if (filterCategory === 'pinned_top') return matchesSearch && !!app.pinToTop;
     if (filterCategory === 'pinned') return matchesSearch && !!app.pinToBottom;
     if (filterCategory === 'custom') return matchesSearch && !!app.isCustom;
     if (filterCategory === 'custom_img') return matchesSearch && !!app.imageUrl;
@@ -777,6 +780,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     className="bg-slate-900 text-slate-200 text-xs px-3 py-2 rounded-xl border border-slate-700 font-semibold focus:outline-hidden focus:border-amber-400"
                   >
                     <option value="all">All Categories ({apps.length})</option>
+                    <option value="pinned_top">📌 Pinned to Top ({apps.filter(a => a.pinToTop).length})</option>
                     <option value="yono_games">👑 Yono Games ({apps.filter(a => a.category.includes('yono_games') || !a.category.includes('diwa_games')).length})</option>
                     <option value="diwa_games">🔥 DIWA GAME ({apps.filter(a => a.category.includes('diwa_games') || a.name.toLowerCase().includes('diwa')).length})</option>
                     <option value="pinned">📌 Pinned to Bottom ({apps.filter(a => a.pinToBottom).length})</option>
@@ -849,6 +853,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                                         {app.badge}
                                       </span>
                                     )}
+                                    {app.pinToTop && (
+                                      <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 inline-flex items-center gap-0.5" title="Pinned to top of list">
+                                        <Pin className="w-2.5 h-2.5 fill-emerald-300" />
+                                        <span>Pinned Top</span>
+                                      </span>
+                                    )}
                                     {app.pinToBottom && (
                                       <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 inline-flex items-center gap-0.5" title="Pinned to bottom of list">
                                         <Pin className="w-2.5 h-2.5 rotate-45" />
@@ -910,6 +920,21 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
                             <td className="py-3 px-4 text-right">
                               <div className="flex items-center justify-end gap-1.5">
+                                {onTogglePinToTop && (
+                                  <button
+                                    onClick={() => onTogglePinToTop(app.id)}
+                                    className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                      app.pinToTop
+                                        ? 'bg-emerald-500 text-slate-950 font-black shadow-sm'
+                                        : 'bg-slate-800 text-slate-300 hover:text-emerald-300 hover:bg-slate-700'
+                                    }`}
+                                    title={app.pinToTop ? 'Click to Unpin from Top' : 'Click to Pin to Top (Top of Catalog)'}
+                                  >
+                                    <Pin className={`w-3 h-3 ${app.pinToTop ? 'fill-slate-950' : ''}`} />
+                                    <span>{app.pinToTop ? 'Pinned Top' : 'Pin Top'}</span>
+                                  </button>
+                                )}
+
                                 {onTogglePinToBottom && (
                                   <button
                                     onClick={() => onTogglePinToBottom(app.id)}

@@ -26,6 +26,7 @@ interface ManageAppsModalProps {
   onAddNewApp: () => void;
   onEditApp: (app: YonoApp) => void;
   onDeleteApp: (appId: string) => void;
+  onTogglePinToTop?: (appId: string) => void;
   onTogglePinToBottom?: (appId: string) => void;
   onResetDefaultApps: () => void;
   onImportApps: (importedApps: YonoApp[]) => void;
@@ -38,6 +39,7 @@ export const ManageAppsModal: React.FC<ManageAppsModalProps> = ({
   onAddNewApp,
   onEditApp,
   onDeleteApp,
+  onTogglePinToTop,
   onTogglePinToBottom,
   onResetDefaultApps,
   onImportApps
@@ -214,6 +216,12 @@ export const ManageAppsModal: React.FC<ManageAppsModalProps> = ({
                           Custom Image
                         </span>
                       )}
+                      {app.pinToTop && (
+                        <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 inline-flex items-center gap-0.5">
+                          <Pin className="w-2.5 h-2.5 fill-emerald-300" />
+                          <span>Pinned Top</span>
+                        </span>
+                      )}
                       {app.pinToBottom && (
                         <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 inline-flex items-center gap-0.5">
                           <Pin className="w-2.5 h-2.5 rotate-45" />
@@ -233,6 +241,20 @@ export const ManageAppsModal: React.FC<ManageAppsModalProps> = ({
 
                 {/* Edit & Delete Action Buttons */}
                 <div className="flex items-center gap-1.5 shrink-0">
+                  {onTogglePinToTop && (
+                    <button
+                      onClick={() => onTogglePinToTop(app.id)}
+                      className={`p-1.5 rounded-xl transition-all cursor-pointer ${
+                        app.pinToTop
+                          ? 'bg-emerald-500 text-slate-950 font-bold'
+                          : 'bg-slate-800 text-slate-400 hover:text-emerald-300 hover:bg-slate-700'
+                      }`}
+                      title={app.pinToTop ? 'Unpin from Top' : 'Pin to Top (Always on Top)'}
+                    >
+                      <Pin className={`w-3.5 h-3.5 ${app.pinToTop ? 'fill-slate-950' : ''}`} />
+                    </button>
+                  )}
+
                   {onTogglePinToBottom && (
                     <button
                       onClick={() => onTogglePinToBottom(app.id)}

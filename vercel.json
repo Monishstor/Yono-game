@@ -1,6 +1,43 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "app",
+          "value": "(?<slug>[a-zA-Z0-9_-]+)"
+        }
+      ],
+      "destination": "/app/:slug/index.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "game",
+          "value": "(?<slug>[a-zA-Z0-9_-]+)"
+        }
+      ],
+      "destination": "/app/:slug/index.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "apk",
+          "value": "(?<slug>[a-zA-Z0-9_-]+)"
+        }
+      ],
+      "destination": "/app/:slug/index.html"
+    },
+    {
+      "source": "/app/:slug",
+      "destination": "/app/:slug/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

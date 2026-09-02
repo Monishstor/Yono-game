@@ -11,7 +11,8 @@ import {
   ExternalLink,
   Coins,
   ArrowUpRight,
-  Edit3
+  Edit3,
+  Pin
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 
@@ -53,8 +54,15 @@ export const AppCard: React.FC<AppCardProps> = React.memo(({ app, onDownload, on
             <span>Edit</span>
           </button>
         )}
+        {app.pinToTop && !app.badge?.includes('PINNED') && (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-400 text-slate-950 shadow-md ring-1 ring-amber-300">
+            <Pin className="w-3 h-3 fill-slate-950" />
+            <span>PINNED</span>
+          </span>
+        )}
         {app.badge && (
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 text-slate-950 shadow-md ring-1 ring-amber-400/50">
+            {app.pinToTop && <Pin className="w-3 h-3 fill-slate-950" />}
             {app.badge}
           </span>
         )}
