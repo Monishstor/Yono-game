@@ -1,7 +1,334 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage -->
   <url>
     <loc>https://yono-game.vercel.app/</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- BET 213 -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=bet-213-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Jaiho 91 -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-91-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Club INR -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=club-inr-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Max Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=max-rummy-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- INR Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=inr-rummy-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Slots Spin -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=slots-spin-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Yono Arcade -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=yono-arcade-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Jaiho Win -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-win-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- SPIN 777 -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=spin-777-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Boss Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=boss-rummy-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- HiRummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=hi-rummy-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- 777 Game -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=777-game-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Yono VIP -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=yono-vip-apk-download</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Love Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=love-rummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- 567 Slots -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=567slots-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- WINRUMMY -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=winrummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- IND CLUB -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=ind-club-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Maha Games -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=maha-games-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- GameRummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=game-rummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- OKRUMMY -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=ok-rummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Joy Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=joy-rummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- GOLD RUMMY -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=gold-rummy-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- RummyLudo -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=rummy-ludo-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Neta.VIP -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=neta-vip-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- JaihoSpin -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-spin-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Slots Winner -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=slots-winner-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Top Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=top-rummy-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- JaiHo Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-rummy-apk-download</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Spin Gold -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=spin-gold-apk-download</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- RUMMY91 -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=rummy-91-apk-download</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Spin 101 -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=spin-101-apk-download</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Bingo 101 -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=bingo-101-apk-download</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- IndRummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=ind-rummy-apk-download</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- ABC Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=abc-rummy-apk-download</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Dhan Game -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=dhan-game-apk-download</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Saga Slots -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=saga-slots-apk-download</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- 789Jackpots -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=789jackpots-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Gogo Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=gogo-rummy-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Jaiho Arcade -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=jaiho-arcade-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Spin Winner -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=spin-winner-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Yono Games -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=yono-games-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Yono Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=yono-rummy-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Yono Slots -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=yono-slots-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Spin Crush -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=spin-crush-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Rumble Rummy -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=rumble-rummy-apk-download</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- New Yono Games -->
+  <url>
+    <loc>https://yono-game.vercel.app/?app=new-yono-games-apk-download</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
