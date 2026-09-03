@@ -37,9 +37,9 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
     ? siteSettings.canonicalUrl
     : originUrl).replace(/\/+$/, '');
 
-  // Exact canonical URL matching sitemap.xml entries
+  // Exact canonical URL matching sitemap.xml entries (clean /slug path)
   const currentCanonical = isSingleAppPage && activeApp
-    ? `${siteCanonical}/?app=${encodeURIComponent(activeApp.slug || activeApp.id)}`
+    ? `${siteCanonical}/${encodeURIComponent(activeApp.slug || activeApp.id)}`
     : siteCanonical;
 
   const currentAuthor = siteSettings?.siteAuthor || 'All New Yono Apps Official Portal';
@@ -148,7 +148,7 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
           'ratingCount': activeApp.reviewsCount ? activeApp.reviewsCount.toString() : '28500'
         },
         'description': `Download official ${activeApp.name} APK. Claim ₹${activeApp.signupBonus} free sign-up bonus with ₹${activeApp.minWithdrawal} instant minimum UPI withdrawal.`,
-        'downloadUrl': (activeApp.downloadUrl && !activeApp.downloadUrl.startsWith('#')) ? activeApp.downloadUrl : `${siteCanonical}/?app=${activeApp.slug || activeApp.id}`
+        'downloadUrl': (activeApp.downloadUrl && !activeApp.downloadUrl.startsWith('#')) ? activeApp.downloadUrl : `${siteCanonical}/${activeApp.slug || activeApp.id}`
       };
     }
 
@@ -162,7 +162,7 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
         '@type': 'ListItem',
         'position': idx + 1,
         'name': `${app.name} APK`,
-        'url': `${siteCanonical}/?app=${encodeURIComponent(app.slug || app.id)}`
+        'url': `${siteCanonical}/${encodeURIComponent(app.slug || app.id)}`
       }))
     } : null;
 

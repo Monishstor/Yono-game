@@ -9,12 +9,15 @@ const TODAY_DATE = '2026-09-02';
 const isDistMode = process.argv.includes('--dist');
 
 // 1. Build ItemList schema for all apps
-const itemListElements = YONO_APPS.map((app, index) => ({
-  '@type': 'ListItem',
-  position: index + 1,
-  name: `${app.name} APK`,
-  url: `${BASE_URL}/?app=${encodeURIComponent(app.slug || app.id)}`
-}));
+const itemListElements = YONO_APPS.map((app, index) => {
+  const slug = app.slug || app.id;
+  return {
+    '@type': 'ListItem',
+    position: index + 1,
+    name: `${app.name} APK`,
+    url: `${BASE_URL}/${slug}`
+  };
+});
 
 // 2. Build FAQ schema for homepage
 const faqElements = FAQ_DATA.map((faq) => ({
@@ -29,7 +32,7 @@ const faqElements = FAQ_DATA.map((faq) => ({
 // 3. Build Homepage semantic HTML for #root
 const appsHtmlList = YONO_APPS.map((app, idx) => {
   const slug = app.slug || app.id;
-  const appUrl = `/?app=${encodeURIComponent(slug)}`;
+  const appUrl = `/${slug}`;
   return `        <li style="margin-bottom: 16px; padding: 16px; border: 1px solid #334155; border-radius: 10px; background-color: #0f172a;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
             <div>
@@ -86,7 +89,7 @@ function getAppFaqs(app: YonoApp) {
 // 5. Generate dedicated Pre-rendered HTML for a single game
 function generateAppHtml(app: YonoApp, scriptTag: string, styleTags: string): string {
   const slug = app.slug || app.id;
-  const canonicalUrl = `${BASE_URL}/?app=${encodeURIComponent(slug)}`;
+  const canonicalUrl = `${BASE_URL}/${slug}`;
   const title = `${app.name} APK Download (Official 2026) - Free ₹${app.signupBonus} Bonus & ₹${app.minWithdrawal} UPI Withdrawal`;
   const desc = `Download official ${app.name} APK for Android. Claim instant ₹${app.signupBonus}${app.maxSignupBonus ? ` to ₹${app.maxSignupBonus}` : ''} Free Bonus with referral code ${app.referCode}, fast ${app.withdrawalSpeed || '1-3 min'} ₹${app.minWithdrawal} UPI withdrawal and 100% deposit cashback.`;
   const keywords = `${app.name} apk download, ${app.name} official app, ${app.name} refer code, ${app.name} bonus ₹${app.signupBonus}, ${app.name} rummy apk, ${app.name} withdrawal proof, all yono apps 2026`;
@@ -158,7 +161,7 @@ function generateAppHtml(app: YonoApp, scriptTag: string, styleTags: string): st
   const otherAppsHtml = otherApps.map(o => {
     const oSlug = o.slug || o.id;
     return `          <li style="margin-bottom: 8px;">
-            <a href="/?app=${encodeURIComponent(oSlug)}" style="color: #f59e0b; text-decoration: underline; font-weight: 600;">
+            <a href="/${oSlug}" style="color: #f59e0b; text-decoration: underline; font-weight: 600;">
               ${o.name} APK (₹${o.signupBonus} Bonus)
             </a> - ${o.tagline || 'Verified Yono game download'}
           </li>`;
@@ -365,7 +368,7 @@ function generateSitemapXml(): string {
     const priority = isPinned ? '0.98' : (app.badge ? '0.95' : '0.90');
     urls.push(`  <!-- ${app.name} Official APK -->
   <url>
-    <loc>${BASE_URL}/?app=${encodeURIComponent(slug)}</loc>
+    <loc>${BASE_URL}/${slug}</loc>
     <lastmod>${TODAY_DATE}</lastmod>
     <changefreq>daily</changefreq>
     <priority>${priority}</priority>
@@ -574,17 +577,22 @@ async function main() {
     fs.writeFileSync('./public/sitemap.xml', sitemapContent, 'utf-8');
     console.log(`✔ Generated ./public/sitemap.xml with ${YONO_APPS.length + 1} URLs.`);
 
-    // Generate static app pages in public/app/[slug]/index.html for development / static fallback
+    // Generate static app pages in public/app/[slug]/index.html and public/[slug]/index.html
     YONO_APPS.forEach(app => {
       const slug = app.slug || app.id;
       const appDir = path.resolve(`./public/app/${slug}`);
       if (!fs.existsSync(appDir)) {
         fs.mkdirSync(appDir, { recursive: true });
       }
+      const rootSlugDir = path.resolve(`./public/${slug}`);
+      if (!fs.existsSync(rootSlugDir)) {
+        fs.mkdirSync(rootSlugDir, { recursive: true });
+      }
       const appHtml = generateAppHtml(app, '<script type="module" src="/src/main.tsx"></script>', '');
       fs.writeFileSync(path.join(appDir, 'index.html'), appHtml, 'utf-8');
+      fs.writeFileSync(path.join(rootSlugDir, 'index.html'), appHtml, 'utf-8');
     });
-    console.log(`✔ Generated ${YONO_APPS.length} static app pages in ./public/app/`);
+    console.log(`✔ Generated ${YONO_APPS.length} static app pages in ./public/app/ and ./public/[slug]/`);
   }
 
   // 2) When in --dist mode (runs AFTER vite build)

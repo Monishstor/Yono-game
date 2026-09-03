@@ -423,7 +423,7 @@ export default function App() {
     setActiveLandingApp(app);
     if (typeof window !== 'undefined') {
       const slug = app.slug || app.id;
-      const newUrl = `${window.location.pathname}?app=${slug}`;
+      const newUrl = `/${slug}`;
       window.history.pushState({ appSlug: slug, appId: app.id }, '', newUrl);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -432,7 +432,7 @@ export default function App() {
   const handleBackToHome = useCallback(() => {
     setActiveLandingApp(null);
     if (typeof window !== 'undefined') {
-      window.history.pushState({}, '', window.location.pathname);
+      window.history.pushState({}, '', '/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, []);

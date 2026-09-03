@@ -1,5 +1,7 @@
 {
-  "rewrites": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
     {
       "source": "/",
       "has": [
@@ -9,7 +11,8 @@
           "value": "(?<slug>[a-zA-Z0-9_-]+)"
         }
       ],
-      "destination": "/app/:slug/index.html"
+      "destination": "/:slug",
+      "permanent": true
     },
     {
       "source": "/",
@@ -20,7 +23,8 @@
           "value": "(?<slug>[a-zA-Z0-9_-]+)"
         }
       ],
-      "destination": "/app/:slug/index.html"
+      "destination": "/:slug",
+      "permanent": true
     },
     {
       "source": "/",
@@ -31,14 +35,21 @@
           "value": "(?<slug>[a-zA-Z0-9_-]+)"
         }
       ],
-      "destination": "/app/:slug/index.html"
-    },
+      "destination": "/:slug",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
     {
       "source": "/app/:slug",
       "destination": "/app/:slug/index.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/:slug([a-zA-Z0-9_-]+-apk-download)",
+      "destination": "/:slug/index.html"
+    },
+    {
+      "source": "/((?!assets|public|app|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]

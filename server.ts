@@ -64,6 +64,20 @@ async function startServer() {
     }
   });
 
+  // Direct clean /slug route handler for static pre-rendered SEO pages
+  app.get('/:slug([a-zA-Z0-9_-]+-apk-download)', (req, res, next) => {
+    const slug = req.params.slug;
+    const publicPath = path.join(process.cwd(), 'public', slug, 'index.html');
+    if (fs.existsSync(publicPath)) {
+      return res.sendFile(publicPath);
+    }
+    const distPath = path.join(process.cwd(), 'dist', slug, 'index.html');
+    if (fs.existsSync(distPath)) {
+      return res.sendFile(distPath);
+    }
+    next();
+  });
+
   // Vite middleware for development / static serving for production
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
@@ -75,6 +89,17 @@ async function startServer() {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
+      const cleanPath = req.path.replace(/^\/+|\/+$/g, '');
+      if (cleanPath) {
+        const directHtmlPath = path.join(distPath, cleanPath, 'index.html');
+        if (fs.existsSync(directHtmlPath)) {
+          return res.sendFile(directHtmlPath);
+        }
+        const appHtmlPath = path.join(distPath, 'app', cleanPath, 'index.html');
+        if (fs.existsSync(appHtmlPath)) {
+          return res.sendFile(appHtmlPath);
+        }
+      }
       const appQuery = (req.query.app || req.query.game || req.query.apk) as string | undefined;
       if (appQuery && typeof appQuery === 'string') {
         const appHtmlPath = path.join(distPath, 'app', appQuery, 'index.html');
