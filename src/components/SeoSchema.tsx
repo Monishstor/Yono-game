@@ -13,21 +13,21 @@ export const SeoSchema: React.FC<SeoSchemaProps> = ({
   apps,
   activeApp,
   siteSettings,
-  siteTitle = 'All New Yono Games & APK Downloads 2026'
+  siteTitle = 'All New Yono Games 2026 - Instant Withdrawal Apps & APK Download (Official List)'
 }) => {
   const isSingleAppPage = Boolean(activeApp);
 
   const currentTitle = isSingleAppPage && activeApp
-    ? `${activeApp.name} APK Download (2026) - Free ₹${activeApp.signupBonus} Bonus & ₹${activeApp.minWithdrawal} UPI Withdrawal`
+    ? `${activeApp.name} APK Download (2026) - New Yono Games 2026 & Instant Withdrawal App (₹${activeApp.minWithdrawal} UPI)`
     : (siteSettings?.siteTitle || siteTitle);
 
   const currentDesc = isSingleAppPage && activeApp
-    ? `Download official ${activeApp.name} APK for Android. Claim ₹${activeApp.signupBonus}${activeApp.maxSignupBonus ? ` to ₹${activeApp.maxSignupBonus}` : ''} Free Bonus with referral code "${activeApp.referCode}", 100% cashback, and fast ${activeApp.withdrawalSpeed || '1-3 min'} UPI cashouts.`
-    : (siteSettings?.metaDescription || 'Download All New Yono Games & Apps 2026 list with ₹51 to ₹1500 sign-up bonus, ₹100 instant minimum UPI withdrawal, daily promo codes and safe verified APK files.');
+    ? `Download official ${activeApp.name} APK for Android. Verified New Yono Games 2026 instant withdrawal app with ${activeApp.withdrawalSpeed || '1-3 min'} ₹${activeApp.minWithdrawal} UPI cashout, ₹${activeApp.signupBonus}${activeApp.maxSignupBonus ? ` to ₹${activeApp.maxSignupBonus}` : ''} Free Bonus with referral code "${activeApp.referCode}".`
+    : (siteSettings?.metaDescription || 'Download All New Yono Games 2026 list & verified instant withdrawal apps with free ₹51 to ₹1500 sign-up bonus, instant ₹100 minimum UPI withdrawals, daily promo codes and official verified APK files.');
 
   const currentKeywords = isSingleAppPage && activeApp
-    ? `${activeApp.name} apk download, ${activeApp.name} official app, ${activeApp.name} refer code, ${activeApp.name} bonus ₹${activeApp.signupBonus}, ${activeApp.name} rummy apk, ${activeApp.name} withdrawal proof, all yono apps 2026`
-    : (siteSettings?.metaKeywords || 'all yono apps, yono games apk download, all new yono app 2026, yono vip, yono rummy 500 bonus, yono slots 777, yono games list, yono referral code');
+    ? `${activeApp.name} apk download, new yono games 2026, instant withdrawal apps, ${activeApp.name} instant withdrawal, ${activeApp.name} official app, ${activeApp.name} refer code, ${activeApp.name} bonus ₹${activeApp.signupBonus}, ${activeApp.name} rummy apk, instant upi withdrawal rummy app, all yono apps 2026`
+    : (siteSettings?.metaKeywords || 'new yono games 2026, instant withdrawal apps, new yono games 2026 list, instant withdrawal rummy apps, all new yono games 2026, instant upi withdrawal game apps, new yono games 2026 download, fastest instant withdrawal rummy app, new yono app 2026, minimum withdrawal 100 rummy app instant withdrawal, new yono games launch today 2026, instant withdrawal cash games 2026, real money instant withdrawal apps, latest new yono games 2026 apk, new yono rummy games 2026, yono instant withdrawal app, all yono apps');
 
   const originUrl = typeof window !== 'undefined' && window.location.origin
     ? window.location.origin

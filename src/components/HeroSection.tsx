@@ -18,11 +18,11 @@ export const HeroSection: React.FC = () => {
         <div className="text-center max-w-4xl mx-auto space-y-4 mb-8">
           
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white font-['Outfit',sans-serif] tracking-tight leading-tight sm:leading-none">
-            Download All <span className="gold-shimmer-text">New Yono Games</span> & Rummy APK
+            Download All <span className="gold-shimmer-text">New Yono Games 2026</span> & Instant Withdrawal Apps
           </h1>
 
           <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Compare available Yono game listings, app details, and current promotional offers in one place. Review the app's terms, eligibility, and local legal restrictions before downloading or playing.
+            Discover verified New Yono Games 2026 and fast instant withdrawal apps. Compare sign-up bonuses (₹51 to ₹1500), ₹100 instant UPI payout speeds, and claim official promo codes with zero risk.
           </p>
 
           {/* Quick Psychological Trust Badges */}

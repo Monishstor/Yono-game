@@ -107,9 +107,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   const [settingsSaved, setSettingsSaved] = useState(false);
 
   // SEO Settings Form state
-  const [seoTitle, setSeoTitle] = useState(siteSettings.siteTitle || 'ALL NEW YONO APPS (2026) - Real Cash Games & APK Downloads');
-  const [seoDescription, setSeoDescription] = useState(siteSettings.siteDescription || 'Download All New Yono Games & Apps 2026 list with ₹51 to ₹1500 sign-up bonus, ₹100 instant minimum UPI withdrawal, daily promo codes and safe verified APK files.');
-  const [seoKeywords, setSeoKeywords] = useState(siteSettings.metaKeywords || 'all yono apps, yono games apk download, all new yono app 2026, yono vip, yono rummy 500 bonus, yono slots 777, yono games list, yono referral code');
+  const [seoTitle, setSeoTitle] = useState(siteSettings.siteTitle || 'All New Yono Games 2026 - Instant Withdrawal Apps & APK Download (Official List)');
+  const [seoDescription, setSeoDescription] = useState(siteSettings.siteDescription || 'Download All New Yono Games 2026 List & top instant withdrawal apps with ₹51 to ₹1500 sign-up bonus, ₹100 instant minimum UPI withdrawal, daily promo codes and safe verified APK files.');
+  const [seoKeywords, setSeoKeywords] = useState(siteSettings.metaKeywords || 'new yono games 2026, instant withdrawal apps, new yono games 2026 list, instant withdrawal rummy apps, all new yono games 2026, instant upi withdrawal game apps, new yono games 2026 download, fastest instant withdrawal rummy app, new yono app 2026, minimum withdrawal 100 rummy app instant withdrawal, new yono games launch today 2026, instant withdrawal cash games 2026, real money instant withdrawal apps, latest new yono games 2026 apk, new yono rummy games 2026, yono instant withdrawal app');
   const [seoCanonical, setSeoCanonical] = useState(siteSettings.canonicalUrl || (typeof window !== 'undefined' ? window.location.origin : 'https://yono-game.vercel.app'));
   const [seoAuthor, setSeoAuthor] = useState(siteSettings.authorName || 'YONO Official Community');
   const [googleVerificationCode, setGoogleVerificationCode] = useState(siteSettings.googleVerificationCode || '');
@@ -119,13 +119,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   // SEO Presets Helper
   const applySeoPreset = (type: 'ranking_2026' | 'bonus_upi' | 'brand_authority') => {
     if (type === 'ranking_2026') {
-      setSeoTitle('ALL NEW YONO APPS (2026) - 50+ Top APK Downloads List & Free Bonus');
+      setSeoTitle('New Yono Games 2026 - Instant Withdrawal Apps & Top APK Download');
       setSeoDescription('Download latest 2026 All New Yono Games APKs. Get daily promo codes, ₹51-₹1500 signup cash bonuses, ₹100 instant UPI withdrawals & virus-free verified apps.');
-      setSeoKeywords('all new yono games 2026, all yono apps list, yono apk download, yono rummy bonus, yono 777 apk, yono games download 2026, all yono vip');
+      setSeoKeywords('new yono games 2026, instant withdrawal apps, new yono games 2026 list, all new yono games 2026, new yono app 2026, instant upi withdrawal game apps, new yono games 2026 download, yono games apk download 2026');
     } else if (type === 'bonus_upi') {
-      setSeoTitle('All Yono Games 2026 - ₹1500 Signup Bonus & Instant ₹100 UPI Withdrawal');
+      setSeoTitle('Instant Withdrawal Apps & New Yono Games 2026 - ₹100 Fast UPI Payout');
       setSeoDescription('Claim highest signup bonus in All New Yono Apps. Instant ₹100 minimum bank/UPI transfer, 60% lifetime refer commission, and 100% verified real cash games.');
-      setSeoKeywords('yono rummy 500 bonus, all yono games with ₹500 bonus, low withdrawal yono app, yono instant upi withdrawal, yono refer and earn');
+      setSeoKeywords('instant withdrawal apps, instant withdrawal rummy apps, fastest instant withdrawal rummy app, minimum withdrawal 100 rummy app instant withdrawal, yono instant upi withdrawal, instant cash withdrawal games');
     } else if (type === 'brand_authority') {
       setSeoTitle('Official All Yono Games APK Portal 2026 - Safe & Virus-Free Download');
       setSeoDescription('The authorized catalog of all legitimate Yono games. Compare reviews, download sizes, bonuses, and direct official APK download mirrors.');

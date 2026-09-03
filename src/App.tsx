@@ -38,9 +38,9 @@ const WITHDRAWALS_STORAGE_KEY = 'yono_withdrawals_v12';
 const AUTH_STORAGE_KEY = 'yono_admin_auth_session_v12';
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: 'All New Yono Games & APK Downloads (2026 List) - Download New Yono App & Games',
-  metaDescription: 'Download All New Yono Games 2026 List: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & all verified APKs with instant ₹5-₹777 welcome bonuses & ₹100 instant UPI withdrawals.',
-  metaKeywords: 'jaiho 777 apk download, jaiho 777, jaiho777 apk, hindi 777 apk download, hindi777 apk, hindi 777 yono, rummy 888 apk download, rummy888 vip apk, share slots apk download, all new yono games, new yono app launch today, yono all games list 2026, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus, yono games download',
+  siteTitle: 'All New Yono Games 2026 - Instant Withdrawal Apps & APK Download (Official List)',
+  metaDescription: 'Download All New Yono Games 2026 List & top instant withdrawal apps: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & 50+ verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals.',
+  metaKeywords: 'new yono games 2026, instant withdrawal apps, new yono games 2026 list, instant withdrawal rummy apps, all new yono games 2026, instant upi withdrawal game apps, new yono games 2026 download, fastest instant withdrawal rummy app, new yono app 2026, minimum withdrawal 100 rummy app instant withdrawal, new yono games launch today 2026, instant withdrawal cash games 2026, real money instant withdrawal apps, latest new yono games 2026 apk, new yono rummy games 2026, yono instant withdrawal app, jaiho 777 apk download, hindi 777 apk download, rummy 888 apk download, share slots apk download, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus, yono games download',
   canonicalUrl: 'https://yono-game.vercel.app',
   siteAuthor: 'All New Yono Apps Official Portal',
   googleSiteVerification: 'qrp2K5vYd82Cx3k1E2_0oUczGSXl3c9LcNhUjr686gY',

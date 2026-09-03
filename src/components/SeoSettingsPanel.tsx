@@ -35,11 +35,11 @@ export const SeoSettingsPanel: React.FC<SeoSettingsPanelProps> = ({
   );
   const [siteDescription, setSiteDescription] = useState(
     siteSettings.siteDescription ||
-      'Download All New Yono Games & Apps 2026 list with ₹51 to ₹1500 sign-up bonus, ₹100 instant minimum UPI withdrawal, daily promo codes and safe verified APK files.'
+      'Download All New Yono Games 2026 List & top instant withdrawal apps with ₹51 to ₹1500 sign-up bonus, ₹100 instant minimum UPI withdrawal, daily promo codes and safe verified APK files.'
   );
   const [metaKeywords, setMetaKeywords] = useState(
     siteSettings.metaKeywords ||
-      'all yono apps, yono games apk download, all new yono app 2026, yono vip, yono rummy 500 bonus, yono slots 777, yono games list, yono referral code'
+      'new yono games 2026, instant withdrawal apps, new yono games 2026 list, instant withdrawal rummy apps, all new yono games 2026, instant upi withdrawal game apps, new yono games 2026 download, fastest instant withdrawal rummy app, new yono app 2026, minimum withdrawal 100 rummy app instant withdrawal, new yono games launch today 2026, instant withdrawal cash games 2026, real money instant withdrawal apps, latest new yono games 2026 apk, new yono rummy games 2026, yono instant withdrawal app'
   );
   const [canonicalUrl, setCanonicalUrl] = useState(
     siteSettings.canonicalUrl || (typeof window !== 'undefined' ? window.location.origin : 'https://yono-game.vercel.app')
@@ -60,15 +60,18 @@ export const SeoSettingsPanel: React.FC<SeoSettingsPanelProps> = ({
 
   // Keyword Quick-Add Chips
   const keywordSuggestions = [
-    'all yono games 2026',
-    'yono apk download',
-    '₹500 sign-up bonus',
+    'new yono games 2026',
+    'instant withdrawal apps',
+    'new yono games 2026 list',
+    'instant withdrawal rummy apps',
+    'minimum withdrawal 100 rummy app instant withdrawal',
+    'fastest instant withdrawal rummy app',
+    'all new yono games 2026',
+    'yono instant withdrawal app',
+    'new yono games 2026 download',
     'instant UPI withdrawal',
-    'yono 777 official',
-    'yono rummy vip',
-    'new teen patti app',
-    'daily promo codes',
-    'real cash earning app'
+    '₹500 sign-up bonus',
+    'daily promo codes'
   ];
 
   const handleAddKeyword = (kw: string) => {

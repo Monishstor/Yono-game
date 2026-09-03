@@ -30,5 +30,15 @@ export const FAQ_DATA: FaqItem[] = [
     category: 'general',
     question: 'Which Yono App gives the highest daily bonus and cashback in 2026?',
     answer: 'Currently, Yono VIP Games and Gold Yono Rummy offer the highest welcome packages (up to ₹500 - ₹1500 bonus pack), while Yono 777 and Yono Arcade provide the most consistent daily lucky wheel spins, check-in rewards, and weekend cashback rebates.'
+  },
+  {
+    category: 'general',
+    question: 'What are the best New Yono Games 2026 available for Android download?',
+    answer: 'The top trending New Yono Games 2026 list includes Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, and Yono Arcade. Each verified APK comes with verified welcome bonuses up to ₹777 and instant UPI withdrawals.'
+  },
+  {
+    category: 'withdrawal',
+    question: 'Which Instant Withdrawal Apps offer the fastest ₹100 UPI cashouts in 2026?',
+    answer: 'The top verified instant withdrawal apps in the Yono network include Jaiho 777, Yono Games, Rummy 888, and Slots Winner. They feature automated 24/7 payout gateways supporting Google Pay, PhonePe, Paytm, and BHIM UPI with minimum withdrawal thresholds of just ₹100 and transaction speeds of 1 to 3 minutes.'
   }
 ];
