@@ -1,0 +1,42 @@
+name: Daily AI SEO & Indexing Agent
+
+on:
+  schedule:
+    # Runs everyday at 04:00 AM UTC (09:30 AM IST) automatically
+    - cron: '0 4 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  seo-daily-audit-and-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Autonomous AI SEO & Indexing Agent
+        env:
+          SITE_URL: "https://yono-game.vercel.app"
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          chmod +x seo_agent.py
+          python3 seo_agent.py --fix --audit
+
+      - name: Commit and Push Updated Sitemap & Health Report
+        run: |
+          git config --global user.name "AI-SEO-Indexing-Agent[bot]"
+          git config --global user.email "ai-seo-bot@users.noreply.github.com"
+          git add public/sitemap.xml public/seo-audit-report.json seo_agent_history.log || true
+          if git diff --staged --quiet; then
+            echo "No SEO changes needed today. Everything is pristine."
+          else
+            git commit -m "chore(seo): autonomous daily indexing audit & sitemap refresh [skip ci]"
+            git push
+          fi

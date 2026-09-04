@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
+import { exec } from 'child_process';
 import { createServer as createViteServer } from 'vite';
 import { getAllApps, upsertApp, getSiteSettings, updateSiteSettings } from './src/db/queries.ts';
 
@@ -61,6 +62,47 @@ async function startServer() {
     } catch (error: any) {
       console.error('Error updating settings in Cloud SQL:', error);
       res.status(500).json({ error: error.message || 'Database save error' });
+    }
+  });
+
+  // Autonomous AI SEO & Indexing Agent Routes
+  app.get('/api/seo/agent-report', (req, res) => {
+    try {
+      const reportPath = path.join(process.cwd(), 'public', 'seo-audit-report.json');
+      if (fs.existsSync(reportPath)) {
+        const raw = fs.readFileSync(reportPath, 'utf-8');
+        res.json(JSON.parse(raw));
+      } else {
+        res.status(404).json({ error: 'No audit report found. Please trigger an audit first.' });
+      }
+    } catch (error: any) {
+      console.error('Error reading SEO audit report:', error);
+      res.status(500).json({ error: error.message || 'Error reading report' });
+    }
+  });
+
+  app.post('/api/seo/agent-audit', (req, res) => {
+    try {
+      console.log('Triggering autonomous AI SEO agent audit via Python...');
+      const pythonScript = path.join(process.cwd(), 'seo_agent.py');
+      exec(`python3 "${pythonScript}" --fix --audit`, { timeout: 35000, maxBuffer: 1024 * 1024 * 5 }, (error, stdout, stderr) => {
+        if (error) {
+          console.error('Python SEO agent execution error:', error, stderr);
+        }
+        const reportPath = path.join(process.cwd(), 'public', 'seo-audit-report.json');
+        if (fs.existsSync(reportPath)) {
+          try {
+            const raw = fs.readFileSync(reportPath, 'utf-8');
+            return res.json({ success: true, report: JSON.parse(raw), stdout });
+          } catch (readErr: any) {
+            return res.status(500).json({ error: 'Failed to parse generated report', details: readErr.message });
+          }
+        }
+        return res.json({ success: !error, output: stdout, error: error?.message });
+      });
+    } catch (err: any) {
+      console.error('Error in agent-audit endpoint:', err);
+      res.status(500).json({ error: err.message || 'Audit execution error' });
     }
   });
 

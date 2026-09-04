@@ -41,11 +41,13 @@ import {
   RefreshCw,
   SearchCode,
   Users,
-  Mail
+  Mail,
+  Bot
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 import { WordPressIntegration } from './WordPressIntegration';
 import { AiHealthMonitor } from './AiHealthMonitor';
+import { AiIndexerMindPanel } from './AiIndexerMindPanel';
 import { openGoogleFilePicker } from '../lib/googlePicker';
 
 interface AdminPanelProps {
@@ -69,7 +71,7 @@ interface AdminPanelProps {
   onLogout: () => void;
 }
 
-type AdminTab = 'dashboard' | 'apps' | 'health' | 'promos' | 'ticker' | 'withdrawals' | 'seo' | 'settings' | 'wordpress';
+type AdminTab = 'dashboard' | 'apps' | 'health' | 'ai-indexer' | 'promos' | 'ticker' | 'withdrawals' | 'seo' | 'settings' | 'wordpress';
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({
   apps,
@@ -445,6 +447,24 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
             </div>
             <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${activeTab === 'health' ? 'bg-slate-950/40 text-white font-bold' : 'bg-emerald-500/20 text-emerald-300 font-bold'}`}>
               Auto-Fix
+            </span>
+          </button>
+
+          <button
+            id="admin-tab-ai-indexer"
+            onClick={() => setActiveTab('ai-indexer')}
+            className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold transition-all ${
+              activeTab === 'ai-indexer'
+                ? 'bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 text-white shadow-lg shadow-violet-600/30 ring-1 ring-cyan-400'
+                : 'bg-violet-950/40 text-violet-300 hover:bg-violet-900/60 hover:text-white border border-violet-500/30'
+            }`}
+          >
+            <div className="flex items-center gap-3">
+              <Bot className="w-4 h-4 text-cyan-400 animate-pulse" />
+              <span className="font-extrabold">AI Auto-Indexer Mind</span>
+            </div>
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${activeTab === 'ai-indexer' ? 'bg-slate-950/40 text-white font-bold' : 'bg-cyan-500/20 text-cyan-300 font-bold'}`}>
+              Daily Agent
             </span>
           </button>
 
@@ -1957,6 +1977,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               }}
               onEditApp={onEditApp}
             />
+          )}
+
+          {/* ========================================================
+              TAB: AUTONOMOUS AI SEO & INDEXING MIND (PYTHON + GEMINI)
+          ======================================================== */}
+          {activeTab === 'ai-indexer' && (
+            <AiIndexerMindPanel />
           )}
 
           {/* ========================================================
