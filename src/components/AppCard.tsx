@@ -77,7 +77,7 @@ export const AppCard: React.FC<AppCardProps> = React.memo(({ app, onDownload, on
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5">
               <a
-                href={`/?app=${app.slug || app.id}`}
+                href={`/${app.slug || app.id}`}
                 onClick={(e) => {
                   e.preventDefault();
                   onViewDetails(app);

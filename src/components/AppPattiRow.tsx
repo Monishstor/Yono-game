@@ -103,7 +103,7 @@ export const AppPattiRow: React.FC<AppPattiRowProps> = React.memo(({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <a
-              href={`/?app=${app.slug || app.id}`}
+              href={`/${app.slug || app.id}`}
               onClick={(e) => {
                 if (onViewDetails) {
                   e.preventDefault();

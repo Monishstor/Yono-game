@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Crown, Send, ShieldAlert, Share2, MessageCircle, Copy, Check } from 'lucide-react';
+import { Crown, Send, ShieldAlert, Share2, MessageCircle, Copy, Check, Download, ArrowUpRight } from 'lucide-react';
+import { YONO_APPS } from '../data/appsData';
 
 interface FooterProps {
   onOpenPromo: () => void;
@@ -203,6 +204,32 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
+        </div>
+
+        {/* SEO Internal Links Cloud: 50+ Verified Yono Games Directory */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-3">
+          <div className="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-slate-800/80">
+            <h4 className="font-black text-white text-xs tracking-wider flex items-center gap-2 font-['Outfit',sans-serif]">
+              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span>All 50+ Verified Yono Games APK Download Directory (Direct Links)</span>
+            </h4>
+            <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+              50 Working APKs • 100% Indexable
+            </span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-3 gap-y-2 text-[11px]">
+            {YONO_APPS.map((app) => (
+              <a
+                key={app.id}
+                href={`/${app.slug || app.id}`}
+                className="text-slate-400 hover:text-amber-400 truncate flex items-center gap-1.5 transition-colors py-0.5"
+                title={`${app.name} APK Download (Bonus ₹${app.signupBonus})`}
+              >
+                <span className="text-slate-600 dark:text-slate-500 font-mono text-[10px]">›</span>
+                <span className="truncate">{app.name}</span>
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Responsible Gaming & Statutory Disclaimer */}
