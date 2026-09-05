@@ -13,7 +13,6 @@ import {
   AlertCircle,
   Plus,
   Crown,
-  Gamepad2,
   FileCode,
   Download,
   Pin
