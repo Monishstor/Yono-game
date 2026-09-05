@@ -29,9 +29,10 @@ export function cleanContinuous(text: string | null | undefined): string {
  * Tokenizes text into unique non-empty words
  */
 export function tokenize(text: string | null | undefined): string[] {
-  const norm = normalizeText(text);
-  if (!norm) return [];
-  return norm.split(' ').filter(Boolean);
+  if (!text) return [];
+  const normalized = normalizeText(text);
+  const words = normalized.split(' ').filter(w => w.length > 0);
+  return Array.from(new Set(words));
 }
 
 /**
