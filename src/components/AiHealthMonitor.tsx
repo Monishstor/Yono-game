@@ -12,7 +12,6 @@ import {
   Info, 
   CheckCircle2, 
   Search, 
-  ExternalLink,
   Bot,
   Activity,
   Zap,
