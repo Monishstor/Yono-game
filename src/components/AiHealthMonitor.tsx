@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { YonoApp, SiteSettings, PromoCode } from '../types';
 import { HealthEngine, HealthReport, HealthIssue } from '../lib/healthEngine';
 import { 
@@ -46,6 +46,22 @@ export const AiHealthMonitor: React.FC<AiHealthMonitorProps> = ({
   const [autoHealFeedback, setAutoHealFeedback] = useState<string | null>(null);
   const [filterSeverity, setFilterSeverity] = useState<'all' | 'critical' | 'warning' | 'info'>('all');
   const [appSearch, setAppSearch] = useState('');
+
+  // Optimization: Group issues by appId in O(M) time, avoiding O(N*M) nested loops later.
+  const issuesByAppId = useMemo(() => {
+    const map = new Map<string, HealthIssue[]>();
+    for (const issue of report.issues) {
+      if (issue.appId) {
+        let issues = map.get(issue.appId);
+        if (!issues) {
+          issues = [];
+          map.set(issue.appId, issues);
+        }
+        issues.push(issue);
+      }
+    }
+    return map;
+  }, [report.issues]);
 
   // Re-scan when inputs change
   const handleRunScan = () => {
@@ -421,7 +437,7 @@ export const AiHealthMonitor: React.FC<AiHealthMonitorProps> = ({
           {apps
             .filter(app => !appSearch || app.name.toLowerCase().includes(appSearch.toLowerCase()) || app.id.toLowerCase().includes(appSearch.toLowerCase()))
             .map((app) => {
-              const appIssues = report.issues.filter(i => i.appId === app.id);
+              const appIssues = issuesByAppId.get(app.id) || [];
               const isHealthy = appIssues.length === 0;
 
               return (
