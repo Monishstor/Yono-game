@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lock, KeyRound, Eye, EyeOff, ShieldCheck, X, AlertCircle, Sparkles } from 'lucide-react';
+import { Lock, KeyRound, Eye, EyeOff, ShieldCheck, X, AlertCircle } from 'lucide-react';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -27,9 +27,9 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
       return;
     }
 
-    // Check against current configured admin pin or master default
+    // Check against current configured admin pin
     const trimmed = pinInput.trim();
-    if (trimmed === currentPin || trimmed === 'admin123' || trimmed === 'yono@2026' || trimmed === 'admin') {
+    if (trimmed === currentPin) {
       setError('');
       setPinInput('');
       onLoginSuccess();
@@ -71,7 +71,6 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
           <div>
             <label className="text-xs font-bold text-slate-300 block mb-1.5 flex items-center justify-between">
               <span>Admin Password / Security PIN</span>
-              <span className="text-[10px] text-amber-400 font-mono">Default: admin123</span>
             </label>
 
             <div className="relative">
@@ -86,7 +85,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
                   setPinInput(e.target.value);
                   setError('');
                 }}
-                placeholder="Enter password (e.g. admin123)..."
+                placeholder="Enter password..."
                 className="w-full bg-slate-950 text-slate-100 text-sm pl-10 pr-10 py-3 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 font-mono"
               />
               <button
@@ -105,16 +104,6 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
               </div>
             )}
           </div>
-
-          {/* Quick Default Button */}
-          <button
-            type="button"
-            onClick={() => setPinInput('admin123')}
-            className="w-full py-1.5 px-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-[11px] text-slate-400 hover:text-amber-300 border border-slate-800 transition-colors flex items-center justify-center gap-1.5"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Use default credentials (<strong>admin123</strong>)</span>
-          </button>
 
           <button
             type="submit"
