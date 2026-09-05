@@ -9,7 +9,6 @@ import {
   ArrowLeft, 
   Sparkles, 
   AlertCircle, 
-  CheckCircle2,
   Copy,
   Check
 } from 'lucide-react';
