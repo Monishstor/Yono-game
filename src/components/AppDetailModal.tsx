@@ -145,7 +145,7 @@ export const AppDetailModal: React.FC<AppDetailModalProps> = ({
                 </div>
                 <div>
                   <span className="text-slate-400 text-[11px] block">Payout Time</span>
-                  <span className="font-extrabold text-sky-400 text-sm">{app.withdrawalSpeed}</span>
+                  <span className="font-extrabold text-sky-400 text-sm">{app.withdrawalSpeed?.replace(/\s*\(.*\)/, '') || '1-3 Mins'}</span>
                 </div>
                 <div>
                   <span className="text-slate-400 text-[11px] block">Safety Rating</span>

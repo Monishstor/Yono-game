@@ -89,6 +89,61 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
     .filter((a) => a.id !== app.id)
     .slice(0, 4);
 
+  // Helper to cleanly format referral metrics without breaking grid proportions
+  const referralInfo = React.useMemo(() => {
+    const raw = app.referCommission || '30% Commission';
+    const parts = raw.split('+').map((p) => p.trim()).filter(Boolean);
+    const primary = parts[0] || '30% Comm.';
+    const extraPerks = parts.length > 1 ? parts.slice(1).join(' • ') : null;
+
+    let headline = primary;
+    if (/30%\s*(Lifetime\s*)?(Agent\s*)?Commission/i.test(primary)) {
+      headline = '30% Comm.';
+    } else if (/35%\s*(Unlimited\s*)?(Lifetime\s*)?(VIP\s*)?(Agent\s*)?Commission/i.test(primary)) {
+      headline = '35% Comm.';
+    } else if (/60%\s*Lifetime\s*Cashback/i.test(primary)) {
+      headline = '60% Cashback';
+    } else if (/100%\s*First\s*Deposit/i.test(primary)) {
+      headline = '100% Match';
+    } else if (/150%\s*(First\s*Deposit|Extra\s*Deposit|Cashback)/i.test(primary)) {
+      headline = '150% Match';
+    } else if (/200%\s*First\s*Deposit/i.test(primary)) {
+      headline = '200% Bonus';
+    } else if (/500%\s*First\s*Deposit/i.test(primary)) {
+      headline = '500% Bonus';
+    } else if (/Level 1/i.test(primary)) {
+      headline = '₹8 + 1% Comm.';
+    } else if (/200,000/i.test(primary)) {
+      headline = 'Up to ₹2 Lakh';
+    } else if (/1%\s*Lifetime/i.test(primary)) {
+      headline = '1% Win Comm.';
+    } else if (headline.length > 16) {
+      headline = headline.substring(0, 16).trim();
+    }
+
+    let sublabel = 'Lifetime Agent Share';
+    if (/Cashback|Deposit|Match|Bonus/i.test(headline)) {
+      sublabel = 'Instant Recharge Boost';
+    } else if (extraPerks) {
+      sublabel = '+ Daily VIP Rewards';
+    }
+
+    return { headline, sublabel, extraPerks };
+  }, [app.referCommission]);
+
+  // Clean payout speed (strip bracketed text for clean bold metric)
+  const payoutSpeedInfo = React.useMemo(() => {
+    const raw = app.withdrawalSpeed || '1-3 Minutes';
+    const m = raw.match(/^([^(]+)(?:\((.*)\))?$/);
+    if (m) {
+      return {
+        headline: m[1].trim(),
+        sublabel: m[2]?.trim() || 'Instant UPI & Bank'
+      };
+    }
+    return { headline: raw, sublabel: 'Instant UPI & Bank' };
+  }, [app.withdrawalSpeed]);
+
   // Game-Specific Programmatic FAQs
   const gameFaqs = [
     {
@@ -373,47 +428,112 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
           </div>
         </section>
 
-        {/* KEY HIGHLIGHTS & COMPARISON METRICS */}
-        <section id="game-specs-grid" className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-500/20 border border-amber-200 dark:border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
-              <Gift className="w-6 h-6" />
+        {/* KEY HIGHLIGHTS & COMPARISON METRICS (Balanced 4-Grid Cards) */}
+        <section id="game-specs-grid" className="space-y-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            
+            {/* 1. Sign-Up Bonus Card */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-amber-400/50 dark:hover:border-amber-500/40 transition-all flex flex-col justify-between min-h-[112px] sm:min-h-[120px]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 truncate">
+                  Sign-Up Bonus
+                </span>
+                <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-500/20 border border-amber-200 dark:border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
+                  <Gift className="w-4 h-4" />
+                </div>
+              </div>
+              <div className="my-1">
+                <div className="text-xl sm:text-2xl font-black text-amber-600 dark:text-amber-400 font-['Outfit',sans-serif] tracking-tight leading-tight truncate">
+                  ₹{app.signupBonus} Free
+                </div>
+              </div>
+              <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                <span className="truncate">Instant On Registration</span>
+              </div>
             </div>
-            <div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-400 uppercase font-semibold">Sign-Up Bonus</div>
-              <div className="text-lg font-black text-amber-600 dark:text-amber-400">₹{app.signupBonus} Free</div>
+
+            {/* 2. Min Withdrawal Card */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-emerald-400/50 dark:hover:border-emerald-500/40 transition-all flex flex-col justify-between min-h-[112px] sm:min-h-[120px]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 truncate">
+                  Min Withdrawal
+                </span>
+                <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                  <Wallet className="w-4 h-4" />
+                </div>
+              </div>
+              <div className="my-1">
+                <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 font-['Outfit',sans-serif] tracking-tight leading-tight truncate">
+                  ₹{app.minWithdrawal}
+                </div>
+              </div>
+              <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                <span className="truncate">Instant UPI & Bank IMPS</span>
+              </div>
             </div>
+
+            {/* 3. Payout Speed Card */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-sky-400/50 dark:hover:border-sky-500/40 transition-all flex flex-col justify-between min-h-[112px] sm:min-h-[120px]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 truncate">
+                  Payout Speed
+                </span>
+                <div className="w-8 h-8 rounded-xl bg-sky-50 dark:bg-sky-500/20 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
+                  <Clock className="w-4 h-4" />
+                </div>
+              </div>
+              <div className="my-1">
+                <div className="text-xl sm:text-2xl font-black text-sky-600 dark:text-sky-400 font-['Outfit',sans-serif] tracking-tight leading-tight truncate">
+                  {payoutSpeedInfo.headline}
+                </div>
+              </div>
+              <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <span className="truncate">{payoutSpeedInfo.sublabel}</span>
+              </div>
+            </div>
+
+            {/* 4. Referral Commission Card */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-purple-400/50 dark:hover:border-purple-500/40 transition-all flex flex-col justify-between min-h-[112px] sm:min-h-[120px]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 truncate">
+                  Referral Bonus
+                </span>
+                <div className="w-8 h-8 rounded-xl bg-purple-50 dark:bg-purple-500/20 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
+                  <Trophy className="w-4 h-4" />
+                </div>
+              </div>
+              <div className="my-1">
+                <div className="text-xl sm:text-2xl font-black text-purple-600 dark:text-purple-400 font-['Outfit',sans-serif] tracking-tight leading-tight truncate">
+                  {referralInfo.headline}
+                </div>
+              </div>
+              <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                <span className="truncate">{referralInfo.sublabel}</span>
+              </div>
+            </div>
+
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-              <Wallet className="w-6 h-6" />
+          {/* Extra VIP Perks Banner (when app has rich login/deposit/invite bonuses) */}
+          {referralInfo.extraPerks && (
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-emerald-500/10 border border-amber-500/20 dark:border-purple-500/30 flex items-center gap-2.5 shadow-xs">
+              <div className="w-7 h-7 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div className="min-w-0 flex-1 text-xs">
+                <span className="font-black text-amber-600 dark:text-amber-400 mr-2 uppercase text-[10px] tracking-wider bg-amber-500/15 px-2 py-0.5 rounded-full border border-amber-500/30 inline-block">
+                  VIP Rewards
+                </span>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">
+                  {referralInfo.extraPerks}
+                </span>
+              </div>
             </div>
-            <div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-400 uppercase font-semibold">Min Withdrawal</div>
-              <div className="text-lg font-black text-emerald-600 dark:text-emerald-400">₹{app.minWithdrawal} (UPI)</div>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-500/20 border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
-              <Clock className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-400 uppercase font-semibold">Payout Speed</div>
-              <div className="text-lg font-black text-sky-600 dark:text-sky-400">{app.withdrawalSpeed}</div>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-500/20 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
-              <Trophy className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-400 uppercase font-semibold">Referral Bonus</div>
-              <div className="text-lg font-black text-purple-600 dark:text-purple-400">{app.referCommission || '30% Comm'}</div>
-            </div>
-          </div>
+          )}
         </section>
 
         {/* GAMES LIST & KEY FEATURES */}
