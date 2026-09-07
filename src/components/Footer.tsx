@@ -105,19 +105,19 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Brand Info */}
           <div className="space-y-3 md:col-span-2">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-slate-950 font-black shadow-lg ring-2 ring-amber-500/40 overflow-hidden p-0.5">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg overflow-hidden shrink-0 shadow-md shadow-emerald-950/50 ring-1 ring-amber-400/70">
                 <img 
-                  src="/main-site-logo.svg" 
-                  alt="All New Yono Apps Official" 
-                  className="w-full h-full object-cover rounded-lg"
-                  width="40"
-                  height="40"
+                  src="/yono-header-logo.svg" 
+                  alt="Yono Games" 
+                  className="w-full h-full object-cover"
+                  width="36"
+                  height="36"
                   loading="lazy"
                 />
               </div>
-              <span className="font-black text-lg text-white font-['Outfit',sans-serif]">
-                ALL NEW <span className="text-amber-400">YONO APPS</span>
+              <span className="font-['Outfit',sans-serif] font-black text-lg sm:text-xl md:text-2xl tracking-tight text-white leading-none">
+                YONO GAMES
               </span>
             </div>
             <p className="text-slate-300 text-xs leading-relaxed max-w-md">
@@ -246,7 +246,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Copyright & Disclaimer Bar */}
         <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
           <div>
-            © 2026 All New Yono Games — Independent APK & Skill Gaming Portal.
+            © 2026 YONO GAMES — Independent APK & Skill Gaming Portal.
           </div>
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
             <button onClick={() => onOpenLegal?.('contact')} className="hover:text-amber-400 transition-colors cursor-pointer">Contact Us</button>

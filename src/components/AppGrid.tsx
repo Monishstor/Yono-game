@@ -1,7 +1,7 @@
 import React from 'react';
 import { YonoApp } from '../types';
 import { AppPattiRow } from './AppPattiRow';
-import { Sparkles, RefreshCw, AlertCircle, ShieldCheck, Flame } from 'lucide-react';
+import { RefreshCw, AlertCircle, Flame } from 'lucide-react';
 
 interface AppGridProps {
   apps: YonoApp[];
@@ -23,11 +23,11 @@ export const AppGrid: React.FC<AppGridProps> = ({
   return (
     <div id="all-yono-apps-list-container" className="space-y-4">
       
-      {/* Header Info Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-2 text-xs text-slate-600 dark:text-slate-400">
-        <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
-          <Flame className="w-4 h-4 text-amber-500 dark:text-amber-400" />
-          {searchQuery ? (
+      {/* Header Info Bar - Right above the game download cards */}
+      {searchQuery ? (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-2 text-xs text-slate-600 dark:text-slate-400">
+          <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+            <Flame className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             <span className="flex items-center gap-2">
               <span>Showing <strong>{apps.length}</strong> results for &ldquo;<span className="text-amber-400">{searchQuery}</span>&rdquo;</span>
               <button 
@@ -37,15 +37,19 @@ export const AppGrid: React.FC<AppGridProps> = ({
                 Clear ✕
               </button>
             </span>
-          ) : (
-            <span>All Working Yono Apps List ({apps.length} Total Available)</span>
-          )}
+          </div>
         </div>
-        <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          <span>Daily Tested & Verified APKs</span>
+      ) : (
+        /* Yono Games Download Header right above cards - Centered (Bich Mein) */
+        <div className="flex items-center justify-center gap-3 px-2 pt-1 pb-1 text-center">
+          <div className="h-[1.5px] w-6 sm:w-14 bg-gradient-to-r from-transparent to-amber-400/70" />
+          <h2 className="text-sm sm:text-base md:text-lg font-black tracking-wider uppercase">
+            <span className="text-amber-400">Yono Games</span>{' '}
+            <span className="text-white">Download</span>
+          </h2>
+          <div className="h-[1.5px] w-6 sm:w-14 bg-gradient-to-l from-transparent to-amber-400/70" />
         </div>
-      </div>
+      )}
 
       {apps.length === 0 ? (
         <div className="text-center py-16 px-4 bg-white dark:bg-slate-900/60 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 max-w-lg mx-auto">

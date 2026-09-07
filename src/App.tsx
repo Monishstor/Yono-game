@@ -2,11 +2,10 @@ import React, { useState, useMemo, useEffect, Suspense, lazy, useCallback } from
 import { YONO_APPS } from './data/appsData';
 import { PROMO_CODES, LIVE_WITHDRAWALS } from './data/promoCodes';
 import { YonoApp, AppCategory, PromoCode, SiteSettings, WithdrawalRecord } from './types';
-import { LiveTicker } from './components/LiveTicker';
 import { Header } from './components/Header';
 import { AppGrid } from './components/AppGrid';
+import { GamesIndexBoard } from './components/GamesIndexBoard';
 import { SeoSchema } from './components/SeoSchema';
-import { HeroSection } from './components/HeroSection';
 import { Loader2 } from 'lucide-react';
 import { startAppsSync, startSettingsSync, saveAppToFirestore, deleteAppFromFirestore, saveSettingsToFirestore } from './lib/firebaseSync';
 import { useDebounce } from './hooks/useDebounce';
@@ -16,7 +15,6 @@ import { indexAndSearchApps, SortOption } from './lib/searchIndexer';
 const InstallGuide = lazy(() => import('./components/InstallGuide').then(m => ({ default: m.InstallGuide })));
 const FaqSection = lazy(() => import('./components/FaqSection').then(m => ({ default: m.FaqSection })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
-const ResponsibleGamingBanner = lazy(() => import('./components/ResponsibleGamingBanner').then(m => ({ default: m.ResponsibleGamingBanner })));
 const LiveWithdrawalFeed = lazy(() => import('./components/LiveWithdrawalFeed').then(m => ({ default: m.LiveWithdrawalFeed })));
 
 const AdminPanel = lazy(() => import('./components/AdminPanel').then(m => ({ default: m.AdminPanel })));
@@ -629,16 +627,6 @@ export default function App() {
       {/* Automated Programmatic Google SEO & Schema.org JSON-LD Injector (Supports Single-App & Full-List) */}
       <SeoSchema apps={apps} activeApp={activeLandingApp} siteSettings={siteSettings} siteTitle={siteSettings.siteTitle} />
 
-      {/* 18+ Age & Responsible Gaming Legal Compliance Banner */}
-      <ResponsibleGamingBanner showAgeDisclaimer={siteSettings.showAgeDisclaimer} />
-
-      {/* Top Notice Ticker */}
-      <LiveTicker
-        onOpenPromo={() => setIsPromoCodesOpen(true)}
-        notices={siteSettings.notices}
-        showTicker={siteSettings.showTicker}
-      />
-
       {/* Main Header & Nav */}
       <Header
         searchQuery={searchQuery}
@@ -689,7 +677,12 @@ export default function App() {
         ) : (
           /* ALL YONO GAMES CATALOG VIEW */
           <>
-            <HeroSection />
+            {/* Yono Games Full Directory Index Board (Requested 4-Corner Rounded Box) */}
+            <GamesIndexBoard
+              apps={apps}
+              onSelectApp={handleOpenLandingPage}
+            />
+
             {/* All Yono Apps Catalog Section */}
             <section id="all-apps-section" className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {isAdminLoggedIn && (

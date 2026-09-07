@@ -7,9 +7,6 @@ import {
   Search, 
   Send, 
   Crown, 
-  TableProperties, 
-  Gift, 
-  HelpCircle, 
   Download, 
   Flame,
   ShieldCheck,
@@ -74,16 +71,16 @@ export const Header: React.FC<HeaderProps> = ({
         
         {/* YouTube-Style Full Width Active Search Header for Mobile */}
         {isMobileSearchOpen ? (
-          <div className="flex md:hidden items-center h-16 gap-2 animate-in fade-in duration-200">
+          <div className="flex md:hidden items-center h-16 sm:h-20 gap-2.5 animate-in fade-in duration-200">
             <button
               id="mobile-close-search-btn"
               onClick={() => {
                 setIsMobileSearchOpen(false);
               }}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900 active:scale-95 transition-all cursor-pointer"
+              className="w-9 h-9 rounded-xl text-slate-300 hover:text-white bg-slate-900 border border-slate-800 flex items-center justify-center active:scale-95 transition-all cursor-pointer shrink-0"
               aria-label="Back to normal header"
             >
-              <ArrowLeft className="w-5 h-5 text-amber-400" />
+              <ArrowLeft className="w-4.5 h-4.5 text-amber-400" />
             </button>
 
             <div className="relative flex-1">
@@ -100,16 +97,16 @@ export const Header: React.FC<HeaderProps> = ({
                   }
                 }}
                 placeholder="Search games (BET 213, DIWA, Jaiho 91...)"
-                className="w-full bg-slate-900 text-slate-100 placeholder-slate-400 text-sm pl-9 pr-9 py-2.5 rounded-full border border-slate-700 focus:outline-hidden focus:border-amber-400 shadow-inner"
+                className="w-full bg-slate-900 text-slate-100 placeholder-slate-400 text-xs sm:text-sm pl-9 pr-9 py-2 rounded-xl border border-slate-700 focus:outline-hidden focus:border-amber-400 shadow-inner"
               />
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
+              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" />
               {searchQuery ? (
                 <button 
                   onClick={() => onSearchChange('')}
                   aria-label="Clear search"
-                  className="absolute right-3 top-2.5 w-5 h-5 rounded-full bg-slate-800 text-slate-300 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
+                  className="absolute right-2.5 top-2.5 w-4.5 h-4.5 rounded-full bg-slate-800 text-slate-300 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <X className="w-3 h-3" />
                 </button>
               ) : null}
             </div>
@@ -118,49 +115,42 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => {
                 onScrollToSection('all-apps-section');
               }}
-              className="px-3 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs shadow-md active:scale-95"
+              className="px-3.5 py-2 rounded-xl bg-amber-500 text-slate-950 font-extrabold text-xs shadow-md active:scale-95 shrink-0"
             >
               Go
             </button>
           </div>
         ) : (
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
+          <div className="flex items-center justify-between min-h-[56px] sm:min-h-[64px] py-1.5 sm:py-2 gap-3 sm:gap-5">
             
-            {/* Logo & Brand */}
-            <div className="flex items-center gap-3">
+            {/* Logo & Brand Lockup (YouTube Style: Icon + Inline Text) */}
+            <div className="flex items-center min-w-0">
               <a 
                 href="/" 
                 id="header-brand-logo"
-                className="flex items-center gap-3 group text-decoration-none"
+                className="flex items-center gap-2 sm:gap-2.5 group text-decoration-none select-none shrink-0"
                 onClick={(e) => {
                   e.preventDefault();
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center shadow-md dark:shadow-lg dark:shadow-amber-500/20 ring-2 ring-amber-400/50 transform group-hover:scale-105 transition-all overflow-hidden p-0.5">
+                {/* Authentic Yono Games Royal Emerald & Gold Emblem */}
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg overflow-hidden shrink-0 shadow-md shadow-emerald-950/50 ring-1 ring-amber-400/70 transform group-hover:scale-105 transition-all">
                   <img 
-                    src={resolveAssetUrl('main-site-logo.svg')} 
-                    alt="All New Yono Apps Official Logo" 
-                    className="w-full h-full object-cover rounded-lg"
-                    width="48"
-                    height="48"
+                    src={resolveAssetUrl('yono-header-logo.svg')} 
+                    alt="Yono Games" 
+                    className="w-full h-full object-cover"
+                    width="36"
+                    height="36"
                     loading="eager"
                     decoding="async"
                   />
                 </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 dark:text-white font-['Outfit',sans-serif]">
-                      ALL NEW <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 dark:from-amber-400 dark:via-yellow-300 dark:to-amber-500">YONO APPS</span>
-                    </span>
-                    <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-xs font-bold bg-amber-50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
-                      2026 OFFICIAL
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                    Verified APKs • Instant Bonus ₹51-₹1500 • Safe & Fast UPI
-                  </p>
-                </div>
+
+                {/* YouTube-Style Inline Brand Name in Uppercase (Bade Akshar) */}
+                <span className="font-['Outfit',sans-serif] font-black text-lg sm:text-xl md:text-2xl tracking-tight text-white leading-none flex items-center">
+                  YONO GAMES
+                </span>
               </a>
             </div>
 
@@ -179,14 +169,14 @@ export const Header: React.FC<HeaderProps> = ({
                     }
                   }}
                   placeholder="Search BET 213, Jaiho 91, Rummy, Aviator..."
-                  className="w-full bg-slate-50 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm pl-9 pr-8 py-2 rounded-xl border border-slate-200 dark:border-slate-700/80 focus:outline-hidden focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                  className="w-full bg-slate-900/90 text-slate-100 placeholder-slate-400 text-sm pl-10 pr-9 py-2.5 rounded-2xl border border-slate-700/80 focus:outline-hidden focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all shadow-inner"
                 />
-                <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-2.5 pointer-events-none" />
+                <Search className="w-4.5 h-4.5 text-slate-400 absolute left-3.5 top-3 pointer-events-none" />
                 {searchQuery && (
                   <button 
                     onClick={() => onSearchChange('')}
                     aria-label="Clear search"
-                    className="absolute right-2.5 top-2.5 w-4 h-4 rounded-full bg-slate-200 dark:bg-slate-700 text-[10px] text-slate-600 dark:text-slate-300 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
+                    className="absolute right-3 top-3 w-4 h-4 rounded-full bg-slate-700 text-[10px] text-slate-300 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
                   >
                     ✕
                   </button>
@@ -277,67 +267,31 @@ export const Header: React.FC<HeaderProps> = ({
                 </>
               )}
 
-              {/* View Toggle */}
-              <button
-                id="header-toggle-table-btn"
-                onClick={onToggleTableView}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all border cursor-pointer ${
-                  isTableView 
-                    ? 'bg-amber-500/20 border-amber-400 text-amber-300 shadow-sm' 
-                    : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border-slate-700'
-                }`}
-                title="Toggle Comparison Table"
+              {/* Telegram Button (Same as mobile) */}
+              <a
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-tr from-sky-600 via-sky-500 to-cyan-400 text-white font-bold text-xs shadow-md shadow-sky-500/25 hover:scale-105 active:scale-95 transition-all"
+                title="Join Official Telegram"
+                aria-label="Join Official Telegram"
               >
-                <TableProperties className="w-4 h-4" />
-                <span>{isTableView ? 'Card View' : 'Bonus Table'}</span>
-              </button>
-
-              {/* Daily Promo Codes */}
-              <button
-                id="header-promo-vault-btn"
-                onClick={onOpenPromoCodes}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                <Gift className="w-3.5 h-3.5 text-amber-400" />
-                <span>Promo Codes</span>
-              </button>
-
-              {/* Daily Streak Check-in */}
-              <button
-                id="header-daily-checkin-btn"
-                onClick={onOpenDailyCheckin}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 text-slate-950 shadow-md shadow-orange-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                title="Daily Check-in & Claim Free Coins"
-              >
-                <Flame className="w-3.5 h-3.5 stroke-[2.5]" />
-                <span>Daily Check-in</span>
-              </button>
-
-              {/* Contact & Helpdesk */}
-              {onOpenContact && (
-                <button
-                  id="header-contact-btn"
-                  onClick={onOpenContact}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                  title="Contact Support & Helpdesk"
-                >
-                  <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Help / Contact</span>
-                </button>
-              )}
+                <Send className="w-3.5 h-3.5 -translate-x-0.5" />
+                <span>Telegram</span>
+              </a>
             </div>
 
             {/* Mobile Header Icons (YouTube style Search icon + Telegram + Admin) */}
-            <div className="flex md:hidden items-center gap-2">
+            <div className="flex md:hidden items-center gap-2 shrink-0">
               {isAdminLoggedIn && (
                 <button
                   id="mobile-admin-panel-btn"
                   onClick={onOpenAdminPanel}
-                  className="px-2.5 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-black text-xs flex items-center gap-1 shadow-md"
+                  className="px-2.5 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-black text-xs flex items-center gap-1 shadow-md active:scale-95"
                   title="Open Admin Panel"
                 >
-                  <ShieldCheck className="w-4 h-4 stroke-[2.5]" />
-                  <span className="text-[11px]">Admin</span>
+                  <ShieldCheck className="w-3.5 h-3.5 stroke-[2.5]" />
+                  <span className="text-[10px]">Admin</span>
                 </button>
               )}
 
@@ -345,11 +299,11 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="mobile-youtube-search-btn"
                 onClick={() => setIsMobileSearchOpen(true)}
-                className="flex items-center justify-center p-2 rounded-full bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 active:scale-90 transition-all cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-900/95 hover:bg-slate-800 text-slate-200 border border-slate-700/80 shadow-md active:scale-90 transition-all cursor-pointer shrink-0"
                 title="Search games (YouTube style)"
                 aria-label="Open Search"
               >
-                <Search className="w-4.5 h-4.5 text-amber-400" />
+                <Search className="w-4.5 h-4.5 text-amber-400 stroke-[2.2]" />
               </button>
 
               {/* Telegram Button */}
@@ -357,11 +311,11 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://t.me/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-2 rounded-full bg-sky-500 text-white shadow-md shadow-sky-500/20 active:scale-90 transition-all"
+                className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-gradient-to-tr from-sky-600 via-sky-500 to-cyan-400 text-white shadow-lg shadow-sky-500/25 active:scale-90 transition-all shrink-0"
                 title="Join Telegram"
                 aria-label="Join Official Telegram"
               >
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 -translate-x-0.5 translate-y-0.5" />
               </a>
             </div>
           </div>
