@@ -247,8 +247,8 @@ function generateAppHtml(app: YonoApp, scriptTag: string, styleTags: string): st
         <!-- App Overview Card -->
         <div style="background-color: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
           <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
-            <div style="width: 80px; height: 80px; background-color: #1e293b; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; border: 2px solid #f59e0b;">
-              🎮
+            <div style="width: 80px; height: 80px; background-color: #1e293b; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; border: 2px solid #f59e0b; overflow: hidden; shrink: 0;">
+              ${app.imageUrl ? `<img src="${app.imageUrl}" alt="${app.name} APK" style="width: 100%; height: 100%; object-fit: cover;" />` : (app.iconSymbol || '🎮')}
             </div>
             <div style="flex: 1; min-width: 250px;">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">

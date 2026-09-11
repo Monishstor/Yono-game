@@ -362,6 +362,23 @@ export const GameLandingPage: React.FC<GameLandingPageProps> = ({
                 <ExternalLink className="w-3 h-3 text-sky-500" />
               </a>
 
+              {/* DIRECT CUSTOMER SUPPORT CHAT (If Provided) */}
+              {app.customerServiceUrl && (
+                <a
+                  href={app.customerServiceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-3 rounded-xl bg-amber-50 dark:bg-amber-500/15 hover:bg-amber-100 dark:hover:bg-amber-500/25 text-amber-800 dark:text-amber-300 font-bold text-xs flex items-center justify-between transition-all border border-amber-300 dark:border-amber-500/30 cursor-pointer"
+                  title="24/7 Official Live Customer Service"
+                >
+                  <div className="flex items-center gap-2">
+                    <HelpCircle className="w-3.5 h-3.5 text-amber-500" />
+                    <span>24/7 Live Customer Service Helpdesk</span>
+                  </div>
+                  <ExternalLink className="w-3 h-3 text-amber-500" />
+                </a>
+              )}
+
               {/* Referral Code 1-Click Copy Box */}
               <div className="space-y-1.5 pt-1">
                 <div className="text-[11px] text-slate-600 dark:text-slate-400 font-semibold flex items-center justify-between">

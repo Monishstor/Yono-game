@@ -132,6 +132,8 @@ export default function App() {
             return {
               ...defaultApp,
               ...found,
+              imageUrl: defaultApp.imageUrl || found.imageUrl,
+              downloadUrl: defaultApp.downloadUrl || found.downloadUrl,
               pinToTop: defaultApp.pinToTop !== undefined ? defaultApp.pinToTop : found.pinToTop,
               pinToBottom: found.pinToBottom !== undefined ? found.pinToBottom : defaultApp.pinToBottom,
               isCustom: false
