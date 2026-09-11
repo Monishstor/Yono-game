@@ -5,7 +5,7 @@ import { FAQ_DATA } from '../src/data/faqData';
 import { YonoApp } from '../src/types';
 
 const BASE_URL = 'https://yono-game.vercel.app';
-const TODAY_DATE = '2026-09-02';
+const TODAY_DATE = '2026-09-11';
 const isDistMode = process.argv.includes('--dist');
 
 // 1. Build ItemList schema for all apps
@@ -391,8 +391,8 @@ function generateHomepageHtml(scriptTag: string, styleTags: string): string {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>All New Yono Games 2026 - Instant Withdrawal Apps & APK Download (Official List)</title>
-    <meta name="description" content="Download All New Yono Games 2026 List & top instant withdrawal apps: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & 50+ verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals." />
-    <meta name="keywords" content="new yono games 2026, instant withdrawal apps, new yono games 2026 list, instant withdrawal rummy apps, all new yono games 2026, instant upi withdrawal game apps, new yono games 2026 download, fastest instant withdrawal rummy app, new yono app 2026, minimum withdrawal 100 rummy app instant withdrawal, new yono games launch today 2026, instant withdrawal cash games 2026, real money instant withdrawal apps, latest new yono games 2026 apk, new yono rummy games 2026, yono instant withdrawal app, jaiho 777 apk download, hindi 777, rummy 888, share slots, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus" />
+    <meta name="description" content="Download All New Yono Games 2026 List & top instant withdrawal apps: Rummy 77, 101 Z, Money Rummy, Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & 50+ verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals." />
+    <meta name="keywords" content="rummy 77 apk download, rummy77 apk, rummy 77 app, 101z apk download, 101 z apk, 101 z download, money rummy apk, new yono games 2026, instant withdrawal apps, new yono games 2026 list, instant withdrawal rummy apps, all new yono games 2026, instant upi withdrawal game apps, new yono games 2026 download, fastest instant withdrawal rummy app, new yono app 2026, minimum withdrawal 100 rummy app instant withdrawal, new yono games launch today 2026, instant withdrawal cash games 2026, real money instant withdrawal apps, latest new yono games 2026 apk, new yono rummy games 2026, yono instant withdrawal app, jaiho 777 apk download, hindi 777, rummy 888, share slots, bet 213 apk, jaiho 91, club inr, max rummy, inr rummy, slots spin, yono arcade, yono rummy bonus" />
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
     <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
     <meta name="bingbot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
@@ -408,7 +408,7 @@ function generateHomepageHtml(scriptTag: string, styleTags: string): string {
     <meta property="og:locale" content="en_IN" />
     <meta property="og:url" content="${BASE_URL}/" />
     <meta property="og:title" content="All New Yono Games 2026 - Instant Withdrawal Apps & APK Download" />
-    <meta property="og:description" content="Download All New Yono Games 2026 List & top instant withdrawal apps: Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & 50+ verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals." />
+    <meta property="og:description" content="Download All New Yono Games 2026 List & top instant withdrawal apps: Rummy 77, 101 Z, Money Rummy, Jaiho 777, Hindi 777, Rummy 888, Share Slots, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade & 50+ verified APKs with instant ₹5-₹777 free welcome bonuses & ₹100 instant UPI withdrawals." />
     <meta property="og:image" content="${BASE_URL}/main-site-logo.svg" />
     <meta property="og:site_name" content="All New Yono Apps" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -459,7 +459,7 @@ function generateHomepageHtml(scriptTag: string, styleTags: string): string {
         "@type": "WebSite",
         "name": "All New Yono Apps 2026",
         "url": "${BASE_URL}/",
-        "description": "Download Verified All New Yono Games, Yono Games, Yono Rummy, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade APK 2026 with instant signup bonus & fast UPI payouts.",
+        "description": "Download Verified All New Yono Games, Rummy 77, 101 Z, Money Rummy, Yono Games, Yono Rummy, BET 213, Jaiho 91, Club INR, Max Rummy, INR Rummy, Slots Spin, Yono Arcade APK 2026 with instant signup bonus & fast UPI payouts.",
         "potentialAction": {
           "@type": "SearchAction",
           "target": "${BASE_URL}/?search={search_term_string}",

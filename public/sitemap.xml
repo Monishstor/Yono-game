@@ -9,6 +9,27 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Rummy 77 Official APK -->
+  <url>
+    <loc>https://yono-game.vercel.app/rummy77-apk-download</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+  <!-- 101 Z Official APK -->
+  <url>
+    <loc>https://yono-game.vercel.app/101z-apk-download</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+  <!-- Money Rummy Official APK -->
+  <url>
+    <loc>https://yono-game.vercel.app/money-rummy-apk-download</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
   <!-- Yono Games Official APK -->
   <url>
     <loc>https://yono-game.vercel.app/yono-games-apk-download</loc>
