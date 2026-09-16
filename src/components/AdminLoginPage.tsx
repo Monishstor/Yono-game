@@ -40,14 +40,8 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
     }
 
     const trimmed = password.trim();
-    // Validate against current PIN, master pin, or default
-    if (
-      trimmed === currentPin || 
-      trimmed === 'admin123' || 
-      trimmed === 'yono@2026' || 
-      trimmed === 'admin' ||
-      trimmed === '1234'
-    ) {
+    // Validate against current PIN
+    if (trimmed === currentPin) {
       setError('');
       onLoginSuccess();
     } else {
@@ -138,7 +132,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
             <div>
               <label className="text-xs font-bold text-slate-300 block mb-1.5 flex items-center justify-between">
                 <span>Master Password / PIN</span>
-                <span className="text-[10px] text-amber-400 font-mono">Default: admin123</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
@@ -172,7 +165,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
               )}
             </div>
 
-            {/* Remember Me & Auto Fill */}
+            {/* Remember Me */}
             <div className="flex items-center justify-between text-xs pt-1">
               <label className="flex items-center gap-2 cursor-pointer text-slate-400 hover:text-slate-300">
                 <input
@@ -183,19 +176,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
                 />
                 <span>Remember session</span>
               </label>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setUsername('admin');
-                  setPassword('admin123');
-                  setError('');
-                }}
-                className="text-amber-400 hover:text-amber-300 font-semibold hover:underline flex items-center gap-1"
-              >
-                <Sparkles className="w-3 h-3" />
-                <span>Fill Default (admin123)</span>
-              </button>
             </div>
 
             {/* Submit Button */}
