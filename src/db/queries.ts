@@ -32,6 +32,20 @@ export async function getOrCreateUser(uid: string, email: string, displayName?: 
 }
 
 // App Catalog Helpers
+export async function updateApp(id: number, data: Partial<YonoApp>) {
+  try {
+    const result = await db.update(apps)
+      // @ts-ignore: mapping YonoApp to schema type has a mismatch on id
+      .set(data)
+      .where(eq(apps.id, id))
+      .returning();
+    return result[0];
+  } catch (error) {
+    console.error(`Error updating app ${id}:`, error);
+    throw error;
+  }
+}
+
 export async function getAllApps() {
   try {
     return await db.select().from(apps).orderBy(apps.id);
