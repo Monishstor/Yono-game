@@ -16,7 +16,6 @@ import {
   Bot,
   Activity,
   Zap,
-  Trash2,
   Sliders,
   Flame,
   Globe
