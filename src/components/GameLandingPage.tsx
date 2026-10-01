@@ -16,7 +16,6 @@ import {
   ChevronDown,
   ChevronUp, 
   ExternalLink,
-  Smartphone,
   Gift,
   Trophy,
   Wallet,
