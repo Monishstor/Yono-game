@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Send, ShieldAlert, Share2, MessageCircle, Copy, Check, Download, ArrowUpRight } from 'lucide-react';
+import { Send, ShieldAlert, Share2, MessageCircle, Copy, Check, Download, ArrowUpRight } from 'lucide-react';
 import { YONO_APPS } from '../data/appsData';
 
 interface FooterProps {
