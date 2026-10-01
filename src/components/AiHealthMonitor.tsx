@@ -418,10 +418,12 @@ export const AiHealthMonitor: React.FC<AiHealthMonitorProps> = ({
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[500px] overflow-y-auto pr-1">
-          {apps
-            .filter(app => !appSearch || app.name.toLowerCase().includes(appSearch.toLowerCase()) || app.id.toLowerCase().includes(appSearch.toLowerCase()))
-            .map((app) => {
-              const appIssues = report.issues.filter(i => i.appId === app.id);
+          {(() => {
+            const searchLower = appSearch ? appSearch.toLowerCase() : "";
+            return apps
+              .filter(app => !searchLower || app.name.toLowerCase().includes(searchLower) || app.id.toLowerCase().includes(searchLower))
+              .map((app) => {
+                const appIssues = report.issues.filter(i => i.appId === app.id);
               const isHealthy = appIssues.length === 0;
 
               return (
@@ -474,7 +476,8 @@ export const AiHealthMonitor: React.FC<AiHealthMonitorProps> = ({
                   </div>
                 </div>
               );
-            })}
+            });
+          })()}
         </div>
 
       </div>
