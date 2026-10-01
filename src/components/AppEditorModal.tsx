@@ -5,7 +5,6 @@ import {
   Upload, 
   Image as ImageIcon, 
   Link as LinkIcon, 
-  Palette, 
   Save, 
   Trash2, 
   Sparkles, 
