@@ -10,7 +10,6 @@ import {
   Trash2, 
   Sparkles, 
   Check, 
-  AlertCircle,
   Plus,
   Crown,
   Gamepad2,
