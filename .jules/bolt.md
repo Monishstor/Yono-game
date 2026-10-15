@@ -1,3 +1,6 @@
 ## 2024-05-24 - React.memo Pitfall with Unmemoized Props
 **Learning:** Even if a component like `AppPattiRow` is correctly wrapped in `React.memo()`, it will still re-render on every parent update if the parent passes down inline or unmemoized functions (like `onDownload`, `onViewDetails`, `onEdit`). In `App.tsx`, these functions were being recreated on every keystroke because the parent `App` component re-rendered due to the `searchQuery` state changing. This caused all 62 list items to synchronously re-render and blocked the main thread, causing severe typing lag.
 **Action:** Always verify that the props passed to a `React.memo` component are stable (using `useCallback` or `useMemo`). The memoization is completely broken otherwise.
+## 2023-10-27 - Performance Optimization: Extracting Repeated Operations in Loops
+**Learning:** Extracting string operations (like `.toLowerCase()`) outside of tight loops (like `.filter()` or `.map()`) can yield significant performance benefits, particularly when iterating over large datasets. Avoid repeating expensive operations for every item when the result is constant.
+**Action:** Always look for operations that don't depend on the loop variable and move them outside the loop body before mapping or filtering over collections.
