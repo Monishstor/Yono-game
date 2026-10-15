@@ -18,8 +18,7 @@ import {
   Zap,
   Trash2,
   Sliders,
-  Flame,
-  Globe
+  Flame
 } from 'lucide-react';
 import { AppIcon } from './AppIcon';
 
