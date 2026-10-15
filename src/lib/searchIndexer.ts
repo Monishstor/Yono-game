@@ -68,6 +68,15 @@ export interface SearchScoreResult {
   matchReasons: string[];
 }
 
+export interface ParsedQuery {
+  trimmed: string;
+  rawLower: string;
+  normalizedQuery: string;
+  continuousQuery: string;
+  queryTokens: string[];
+  primaryNumber: number | null;
+}
+
 /**
  * Multi-tiered ranking algorithm that assigns mathematical relevance scores.
  * Exact matches on game names, bonuses, or promo codes receive the highest tier score (10,000+ points).
@@ -75,17 +84,30 @@ export interface SearchScoreResult {
 export function calculateAppSearchScore(
   app: YonoApp,
   rawQuery: string,
-  promoCodes?: PromoCode[]
+  promoCodes?: PromoCode[],
+  parsedQuery?: ParsedQuery
 ): SearchScoreResult {
-  const trimmed = rawQuery.trim();
+  let trimmed: string, rawLower: string, normalizedQuery: string, continuousQuery: string, queryTokens: string[], primaryNumber: number | null;
+
+  if (parsedQuery) {
+    ({ trimmed, rawLower, normalizedQuery, continuousQuery, queryTokens, primaryNumber } = parsedQuery);
+  } else {
+    trimmed = rawQuery.trim();
+    if (!trimmed) {
+      return { score: 0, isExactMatch: false, matchReasons: [] };
+    }
+    rawLower = trimmed.toLowerCase();
+    normalizedQuery = normalizeText(trimmed);
+    continuousQuery = cleanContinuous(trimmed);
+    queryTokens = tokenize(trimmed);
+    const numericMatch = trimmed.match(/\d+/g);
+    const extractedNumbers = numericMatch ? numericMatch.map(n => parseInt(n, 10)) : [];
+    primaryNumber = extractedNumbers.length > 0 ? extractedNumbers[0] : null;
+  }
+
   if (!trimmed) {
     return { score: 0, isExactMatch: false, matchReasons: [] };
   }
-
-  const rawLower = trimmed.toLowerCase();
-  const normalizedQuery = normalizeText(trimmed);
-  const continuousQuery = cleanContinuous(trimmed);
-  const queryTokens = tokenize(trimmed);
 
   let score = 0;
   let isExactMatch = false;
@@ -106,11 +128,6 @@ export function calculateAppSearchScore(
   const rawTagline = (app.tagline || '').toLowerCase();
   const rawBadge = (app.badge || '').toLowerCase();
   const rawDesc = (app.description || '').toLowerCase();
-
-  // Extract numeric intent (e.g. searching "51", "731", "500", "100", "777", "213")
-  const numericMatch = trimmed.match(/\d+/g);
-  const extractedNumbers = numericMatch ? numericMatch.map(n => parseInt(n, 10)) : [];
-  const primaryNumber = extractedNumbers.length > 0 ? extractedNumbers[0] : null;
 
   // -------------------------------------------------------------
   // TIER 1: EXACT MATCHES (Score: 10,000 - 20,000)
@@ -410,8 +427,22 @@ export function indexAndSearchApps(
 
   const scoredApps: ScoredApp[] = [];
 
+  let parsedQuery: ParsedQuery | undefined = undefined;
+  const trimmed = rawQuery.trim();
+  if (trimmed) {
+    const numericMatch = trimmed.match(/\d+/g);
+    parsedQuery = {
+      trimmed,
+      rawLower: trimmed.toLowerCase(),
+      normalizedQuery: normalizeText(trimmed),
+      continuousQuery: cleanContinuous(trimmed),
+      queryTokens: tokenize(trimmed),
+      primaryNumber: numericMatch && numericMatch.length > 0 ? parseInt(numericMatch[0], 10) : null
+    };
+  }
+
   for (const app of apps) {
-    const result = calculateAppSearchScore(app, rawQuery, promoCodes);
+    const result = calculateAppSearchScore(app, rawQuery, promoCodes, parsedQuery);
 
     // Keep app only if it has a positive match score
     if (result.score > 0) {
