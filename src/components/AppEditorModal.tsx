@@ -14,7 +14,6 @@ import {
   Plus,
   Crown,
   Gamepad2,
-  FileCode,
   Download,
   Pin
 } from 'lucide-react';
