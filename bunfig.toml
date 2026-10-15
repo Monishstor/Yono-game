@@ -1,0 +1,3 @@
+[test]
+environment = "happy-dom"
+preload = ["./happy-dom-setup.ts"]
