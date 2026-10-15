@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldAlert, Check, X, Scale } from 'lucide-react';
+import { Check, X, Scale } from 'lucide-react';
 
 interface ResponsibleGamingBannerProps {
   showAgeDisclaimer?: boolean;
