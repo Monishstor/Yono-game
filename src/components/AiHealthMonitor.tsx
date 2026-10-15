@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { YonoApp, SiteSettings, PromoCode } from '../types';
-import { HealthEngine, HealthReport, HealthIssue } from '../lib/healthEngine';
+import { HealthEngine, HealthReport } from '../lib/healthEngine';
 import { 
   ShieldCheck, 
   RefreshCw, 
