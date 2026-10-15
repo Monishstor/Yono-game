@@ -22,7 +22,6 @@ import {
   Wallet,
   Clock,
   Award,
-  AlertCircle,
   Globe,
   Send,
   RefreshCw
