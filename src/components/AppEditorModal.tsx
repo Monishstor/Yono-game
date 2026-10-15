@@ -12,7 +12,6 @@ import {
   Check, 
   AlertCircle,
   Plus,
-  Crown,
   Gamepad2,
   FileCode,
   Download,
